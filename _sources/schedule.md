@@ -2,9 +2,21 @@
 
 ## Weekly schedule (subject to change)
 
+
+### Lecture 1
+
+* Go over the [syllabus][index.md]
+
+* Motivation -- [slides on boundary layer clouds and climate](https://phaustin.github.io/talks/cloud_talk.html)
+
+### Lecture 2
+
+Read Chapter 1 of BLM.  For notation, especially virtual temperature, see the first 10 pages of Chapter 3 (thermodyanics) in Practical Meteorology
+
+
+
 ```{list-table}
 :header-rows: 1
-
 * - Week
   - Dates
   - Topics
@@ -16,12 +28,12 @@
 * - Week 2
   - 15/01 
   - Mean boundary layer characteristics: definition, structure, evolution, turbulence, micrometeorology, impact.  Virtual potential temperature and frozen turbulence.
-  - BLM chapt 1; PM p65-77, 132-135
+  - BLM chapt 1; PM Chapter 3 pp. 53-63
 * - Week 3
   - 22/01 
   - Statistical tools including Reynold's averaging: turbulence spectrum, kinematic fluxes, summation notation, friction
    velocity
-  - BLM chapt 2; PM p78-89
+  - BLM chapt 2
 * - Week 4
   - 29/01
   - Governing equations for turbulent flow: , simplifications, scaling
