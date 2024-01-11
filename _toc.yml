@@ -4,7 +4,6 @@ parts:
   - caption: Logistics
     chapters:
     - file: schedule.md
-    - file: learning_goals.md
     - file: python_install.md
   - caption: Weekly topics      
     chapters:
