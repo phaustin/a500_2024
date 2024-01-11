@@ -1,50 +1,37 @@
-# ATSC 405 syllabus
+# ATSC 500  syllabus
 
 - Logistics
   - Instructor:  Phil Austin EOS South Room 157
   - Term 2, Jan 2024, Times TBD
   - Room: EOS Main 107
 
-- [Learning goals](sec:learning-goals)
+- Course description:  Theoretical and empirical analysis of the atmospheric boundary layer with particular emphasis on energy and mass exchanges near the Earth's surface.
 
-- Main course homepage: [phaustin.github.io/a405_2024](https://phaustin.github.io/a405_2024)
+- Main course homepage: [phaustin.github.io/a500_2024](https://phaustin.github.io/a500_2024)
 
-- [Canvas website](https://canvas.ubc.ca/courses/129111) (for handins, grades, emails)
+- [Canvas website](https://canvas.ubc.ca/courses/129116) (for handins, grades, emails)
 
-- Textbooks
+- Textbooks: 
 
-  - [Adrian Thompkins: Atmospheric Physics](https://www.dropbox.com/scl/fo/9grhb2cr0lpfc1d5jci4a/h?rlkey=shnjpq4kvndrcatbgrri44eyw&dl=0)
-  -   [Lohmann, Luond and Mahrt: An Introduction to Clouds from Microscale to Climate](https://gw2jh3xr2c.search.serialssolutions.com/?sid=sersol&SS_jc=TC0001980404&title=An%20introduction%20to%20clouds%20%3A%20from%20the%20microscale%20to%20climate)
-
+  - [Stull, R.B., 1988: *An Introduction to Boundary Layer
+  Meteorology](https://gw2jh3xr2c.search.serialssolutions.com/?sid=sersol&SS_jc=TC0000806834&title=An%20introduction%20to%20boundary%20layer%20meteorology) [abbreviation=BLM]
+  
   - [Stull, R. B., 2015: Practical
-Meteorology](http://www.eos.ubc.ca/books/Practical_Meteorology/)
+Meteorology](http://www.eos.ubc.ca/books/Practical_Meteorology/) [abbreviation=PM]
 
+  - Garratt, J. R., 1992: The atmospheric boundary layer.
+Cambridge University Press, 316 pp. [abbreviation=ABL]
 
   - [Intro to Python](https://www.dropbox.com/scl/fi/2eflyvz31e1vq3nryhqa2/python-setup_macos_2024.pdf?rlkey=rxbbl8pwdevxyry0toumolh6t&dl=0)
 
-- **Catalog entry**: Atmospheric thermodynamics, cloud chemistry and
-microphysics. Computer modeling of droplet growth, convection, and
-mixing. Application of differential equations to atmospheric problems.
-
-- **Description**: This course focuses on how to observe and understand
-cloud processes, including mixing and convection, rain formation,
-thunderstorms and cloud/climate interactions. It also introduces Python
-programming and the use of numerical methods to solve simple
-differential equations. If you need a computer lab account, see the main
-office for a handout on how to pay the \$25 lab fee.
-
-- **Pre or co-requisites**: Classical thermodynamics (PHYS 203 or CHEM 205)
-and introductory ordinary differential equations (MATH 215). and
-familiarity with a programming language.
-
-
 - Evaluation
 
-  - Problem sets/in-class work-sheets: 30%
-
-  - Mid-term(s): 25%
-
-  - Final (in-class and take home): 45%
+   -  Assignments 40% (individual with collaboration)
+   -  Class presentation of journal paper 10% (individual)
+   -  In-class Worksheets 5% (group)
+   -  Project Proposal 5%
+   -  Project 35% 
+   -  Project Oral Presentation 5%
 
 - [Topic schedule](schedule.md)
 

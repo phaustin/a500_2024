@@ -1,13 +1,5 @@
 #  Course schedule
 
-## Lecture 2, week 1, Thursday:  
-
-- Read Lohmann chapter 1 and scan the questions at the end of the chapter
-
-## Lecture 3, week 1, Friday
-
-- Read Thompkins through page 8
-
 ## Weekly schedule (subject to change)
 
 ```{list-table}
@@ -24,12 +16,12 @@
 * - Week 2
   - 15/01 
   - Mean boundary layer characteristics: definition, structure, evolution, turbulence, micrometeorology, impact.  Virtual potential temperature and frozen turbulence.
-  - BLM chapt 1; MSE p65-77, 132-135
+  - BLM chapt 1; PM p65-77, 132-135
 * - Week 3
   - 22/01 
   - Statistical tools including Reynold's averaging: turbulence spectrum, kinematic fluxes, summation notation, friction
    velocity
-  - BLM chapt 2; MSE p78-89
+  - BLM chapt 2; PM p78-89
 * - Week 4
   - 29/01
   - Governing equations for turbulent flow: , simplifications, scaling
@@ -41,7 +33,7 @@
 * - Week 6
   - 02/12
   - Turbulence kinetic energy: TKE budget, stability, Richardson number, Obukhov length, scaling
-  - BLM chapt 5; MSE Chapt 6
+  - BLM chapt 5; PM Chapt 6
 * - Week 7
   - 02/19
   - Mid-term break
@@ -49,7 +41,7 @@
 * - Week 8 
   - 02/26
   - Turbulence closure: closure problem, parameterizations, local & nonlocal closures
-  - BLM chapt 6, except 6.6, 6.7, 6.9; MSE Appendix H)
+  - BLM chapt 6, except 6.6, 6.7, 6.9; PM Appendix H)
 * - Week 9
   - 03/04
   - Boundary conditions and external forcings: fluxes, partitioning, radiation
