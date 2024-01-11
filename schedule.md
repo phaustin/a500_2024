@@ -5,7 +5,7 @@
 
 ### Lecture 1
 
-* Go over the [syllabus][index.md]
+* Go over the [syllabus](index.md)
 
 * Motivation -- [slides on boundary layer clouds and climate](https://phaustin.github.io/talks/cloud_talk.html)
 
