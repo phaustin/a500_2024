@@ -1,0 +1,12 @@
+format: jb-book
+root: index.md
+parts:
+  - caption: Logistics
+    chapters:
+    - file: schedule.md
+    - file: learning_goals.md
+    - file: python_install.md
+  - caption: Weekly topics      
+    chapters:
+    - file: notebooks/week1/notes.md
+

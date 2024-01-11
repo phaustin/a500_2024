@@ -1,0 +1,27 @@
+{
+    "output_file": "outfile",
+    "dir_name": "dump_run",
+    "dump_output": true,
+    "initial_conditions": {
+        "Tinit": 280.0,
+        "Zinit": 1000.0,
+        "Pinit": 90000.0,
+        "Sinit": 0.995,
+        "wvel": 0.5
+    },
+    "aerosol": {
+        "Ms": 114,
+        "Mw": 18.0,
+        "Sigma": 0.075,
+        "vanHoff": 2.0,
+        "rhoaero": 1775,
+        "themean": 2e-17,
+        "sd": 1.7,
+        "totmass": 1.5e-09
+    },
+    "integration": {
+        "tstart": 0,
+        "tend": 200,
+        "dt": 1
+    }
+}

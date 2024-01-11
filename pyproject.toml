@@ -1,0 +1,33 @@
+[build-system]
+requires = [
+    "setuptools >= 48",
+    "setuptools_scm[toml] >= 4, <6",
+    "setuptools_scm_git_archive",
+    "wheel >= 0.29.0",
+]
+build-backend = 'setuptools.build_meta'
+
+[project]
+name = "a500"
+description = "atsc500 code"
+authors = [
+  { name="Philip Austin", email="paustin@eoas.ubc.ca" },
+]
+dynamic = ["version"]
+
+[project.scripts]
+killprocs = "a500.utils.killprocs:main"
+killjobs = "a500.utils.killjobs:main"
+pyncdump = "a500.utils.ncdump:main"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools_scm]
+# this finds last tag of the form v0.2.8
+# copied from https://github.com/dib-lab/screed/blob/latest/pyproject.toml
+#git_describe_command = "git describe --dirty --tags --long --match v* --first-parent"
+write_to = "src/a500/_version.py"
+root = "."
+
+
