@@ -26,10 +26,6 @@ dependencies:
   - conda-lock
   - xarray-datatree
   - pytest
-  - rasterio
-  - rioxarray
   - pystac-client
-  - shapely
   - seaborn
-  - goes2go
 # conda-lock --kind explicit -f environment_trun.yml -p linux-64

@@ -8,10 +8,15 @@ parts:
   - caption: Weekly topics      
     chapters:
     - file: notebooks/week1/notes.md
-    - url: https://www.dropbox.com/scl/fi/uanlie1sdyiz4ezbclopt/temperature_notes.pdf?rlkey=leatk6yrhmw137i9dl6j8ojlq&dl=0
-      title: Kinetic Temperature notes
-    - url: https://www.dropbox.com/scl/fi/j7bq6cc7r40vkx3og14qh/first_law_notes.pdf?rlkey=66r1y4umxtc1hgwfbylxlzoxt&dl=0
-      title: First law of thermodynamics
-    - url: https://www.dropbox.com/scl/fi/iknh9dm4iu1tfssa4724j/entropy.pdf?rlkey=buxyohh3w52ou6vk774s3xexq&dl=0
-      title: Entropy and potential temperature
+  - caption: Supplmentary readings
+    chapters:
+    - url: https://www.dropbox.com/scl/fi/0wm3y9zbcwrxjy9cm7oen/fluids_01.pdf?rlkey=1d3pll22h2ui689jequbhznkd&dl=0
+      title: Week 2 - Jardine Fluids 1
+    - url: https://www.dropbox.com/scl/fi/gb1ryz0x0tszgtfz31iom/fluids_02.pdf?rlkey=neyvhm8k8xhj2yupm8vmuf371&dl=0
+      title: Week 2 - Jardine Fluids 2
+    - url: https://www.dropbox.com/scl/fi/whin2z8vct1fp9p03ovsf/lagrangian_eulerian.pdf?rlkey=76g3xlkx36udhjvqhc70e9r88&dl=0
+      title: Week 2 - Lagrangian and Eulerian reference frames
+    - url: https://foundations.projectpythia.org/core/xarray/xarray-intro.html
+    - title: Week 3 - xarray tutorial
+      
 
