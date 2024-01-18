@@ -1,6 +1,16 @@
 _build
-docs/
+docs/*pdf
 __pycache__
 *pyc
 build/
+auto/
 *~
+solutions/
+*.jupyter_cache*
+*aux
+*latexmk
+*fls
+*log
+*out
+_version.py
+

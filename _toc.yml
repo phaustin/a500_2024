@@ -1,13 +1,14 @@
 format: jb-book
 root: index.md
 parts:
-  - caption: Logistics
+  - caption: Logistics test
     chapters:
     - file: schedule.md
+    - file: learning_goals.md
     - file: python_install.md
   - caption: Weekly topics      
     chapters:
-    - file: notebooks/week1/notes.md
+    - file: week_notes.md
   - caption: Supplmentary readings
     chapters:
     - url: https://www.dropbox.com/scl/fi/0wm3y9zbcwrxjy9cm7oen/fluids_01.pdf?rlkey=1d3pll22h2ui689jequbhznkd&dl=0
@@ -17,6 +18,18 @@ parts:
     - url: https://www.dropbox.com/scl/fi/whin2z8vct1fp9p03ovsf/lagrangian_eulerian.pdf?rlkey=76g3xlkx36udhjvqhc70e9r88&dl=0
       title: Week 2 - Lagrangian and Eulerian reference frames
     - url: https://foundations.projectpythia.org/core/xarray/xarray-intro.html
-    - title: Week 3 - xarray tutorial
+      title: Week 3 - xarray tutorial
+    - url: https://www.dropbox.com/scl/fi/tkipa4u60xdbt3cd546cs/ensemle_averaging.pdf?rlkey=08k3hvbaz00zi5a5ua7pnhcw9&dl=0
+      title: Week 3 - Ensemble averaging
+  - caption: Notebooks
+    chapters:
+      - url: https://www.dropbox.com/scl/fi/f1y4uj9potzahxmv06kgg/dry_les_2024.ipynb?rlkey=vfpxzcck7t3rhcel7wcg4vxpv&dl=0
+        title: dry les notebook ipynb download
+      - file: notebooks/dry_les_2024.md
+      - url: https://www.dropbox.com/scl/fi/9s7o6uccqzhrnvdee35z0/case_60_10.nc?rlkey=a40nnj4i6ddlfomqqg6t179dl&dl=0
+        title: case_50_10.nc download (470 Mbytes)
+        
+      
+
       
 

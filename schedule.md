@@ -2,19 +2,6 @@
 
 ## Weekly schedule (subject to change)
 
-
-### Lecture 1
-
-* Go over the [syllabus](index.md)
-
-* Motivation -- [slides on boundary layer clouds and climate](https://phaustin.github.io/talks/cloud_talk.html)
-
-### Lecture 2
-
-Read Chapter 1 of BLM.  For notation, especially virtual temperature, see the first 10 pages of Chapter 3 (thermodyanics) in Practical Meteorology
-
-
-
 ```{list-table}
 :header-rows: 1
 * - Week
