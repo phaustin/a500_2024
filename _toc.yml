@@ -8,4 +8,10 @@ parts:
   - caption: Weekly topics      
     chapters:
     - file: notebooks/week1/notes.md
+    - url: https://www.dropbox.com/scl/fi/uanlie1sdyiz4ezbclopt/temperature_notes.pdf?rlkey=leatk6yrhmw137i9dl6j8ojlq&dl=0
+      title: Kinetic Temperature notes
+    - url: https://www.dropbox.com/scl/fi/j7bq6cc7r40vkx3og14qh/first_law_notes.pdf?rlkey=66r1y4umxtc1hgwfbylxlzoxt&dl=0
+      title: First law of thermodynamics
+    - url: https://www.dropbox.com/scl/fi/iknh9dm4iu1tfssa4724j/entropy.pdf?rlkey=buxyohh3w52ou6vk774s3xexq&dl=0
+      title: Entropy and potential temperature
 
