@@ -23,13 +23,11 @@ parts:
       title: Week 3 - Ensemble averaging
   - caption: Notebooks
     chapters:
-      - url: https://www.dropbox.com/scl/fi/f1y4uj9potzahxmv06kgg/dry_les_2024.ipynb?rlkey=vfpxzcck7t3rhcel7wcg4vxpv&dl=0
-        title: dry les notebook ipynb download
-      - file: notebooks/dry_les_2024.md
-      - url: https://www.dropbox.com/scl/fi/9s7o6uccqzhrnvdee35z0/case_60_10.nc?rlkey=a40nnj4i6ddlfomqqg6t179dl&dl=0
-        title: case_50_10.nc download (470 Mbytes)
-        
-      
-
+    - url: https://www.dropbox.com/scl/fi/f1y4uj9potzahxmv06kgg/dry_les_2024.ipynb?rlkey=vfpxzcck7t3rhcel7wcg4vxpv&dl=0
+      title: dry les notebook ipynb download
+    - file: notebooks/dry_les_2024.md
+    - url: https://www.dropbox.com/scl/fi/9s7o6uccqzhrnvdee35z0/case_60_10.nc?rlkey=a40nnj4i6ddlfomqqg6t179dl&dl=0
+      title: case_50_10.nc download (470 Mbytes)
+ 
       
 
