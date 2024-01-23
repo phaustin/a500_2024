@@ -40,6 +40,9 @@ parts:
     - file: notebooks/dry_les_2024.md
     - url: https://www.dropbox.com/scl/fi/9s7o6uccqzhrnvdee35z0/case_60_10.nc?rlkey=a40nnj4i6ddlfomqqg6t179dl&dl=0
       title: case_50_10.nc download (470 Mbytes)
- 
+    - file: notebooks/skew_coords_solution.md
+    - url: https://www.dropbox.com/scl/fi/k1gswj3eocbsehbu4xvrq/skew_coords_solution.ipynb?rlkey=f6kp1pzzf4u14nwgk5gfvtffs&dl=0
+      title: thermodynamic worksheet download
+    - file: notebooks/hydrostatic_2024.md
       
 
