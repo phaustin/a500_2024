@@ -220,10 +220,6 @@ So loop over all dimensions except z so that shapes will match
 This takes a considerable amount of time in python
 
 ```{code-cell} ipython3
----
-jupyter:
-  source_hidden: true
----
 def make_theta_array(var_dict: dict, 
                times: npt.ArrayLike,
                x: npt.ArrayLike, 
