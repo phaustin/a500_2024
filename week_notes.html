@@ -66,7 +66,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="canonical" href="https://phaustin.github.io/a500_2024/week_notes.html" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Working with LES data: dry boundary layer" href="notebooks/dry_les_2024.html" />
+    <link rel="next" title="MD: les dry layer assignment solution" href="assignments/md_dry_les.html" />
     <link rel="prev" title="Python links" href="python_install.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -195,6 +195,13 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fi/sosiyoxa9bzhecea5qas9/hydro.pdf?rlkey=7wll6s0yc4t0dlojzx56082iw&amp;dl=0">Weighted averages and scale heights</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fi/ygb2bi2riqo23ostxo8lw/buoyancy.pdf?rlkey=b80rbwtzartk4qp5dt9gjvsf6&amp;dl=0">Week 3 - Bouyancy</a></li>
 </ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Assignments</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="assignments/md_dry_les.html">MD: les dry layer assignment solution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="assignments/dry_les_2024_solution.html">PHA Dry LES Assign solution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="assignments/hydrostatic_2024.html">Assign 2: Scale heights for typical atmospheric soundings</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fi/etj9r3hvt5rm3azz650l0/hydrostatic_2024.ipynb?rlkey=5fkvw08t872305rn9zboktw57&amp;dl=0">Assignment 2 hydrostatic balance notebook download</a></li>
+</ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Notebooks</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fi/f1y4uj9potzahxmv06kgg/dry_les_2024.ipynb?rlkey=vfpxzcck7t3rhcel7wcg4vxpv&amp;dl=0">dry les notebook ipynb download</a></li>
@@ -202,7 +209,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fi/9s7o6uccqzhrnvdee35z0/case_60_10.nc?rlkey=a40nnj4i6ddlfomqqg6t179dl&amp;dl=0">case_50_10.nc download (470 Mbytes)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="notebooks/skew_coords_solution.html">Week2: Theromodynamic diagrams worksheet – solution</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fi/k1gswj3eocbsehbu4xvrq/skew_coords_solution.ipynb?rlkey=f6kp1pzzf4u14nwgk5gfvtffs&amp;dl=0">thermodynamic worksheet download</a></li>
-<li class="toctree-l1"><a class="reference internal" href="notebooks/hydrostatic_2024.html">Assign 2: Scale heights for typical atmospheric soundings</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fi/dfj80s9q920ljni5aakfc/tropical_subset.nc?rlkey=2fc2wr2yb70e4i6l9c7gwcyj3&amp;dl=0">tropical_subset.nc download</a></li>
 </ul>
 
     </div>
@@ -359,7 +366,10 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#for-week-3">for week 3</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#week-3">Week 3</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#week-3">Week 3</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#for-next-week">For next week:</a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -403,7 +413,16 @@ document.write(`
 <ul class="simple">
 <li><p>Thermodymamic review – thermodynamic diagrams and scale height</p></li>
 <li><p>Buoyancy perturbations</p></li>
+<li><p>Solutions to the dry les notebook</p></li>
+<li><p>How big are the pressure perturbation in the tropical_subset.nc notebook?</p></li>
 </ul>
+<section id="for-next-week">
+<h3>For next week:<a class="headerlink" href="#for-next-week" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Read <a class="reference external" href="https://hogback.atmos.colostate.edu/group/dave/pdf/Dimensional_Analysis.pdf">Dave Randalls scalling quickstudy</a></p></li>
+<li><p>Read Stull Chapter 4</p></li>
+</ul>
+</section>
 </section>
 </section>
 
@@ -447,11 +466,11 @@ document.write(`
       </div>
     </a>
     <a class="right-next"
-       href="notebooks/dry_les_2024.html"
+       href="assignments/md_dry_les.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Working with LES data: dry boundary layer</p>
+        <p class="prev-next-title">MD: les dry layer assignment solution</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -479,7 +498,10 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#for-week-3">for week 3</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#week-3">Week 3</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#week-3">Week 3</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#for-next-week">For next week:</a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 

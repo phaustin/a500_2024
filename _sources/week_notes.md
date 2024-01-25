@@ -25,3 +25,11 @@ Read Chapter 1 of BLM.  For notation, especially virtual temperature, see the fi
 
 * Thermodymamic review -- thermodynamic diagrams and scale height
 * Buoyancy perturbations
+* Solutions to the dry les notebook
+* How big are the pressure perturbation in the tropical_subset.nc notebook?
+
+### For next week:
+
+* Read [Dave Randalls scalling quickstudy](https://hogback.atmos.colostate.edu/group/dave/pdf/Dimensional_Analysis.pdf)
+* Read Stull Chapter 4
+

@@ -1,0 +1,3174 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>PHA Dry LES Assign solution &#8212; ATSC 500 2024</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=bd9e20870c6007c4c509" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=bd9e20870c6007c4c509" />
+  <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=bd9e20870c6007c4c509"></script>
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'assignments/dry_les_2024_solution';</script>
+    <link rel="canonical" href="https://phaustin.github.io/a500_2024/assignments/dry_les_2024_solution.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Assign 2: Scale heights for typical atmospheric soundings" href="hydrostatic_2024.html" />
+    <link rel="prev" title="MD: les dry layer assignment solution" href="md_dry_les.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <header>
+  
+    <div class="bd-header navbar navbar-expand-lg bd-navbar">
+    </div>
+  
+  </header>
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">ATSC 500 2024</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../index.html">
+                    ATSC 500  syllabus
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Logistics test</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../schedule.html">Course schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../learning_goals.html">Learning goals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python_install.html">Python links</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Weekly topics</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../week_notes.html">Week notes</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Supplmentary readings</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fi/0wm3y9zbcwrxjy9cm7oen/fluids_01.pdf?rlkey=1d3pll22h2ui689jequbhznkd&amp;dl=0">Week 2 - Jardine Fluids 1</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fi/gb1ryz0x0tszgtfz31iom/fluids_02.pdf?rlkey=neyvhm8k8xhj2yupm8vmuf371&amp;dl=0">Week 2 - Jardine Fluids 2</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fi/whin2z8vct1fp9p03ovsf/lagrangian_eulerian.pdf?rlkey=76g3xlkx36udhjvqhc70e9r88&amp;dl=0">Week 2 - Lagrangian and Eulerian reference frames</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://foundations.projectpythia.org/core/xarray/xarray-intro.html">Week 3 - xarray tutorial</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fi/tkipa4u60xdbt3cd546cs/ensemle_averaging.pdf?rlkey=08k3hvbaz00zi5a5ua7pnhcw9&amp;dl=0">Week 3 - Ensemble averaging</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://gw2jh3xr2c.search.serialssolutions.com/?sid=sersol&amp;SS_jc=TC0001980404&amp;title=An%20introduction%20to%20clouds%20%3A%20from%20the%20microscale%20to%20climate">Lohmann et al. thermodynamics text</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fi/uanlie1sdyiz4ezbclopt/temperature_notes.pdf?rlkey=leatk6yrhmw137i9dl6j8ojlq&amp;dl=0">Thermo - Kinetic Temperature notes</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fi/j7bq6cc7r40vkx3og14qh/first_law_notes.pdf?rlkey=66r1y4umxtc1hgwfbylxlzoxt&amp;dl=0">Thermo - First law of thermodynamics</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fi/iknh9dm4iu1tfssa4724j/entropy.pdf?rlkey=buxyohh3w52ou6vk774s3xexq&amp;dl=0">Thermo - Entropy and potential temperature</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fi/sosiyoxa9bzhecea5qas9/hydro.pdf?rlkey=7wll6s0yc4t0dlojzx56082iw&amp;dl=0">Weighted averages and scale heights</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fi/ygb2bi2riqo23ostxo8lw/buoyancy.pdf?rlkey=b80rbwtzartk4qp5dt9gjvsf6&amp;dl=0">Week 3 - Bouyancy</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Assignments</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="md_dry_les.html">MD: les dry layer assignment solution</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">PHA Dry LES Assign solution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hydrostatic_2024.html">Assign 2: Scale heights for typical atmospheric soundings</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fi/etj9r3hvt5rm3azz650l0/hydrostatic_2024.ipynb?rlkey=5fkvw08t872305rn9zboktw57&amp;dl=0">Assignment 2 hydrostatic balance notebook download</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Notebooks</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fi/f1y4uj9potzahxmv06kgg/dry_les_2024.ipynb?rlkey=vfpxzcck7t3rhcel7wcg4vxpv&amp;dl=0">dry les notebook ipynb download</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/dry_les_2024.html">Working with LES data: dry boundary layer</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fi/9s7o6uccqzhrnvdee35z0/case_60_10.nc?rlkey=a40nnj4i6ddlfomqqg6t179dl&amp;dl=0">case_50_10.nc download (470 Mbytes)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/skew_coords_solution.html">Week2: Theromodynamic diagrams worksheet – solution</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fi/k1gswj3eocbsehbu4xvrq/skew_coords_solution.ipynb?rlkey=f6kp1pzzf4u14nwgk5gfvtffs&amp;dl=0">thermodynamic worksheet download</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fi/dfj80s9q920ljni5aakfc/tropical_subset.nc?rlkey=2fc2wr2yb70e4i6l9c7gwcyj3&amp;dl=0">tropical_subset.nc download</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/assignments/dry_les_2024_solution.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>PHA Dry LES Assign solution</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#find-the-netcdf-file-an-dump-its-contents">Find the netcdf file an dump its contents</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#open-the-first-ensemble-member-c1">Open the first ensemble member c1</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#get-variable-vectors-and-dimension-sizes">Get variable vectors and dimension sizes</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#check-height-and-pressure">check height and pressure</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#function-to-convert-to-theta">Function to convert to <span class="math notranslate nohighlight">\(\theta\)</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#get-the-horizontal-average">Get the horizontal average</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#assignment-targeting-tuesday">Assignment – targeting Tuesday</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#assignment-solution">Assignment solution</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#collect-all-10-ensemble-members-into-a-dicionary">Collect all 10 ensemble members into a dicionary</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#function-to-turn-tabs-and-press-membeers-from-a-dictionary-into-a-5-d-theta-array">Function to turn TABS and press membeers from a  dictionary into a 5-d theta array</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#first-try-this-without-broadcasting">First try this without broadcasting</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#now-do-this-with-broadcasting">Now do this with broadcasting</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-theta-dataset-and-write-to-disk">create a theta dataset and write to disk</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-wvel-array">create a wvel array</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="pha-dry-les-assign-solution">
+<h1>PHA Dry LES Assign solution<a class="headerlink" href="#pha-dry-les-assign-solution" title="Permalink to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">xarray</span> <span class="k">as</span> <span class="nn">xr</span>
+
+<span class="n">the_file</span> <span class="o">=</span> <span class="n">Path</span><span class="o">.</span><span class="n">home</span><span class="p">()</span> <span class="o">/</span> <span class="s2">&quot;Dropbox/phil_files/a500/data&quot;</span> <span class="o">/</span> <span class="s2">&quot;case_60_10.nc&quot;</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="n">the_file</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
+    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">the_file</span><span class="si">}</span><span class="s2"> not found&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="find-the-netcdf-file-an-dump-its-contents">
+<h2>Find the netcdf file an dump its contents<a class="headerlink" href="#find-the-netcdf-file-an-dump-its-contents" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">the_file</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>PosixPath(&#39;/Users/phil/Dropbox/phil_files/a500/data/case_60_10.nc&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>ncdump<span class="w"> </span>-h<span class="w"> </span>/Users/phil/Dropbox/phil_files/a500/data/case_60_10.nc
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>netcdf case_60_10 {
+dimensions:
+	time = 48 ;
+	x = 25 ;
+	y = 20 ;
+	z = 130 ;
+variables:
+	float time(time) ;
+		string time:units = &quot;minutes&quot; ;
+	float x(x) ;
+		string x:units = &quot;meters&quot; ;
+	float y(y) ;
+		string y:units = &quot;meters&quot; ;
+	float z(z) ;
+		string z:units = &quot;meters&quot; ;
+	float press(z) ;
+		string press:units = &quot;Pa&quot; ;
+
+// global attributes:
+		:heat_flux_W_m2 = 100LL ;
+		:gamma_K_km = 10LL ;
+
+group: c1 {
+  variables:
+  	float TABS(time, z, y, x) ;
+  		string TABS:units = &quot;K&quot; ;
+  	float W(time, z, y, x) ;
+  		string W:units = &quot;m/s&quot; ;
+  	float U(time, z, y, x) ;
+  		string U:units = &quot;m/s&quot; ;
+  	float V(time, z, y, x) ;
+  		string V:units = &quot;m/s&quot; ;
+  } // group c1
+
+group: c2 {
+  variables:
+  	float TABS(time, z, y, x) ;
+  		string TABS:units = &quot;K&quot; ;
+  	float W(time, z, y, x) ;
+  		string W:units = &quot;m/s&quot; ;
+  	float U(time, z, y, x) ;
+  		string U:units = &quot;m/s&quot; ;
+  	float V(time, z, y, x) ;
+  		string V:units = &quot;m/s&quot; ;
+  } // group c2
+
+group: c3 {
+  variables:
+  	float TABS(time, z, y, x) ;
+  		string TABS:units = &quot;K&quot; ;
+  	float W(time, z, y, x) ;
+  		string W:units = &quot;m/s&quot; ;
+  	float U(time, z, y, x) ;
+  		string U:units = &quot;m/s&quot; ;
+  	float V(time, z, y, x) ;
+  		string V:units = &quot;m/s&quot; ;
+  } // group c3
+
+group: c4 {
+  variables:
+  	float TABS(time, z, y, x) ;
+  		string TABS:units = &quot;K&quot; ;
+  	float W(time, z, y, x) ;
+  		string W:units = &quot;m/s&quot; ;
+  	float U(time, z, y, x) ;
+  		string U:units = &quot;m/s&quot; ;
+  	float V(time, z, y, x) ;
+  		string V:units = &quot;m/s&quot; ;
+  } // group c4
+
+group: c5 {
+  variables:
+  	float TABS(time, z, y, x) ;
+  		string TABS:units = &quot;K&quot; ;
+  	float W(time, z, y, x) ;
+  		string W:units = &quot;m/s&quot; ;
+  	float U(time, z, y, x) ;
+  		string U:units = &quot;m/s&quot; ;
+  	float V(time, z, y, x) ;
+  		string V:units = &quot;m/s&quot; ;
+  } // group c5
+
+group: c6 {
+  variables:
+  	float TABS(time, z, y, x) ;
+  		string TABS:units = &quot;K&quot; ;
+  	float W(time, z, y, x) ;
+  		string W:units = &quot;m/s&quot; ;
+  	float U(time, z, y, x) ;
+  		string U:units = &quot;m/s&quot; ;
+  	float V(time, z, y, x) ;
+  		string V:units = &quot;m/s&quot; ;
+  } // group c6
+
+group: c7 {
+  variables:
+  	float TABS(time, z, y, x) ;
+  		string TABS:units = &quot;K&quot; ;
+  	float W(time, z, y, x) ;
+  		string W:units = &quot;m/s&quot; ;
+  	float U(time, z, y, x) ;
+  		string U:units = &quot;m/s&quot; ;
+  	float V(time, z, y, x) ;
+  		string V:units = &quot;m/s&quot; ;
+  } // group c7
+
+group: c8 {
+  variables:
+  	float TABS(time, z, y, x) ;
+  		string TABS:units = &quot;K&quot; ;
+  	float W(time, z, y, x) ;
+  		string W:units = &quot;m/s&quot; ;
+  	float U(time, z, y, x) ;
+  		string U:units = &quot;m/s&quot; ;
+  	float V(time, z, y, x) ;
+  		string V:units = &quot;m/s&quot; ;
+  } // group c8
+
+group: c9 {
+  variables:
+  	float TABS(time, z, y, x) ;
+  		string TABS:units = &quot;K&quot; ;
+  	float W(time, z, y, x) ;
+  		string W:units = &quot;m/s&quot; ;
+  	float U(time, z, y, x) ;
+  		string U:units = &quot;m/s&quot; ;
+  	float V(time, z, y, x) ;
+  		string V:units = &quot;m/s&quot; ;
+  } // group c9
+
+group: c10 {
+  variables:
+  	float TABS(time, z, y, x) ;
+  		string TABS:units = &quot;K&quot; ;
+  	float W(time, z, y, x) ;
+  		string W:units = &quot;m/s&quot; ;
+  	float U(time, z, y, x) ;
+  		string U:units = &quot;m/s&quot; ;
+  	float V(time, z, y, x) ;
+  		string V:units = &quot;m/s&quot; ;
+  } // group c10
+}
+</pre></div>
+</div>
+</div>
+</div>
+<p>Netcdf file layout:  10 groups corresponding to 10 different ensemble members.  Small slice of larger domain of LES run with surface heat flux of 60 W/m^2 and stable layer with dT/dz = 10 K/km.  Snapshots every 10 minutes for 8 hours.</p>
+</section>
+<section id="open-the-first-ensemble-member-c1">
+<h2>Open the first ensemble member c1<a class="headerlink" href="#open-the-first-ensemble-member-c1" title="Permalink to this heading">#</a></h2>
+<p>Look at the last 5 values of z, pressure</p>
+<p>From the ncdump we know that there are global variables and attributes as
+well as the 10 ensemble members.  So get two xarray dataset pointers:</p>
+<ul class="simple">
+<li><p>ds1 for the first ensemble member</p></li>
+<li><p>the_ds for the global variables</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ds1</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="n">the_file</span><span class="p">,</span><span class="n">group</span><span class="o">=</span><span class="s2">&quot;c1&quot;</span><span class="p">)</span>
+<span class="n">the_ds</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="n">the_file</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">the_ds</span><span class="p">[</span><span class="s1">&#39;z&#39;</span><span class="p">][</span><span class="o">-</span><span class="mi">5</span><span class="p">:]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div><svg style="position: absolute; width: 0; height: 0; overflow: hidden">
+<defs>
+<symbol id="icon-database" viewBox="0 0 32 32">
+<path d="M16 0c-8.837 0-16 2.239-16 5v4c0 2.761 7.163 5 16 5s16-2.239 16-5v-4c0-2.761-7.163-5-16-5z"></path>
+<path d="M16 17c-8.837 0-16-2.239-16-5v6c0 2.761 7.163 5 16 5s16-2.239 16-5v-6c0 2.761-7.163 5-16 5z"></path>
+<path d="M16 26c-8.837 0-16-2.239-16-5v6c0 2.761 7.163 5 16 5s16-2.239 16-5v-6c0 2.761-7.163 5-16 5z"></path>
+</symbol>
+<symbol id="icon-file-text2" viewBox="0 0 32 32">
+<path d="M28.681 7.159c-0.694-0.947-1.662-2.053-2.724-3.116s-2.169-2.030-3.116-2.724c-1.612-1.182-2.393-1.319-2.841-1.319h-15.5c-1.378 0-2.5 1.121-2.5 2.5v27c0 1.378 1.122 2.5 2.5 2.5h23c1.378 0 2.5-1.122 2.5-2.5v-19.5c0-0.448-0.137-1.23-1.319-2.841zM24.543 5.457c0.959 0.959 1.712 1.825 2.268 2.543h-4.811v-4.811c0.718 0.556 1.584 1.309 2.543 2.268zM28 29.5c0 0.271-0.229 0.5-0.5 0.5h-23c-0.271 0-0.5-0.229-0.5-0.5v-27c0-0.271 0.229-0.5 0.5-0.5 0 0 15.499-0 15.5 0v7c0 0.552 0.448 1 1 1h7v19.5z"></path>
+<path d="M23 26h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+<path d="M23 22h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+<path d="M23 18h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+</symbol>
+</defs>
+</svg>
+<style>/* CSS stylesheet for displaying xarray objects in jupyterlab.
+ *
+ */
+
+:root {
+  --xr-font-color0: var(--jp-content-font-color0, rgba(0, 0, 0, 1));
+  --xr-font-color2: var(--jp-content-font-color2, rgba(0, 0, 0, 0.54));
+  --xr-font-color3: var(--jp-content-font-color3, rgba(0, 0, 0, 0.38));
+  --xr-border-color: var(--jp-border-color2, #e0e0e0);
+  --xr-disabled-color: var(--jp-layout-color3, #bdbdbd);
+  --xr-background-color: var(--jp-layout-color0, white);
+  --xr-background-color-row-even: var(--jp-layout-color1, white);
+  --xr-background-color-row-odd: var(--jp-layout-color2, #eeeeee);
+}
+
+html[theme=dark],
+body[data-theme=dark],
+body.vscode-dark {
+  --xr-font-color0: rgba(255, 255, 255, 1);
+  --xr-font-color2: rgba(255, 255, 255, 0.54);
+  --xr-font-color3: rgba(255, 255, 255, 0.38);
+  --xr-border-color: #1F1F1F;
+  --xr-disabled-color: #515151;
+  --xr-background-color: #111111;
+  --xr-background-color-row-even: #111111;
+  --xr-background-color-row-odd: #313131;
+}
+
+.xr-wrap {
+  display: block !important;
+  min-width: 300px;
+  max-width: 700px;
+}
+
+.xr-text-repr-fallback {
+  /* fallback to plain text repr when CSS is not injected (untrusted notebook) */
+  display: none;
+}
+
+.xr-header {
+  padding-top: 6px;
+  padding-bottom: 6px;
+  margin-bottom: 4px;
+  border-bottom: solid 1px var(--xr-border-color);
+}
+
+.xr-header > div,
+.xr-header > ul {
+  display: inline;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.xr-obj-type,
+.xr-array-name {
+  margin-left: 2px;
+  margin-right: 10px;
+}
+
+.xr-obj-type {
+  color: var(--xr-font-color2);
+}
+
+.xr-sections {
+  padding-left: 0 !important;
+  display: grid;
+  grid-template-columns: 150px auto auto 1fr 20px 20px;
+}
+
+.xr-section-item {
+  display: contents;
+}
+
+.xr-section-item input {
+  display: none;
+}
+
+.xr-section-item input + label {
+  color: var(--xr-disabled-color);
+}
+
+.xr-section-item input:enabled + label {
+  cursor: pointer;
+  color: var(--xr-font-color2);
+}
+
+.xr-section-item input:enabled + label:hover {
+  color: var(--xr-font-color0);
+}
+
+.xr-section-summary {
+  grid-column: 1;
+  color: var(--xr-font-color2);
+  font-weight: 500;
+}
+
+.xr-section-summary > span {
+  display: inline-block;
+  padding-left: 0.5em;
+}
+
+.xr-section-summary-in:disabled + label {
+  color: var(--xr-font-color2);
+}
+
+.xr-section-summary-in + label:before {
+  display: inline-block;
+  content: '►';
+  font-size: 11px;
+  width: 15px;
+  text-align: center;
+}
+
+.xr-section-summary-in:disabled + label:before {
+  color: var(--xr-disabled-color);
+}
+
+.xr-section-summary-in:checked + label:before {
+  content: '▼';
+}
+
+.xr-section-summary-in:checked + label > span {
+  display: none;
+}
+
+.xr-section-summary,
+.xr-section-inline-details {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+.xr-section-inline-details {
+  grid-column: 2 / -1;
+}
+
+.xr-section-details {
+  display: none;
+  grid-column: 1 / -1;
+  margin-bottom: 5px;
+}
+
+.xr-section-summary-in:checked ~ .xr-section-details {
+  display: contents;
+}
+
+.xr-array-wrap {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: 20px auto;
+}
+
+.xr-array-wrap > label {
+  grid-column: 1;
+  vertical-align: top;
+}
+
+.xr-preview {
+  color: var(--xr-font-color3);
+}
+
+.xr-array-preview,
+.xr-array-data {
+  padding: 0 5px !important;
+  grid-column: 2;
+}
+
+.xr-array-data,
+.xr-array-in:checked ~ .xr-array-preview {
+  display: none;
+}
+
+.xr-array-in:checked ~ .xr-array-data,
+.xr-array-preview {
+  display: inline-block;
+}
+
+.xr-dim-list {
+  display: inline-block !important;
+  list-style: none;
+  padding: 0 !important;
+  margin: 0;
+}
+
+.xr-dim-list li {
+  display: inline-block;
+  padding: 0;
+  margin: 0;
+}
+
+.xr-dim-list:before {
+  content: '(';
+}
+
+.xr-dim-list:after {
+  content: ')';
+}
+
+.xr-dim-list li:not(:last-child):after {
+  content: ',';
+  padding-right: 5px;
+}
+
+.xr-has-index {
+  font-weight: bold;
+}
+
+.xr-var-list,
+.xr-var-item {
+  display: contents;
+}
+
+.xr-var-item > div,
+.xr-var-item label,
+.xr-var-item > .xr-var-name span {
+  background-color: var(--xr-background-color-row-even);
+  margin-bottom: 0;
+}
+
+.xr-var-item > .xr-var-name:hover span {
+  padding-right: 5px;
+}
+
+.xr-var-list > li:nth-child(odd) > div,
+.xr-var-list > li:nth-child(odd) > label,
+.xr-var-list > li:nth-child(odd) > .xr-var-name span {
+  background-color: var(--xr-background-color-row-odd);
+}
+
+.xr-var-name {
+  grid-column: 1;
+}
+
+.xr-var-dims {
+  grid-column: 2;
+}
+
+.xr-var-dtype {
+  grid-column: 3;
+  text-align: right;
+  color: var(--xr-font-color2);
+}
+
+.xr-var-preview {
+  grid-column: 4;
+}
+
+.xr-index-preview {
+  grid-column: 2 / 5;
+  color: var(--xr-font-color2);
+}
+
+.xr-var-name,
+.xr-var-dims,
+.xr-var-dtype,
+.xr-preview,
+.xr-attrs dt {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-right: 10px;
+}
+
+.xr-var-name:hover,
+.xr-var-dims:hover,
+.xr-var-dtype:hover,
+.xr-attrs dt:hover {
+  overflow: visible;
+  width: auto;
+  z-index: 1;
+}
+
+.xr-var-attrs,
+.xr-var-data,
+.xr-index-data {
+  display: none;
+  background-color: var(--xr-background-color) !important;
+  padding-bottom: 5px !important;
+}
+
+.xr-var-attrs-in:checked ~ .xr-var-attrs,
+.xr-var-data-in:checked ~ .xr-var-data,
+.xr-index-data-in:checked ~ .xr-index-data {
+  display: block;
+}
+
+.xr-var-data > table {
+  float: right;
+}
+
+.xr-var-name span,
+.xr-var-data,
+.xr-index-name div,
+.xr-index-data,
+.xr-attrs {
+  padding-left: 25px !important;
+}
+
+.xr-attrs,
+.xr-var-attrs,
+.xr-var-data,
+.xr-index-data {
+  grid-column: 1 / -1;
+}
+
+dl.xr-attrs {
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: 125px auto;
+}
+
+.xr-attrs dt,
+.xr-attrs dd {
+  padding: 0;
+  margin: 0;
+  float: left;
+  padding-right: 10px;
+  width: auto;
+}
+
+.xr-attrs dt {
+  font-weight: normal;
+  grid-column: 1;
+}
+
+.xr-attrs dt:hover span {
+  display: inline-block;
+  background: var(--xr-background-color);
+  padding-right: 10px;
+}
+
+.xr-attrs dd {
+  grid-column: 2;
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+
+.xr-icon-database,
+.xr-icon-file-text2,
+.xr-no-icon {
+  display: inline-block;
+  vertical-align: middle;
+  width: 1em;
+  height: 1.5em !important;
+  stroke-width: 0;
+  stroke: currentColor;
+  fill: currentColor;
+}
+</style><pre class='xr-text-repr-fallback'>&lt;xarray.DataArray &#x27;z&#x27; (z: 5)&gt;
+array([1025., 1030., 1035., 1040., 1045.], dtype=float32)
+Coordinates:
+  * z        (z) float32 1.025e+03 1.03e+03 1.035e+03 1.04e+03 1.045e+03
+Attributes:
+    units:    meters</pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.DataArray</div><div class='xr-array-name'>'z'</div><ul class='xr-dim-list'><li><span class='xr-has-index'>z</span>: 5</li></ul></div><ul class='xr-sections'><li class='xr-section-item'><div class='xr-array-wrap'><input id='section-0bdff792-9c0d-43dd-806a-ff27c30c1379' class='xr-array-in' type='checkbox' checked><label for='section-0bdff792-9c0d-43dd-806a-ff27c30c1379' title='Show/hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-array-preview xr-preview'><span>1.025e+03 1.03e+03 1.035e+03 1.04e+03 1.045e+03</span></div><div class='xr-array-data'><pre>array([1025., 1030., 1035., 1040., 1045.], dtype=float32)</pre></div></div></li><li class='xr-section-item'><input id='section-2a9bc02a-0fe1-43d5-8d45-ff81a91c2b75' class='xr-section-summary-in' type='checkbox'  checked><label for='section-2a9bc02a-0fe1-43d5-8d45-ff81a91c2b75' class='xr-section-summary' >Coordinates: <span>(1)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>z</span></div><div class='xr-var-dims'>(z)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>1.025e+03 1.03e+03 ... 1.045e+03</div><input id='attrs-151a108e-00a6-4c97-92df-018a0ba53dd9' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-151a108e-00a6-4c97-92df-018a0ba53dd9' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-d9821e2d-284b-4855-98d1-469bb9bf5690' class='xr-var-data-in' type='checkbox'><label for='data-d9821e2d-284b-4855-98d1-469bb9bf5690' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>units :</span></dt><dd>meters</dd></dl></div><div class='xr-var-data'><pre>array([1025., 1030., 1035., 1040., 1045.], dtype=float32)</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-ccc5054f-a2f8-4f5e-a89f-bd7f73ee32ba' class='xr-section-summary-in' type='checkbox'  ><label for='section-ccc5054f-a2f8-4f5e-a89f-bd7f73ee32ba' class='xr-section-summary' >Indexes: <span>(1)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-index-name'><div>z</div></div><div class='xr-index-preview'>PandasIndex</div><div></div><input id='index-ee042117-af87-476c-bed7-c2e6b3a017c5' class='xr-index-data-in' type='checkbox'/><label for='index-ee042117-af87-476c-bed7-c2e6b3a017c5' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Index([1025.0, 1030.0, 1035.0, 1040.0, 1045.0], dtype=&#x27;float32&#x27;, name=&#x27;z&#x27;))</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-1b44dc3b-401a-4fe3-b475-032e8756648c' class='xr-section-summary-in' type='checkbox'  checked><label for='section-1b44dc3b-401a-4fe3-b475-032e8756648c' class='xr-section-summary' >Attributes: <span>(1)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'><dt><span>units :</span></dt><dd>meters</dd></dl></div></li></ul></div></div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ds1</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div><svg style="position: absolute; width: 0; height: 0; overflow: hidden">
+<defs>
+<symbol id="icon-database" viewBox="0 0 32 32">
+<path d="M16 0c-8.837 0-16 2.239-16 5v4c0 2.761 7.163 5 16 5s16-2.239 16-5v-4c0-2.761-7.163-5-16-5z"></path>
+<path d="M16 17c-8.837 0-16-2.239-16-5v6c0 2.761 7.163 5 16 5s16-2.239 16-5v-6c0 2.761-7.163 5-16 5z"></path>
+<path d="M16 26c-8.837 0-16-2.239-16-5v6c0 2.761 7.163 5 16 5s16-2.239 16-5v-6c0 2.761-7.163 5-16 5z"></path>
+</symbol>
+<symbol id="icon-file-text2" viewBox="0 0 32 32">
+<path d="M28.681 7.159c-0.694-0.947-1.662-2.053-2.724-3.116s-2.169-2.030-3.116-2.724c-1.612-1.182-2.393-1.319-2.841-1.319h-15.5c-1.378 0-2.5 1.121-2.5 2.5v27c0 1.378 1.122 2.5 2.5 2.5h23c1.378 0 2.5-1.122 2.5-2.5v-19.5c0-0.448-0.137-1.23-1.319-2.841zM24.543 5.457c0.959 0.959 1.712 1.825 2.268 2.543h-4.811v-4.811c0.718 0.556 1.584 1.309 2.543 2.268zM28 29.5c0 0.271-0.229 0.5-0.5 0.5h-23c-0.271 0-0.5-0.229-0.5-0.5v-27c0-0.271 0.229-0.5 0.5-0.5 0 0 15.499-0 15.5 0v7c0 0.552 0.448 1 1 1h7v19.5z"></path>
+<path d="M23 26h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+<path d="M23 22h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+<path d="M23 18h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+</symbol>
+</defs>
+</svg>
+<style>/* CSS stylesheet for displaying xarray objects in jupyterlab.
+ *
+ */
+
+:root {
+  --xr-font-color0: var(--jp-content-font-color0, rgba(0, 0, 0, 1));
+  --xr-font-color2: var(--jp-content-font-color2, rgba(0, 0, 0, 0.54));
+  --xr-font-color3: var(--jp-content-font-color3, rgba(0, 0, 0, 0.38));
+  --xr-border-color: var(--jp-border-color2, #e0e0e0);
+  --xr-disabled-color: var(--jp-layout-color3, #bdbdbd);
+  --xr-background-color: var(--jp-layout-color0, white);
+  --xr-background-color-row-even: var(--jp-layout-color1, white);
+  --xr-background-color-row-odd: var(--jp-layout-color2, #eeeeee);
+}
+
+html[theme=dark],
+body[data-theme=dark],
+body.vscode-dark {
+  --xr-font-color0: rgba(255, 255, 255, 1);
+  --xr-font-color2: rgba(255, 255, 255, 0.54);
+  --xr-font-color3: rgba(255, 255, 255, 0.38);
+  --xr-border-color: #1F1F1F;
+  --xr-disabled-color: #515151;
+  --xr-background-color: #111111;
+  --xr-background-color-row-even: #111111;
+  --xr-background-color-row-odd: #313131;
+}
+
+.xr-wrap {
+  display: block !important;
+  min-width: 300px;
+  max-width: 700px;
+}
+
+.xr-text-repr-fallback {
+  /* fallback to plain text repr when CSS is not injected (untrusted notebook) */
+  display: none;
+}
+
+.xr-header {
+  padding-top: 6px;
+  padding-bottom: 6px;
+  margin-bottom: 4px;
+  border-bottom: solid 1px var(--xr-border-color);
+}
+
+.xr-header > div,
+.xr-header > ul {
+  display: inline;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.xr-obj-type,
+.xr-array-name {
+  margin-left: 2px;
+  margin-right: 10px;
+}
+
+.xr-obj-type {
+  color: var(--xr-font-color2);
+}
+
+.xr-sections {
+  padding-left: 0 !important;
+  display: grid;
+  grid-template-columns: 150px auto auto 1fr 20px 20px;
+}
+
+.xr-section-item {
+  display: contents;
+}
+
+.xr-section-item input {
+  display: none;
+}
+
+.xr-section-item input + label {
+  color: var(--xr-disabled-color);
+}
+
+.xr-section-item input:enabled + label {
+  cursor: pointer;
+  color: var(--xr-font-color2);
+}
+
+.xr-section-item input:enabled + label:hover {
+  color: var(--xr-font-color0);
+}
+
+.xr-section-summary {
+  grid-column: 1;
+  color: var(--xr-font-color2);
+  font-weight: 500;
+}
+
+.xr-section-summary > span {
+  display: inline-block;
+  padding-left: 0.5em;
+}
+
+.xr-section-summary-in:disabled + label {
+  color: var(--xr-font-color2);
+}
+
+.xr-section-summary-in + label:before {
+  display: inline-block;
+  content: '►';
+  font-size: 11px;
+  width: 15px;
+  text-align: center;
+}
+
+.xr-section-summary-in:disabled + label:before {
+  color: var(--xr-disabled-color);
+}
+
+.xr-section-summary-in:checked + label:before {
+  content: '▼';
+}
+
+.xr-section-summary-in:checked + label > span {
+  display: none;
+}
+
+.xr-section-summary,
+.xr-section-inline-details {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+.xr-section-inline-details {
+  grid-column: 2 / -1;
+}
+
+.xr-section-details {
+  display: none;
+  grid-column: 1 / -1;
+  margin-bottom: 5px;
+}
+
+.xr-section-summary-in:checked ~ .xr-section-details {
+  display: contents;
+}
+
+.xr-array-wrap {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: 20px auto;
+}
+
+.xr-array-wrap > label {
+  grid-column: 1;
+  vertical-align: top;
+}
+
+.xr-preview {
+  color: var(--xr-font-color3);
+}
+
+.xr-array-preview,
+.xr-array-data {
+  padding: 0 5px !important;
+  grid-column: 2;
+}
+
+.xr-array-data,
+.xr-array-in:checked ~ .xr-array-preview {
+  display: none;
+}
+
+.xr-array-in:checked ~ .xr-array-data,
+.xr-array-preview {
+  display: inline-block;
+}
+
+.xr-dim-list {
+  display: inline-block !important;
+  list-style: none;
+  padding: 0 !important;
+  margin: 0;
+}
+
+.xr-dim-list li {
+  display: inline-block;
+  padding: 0;
+  margin: 0;
+}
+
+.xr-dim-list:before {
+  content: '(';
+}
+
+.xr-dim-list:after {
+  content: ')';
+}
+
+.xr-dim-list li:not(:last-child):after {
+  content: ',';
+  padding-right: 5px;
+}
+
+.xr-has-index {
+  font-weight: bold;
+}
+
+.xr-var-list,
+.xr-var-item {
+  display: contents;
+}
+
+.xr-var-item > div,
+.xr-var-item label,
+.xr-var-item > .xr-var-name span {
+  background-color: var(--xr-background-color-row-even);
+  margin-bottom: 0;
+}
+
+.xr-var-item > .xr-var-name:hover span {
+  padding-right: 5px;
+}
+
+.xr-var-list > li:nth-child(odd) > div,
+.xr-var-list > li:nth-child(odd) > label,
+.xr-var-list > li:nth-child(odd) > .xr-var-name span {
+  background-color: var(--xr-background-color-row-odd);
+}
+
+.xr-var-name {
+  grid-column: 1;
+}
+
+.xr-var-dims {
+  grid-column: 2;
+}
+
+.xr-var-dtype {
+  grid-column: 3;
+  text-align: right;
+  color: var(--xr-font-color2);
+}
+
+.xr-var-preview {
+  grid-column: 4;
+}
+
+.xr-index-preview {
+  grid-column: 2 / 5;
+  color: var(--xr-font-color2);
+}
+
+.xr-var-name,
+.xr-var-dims,
+.xr-var-dtype,
+.xr-preview,
+.xr-attrs dt {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-right: 10px;
+}
+
+.xr-var-name:hover,
+.xr-var-dims:hover,
+.xr-var-dtype:hover,
+.xr-attrs dt:hover {
+  overflow: visible;
+  width: auto;
+  z-index: 1;
+}
+
+.xr-var-attrs,
+.xr-var-data,
+.xr-index-data {
+  display: none;
+  background-color: var(--xr-background-color) !important;
+  padding-bottom: 5px !important;
+}
+
+.xr-var-attrs-in:checked ~ .xr-var-attrs,
+.xr-var-data-in:checked ~ .xr-var-data,
+.xr-index-data-in:checked ~ .xr-index-data {
+  display: block;
+}
+
+.xr-var-data > table {
+  float: right;
+}
+
+.xr-var-name span,
+.xr-var-data,
+.xr-index-name div,
+.xr-index-data,
+.xr-attrs {
+  padding-left: 25px !important;
+}
+
+.xr-attrs,
+.xr-var-attrs,
+.xr-var-data,
+.xr-index-data {
+  grid-column: 1 / -1;
+}
+
+dl.xr-attrs {
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: 125px auto;
+}
+
+.xr-attrs dt,
+.xr-attrs dd {
+  padding: 0;
+  margin: 0;
+  float: left;
+  padding-right: 10px;
+  width: auto;
+}
+
+.xr-attrs dt {
+  font-weight: normal;
+  grid-column: 1;
+}
+
+.xr-attrs dt:hover span {
+  display: inline-block;
+  background: var(--xr-background-color);
+  padding-right: 10px;
+}
+
+.xr-attrs dd {
+  grid-column: 2;
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+
+.xr-icon-database,
+.xr-icon-file-text2,
+.xr-no-icon {
+  display: inline-block;
+  vertical-align: middle;
+  width: 1em;
+  height: 1.5em !important;
+  stroke-width: 0;
+  stroke: currentColor;
+  fill: currentColor;
+}
+</style><pre class='xr-text-repr-fallback'>&lt;xarray.Dataset&gt;
+Dimensions:  (time: 48, z: 130, y: 20, x: 25)
+Dimensions without coordinates: time, z, y, x
+Data variables:
+    TABS     (time, z, y, x) float32 ...
+    W        (time, z, y, x) float32 ...
+    U        (time, z, y, x) float32 ...
+    V        (time, z, y, x) float32 ...</pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.Dataset</div></div><ul class='xr-sections'><li class='xr-section-item'><input id='section-05132df3-4274-44ee-9364-26720a0f4f58' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-05132df3-4274-44ee-9364-26720a0f4f58' class='xr-section-summary'  title='Expand/collapse section'>Dimensions:</label><div class='xr-section-inline-details'><ul class='xr-dim-list'><li><span>time</span>: 48</li><li><span>z</span>: 130</li><li><span>y</span>: 20</li><li><span>x</span>: 25</li></ul></div><div class='xr-section-details'></div></li><li class='xr-section-item'><input id='section-d0d579c6-ec1f-479e-ae51-430b5e930ccd' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-d0d579c6-ec1f-479e-ae51-430b5e930ccd' class='xr-section-summary'  title='Expand/collapse section'>Coordinates: <span>(0)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'></ul></div></li><li class='xr-section-item'><input id='section-f372ace1-301a-48ea-aaa5-a8fd76aeb90d' class='xr-section-summary-in' type='checkbox'  checked><label for='section-f372ace1-301a-48ea-aaa5-a8fd76aeb90d' class='xr-section-summary' >Data variables: <span>(4)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span>TABS</span></div><div class='xr-var-dims'>(time, z, y, x)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-bd2a4227-d827-419e-893f-e7f9e13db3c5' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-bd2a4227-d827-419e-893f-e7f9e13db3c5' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-9d05ab06-1e2c-474a-9738-e185dab83a25' class='xr-var-data-in' type='checkbox'><label for='data-9d05ab06-1e2c-474a-9738-e185dab83a25' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>units :</span></dt><dd>K</dd></dl></div><div class='xr-var-data'><pre>[3120000 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>W</span></div><div class='xr-var-dims'>(time, z, y, x)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-b3724085-9c8e-4f9d-9d42-45dc008dfb9a' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-b3724085-9c8e-4f9d-9d42-45dc008dfb9a' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-7e767e09-4261-42bb-84fa-a9b1ac36cf84' class='xr-var-data-in' type='checkbox'><label for='data-7e767e09-4261-42bb-84fa-a9b1ac36cf84' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>units :</span></dt><dd>m/s</dd></dl></div><div class='xr-var-data'><pre>[3120000 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>U</span></div><div class='xr-var-dims'>(time, z, y, x)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-055e8a3a-e79a-43a7-96b4-6531dcd347d9' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-055e8a3a-e79a-43a7-96b4-6531dcd347d9' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-e8763141-9fc5-45bb-889d-70a63d532f2d' class='xr-var-data-in' type='checkbox'><label for='data-e8763141-9fc5-45bb-889d-70a63d532f2d' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>units :</span></dt><dd>m/s</dd></dl></div><div class='xr-var-data'><pre>[3120000 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>V</span></div><div class='xr-var-dims'>(time, z, y, x)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-0ebe1997-5636-4702-85fa-58a6a288dc3c' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-0ebe1997-5636-4702-85fa-58a6a288dc3c' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-1b2ff1bf-df6a-4d12-aed4-fd3b0f1c2614' class='xr-var-data-in' type='checkbox'><label for='data-1b2ff1bf-df6a-4d12-aed4-fd3b0f1c2614' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>units :</span></dt><dd>m/s</dd></dl></div><div class='xr-var-data'><pre>[3120000 values with dtype=float32]</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-0ba46a38-945d-4180-89cf-52dd1a1a2140' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-0ba46a38-945d-4180-89cf-52dd1a1a2140' class='xr-section-summary'  title='Expand/collapse section'>Indexes: <span>(0)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'></ul></div></li><li class='xr-section-item'><input id='section-317cd8f4-0246-41eb-abef-dd9f3afef1f8' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-317cd8f4-0246-41eb-abef-dd9f3afef1f8' class='xr-section-summary'  title='Expand/collapse section'>Attributes: <span>(0)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'></dl></div></li></ul></div></div></div></div>
+</div>
+<section id="get-variable-vectors-and-dimension-sizes">
+<h3>Get variable vectors and dimension sizes<a class="headerlink" href="#get-variable-vectors-and-dimension-sizes" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">temp</span> <span class="o">=</span> <span class="n">ds1</span><span class="p">[</span><span class="s1">&#39;TABS&#39;</span><span class="p">]</span>
+<span class="n">wvel</span><span class="o">=</span> <span class="n">ds1</span><span class="p">[</span><span class="s1">&#39;W&#39;</span><span class="p">]</span>
+<span class="n">times</span> <span class="o">=</span> <span class="n">the_ds</span><span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">]</span>
+<span class="n">z</span><span class="o">=</span><span class="n">the_ds</span><span class="p">[</span><span class="s1">&#39;z&#39;</span><span class="p">]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">the_ds</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">]</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">the_ds</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">]</span>
+<span class="n">press</span><span class="o">=</span><span class="n">the_ds</span><span class="p">[</span><span class="s1">&#39;press&#39;</span><span class="p">]</span>
+<span class="n">ntimes</span><span class="p">,</span><span class="n">nz</span><span class="p">,</span><span class="n">ny</span><span class="p">,</span><span class="n">nx</span> <span class="o">=</span> <span class="n">ds1</span><span class="o">.</span><span class="n">sizes</span><span class="o">.</span><span class="n">values</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="p">(</span><span class="n">ntimes</span><span class="p">,</span><span class="n">nz</span><span class="p">,</span><span class="n">ny</span><span class="p">,</span><span class="n">nx</span><span class="p">)</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(ntimes,nz,ny,nx)=(48, 130, 20, 25)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div><svg style="position: absolute; width: 0; height: 0; overflow: hidden">
+<defs>
+<symbol id="icon-database" viewBox="0 0 32 32">
+<path d="M16 0c-8.837 0-16 2.239-16 5v4c0 2.761 7.163 5 16 5s16-2.239 16-5v-4c0-2.761-7.163-5-16-5z"></path>
+<path d="M16 17c-8.837 0-16-2.239-16-5v6c0 2.761 7.163 5 16 5s16-2.239 16-5v-6c0 2.761-7.163 5-16 5z"></path>
+<path d="M16 26c-8.837 0-16-2.239-16-5v6c0 2.761 7.163 5 16 5s16-2.239 16-5v-6c0 2.761-7.163 5-16 5z"></path>
+</symbol>
+<symbol id="icon-file-text2" viewBox="0 0 32 32">
+<path d="M28.681 7.159c-0.694-0.947-1.662-2.053-2.724-3.116s-2.169-2.030-3.116-2.724c-1.612-1.182-2.393-1.319-2.841-1.319h-15.5c-1.378 0-2.5 1.121-2.5 2.5v27c0 1.378 1.122 2.5 2.5 2.5h23c1.378 0 2.5-1.122 2.5-2.5v-19.5c0-0.448-0.137-1.23-1.319-2.841zM24.543 5.457c0.959 0.959 1.712 1.825 2.268 2.543h-4.811v-4.811c0.718 0.556 1.584 1.309 2.543 2.268zM28 29.5c0 0.271-0.229 0.5-0.5 0.5h-23c-0.271 0-0.5-0.229-0.5-0.5v-27c0-0.271 0.229-0.5 0.5-0.5 0 0 15.499-0 15.5 0v7c0 0.552 0.448 1 1 1h7v19.5z"></path>
+<path d="M23 26h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+<path d="M23 22h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+<path d="M23 18h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+</symbol>
+</defs>
+</svg>
+<style>/* CSS stylesheet for displaying xarray objects in jupyterlab.
+ *
+ */
+
+:root {
+  --xr-font-color0: var(--jp-content-font-color0, rgba(0, 0, 0, 1));
+  --xr-font-color2: var(--jp-content-font-color2, rgba(0, 0, 0, 0.54));
+  --xr-font-color3: var(--jp-content-font-color3, rgba(0, 0, 0, 0.38));
+  --xr-border-color: var(--jp-border-color2, #e0e0e0);
+  --xr-disabled-color: var(--jp-layout-color3, #bdbdbd);
+  --xr-background-color: var(--jp-layout-color0, white);
+  --xr-background-color-row-even: var(--jp-layout-color1, white);
+  --xr-background-color-row-odd: var(--jp-layout-color2, #eeeeee);
+}
+
+html[theme=dark],
+body[data-theme=dark],
+body.vscode-dark {
+  --xr-font-color0: rgba(255, 255, 255, 1);
+  --xr-font-color2: rgba(255, 255, 255, 0.54);
+  --xr-font-color3: rgba(255, 255, 255, 0.38);
+  --xr-border-color: #1F1F1F;
+  --xr-disabled-color: #515151;
+  --xr-background-color: #111111;
+  --xr-background-color-row-even: #111111;
+  --xr-background-color-row-odd: #313131;
+}
+
+.xr-wrap {
+  display: block !important;
+  min-width: 300px;
+  max-width: 700px;
+}
+
+.xr-text-repr-fallback {
+  /* fallback to plain text repr when CSS is not injected (untrusted notebook) */
+  display: none;
+}
+
+.xr-header {
+  padding-top: 6px;
+  padding-bottom: 6px;
+  margin-bottom: 4px;
+  border-bottom: solid 1px var(--xr-border-color);
+}
+
+.xr-header > div,
+.xr-header > ul {
+  display: inline;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.xr-obj-type,
+.xr-array-name {
+  margin-left: 2px;
+  margin-right: 10px;
+}
+
+.xr-obj-type {
+  color: var(--xr-font-color2);
+}
+
+.xr-sections {
+  padding-left: 0 !important;
+  display: grid;
+  grid-template-columns: 150px auto auto 1fr 20px 20px;
+}
+
+.xr-section-item {
+  display: contents;
+}
+
+.xr-section-item input {
+  display: none;
+}
+
+.xr-section-item input + label {
+  color: var(--xr-disabled-color);
+}
+
+.xr-section-item input:enabled + label {
+  cursor: pointer;
+  color: var(--xr-font-color2);
+}
+
+.xr-section-item input:enabled + label:hover {
+  color: var(--xr-font-color0);
+}
+
+.xr-section-summary {
+  grid-column: 1;
+  color: var(--xr-font-color2);
+  font-weight: 500;
+}
+
+.xr-section-summary > span {
+  display: inline-block;
+  padding-left: 0.5em;
+}
+
+.xr-section-summary-in:disabled + label {
+  color: var(--xr-font-color2);
+}
+
+.xr-section-summary-in + label:before {
+  display: inline-block;
+  content: '►';
+  font-size: 11px;
+  width: 15px;
+  text-align: center;
+}
+
+.xr-section-summary-in:disabled + label:before {
+  color: var(--xr-disabled-color);
+}
+
+.xr-section-summary-in:checked + label:before {
+  content: '▼';
+}
+
+.xr-section-summary-in:checked + label > span {
+  display: none;
+}
+
+.xr-section-summary,
+.xr-section-inline-details {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+.xr-section-inline-details {
+  grid-column: 2 / -1;
+}
+
+.xr-section-details {
+  display: none;
+  grid-column: 1 / -1;
+  margin-bottom: 5px;
+}
+
+.xr-section-summary-in:checked ~ .xr-section-details {
+  display: contents;
+}
+
+.xr-array-wrap {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: 20px auto;
+}
+
+.xr-array-wrap > label {
+  grid-column: 1;
+  vertical-align: top;
+}
+
+.xr-preview {
+  color: var(--xr-font-color3);
+}
+
+.xr-array-preview,
+.xr-array-data {
+  padding: 0 5px !important;
+  grid-column: 2;
+}
+
+.xr-array-data,
+.xr-array-in:checked ~ .xr-array-preview {
+  display: none;
+}
+
+.xr-array-in:checked ~ .xr-array-data,
+.xr-array-preview {
+  display: inline-block;
+}
+
+.xr-dim-list {
+  display: inline-block !important;
+  list-style: none;
+  padding: 0 !important;
+  margin: 0;
+}
+
+.xr-dim-list li {
+  display: inline-block;
+  padding: 0;
+  margin: 0;
+}
+
+.xr-dim-list:before {
+  content: '(';
+}
+
+.xr-dim-list:after {
+  content: ')';
+}
+
+.xr-dim-list li:not(:last-child):after {
+  content: ',';
+  padding-right: 5px;
+}
+
+.xr-has-index {
+  font-weight: bold;
+}
+
+.xr-var-list,
+.xr-var-item {
+  display: contents;
+}
+
+.xr-var-item > div,
+.xr-var-item label,
+.xr-var-item > .xr-var-name span {
+  background-color: var(--xr-background-color-row-even);
+  margin-bottom: 0;
+}
+
+.xr-var-item > .xr-var-name:hover span {
+  padding-right: 5px;
+}
+
+.xr-var-list > li:nth-child(odd) > div,
+.xr-var-list > li:nth-child(odd) > label,
+.xr-var-list > li:nth-child(odd) > .xr-var-name span {
+  background-color: var(--xr-background-color-row-odd);
+}
+
+.xr-var-name {
+  grid-column: 1;
+}
+
+.xr-var-dims {
+  grid-column: 2;
+}
+
+.xr-var-dtype {
+  grid-column: 3;
+  text-align: right;
+  color: var(--xr-font-color2);
+}
+
+.xr-var-preview {
+  grid-column: 4;
+}
+
+.xr-index-preview {
+  grid-column: 2 / 5;
+  color: var(--xr-font-color2);
+}
+
+.xr-var-name,
+.xr-var-dims,
+.xr-var-dtype,
+.xr-preview,
+.xr-attrs dt {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-right: 10px;
+}
+
+.xr-var-name:hover,
+.xr-var-dims:hover,
+.xr-var-dtype:hover,
+.xr-attrs dt:hover {
+  overflow: visible;
+  width: auto;
+  z-index: 1;
+}
+
+.xr-var-attrs,
+.xr-var-data,
+.xr-index-data {
+  display: none;
+  background-color: var(--xr-background-color) !important;
+  padding-bottom: 5px !important;
+}
+
+.xr-var-attrs-in:checked ~ .xr-var-attrs,
+.xr-var-data-in:checked ~ .xr-var-data,
+.xr-index-data-in:checked ~ .xr-index-data {
+  display: block;
+}
+
+.xr-var-data > table {
+  float: right;
+}
+
+.xr-var-name span,
+.xr-var-data,
+.xr-index-name div,
+.xr-index-data,
+.xr-attrs {
+  padding-left: 25px !important;
+}
+
+.xr-attrs,
+.xr-var-attrs,
+.xr-var-data,
+.xr-index-data {
+  grid-column: 1 / -1;
+}
+
+dl.xr-attrs {
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: 125px auto;
+}
+
+.xr-attrs dt,
+.xr-attrs dd {
+  padding: 0;
+  margin: 0;
+  float: left;
+  padding-right: 10px;
+  width: auto;
+}
+
+.xr-attrs dt {
+  font-weight: normal;
+  grid-column: 1;
+}
+
+.xr-attrs dt:hover span {
+  display: inline-block;
+  background: var(--xr-background-color);
+  padding-right: 10px;
+}
+
+.xr-attrs dd {
+  grid-column: 2;
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+
+.xr-icon-database,
+.xr-icon-file-text2,
+.xr-no-icon {
+  display: inline-block;
+  vertical-align: middle;
+  width: 1em;
+  height: 1.5em !important;
+  stroke-width: 0;
+  stroke: currentColor;
+  fill: currentColor;
+}
+</style><pre class='xr-text-repr-fallback'>&lt;xarray.DataArray &#x27;y&#x27; (y: 20)&gt;
+array([2000., 2025., 2050., 2075., 2100., 2125., 2150., 2175., 2200., 2225.,
+       2250., 2275., 2300., 2325., 2350., 2375., 2400., 2425., 2450., 2475.],
+      dtype=float32)
+Coordinates:
+  * y        (y) float32 2e+03 2.025e+03 2.05e+03 ... 2.45e+03 2.475e+03
+Attributes:
+    units:    meters</pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.DataArray</div><div class='xr-array-name'>'y'</div><ul class='xr-dim-list'><li><span class='xr-has-index'>y</span>: 20</li></ul></div><ul class='xr-sections'><li class='xr-section-item'><div class='xr-array-wrap'><input id='section-7d5148e3-e430-405e-9d4b-4b3e3adff68d' class='xr-array-in' type='checkbox' checked><label for='section-7d5148e3-e430-405e-9d4b-4b3e3adff68d' title='Show/hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-array-preview xr-preview'><span>2e+03 2.025e+03 2.05e+03 2.075e+03 ... 2.425e+03 2.45e+03 2.475e+03</span></div><div class='xr-array-data'><pre>array([2000., 2025., 2050., 2075., 2100., 2125., 2150., 2175., 2200., 2225.,
+       2250., 2275., 2300., 2325., 2350., 2375., 2400., 2425., 2450., 2475.],
+      dtype=float32)</pre></div></div></li><li class='xr-section-item'><input id='section-cd8792e8-477a-42b7-9f0d-c10966fbbf5d' class='xr-section-summary-in' type='checkbox'  checked><label for='section-cd8792e8-477a-42b7-9f0d-c10966fbbf5d' class='xr-section-summary' >Coordinates: <span>(1)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>y</span></div><div class='xr-var-dims'>(y)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>2e+03 2.025e+03 ... 2.475e+03</div><input id='attrs-0b55c40a-4bb4-4770-9d10-1dc36a42a3f4' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-0b55c40a-4bb4-4770-9d10-1dc36a42a3f4' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-09927e53-4f88-43fa-bcd6-318095cacbe2' class='xr-var-data-in' type='checkbox'><label for='data-09927e53-4f88-43fa-bcd6-318095cacbe2' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>units :</span></dt><dd>meters</dd></dl></div><div class='xr-var-data'><pre>array([2000., 2025., 2050., 2075., 2100., 2125., 2150., 2175., 2200., 2225.,
+       2250., 2275., 2300., 2325., 2350., 2375., 2400., 2425., 2450., 2475.],
+      dtype=float32)</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-0a708386-0e80-43fd-8aef-ac8223d8fab0' class='xr-section-summary-in' type='checkbox'  ><label for='section-0a708386-0e80-43fd-8aef-ac8223d8fab0' class='xr-section-summary' >Indexes: <span>(1)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-index-name'><div>y</div></div><div class='xr-index-preview'>PandasIndex</div><div></div><input id='index-6c16d532-f619-4ee1-9f7b-b46c823fb167' class='xr-index-data-in' type='checkbox'/><label for='index-6c16d532-f619-4ee1-9f7b-b46c823fb167' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Index([2000.0, 2025.0, 2050.0, 2075.0, 2100.0, 2125.0, 2150.0, 2175.0, 2200.0,
+       2225.0, 2250.0, 2275.0, 2300.0, 2325.0, 2350.0, 2375.0, 2400.0, 2425.0,
+       2450.0, 2475.0],
+      dtype=&#x27;float32&#x27;, name=&#x27;y&#x27;))</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-c367051d-97e6-4ebe-b2f7-79f643a8c987' class='xr-section-summary-in' type='checkbox'  checked><label for='section-c367051d-97e6-4ebe-b2f7-79f643a8c987' class='xr-section-summary' >Attributes: <span>(1)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'><dt><span>units :</span></dt><dd>meters</dd></dl></div></li></ul></div></div></div></div>
+</div>
+</section>
+</section>
+<section id="check-height-and-pressure">
+<h2>check height and pressure<a class="headerlink" href="#check-height-and-pressure" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">z</span><span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">:]</span><span class="o">.</span><span class="n">data</span><span class="p">,</span><span class="n">press</span><span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">:]</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(array([1025., 1030., 1035., 1040., 1045.], dtype=float32),
+ array([88980.79 , 88930.06 , 88879.445, 88828.77 , 88778.21 ],
+       dtype=float32))
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="function-to-convert-to-theta">
+<h2>Function to convert to <span class="math notranslate nohighlight">\(\theta\)</span><a class="headerlink" href="#function-to-convert-to-theta" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">make_theta</span><span class="p">(</span><span class="n">temp</span><span class="p">,</span><span class="n">press</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">      temp in K</span>
+<span class="sd">      press in Pa</span>
+<span class="sd">      returns theta in K</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">p0</span><span class="o">=</span><span class="mf">1.e5</span>
+    <span class="n">Rd</span><span class="o">=</span><span class="mf">287.</span>
+    <span class="n">cpd</span><span class="o">=</span><span class="mf">1004.</span>
+    <span class="n">theta</span><span class="o">=</span><span class="n">temp</span><span class="o">*</span><span class="p">(</span><span class="n">p0</span><span class="o">/</span><span class="n">press</span><span class="p">)</span><span class="o">**</span><span class="p">(</span><span class="n">Rd</span><span class="o">/</span><span class="n">cpd</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="n">theta</span>
+    
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="get-the-horizontal-average">
+<h2>Get the horizontal average<a class="headerlink" href="#get-the-horizontal-average" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">temp_mean</span><span class="o">=</span><span class="n">temp</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;x&quot;</span><span class="p">,</span><span class="s2">&quot;y&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">temp_mean</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">5</span><span class="p">:]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div><svg style="position: absolute; width: 0; height: 0; overflow: hidden">
+<defs>
+<symbol id="icon-database" viewBox="0 0 32 32">
+<path d="M16 0c-8.837 0-16 2.239-16 5v4c0 2.761 7.163 5 16 5s16-2.239 16-5v-4c0-2.761-7.163-5-16-5z"></path>
+<path d="M16 17c-8.837 0-16-2.239-16-5v6c0 2.761 7.163 5 16 5s16-2.239 16-5v-6c0 2.761-7.163 5-16 5z"></path>
+<path d="M16 26c-8.837 0-16-2.239-16-5v6c0 2.761 7.163 5 16 5s16-2.239 16-5v-6c0 2.761-7.163 5-16 5z"></path>
+</symbol>
+<symbol id="icon-file-text2" viewBox="0 0 32 32">
+<path d="M28.681 7.159c-0.694-0.947-1.662-2.053-2.724-3.116s-2.169-2.030-3.116-2.724c-1.612-1.182-2.393-1.319-2.841-1.319h-15.5c-1.378 0-2.5 1.121-2.5 2.5v27c0 1.378 1.122 2.5 2.5 2.5h23c1.378 0 2.5-1.122 2.5-2.5v-19.5c0-0.448-0.137-1.23-1.319-2.841zM24.543 5.457c0.959 0.959 1.712 1.825 2.268 2.543h-4.811v-4.811c0.718 0.556 1.584 1.309 2.543 2.268zM28 29.5c0 0.271-0.229 0.5-0.5 0.5h-23c-0.271 0-0.5-0.229-0.5-0.5v-27c0-0.271 0.229-0.5 0.5-0.5 0 0 15.499-0 15.5 0v7c0 0.552 0.448 1 1 1h7v19.5z"></path>
+<path d="M23 26h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+<path d="M23 22h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+<path d="M23 18h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+</symbol>
+</defs>
+</svg>
+<style>/* CSS stylesheet for displaying xarray objects in jupyterlab.
+ *
+ */
+
+:root {
+  --xr-font-color0: var(--jp-content-font-color0, rgba(0, 0, 0, 1));
+  --xr-font-color2: var(--jp-content-font-color2, rgba(0, 0, 0, 0.54));
+  --xr-font-color3: var(--jp-content-font-color3, rgba(0, 0, 0, 0.38));
+  --xr-border-color: var(--jp-border-color2, #e0e0e0);
+  --xr-disabled-color: var(--jp-layout-color3, #bdbdbd);
+  --xr-background-color: var(--jp-layout-color0, white);
+  --xr-background-color-row-even: var(--jp-layout-color1, white);
+  --xr-background-color-row-odd: var(--jp-layout-color2, #eeeeee);
+}
+
+html[theme=dark],
+body[data-theme=dark],
+body.vscode-dark {
+  --xr-font-color0: rgba(255, 255, 255, 1);
+  --xr-font-color2: rgba(255, 255, 255, 0.54);
+  --xr-font-color3: rgba(255, 255, 255, 0.38);
+  --xr-border-color: #1F1F1F;
+  --xr-disabled-color: #515151;
+  --xr-background-color: #111111;
+  --xr-background-color-row-even: #111111;
+  --xr-background-color-row-odd: #313131;
+}
+
+.xr-wrap {
+  display: block !important;
+  min-width: 300px;
+  max-width: 700px;
+}
+
+.xr-text-repr-fallback {
+  /* fallback to plain text repr when CSS is not injected (untrusted notebook) */
+  display: none;
+}
+
+.xr-header {
+  padding-top: 6px;
+  padding-bottom: 6px;
+  margin-bottom: 4px;
+  border-bottom: solid 1px var(--xr-border-color);
+}
+
+.xr-header > div,
+.xr-header > ul {
+  display: inline;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.xr-obj-type,
+.xr-array-name {
+  margin-left: 2px;
+  margin-right: 10px;
+}
+
+.xr-obj-type {
+  color: var(--xr-font-color2);
+}
+
+.xr-sections {
+  padding-left: 0 !important;
+  display: grid;
+  grid-template-columns: 150px auto auto 1fr 20px 20px;
+}
+
+.xr-section-item {
+  display: contents;
+}
+
+.xr-section-item input {
+  display: none;
+}
+
+.xr-section-item input + label {
+  color: var(--xr-disabled-color);
+}
+
+.xr-section-item input:enabled + label {
+  cursor: pointer;
+  color: var(--xr-font-color2);
+}
+
+.xr-section-item input:enabled + label:hover {
+  color: var(--xr-font-color0);
+}
+
+.xr-section-summary {
+  grid-column: 1;
+  color: var(--xr-font-color2);
+  font-weight: 500;
+}
+
+.xr-section-summary > span {
+  display: inline-block;
+  padding-left: 0.5em;
+}
+
+.xr-section-summary-in:disabled + label {
+  color: var(--xr-font-color2);
+}
+
+.xr-section-summary-in + label:before {
+  display: inline-block;
+  content: '►';
+  font-size: 11px;
+  width: 15px;
+  text-align: center;
+}
+
+.xr-section-summary-in:disabled + label:before {
+  color: var(--xr-disabled-color);
+}
+
+.xr-section-summary-in:checked + label:before {
+  content: '▼';
+}
+
+.xr-section-summary-in:checked + label > span {
+  display: none;
+}
+
+.xr-section-summary,
+.xr-section-inline-details {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+.xr-section-inline-details {
+  grid-column: 2 / -1;
+}
+
+.xr-section-details {
+  display: none;
+  grid-column: 1 / -1;
+  margin-bottom: 5px;
+}
+
+.xr-section-summary-in:checked ~ .xr-section-details {
+  display: contents;
+}
+
+.xr-array-wrap {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: 20px auto;
+}
+
+.xr-array-wrap > label {
+  grid-column: 1;
+  vertical-align: top;
+}
+
+.xr-preview {
+  color: var(--xr-font-color3);
+}
+
+.xr-array-preview,
+.xr-array-data {
+  padding: 0 5px !important;
+  grid-column: 2;
+}
+
+.xr-array-data,
+.xr-array-in:checked ~ .xr-array-preview {
+  display: none;
+}
+
+.xr-array-in:checked ~ .xr-array-data,
+.xr-array-preview {
+  display: inline-block;
+}
+
+.xr-dim-list {
+  display: inline-block !important;
+  list-style: none;
+  padding: 0 !important;
+  margin: 0;
+}
+
+.xr-dim-list li {
+  display: inline-block;
+  padding: 0;
+  margin: 0;
+}
+
+.xr-dim-list:before {
+  content: '(';
+}
+
+.xr-dim-list:after {
+  content: ')';
+}
+
+.xr-dim-list li:not(:last-child):after {
+  content: ',';
+  padding-right: 5px;
+}
+
+.xr-has-index {
+  font-weight: bold;
+}
+
+.xr-var-list,
+.xr-var-item {
+  display: contents;
+}
+
+.xr-var-item > div,
+.xr-var-item label,
+.xr-var-item > .xr-var-name span {
+  background-color: var(--xr-background-color-row-even);
+  margin-bottom: 0;
+}
+
+.xr-var-item > .xr-var-name:hover span {
+  padding-right: 5px;
+}
+
+.xr-var-list > li:nth-child(odd) > div,
+.xr-var-list > li:nth-child(odd) > label,
+.xr-var-list > li:nth-child(odd) > .xr-var-name span {
+  background-color: var(--xr-background-color-row-odd);
+}
+
+.xr-var-name {
+  grid-column: 1;
+}
+
+.xr-var-dims {
+  grid-column: 2;
+}
+
+.xr-var-dtype {
+  grid-column: 3;
+  text-align: right;
+  color: var(--xr-font-color2);
+}
+
+.xr-var-preview {
+  grid-column: 4;
+}
+
+.xr-index-preview {
+  grid-column: 2 / 5;
+  color: var(--xr-font-color2);
+}
+
+.xr-var-name,
+.xr-var-dims,
+.xr-var-dtype,
+.xr-preview,
+.xr-attrs dt {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-right: 10px;
+}
+
+.xr-var-name:hover,
+.xr-var-dims:hover,
+.xr-var-dtype:hover,
+.xr-attrs dt:hover {
+  overflow: visible;
+  width: auto;
+  z-index: 1;
+}
+
+.xr-var-attrs,
+.xr-var-data,
+.xr-index-data {
+  display: none;
+  background-color: var(--xr-background-color) !important;
+  padding-bottom: 5px !important;
+}
+
+.xr-var-attrs-in:checked ~ .xr-var-attrs,
+.xr-var-data-in:checked ~ .xr-var-data,
+.xr-index-data-in:checked ~ .xr-index-data {
+  display: block;
+}
+
+.xr-var-data > table {
+  float: right;
+}
+
+.xr-var-name span,
+.xr-var-data,
+.xr-index-name div,
+.xr-index-data,
+.xr-attrs {
+  padding-left: 25px !important;
+}
+
+.xr-attrs,
+.xr-var-attrs,
+.xr-var-data,
+.xr-index-data {
+  grid-column: 1 / -1;
+}
+
+dl.xr-attrs {
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: 125px auto;
+}
+
+.xr-attrs dt,
+.xr-attrs dd {
+  padding: 0;
+  margin: 0;
+  float: left;
+  padding-right: 10px;
+  width: auto;
+}
+
+.xr-attrs dt {
+  font-weight: normal;
+  grid-column: 1;
+}
+
+.xr-attrs dt:hover span {
+  display: inline-block;
+  background: var(--xr-background-color);
+  padding-right: 10px;
+}
+
+.xr-attrs dd {
+  grid-column: 2;
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+
+.xr-icon-database,
+.xr-icon-file-text2,
+.xr-no-icon {
+  display: inline-block;
+  vertical-align: middle;
+  width: 1em;
+  height: 1.5em !important;
+  stroke-width: 0;
+  stroke: currentColor;
+  fill: currentColor;
+}
+</style><pre class='xr-text-repr-fallback'>&lt;xarray.DataArray &#x27;TABS&#x27; (z: 5)&gt;
+array([299.92114, 299.9195 , 299.918  , 299.91644, 299.9148 ],
+      dtype=float32)
+Dimensions without coordinates: z</pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.DataArray</div><div class='xr-array-name'>'TABS'</div><ul class='xr-dim-list'><li><span>z</span>: 5</li></ul></div><ul class='xr-sections'><li class='xr-section-item'><div class='xr-array-wrap'><input id='section-75772fdc-4089-4248-b9f5-a68430a722d9' class='xr-array-in' type='checkbox' checked><label for='section-75772fdc-4089-4248-b9f5-a68430a722d9' title='Show/hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-array-preview xr-preview'><span>299.9 299.9 299.9 299.9 299.9</span></div><div class='xr-array-data'><pre>array([299.92114, 299.9195 , 299.918  , 299.91644, 299.9148 ],
+      dtype=float32)</pre></div></div></li><li class='xr-section-item'><input id='section-3299039b-a135-4f32-b5f3-e6a2af47339f' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-3299039b-a135-4f32-b5f3-e6a2af47339f' class='xr-section-summary'  title='Expand/collapse section'>Coordinates: <span>(0)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'></ul></div></li><li class='xr-section-item'><input id='section-7d4cc988-b127-4ecd-bad7-fc19391bd893' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-7d4cc988-b127-4ecd-bad7-fc19391bd893' class='xr-section-summary'  title='Expand/collapse section'>Indexes: <span>(0)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'></ul></div></li><li class='xr-section-item'><input id='section-fda0dde8-06fc-4c36-b033-ca6ed449713e' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-fda0dde8-06fc-4c36-b033-ca6ed449713e' class='xr-section-summary'  title='Expand/collapse section'>Attributes: <span>(0)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'></dl></div></li></ul></div></div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Plot the timestep theta,height profiles for c1</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span><span class="n">ax</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
+<span class="n">ntimes</span><span class="p">,</span> <span class="n">nheights</span> <span class="o">=</span> <span class="n">temp_mean</span><span class="o">.</span><span class="n">shape</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">ntimes</span><span class="p">,</span><span class="mi">3</span><span class="p">):</span>
+    <span class="n">theta</span> <span class="o">=</span> <span class="n">make_theta</span><span class="p">(</span><span class="n">temp_mean</span><span class="p">[</span><span class="n">i</span><span class="p">,:],</span><span class="n">press</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">theta</span><span class="p">,</span><span class="n">z</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">xlabel</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$\overline{\theta}$ (K)&#39;</span><span class="p">,</span><span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;height (m)&#39;</span><span class="p">,</span>
+       <span class="n">title</span><span class="o">=</span><span class="s1">&#39;LES dry run:  surface flux=60 $W\,m^{-2}$, $\Gamma$=10 K/km&#39;</span><span class="p">);</span>
+
+    
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/bc25bf0548e89cfe84a3edf510c9a716a73674478992e85e7b27b99caf03e89b.png" src="../_images/bc25bf0548e89cfe84a3edf510c9a716a73674478992e85e7b27b99caf03e89b.png" />
+</div>
+</div>
+</section>
+<section id="assignment-targeting-tuesday">
+<h2>Assignment – targeting Tuesday<a class="headerlink" href="#assignment-targeting-tuesday" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Write functions that find the ensemble mean <span class="math notranslate nohighlight">\(\langle \zeta \rangle\)</span> and the perturbation about that mean <span class="math notranslate nohighlight">\(\zeta^\prime\)</span> an arbitrary variable <span class="math notranslate nohighlight">\(\zeta\)</span></p></li>
+<li><p>Use those functions to calculate the horizontally averaged vertical entropy flux <span class="math notranslate nohighlight">\(\overline{w^\prime\,\theta^\prime}\)</span> as a function of height and make a plot similar to the figure above</p></li>
+</ul>
+</section>
+<section id="assignment-solution">
+<h2>Assignment solution<a class="headerlink" href="#assignment-solution" title="Permalink to this heading">#</a></h2>
+<section id="collect-all-10-ensemble-members-into-a-dicionary">
+<h3>Collect all 10 ensemble members into a dicionary<a class="headerlink" href="#collect-all-10-ensemble-members-into-a-dicionary" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ensemble_names</span> <span class="o">=</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;c</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">11</span><span class="p">)]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ensemble_names</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;c1&#39;, &#39;c2&#39;, &#39;c3&#39;, &#39;c4&#39;, &#39;c5&#39;, &#39;c6&#39;, &#39;c7&#39;, &#39;c8&#39;, &#39;c9&#39;, &#39;c10&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ds_dict</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="k">for</span> <span class="n">count</span><span class="p">,</span> <span class="n">name</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">ensemble_names</span><span class="p">):</span>
+    <span class="n">ds</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="n">the_file</span><span class="p">,</span><span class="n">group</span><span class="o">=</span><span class="n">name</span><span class="p">)</span>
+    <span class="n">ds_dict</span><span class="p">[</span><span class="n">count</span><span class="p">]</span> <span class="o">=</span> <span class="n">ds</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy.typing</span> <span class="k">as</span> <span class="nn">npt</span>
+<span class="k">def</span> <span class="nf">make_array</span><span class="p">(</span><span class="n">var_dict</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span> 
+               <span class="n">varname</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+               <span class="n">times</span><span class="p">:</span> <span class="n">npt</span><span class="o">.</span><span class="n">ArrayLike</span><span class="p">,</span>
+               <span class="n">x</span><span class="p">:</span> <span class="n">npt</span><span class="o">.</span><span class="n">ArrayLike</span><span class="p">,</span> 
+               <span class="n">y</span><span class="p">:</span> <span class="n">npt</span><span class="o">.</span><span class="n">ArrayLike</span><span class="p">,</span>
+               <span class="n">z</span><span class="p">:</span> <span class="n">npt</span><span class="o">.</span><span class="n">ArrayLike</span><span class="p">,</span> 
+               <span class="n">press</span><span class="p">:</span><span class="n">npt</span><span class="o">.</span><span class="n">ArrayLike</span><span class="p">):</span>
+    <span class="c1"># given a dictionary of ensemble members, </span>
+    <span class="c1"># create a new data array containing variable varname</span>
+    <span class="c1">#</span>
+    <span class="n">n_ensembles</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">var_dict</span><span class="p">)</span>
+    <span class="c1">#</span>
+    <span class="c1"># get shapes and attrs from first ensemble member</span>
+    <span class="c1">#</span>
+    <span class="n">attrs</span> <span class="o">=</span> <span class="n">var_dict</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="n">varname</span><span class="p">]</span><span class="o">.</span><span class="n">attrs</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">attrs</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">ntimes</span><span class="p">,</span> <span class="n">nz</span><span class="p">,</span> <span class="n">ny</span><span class="p">,</span> <span class="n">nx</span> <span class="o">=</span> <span class="n">var_dict</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="n">varname</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span>
+    <span class="n">var_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">((</span><span class="n">n_ensembles</span><span class="p">,</span><span class="n">ntimes</span><span class="p">,</span><span class="n">nz</span><span class="p">,</span><span class="n">ny</span><span class="p">,</span><span class="n">nx</span><span class="p">))</span>
+    <span class="k">for</span> <span class="n">ensemble</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_ensembles</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;working on </span><span class="si">{</span><span class="n">ensemble</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">var_array</span><span class="p">[</span><span class="n">ensemble</span><span class="p">,</span><span class="o">...</span><span class="p">]</span> <span class="o">=</span> <span class="n">var_dict</span><span class="p">[</span><span class="n">ensemble</span><span class="p">][</span><span class="n">varname</span><span class="p">][</span><span class="o">...</span><span class="p">]</span>
+    <span class="n">ensemble_coord</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">n_ensembles</span><span class="p">))</span>
+    <span class="n">coords</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;ensemble&#39;</span> <span class="p">:</span> <span class="n">ensemble_coord</span><span class="p">,</span><span class="s1">&#39;time&#39;</span><span class="p">:</span><span class="n">times</span><span class="p">,</span> <span class="s1">&#39;z&#39;</span><span class="p">:</span> <span class="n">z</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span> <span class="p">:</span> <span class="n">y</span><span class="p">,</span> <span class="s1">&#39;x&#39;</span> <span class="p">:</span> <span class="n">x</span><span class="p">}</span>
+    <span class="n">dims</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;ensemble&#39;</span><span class="p">,</span><span class="s1">&#39;time&#39;</span><span class="p">,</span><span class="s1">&#39;z&#39;</span><span class="p">,</span><span class="s1">&#39;y&#39;</span><span class="p">,</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+    <span class="n">the_array</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span><span class="p">(</span><span class="n">var_array</span><span class="p">,</span><span class="n">coords</span><span class="o">=</span><span class="n">coords</span><span class="p">,</span><span class="n">dims</span><span class="o">=</span><span class="n">dims</span><span class="p">,</span><span class="n">attrs</span><span class="o">=</span><span class="n">attrs</span><span class="p">,</span><span class="n">name</span><span class="o">=</span><span class="n">varname</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">the_array</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="function-to-turn-tabs-and-press-membeers-from-a-dictionary-into-a-5-d-theta-array">
+<h3>Function to turn TABS and press membeers from a  dictionary into a 5-d theta array<a class="headerlink" href="#function-to-turn-tabs-and-press-membeers-from-a-dictionary-into-a-5-d-theta-array" title="Permalink to this heading">#</a></h3>
+<section id="first-try-this-without-broadcasting">
+<h4>First try this without broadcasting<a class="headerlink" href="#first-try-this-without-broadcasting" title="Permalink to this heading">#</a></h4>
+<p>Since pressure is a 1-d vec of length 130 you can’t multiply that shape
+with a 5 dimensional ensemble and have the make_theta function work.
+So loop over all dimensions except z so that shapes will match</p>
+<p>This takes a considerable amount of time in python</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">make_theta_array</span><span class="p">(</span><span class="n">var_dict</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span> 
+               <span class="n">times</span><span class="p">:</span> <span class="n">npt</span><span class="o">.</span><span class="n">ArrayLike</span><span class="p">,</span>
+               <span class="n">x</span><span class="p">:</span> <span class="n">npt</span><span class="o">.</span><span class="n">ArrayLike</span><span class="p">,</span> 
+               <span class="n">y</span><span class="p">:</span> <span class="n">npt</span><span class="o">.</span><span class="n">ArrayLike</span><span class="p">,</span>
+               <span class="n">z</span><span class="p">:</span> <span class="n">npt</span><span class="o">.</span><span class="n">ArrayLike</span><span class="p">,</span> 
+               <span class="n">press</span><span class="p">:</span><span class="n">npt</span><span class="o">.</span><span class="n">ArrayLike</span><span class="p">):</span>
+    <span class="c1">#</span>
+    <span class="c1"># given a dictionary of ensemble members, </span>
+    <span class="c1"># create a new data array converting TABS and press to </span>
+    <span class="c1"># potential temperature</span>
+    <span class="c1">#</span>
+    <span class="n">n_ensembles</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">var_dict</span><span class="p">)</span>
+    <span class="c1">#</span>
+    <span class="c1"># get shapes and attrs from TABS for first ensemble member</span>
+    <span class="c1">#</span>
+    <span class="n">ntimes</span><span class="p">,</span> <span class="n">nz</span><span class="p">,</span> <span class="n">ny</span><span class="p">,</span> <span class="n">nx</span> <span class="o">=</span> <span class="n">var_dict</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;TABS&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span>
+    <span class="n">attrs</span> <span class="o">=</span> <span class="n">var_dict</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;TABS&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">attrs</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">attrs</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">theta_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">((</span><span class="n">n_ensembles</span><span class="p">,</span><span class="n">ntimes</span><span class="p">,</span><span class="n">nz</span><span class="p">,</span><span class="n">ny</span><span class="p">,</span><span class="n">nx</span><span class="p">))</span>
+    <span class="k">for</span> <span class="n">ensemble</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_ensembles</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;working on </span><span class="si">{</span><span class="n">ensemble</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">timestep</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">ntimes</span><span class="p">):</span>
+            <span class="n">the_tabs</span> <span class="o">=</span> <span class="n">var_dict</span><span class="p">[</span><span class="n">ensemble</span><span class="p">][</span><span class="s1">&#39;TABS&#39;</span><span class="p">][</span><span class="n">timestep</span><span class="p">,</span><span class="o">...</span><span class="p">]</span>
+            <span class="k">for</span> <span class="n">xindex</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)):</span>
+                <span class="k">for</span> <span class="n">yindex</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">y</span><span class="p">)):</span>
+                   <span class="n">theta_array</span><span class="p">[</span><span class="n">ensemble</span><span class="p">,</span><span class="n">timestep</span><span class="p">,:,</span><span class="n">yindex</span><span class="p">,</span><span class="n">xindex</span><span class="p">]</span><span class="o">=</span> \
+                        <span class="n">make_theta</span><span class="p">(</span><span class="n">the_tabs</span><span class="p">[:,</span><span class="n">yindex</span><span class="p">,</span><span class="n">xindex</span><span class="p">],</span><span class="n">press</span><span class="p">)</span>
+    <span class="n">ensemble_coord</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">n_ensembles</span><span class="p">))</span>
+    <span class="n">coords</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;ensemble&#39;</span> <span class="p">:</span> <span class="n">ensemble_coord</span><span class="p">,</span><span class="s1">&#39;time&#39;</span><span class="p">:</span><span class="n">times</span><span class="p">,</span> <span class="s1">&#39;z&#39;</span><span class="p">:</span> <span class="n">z</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span> <span class="p">:</span> <span class="n">y</span><span class="p">,</span> <span class="s1">&#39;x&#39;</span> <span class="p">:</span> <span class="n">x</span><span class="p">}</span>
+    <span class="n">dims</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;ensemble&#39;</span><span class="p">,</span><span class="s1">&#39;time&#39;</span><span class="p">,</span><span class="s1">&#39;z&#39;</span><span class="p">,</span><span class="s1">&#39;y&#39;</span><span class="p">,</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+    <span class="n">the_array</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span><span class="p">(</span><span class="n">theta_array</span><span class="p">,</span><span class="n">coords</span><span class="o">=</span><span class="n">coords</span><span class="p">,</span><span class="n">dims</span><span class="o">=</span><span class="n">dims</span><span class="p">,</span><span class="n">attrs</span><span class="o">=</span><span class="n">attrs</span><span class="p">,</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;theta&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">the_array</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="now-do-this-with-broadcasting">
+<h4>Now do this with broadcasting<a class="headerlink" href="#now-do-this-with-broadcasting" title="Permalink to this heading">#</a></h4>
+<p>We need to promote press into a 5-d array that will broadcast with
+the ensemble array which has shape [10, 48,130, 20, 25]  That means
+that press needs to have shape [1,1,130,1,1].  We can do htat with
+<a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.expand_dims.html">np.expand_dims</a>  The rules
+for broadcasting are covered here:  <a class="reference external" href="https://numpy.org/doc/stable/user/basics.broadcasting.html">numpy.broadcasting</a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">make_theta_broadcast</span><span class="p">(</span><span class="n">var_dict</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span> 
+               <span class="n">times</span><span class="p">:</span> <span class="n">npt</span><span class="o">.</span><span class="n">ArrayLike</span><span class="p">,</span>
+               <span class="n">x</span><span class="p">:</span> <span class="n">npt</span><span class="o">.</span><span class="n">ArrayLike</span><span class="p">,</span> 
+               <span class="n">y</span><span class="p">:</span> <span class="n">npt</span><span class="o">.</span><span class="n">ArrayLike</span><span class="p">,</span>
+               <span class="n">z</span><span class="p">:</span> <span class="n">npt</span><span class="o">.</span><span class="n">ArrayLike</span><span class="p">,</span> 
+               <span class="n">press</span><span class="p">:</span><span class="n">npt</span><span class="o">.</span><span class="n">ArrayLike</span><span class="p">):</span>
+    <span class="c1">#</span>
+    <span class="c1"># given a dictionary of ensemble members, </span>
+    <span class="c1"># create a new data array converting TABS and press to </span>
+    <span class="c1"># potential temperature</span>
+    <span class="c1">#</span>
+    <span class="n">n_ensembles</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">var_dict</span><span class="p">)</span>
+    <span class="c1">#</span>
+    <span class="c1"># get shapes and attrs from TABS for first ensemble member</span>
+    <span class="c1">#</span>
+    <span class="n">ntimes</span><span class="p">,</span> <span class="n">nz</span><span class="p">,</span> <span class="n">ny</span><span class="p">,</span> <span class="n">nx</span> <span class="o">=</span> <span class="n">var_dict</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;TABS&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span>
+    <span class="n">attrs</span> <span class="o">=</span> <span class="n">var_dict</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;TABS&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">attrs</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">attrs</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="c1">#</span>
+    <span class="c1"># for broadcasting give press the shape [1,1,130,1,1]</span>
+    <span class="c1">#</span>
+    <span class="n">press_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">expand_dims</span><span class="p">(</span><span class="n">press</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">2</span><span class="p">))</span>
+    <span class="n">tabs_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">((</span><span class="n">n_ensembles</span><span class="p">,</span><span class="n">ntimes</span><span class="p">,</span><span class="n">nz</span><span class="p">,</span><span class="n">ny</span><span class="p">,</span><span class="n">nx</span><span class="p">))</span>
+    <span class="k">for</span> <span class="n">ensemble</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_ensembles</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;working on </span><span class="si">{</span><span class="n">ensemble</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">tabs_array</span><span class="p">[</span><span class="n">ensemble</span><span class="p">,</span><span class="o">...</span><span class="p">]</span> <span class="o">=</span> <span class="n">var_dict</span><span class="p">[</span><span class="n">ensemble</span><span class="p">][</span><span class="s1">&#39;TABS&#39;</span><span class="p">][</span><span class="o">...</span><span class="p">]</span>
+    <span class="n">theta_array</span> <span class="o">=</span> <span class="n">make_theta</span><span class="p">(</span><span class="n">tabs_array</span><span class="p">,</span><span class="n">press_array</span><span class="p">)</span>
+    <span class="n">ensemble_coord</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">n_ensembles</span><span class="p">))</span>
+    <span class="n">coords</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;ensemble&#39;</span> <span class="p">:</span> <span class="n">ensemble_coord</span><span class="p">,</span><span class="s1">&#39;time&#39;</span><span class="p">:</span><span class="n">times</span><span class="p">,</span> <span class="s1">&#39;z&#39;</span><span class="p">:</span> <span class="n">z</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span> <span class="p">:</span> <span class="n">y</span><span class="p">,</span> <span class="s1">&#39;x&#39;</span> <span class="p">:</span> <span class="n">x</span><span class="p">}</span>
+    <span class="n">dims</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;ensemble&#39;</span><span class="p">,</span><span class="s1">&#39;time&#39;</span><span class="p">,</span><span class="s1">&#39;z&#39;</span><span class="p">,</span><span class="s1">&#39;y&#39;</span><span class="p">,</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+    <span class="n">the_array</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span><span class="p">(</span><span class="n">theta_array</span><span class="p">,</span><span class="n">coords</span><span class="o">=</span><span class="n">coords</span><span class="p">,</span><span class="n">dims</span><span class="o">=</span><span class="n">dims</span><span class="p">,</span><span class="n">attrs</span><span class="o">=</span><span class="n">attrs</span><span class="p">,</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;theta&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">the_array</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Here’s how you use expand_dims to add axis on either size of the z axis</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">out</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">expand_dims</span><span class="p">(</span><span class="n">press</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">2</span><span class="p">))</span>
+<span class="n">out</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(1, 1, 130, 1, 1)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="create-a-theta-dataset-and-write-to-disk">
+<h3>create a theta dataset and write to disk<a class="headerlink" href="#create-a-theta-dataset-and-write-to-disk" title="Permalink to this heading">#</a></h3>
+<p>We’ll write theta to disk as zarr file.  zarr is a successor to netcdf optimized for use in the cloud.  See <a class="reference external" href="https://zarr.dev/">https://zarr.dev/</a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">zarr</span>
+<span class="n">zarrfile</span> <span class="o">=</span> <span class="s1">&#39;theta.zarr&#39;</span>
+<span class="n">write</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="k">if</span> <span class="n">write</span><span class="p">:</span>
+    <span class="n">theta</span>  <span class="o">=</span> <span class="n">make_theta_broadcast</span><span class="p">(</span><span class="n">ds_dict</span><span class="p">,</span><span class="n">times</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">z</span><span class="p">,</span><span class="n">press</span><span class="p">)</span>
+    <span class="n">theta</span><span class="o">.</span><span class="n">to_zarr</span><span class="p">(</span><span class="n">zarrfile</span><span class="p">,</span><span class="n">mode</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">theta_ds</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_zarr</span><span class="p">(</span><span class="n">zarrfile</span><span class="p">)</span>
+    <span class="n">theta</span> <span class="o">=</span> <span class="n">theta_ds</span><span class="p">[</span><span class="s1">&#39;theta&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>attrs={&#39;units&#39;: &#39;K&#39;}
+working on ensemble=0
+working on ensemble=1
+working on ensemble=2
+working on ensemble=3
+working on ensemble=4
+working on ensemble=5
+working on ensemble=6
+working on ensemble=7
+working on ensemble=8
+working on ensemble=9
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">theta</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div><svg style="position: absolute; width: 0; height: 0; overflow: hidden">
+<defs>
+<symbol id="icon-database" viewBox="0 0 32 32">
+<path d="M16 0c-8.837 0-16 2.239-16 5v4c0 2.761 7.163 5 16 5s16-2.239 16-5v-4c0-2.761-7.163-5-16-5z"></path>
+<path d="M16 17c-8.837 0-16-2.239-16-5v6c0 2.761 7.163 5 16 5s16-2.239 16-5v-6c0 2.761-7.163 5-16 5z"></path>
+<path d="M16 26c-8.837 0-16-2.239-16-5v6c0 2.761 7.163 5 16 5s16-2.239 16-5v-6c0 2.761-7.163 5-16 5z"></path>
+</symbol>
+<symbol id="icon-file-text2" viewBox="0 0 32 32">
+<path d="M28.681 7.159c-0.694-0.947-1.662-2.053-2.724-3.116s-2.169-2.030-3.116-2.724c-1.612-1.182-2.393-1.319-2.841-1.319h-15.5c-1.378 0-2.5 1.121-2.5 2.5v27c0 1.378 1.122 2.5 2.5 2.5h23c1.378 0 2.5-1.122 2.5-2.5v-19.5c0-0.448-0.137-1.23-1.319-2.841zM24.543 5.457c0.959 0.959 1.712 1.825 2.268 2.543h-4.811v-4.811c0.718 0.556 1.584 1.309 2.543 2.268zM28 29.5c0 0.271-0.229 0.5-0.5 0.5h-23c-0.271 0-0.5-0.229-0.5-0.5v-27c0-0.271 0.229-0.5 0.5-0.5 0 0 15.499-0 15.5 0v7c0 0.552 0.448 1 1 1h7v19.5z"></path>
+<path d="M23 26h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+<path d="M23 22h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+<path d="M23 18h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+</symbol>
+</defs>
+</svg>
+<style>/* CSS stylesheet for displaying xarray objects in jupyterlab.
+ *
+ */
+
+:root {
+  --xr-font-color0: var(--jp-content-font-color0, rgba(0, 0, 0, 1));
+  --xr-font-color2: var(--jp-content-font-color2, rgba(0, 0, 0, 0.54));
+  --xr-font-color3: var(--jp-content-font-color3, rgba(0, 0, 0, 0.38));
+  --xr-border-color: var(--jp-border-color2, #e0e0e0);
+  --xr-disabled-color: var(--jp-layout-color3, #bdbdbd);
+  --xr-background-color: var(--jp-layout-color0, white);
+  --xr-background-color-row-even: var(--jp-layout-color1, white);
+  --xr-background-color-row-odd: var(--jp-layout-color2, #eeeeee);
+}
+
+html[theme=dark],
+body[data-theme=dark],
+body.vscode-dark {
+  --xr-font-color0: rgba(255, 255, 255, 1);
+  --xr-font-color2: rgba(255, 255, 255, 0.54);
+  --xr-font-color3: rgba(255, 255, 255, 0.38);
+  --xr-border-color: #1F1F1F;
+  --xr-disabled-color: #515151;
+  --xr-background-color: #111111;
+  --xr-background-color-row-even: #111111;
+  --xr-background-color-row-odd: #313131;
+}
+
+.xr-wrap {
+  display: block !important;
+  min-width: 300px;
+  max-width: 700px;
+}
+
+.xr-text-repr-fallback {
+  /* fallback to plain text repr when CSS is not injected (untrusted notebook) */
+  display: none;
+}
+
+.xr-header {
+  padding-top: 6px;
+  padding-bottom: 6px;
+  margin-bottom: 4px;
+  border-bottom: solid 1px var(--xr-border-color);
+}
+
+.xr-header > div,
+.xr-header > ul {
+  display: inline;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.xr-obj-type,
+.xr-array-name {
+  margin-left: 2px;
+  margin-right: 10px;
+}
+
+.xr-obj-type {
+  color: var(--xr-font-color2);
+}
+
+.xr-sections {
+  padding-left: 0 !important;
+  display: grid;
+  grid-template-columns: 150px auto auto 1fr 20px 20px;
+}
+
+.xr-section-item {
+  display: contents;
+}
+
+.xr-section-item input {
+  display: none;
+}
+
+.xr-section-item input + label {
+  color: var(--xr-disabled-color);
+}
+
+.xr-section-item input:enabled + label {
+  cursor: pointer;
+  color: var(--xr-font-color2);
+}
+
+.xr-section-item input:enabled + label:hover {
+  color: var(--xr-font-color0);
+}
+
+.xr-section-summary {
+  grid-column: 1;
+  color: var(--xr-font-color2);
+  font-weight: 500;
+}
+
+.xr-section-summary > span {
+  display: inline-block;
+  padding-left: 0.5em;
+}
+
+.xr-section-summary-in:disabled + label {
+  color: var(--xr-font-color2);
+}
+
+.xr-section-summary-in + label:before {
+  display: inline-block;
+  content: '►';
+  font-size: 11px;
+  width: 15px;
+  text-align: center;
+}
+
+.xr-section-summary-in:disabled + label:before {
+  color: var(--xr-disabled-color);
+}
+
+.xr-section-summary-in:checked + label:before {
+  content: '▼';
+}
+
+.xr-section-summary-in:checked + label > span {
+  display: none;
+}
+
+.xr-section-summary,
+.xr-section-inline-details {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+.xr-section-inline-details {
+  grid-column: 2 / -1;
+}
+
+.xr-section-details {
+  display: none;
+  grid-column: 1 / -1;
+  margin-bottom: 5px;
+}
+
+.xr-section-summary-in:checked ~ .xr-section-details {
+  display: contents;
+}
+
+.xr-array-wrap {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: 20px auto;
+}
+
+.xr-array-wrap > label {
+  grid-column: 1;
+  vertical-align: top;
+}
+
+.xr-preview {
+  color: var(--xr-font-color3);
+}
+
+.xr-array-preview,
+.xr-array-data {
+  padding: 0 5px !important;
+  grid-column: 2;
+}
+
+.xr-array-data,
+.xr-array-in:checked ~ .xr-array-preview {
+  display: none;
+}
+
+.xr-array-in:checked ~ .xr-array-data,
+.xr-array-preview {
+  display: inline-block;
+}
+
+.xr-dim-list {
+  display: inline-block !important;
+  list-style: none;
+  padding: 0 !important;
+  margin: 0;
+}
+
+.xr-dim-list li {
+  display: inline-block;
+  padding: 0;
+  margin: 0;
+}
+
+.xr-dim-list:before {
+  content: '(';
+}
+
+.xr-dim-list:after {
+  content: ')';
+}
+
+.xr-dim-list li:not(:last-child):after {
+  content: ',';
+  padding-right: 5px;
+}
+
+.xr-has-index {
+  font-weight: bold;
+}
+
+.xr-var-list,
+.xr-var-item {
+  display: contents;
+}
+
+.xr-var-item > div,
+.xr-var-item label,
+.xr-var-item > .xr-var-name span {
+  background-color: var(--xr-background-color-row-even);
+  margin-bottom: 0;
+}
+
+.xr-var-item > .xr-var-name:hover span {
+  padding-right: 5px;
+}
+
+.xr-var-list > li:nth-child(odd) > div,
+.xr-var-list > li:nth-child(odd) > label,
+.xr-var-list > li:nth-child(odd) > .xr-var-name span {
+  background-color: var(--xr-background-color-row-odd);
+}
+
+.xr-var-name {
+  grid-column: 1;
+}
+
+.xr-var-dims {
+  grid-column: 2;
+}
+
+.xr-var-dtype {
+  grid-column: 3;
+  text-align: right;
+  color: var(--xr-font-color2);
+}
+
+.xr-var-preview {
+  grid-column: 4;
+}
+
+.xr-index-preview {
+  grid-column: 2 / 5;
+  color: var(--xr-font-color2);
+}
+
+.xr-var-name,
+.xr-var-dims,
+.xr-var-dtype,
+.xr-preview,
+.xr-attrs dt {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-right: 10px;
+}
+
+.xr-var-name:hover,
+.xr-var-dims:hover,
+.xr-var-dtype:hover,
+.xr-attrs dt:hover {
+  overflow: visible;
+  width: auto;
+  z-index: 1;
+}
+
+.xr-var-attrs,
+.xr-var-data,
+.xr-index-data {
+  display: none;
+  background-color: var(--xr-background-color) !important;
+  padding-bottom: 5px !important;
+}
+
+.xr-var-attrs-in:checked ~ .xr-var-attrs,
+.xr-var-data-in:checked ~ .xr-var-data,
+.xr-index-data-in:checked ~ .xr-index-data {
+  display: block;
+}
+
+.xr-var-data > table {
+  float: right;
+}
+
+.xr-var-name span,
+.xr-var-data,
+.xr-index-name div,
+.xr-index-data,
+.xr-attrs {
+  padding-left: 25px !important;
+}
+
+.xr-attrs,
+.xr-var-attrs,
+.xr-var-data,
+.xr-index-data {
+  grid-column: 1 / -1;
+}
+
+dl.xr-attrs {
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: 125px auto;
+}
+
+.xr-attrs dt,
+.xr-attrs dd {
+  padding: 0;
+  margin: 0;
+  float: left;
+  padding-right: 10px;
+  width: auto;
+}
+
+.xr-attrs dt {
+  font-weight: normal;
+  grid-column: 1;
+}
+
+.xr-attrs dt:hover span {
+  display: inline-block;
+  background: var(--xr-background-color);
+  padding-right: 10px;
+}
+
+.xr-attrs dd {
+  grid-column: 2;
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+
+.xr-icon-database,
+.xr-icon-file-text2,
+.xr-no-icon {
+  display: inline-block;
+  vertical-align: middle;
+  width: 1em;
+  height: 1.5em !important;
+  stroke-width: 0;
+  stroke: currentColor;
+  fill: currentColor;
+}
+</style><pre class='xr-text-repr-fallback'>&lt;xarray.DataArray &#x27;theta&#x27; (ensemble: 10, time: 48, z: 130, y: 20, x: 25)&gt;
+array([[[[[301.06942833, 301.20943434, 300.91189103, ...,
+           301.16997366, 300.93873773, 300.88886211],
+          [300.89692529, 300.93021642, 301.0800876 , ...,
+           300.91778569, 301.00461752, 301.05876906],
+          [300.97007415, 301.17027908, 301.08644041, ...,
+           300.92884202, 300.98583399, 301.17415796],
+          ...,
+          [300.92340548, 301.03143368, 301.0466743 , ...,
+           300.95581089, 300.91027228, 300.92957503],
+          [301.16725539, 300.93275143, 300.97123476, ...,
+           301.05079751, 300.93855447, 300.92975829],
+          [301.13848452, 301.0387333 , 300.9714791 , ...,
+           301.12409909, 300.96497358, 301.03961902]],
+
+         [[300.98024343, 300.95887701, 300.92928804, ...,
+           301.0262775 , 300.89129312, 300.87928024],
+          [300.98271936, 301.01701567, 300.98498133, ...,
+           300.91223159, 300.95933552, 300.99800292],
+          [301.08331574, 301.1687814 , 301.04446494, ...,
+           300.97419114, 300.93261986, 301.10535464],
+...
+          [310.03307339, 310.0935274 , 310.14855159, ...,
+           309.97779664, 309.9479011 , 310.04661635],
+          [309.9944649 , 310.05378244, 310.07199756, ...,
+           309.97886997, 310.00384079, 310.02031964],
+          [309.95639308, 310.022782  , 310.0878766 , ...,
+           310.05592911, 310.0616746 , 310.0139112 ]],
+
+         [[310.21565808, 310.21752094, 310.25866162, ...,
+           310.21641586, 310.19115681, 310.14761652],
+          [310.22232016, 310.21973111, 310.26646035, ...,
+           310.11680048, 310.08885766, 310.09485669],
+          [310.19137782, 310.23706513, 310.21606854, ...,
+           310.14133333, 310.11784242, 310.07089216],
+          ...,
+          [310.08623703, 310.17650656, 310.16766589, ...,
+           310.05545257, 309.98829507, 310.10650742],
+          [310.05646293, 310.11860019, 310.16394018, ...,
+           310.04566469, 310.08279549, 310.10530762],
+          [310.02773076, 310.06962921, 310.08039588, ...,
+           310.16103539, 310.05460008, 310.09157301]]]]])
+Coordinates:
+  * ensemble  (ensemble) int64 0 1 2 3 4 5 6 7 8 9
+  * time      (time) timedelta64[ns] 02:49:00.416564940 ... 02:49:19.999694826
+  * z         (z) float32 25.0 50.0 75.0 100.0 ... 1.035e+03 1.04e+03 1.045e+03
+  * y         (y) float32 2e+03 2.025e+03 2.05e+03 ... 2.45e+03 2.475e+03
+  * x         (x) float32 2e+03 2.025e+03 2.05e+03 ... 2.575e+03 2.6e+03
+Attributes:
+    units:    K</pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.DataArray</div><div class='xr-array-name'>'theta'</div><ul class='xr-dim-list'><li><span class='xr-has-index'>ensemble</span>: 10</li><li><span class='xr-has-index'>time</span>: 48</li><li><span class='xr-has-index'>z</span>: 130</li><li><span class='xr-has-index'>y</span>: 20</li><li><span class='xr-has-index'>x</span>: 25</li></ul></div><ul class='xr-sections'><li class='xr-section-item'><div class='xr-array-wrap'><input id='section-986ba4bc-dcce-4732-aa8d-0aabdfcf4fe1' class='xr-array-in' type='checkbox' checked><label for='section-986ba4bc-dcce-4732-aa8d-0aabdfcf4fe1' title='Show/hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-array-preview xr-preview'><span>301.1 301.2 300.9 301.0 301.1 300.9 ... 310.1 310.1 310.2 310.1 310.1</span></div><div class='xr-array-data'><pre>array([[[[[301.06942833, 301.20943434, 300.91189103, ...,
+           301.16997366, 300.93873773, 300.88886211],
+          [300.89692529, 300.93021642, 301.0800876 , ...,
+           300.91778569, 301.00461752, 301.05876906],
+          [300.97007415, 301.17027908, 301.08644041, ...,
+           300.92884202, 300.98583399, 301.17415796],
+          ...,
+          [300.92340548, 301.03143368, 301.0466743 , ...,
+           300.95581089, 300.91027228, 300.92957503],
+          [301.16725539, 300.93275143, 300.97123476, ...,
+           301.05079751, 300.93855447, 300.92975829],
+          [301.13848452, 301.0387333 , 300.9714791 , ...,
+           301.12409909, 300.96497358, 301.03961902]],
+
+         [[300.98024343, 300.95887701, 300.92928804, ...,
+           301.0262775 , 300.89129312, 300.87928024],
+          [300.98271936, 301.01701567, 300.98498133, ...,
+           300.91223159, 300.95933552, 300.99800292],
+          [301.08331574, 301.1687814 , 301.04446494, ...,
+           300.97419114, 300.93261986, 301.10535464],
+...
+          [310.03307339, 310.0935274 , 310.14855159, ...,
+           309.97779664, 309.9479011 , 310.04661635],
+          [309.9944649 , 310.05378244, 310.07199756, ...,
+           309.97886997, 310.00384079, 310.02031964],
+          [309.95639308, 310.022782  , 310.0878766 , ...,
+           310.05592911, 310.0616746 , 310.0139112 ]],
+
+         [[310.21565808, 310.21752094, 310.25866162, ...,
+           310.21641586, 310.19115681, 310.14761652],
+          [310.22232016, 310.21973111, 310.26646035, ...,
+           310.11680048, 310.08885766, 310.09485669],
+          [310.19137782, 310.23706513, 310.21606854, ...,
+           310.14133333, 310.11784242, 310.07089216],
+          ...,
+          [310.08623703, 310.17650656, 310.16766589, ...,
+           310.05545257, 309.98829507, 310.10650742],
+          [310.05646293, 310.11860019, 310.16394018, ...,
+           310.04566469, 310.08279549, 310.10530762],
+          [310.02773076, 310.06962921, 310.08039588, ...,
+           310.16103539, 310.05460008, 310.09157301]]]]])</pre></div></div></li><li class='xr-section-item'><input id='section-62f2192a-3f9d-4c9a-852c-a9b31fd543fb' class='xr-section-summary-in' type='checkbox'  checked><label for='section-62f2192a-3f9d-4c9a-852c-a9b31fd543fb' class='xr-section-summary' >Coordinates: <span>(5)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>ensemble</span></div><div class='xr-var-dims'>(ensemble)</div><div class='xr-var-dtype'>int64</div><div class='xr-var-preview xr-preview'>0 1 2 3 4 5 6 7 8 9</div><input id='attrs-3b26850c-c8a8-4f2e-81b6-8617b8d7cad2' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-3b26850c-c8a8-4f2e-81b6-8617b8d7cad2' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-de462c9f-432d-4a8a-abc9-462ef51cc89b' class='xr-var-data-in' type='checkbox'><label for='data-de462c9f-432d-4a8a-abc9-462ef51cc89b' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([0, 1, 2, 3, 4, 5, 6, 7, 8, 9])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>time</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>timedelta64[ns]</div><div class='xr-var-preview xr-preview'>02:49:00.416564940 ... 02:49:19....</div><input id='attrs-2867a819-6bcc-4056-bc94-42649fc97661' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-2867a819-6bcc-4056-bc94-42649fc97661' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-c4e42fa7-00b5-47ba-af78-2baa8b4af9bd' class='xr-var-data-in' type='checkbox'><label for='data-c4e42fa7-00b5-47ba-af78-2baa8b4af9bd' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([10140416564940, 10140833129880, 10141249694826, 10141666259766,
+       10142083740234, 10142500305174, 10142916870120, 10143333435060,
+       10143750000000, 10144166564940, 10144583129880, 10144999694826,
+       10145416259766, 10145833740234, 10146250305174, 10146666870120,
+       10147083435060, 10147500000000, 10147916564940, 10148333129880,
+       10148749694826, 10149166259766, 10149583740234, 10150000305174,
+       10150416870120, 10150833435060, 10151250000000, 10151666564940,
+       10152083129880, 10152499694826, 10152916259766, 10153333740234,
+       10153750305174, 10154166870120, 10154583435060, 10155000000000,
+       10155416564940, 10155833129880, 10156249694825, 10156666259766,
+       10157083740234, 10157500305174, 10157916870120, 10158333435060,
+       10158750000000, 10159166564940, 10159583129880, 10159999694826],
+      dtype=&#x27;timedelta64[ns]&#x27;)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>z</span></div><div class='xr-var-dims'>(z)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>25.0 50.0 ... 1.04e+03 1.045e+03</div><input id='attrs-82538663-243a-4a6b-8956-6835e6875ee3' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-82538663-243a-4a6b-8956-6835e6875ee3' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-05011b35-f33a-4413-bc32-e6abc64f7894' class='xr-var-data-in' type='checkbox'><label for='data-05011b35-f33a-4413-bc32-e6abc64f7894' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>units :</span></dt><dd>meters</dd></dl></div><div class='xr-var-data'><pre>array([  25.,   50.,   75.,  100.,  125.,  150.,  175.,  200.,  225.,  250.,
+        275.,  300.,  325.,  350.,  375.,  400.,  425.,  450.,  475.,  490.,
+        500.,  505.,  510.,  515.,  520.,  525.,  530.,  535.,  540.,  545.,
+        550.,  555.,  560.,  565.,  570.,  575.,  580.,  585.,  590.,  595.,
+        600.,  605.,  610.,  615.,  620.,  625.,  630.,  635.,  640.,  645.,
+        650.,  655.,  660.,  665.,  670.,  675.,  680.,  685.,  690.,  695.,
+        700.,  705.,  710.,  715.,  720.,  725.,  730.,  735.,  740.,  745.,
+        750.,  755.,  760.,  765.,  770.,  775.,  780.,  785.,  790.,  795.,
+        800.,  805.,  810.,  815.,  820.,  825.,  830.,  835.,  840.,  845.,
+        850.,  855.,  860.,  865.,  870.,  875.,  880.,  885.,  890.,  895.,
+        900.,  905.,  910.,  915.,  920.,  925.,  930.,  935.,  940.,  945.,
+        950.,  955.,  960.,  965.,  970.,  975.,  980.,  985.,  990.,  995.,
+       1000., 1005., 1010., 1015., 1020., 1025., 1030., 1035., 1040., 1045.],
+      dtype=float32)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>y</span></div><div class='xr-var-dims'>(y)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>2e+03 2.025e+03 ... 2.475e+03</div><input id='attrs-f6bca960-2c8b-4443-94fe-dcf925a75ff8' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-f6bca960-2c8b-4443-94fe-dcf925a75ff8' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-56d25c15-af15-420d-959e-1580a65efec9' class='xr-var-data-in' type='checkbox'><label for='data-56d25c15-af15-420d-959e-1580a65efec9' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>units :</span></dt><dd>meters</dd></dl></div><div class='xr-var-data'><pre>array([2000., 2025., 2050., 2075., 2100., 2125., 2150., 2175., 2200., 2225.,
+       2250., 2275., 2300., 2325., 2350., 2375., 2400., 2425., 2450., 2475.],
+      dtype=float32)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>x</span></div><div class='xr-var-dims'>(x)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>2e+03 2.025e+03 ... 2.6e+03</div><input id='attrs-e1501dd2-594f-4442-afb3-d4c86f968e1e' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-e1501dd2-594f-4442-afb3-d4c86f968e1e' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-9d42c340-9c61-467d-a358-afcbcbe37c47' class='xr-var-data-in' type='checkbox'><label for='data-9d42c340-9c61-467d-a358-afcbcbe37c47' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>units :</span></dt><dd>meters</dd></dl></div><div class='xr-var-data'><pre>array([2000., 2025., 2050., 2075., 2100., 2125., 2150., 2175., 2200., 2225.,
+       2250., 2275., 2300., 2325., 2350., 2375., 2400., 2425., 2450., 2475.,
+       2500., 2525., 2550., 2575., 2600.], dtype=float32)</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-37999bd6-97f0-46a5-a516-98a6534c602d' class='xr-section-summary-in' type='checkbox'  ><label for='section-37999bd6-97f0-46a5-a516-98a6534c602d' class='xr-section-summary' >Indexes: <span>(5)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-index-name'><div>ensemble</div></div><div class='xr-index-preview'>PandasIndex</div><div></div><input id='index-c0e8d3c6-9c32-4e49-8a5a-cf2ea3298b8b' class='xr-index-data-in' type='checkbox'/><label for='index-c0e8d3c6-9c32-4e49-8a5a-cf2ea3298b8b' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Index([0, 1, 2, 3, 4, 5, 6, 7, 8, 9], dtype=&#x27;int64&#x27;, name=&#x27;ensemble&#x27;))</pre></div></li><li class='xr-var-item'><div class='xr-index-name'><div>time</div></div><div class='xr-index-preview'>PandasIndex</div><div></div><input id='index-f0b6fc5b-fb74-496a-a1f1-a265a75bc547' class='xr-index-data-in' type='checkbox'/><label for='index-f0b6fc5b-fb74-496a-a1f1-a265a75bc547' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(TimedeltaIndex([&#x27;0 days 02:49:00.416564940&#x27;, &#x27;0 days 02:49:00.833129880&#x27;,
+                &#x27;0 days 02:49:01.249694826&#x27;, &#x27;0 days 02:49:01.666259766&#x27;,
+                &#x27;0 days 02:49:02.083740234&#x27;, &#x27;0 days 02:49:02.500305174&#x27;,
+                &#x27;0 days 02:49:02.916870120&#x27;, &#x27;0 days 02:49:03.333435060&#x27;,
+                   &#x27;0 days 02:49:03.750000&#x27;, &#x27;0 days 02:49:04.166564940&#x27;,
+                &#x27;0 days 02:49:04.583129880&#x27;, &#x27;0 days 02:49:04.999694826&#x27;,
+                &#x27;0 days 02:49:05.416259766&#x27;, &#x27;0 days 02:49:05.833740234&#x27;,
+                &#x27;0 days 02:49:06.250305174&#x27;, &#x27;0 days 02:49:06.666870120&#x27;,
+                &#x27;0 days 02:49:07.083435060&#x27;,    &#x27;0 days 02:49:07.500000&#x27;,
+                &#x27;0 days 02:49:07.916564940&#x27;, &#x27;0 days 02:49:08.333129880&#x27;,
+                &#x27;0 days 02:49:08.749694826&#x27;, &#x27;0 days 02:49:09.166259766&#x27;,
+                &#x27;0 days 02:49:09.583740234&#x27;, &#x27;0 days 02:49:10.000305174&#x27;,
+                &#x27;0 days 02:49:10.416870120&#x27;, &#x27;0 days 02:49:10.833435060&#x27;,
+                   &#x27;0 days 02:49:11.250000&#x27;, &#x27;0 days 02:49:11.666564940&#x27;,
+                &#x27;0 days 02:49:12.083129880&#x27;, &#x27;0 days 02:49:12.499694826&#x27;,
+                &#x27;0 days 02:49:12.916259766&#x27;, &#x27;0 days 02:49:13.333740234&#x27;,
+                &#x27;0 days 02:49:13.750305174&#x27;, &#x27;0 days 02:49:14.166870120&#x27;,
+                &#x27;0 days 02:49:14.583435060&#x27;,           &#x27;0 days 02:49:15&#x27;,
+                &#x27;0 days 02:49:15.416564940&#x27;, &#x27;0 days 02:49:15.833129880&#x27;,
+                &#x27;0 days 02:49:16.249694825&#x27;, &#x27;0 days 02:49:16.666259766&#x27;,
+                &#x27;0 days 02:49:17.083740234&#x27;, &#x27;0 days 02:49:17.500305174&#x27;,
+                &#x27;0 days 02:49:17.916870120&#x27;, &#x27;0 days 02:49:18.333435060&#x27;,
+                   &#x27;0 days 02:49:18.750000&#x27;, &#x27;0 days 02:49:19.166564940&#x27;,
+                &#x27;0 days 02:49:19.583129880&#x27;, &#x27;0 days 02:49:19.999694826&#x27;],
+               dtype=&#x27;timedelta64[ns]&#x27;, name=&#x27;time&#x27;, freq=None))</pre></div></li><li class='xr-var-item'><div class='xr-index-name'><div>z</div></div><div class='xr-index-preview'>PandasIndex</div><div></div><input id='index-2fbebb35-c703-4f25-b00f-f854e601a388' class='xr-index-data-in' type='checkbox'/><label for='index-2fbebb35-c703-4f25-b00f-f854e601a388' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Index([  25.0,   50.0,   75.0,  100.0,  125.0,  150.0,  175.0,  200.0,  225.0,
+        250.0,
+       ...
+       1000.0, 1005.0, 1010.0, 1015.0, 1020.0, 1025.0, 1030.0, 1035.0, 1040.0,
+       1045.0],
+      dtype=&#x27;float32&#x27;, name=&#x27;z&#x27;, length=130))</pre></div></li><li class='xr-var-item'><div class='xr-index-name'><div>y</div></div><div class='xr-index-preview'>PandasIndex</div><div></div><input id='index-2dca3b15-9474-49f2-b4a2-72bb880da489' class='xr-index-data-in' type='checkbox'/><label for='index-2dca3b15-9474-49f2-b4a2-72bb880da489' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Index([2000.0, 2025.0, 2050.0, 2075.0, 2100.0, 2125.0, 2150.0, 2175.0, 2200.0,
+       2225.0, 2250.0, 2275.0, 2300.0, 2325.0, 2350.0, 2375.0, 2400.0, 2425.0,
+       2450.0, 2475.0],
+      dtype=&#x27;float32&#x27;, name=&#x27;y&#x27;))</pre></div></li><li class='xr-var-item'><div class='xr-index-name'><div>x</div></div><div class='xr-index-preview'>PandasIndex</div><div></div><input id='index-5942d2dd-b501-49a9-a757-145fef28aefc' class='xr-index-data-in' type='checkbox'/><label for='index-5942d2dd-b501-49a9-a757-145fef28aefc' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Index([2000.0, 2025.0, 2050.0, 2075.0, 2100.0, 2125.0, 2150.0, 2175.0, 2200.0,
+       2225.0, 2250.0, 2275.0, 2300.0, 2325.0, 2350.0, 2375.0, 2400.0, 2425.0,
+       2450.0, 2475.0, 2500.0, 2525.0, 2550.0, 2575.0, 2600.0],
+      dtype=&#x27;float32&#x27;, name=&#x27;x&#x27;))</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-04449b24-7d95-4e06-83dd-ea8c42b9f33d' class='xr-section-summary-in' type='checkbox'  checked><label for='section-04449b24-7d95-4e06-83dd-ea8c42b9f33d' class='xr-section-summary' >Attributes: <span>(1)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'><dt><span>units :</span></dt><dd>K</dd></dl></div></li></ul></div></div></div></div>
+</div>
+</section>
+<section id="create-a-wvel-array">
+<h3>create a wvel array<a class="headerlink" href="#create-a-wvel-array" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">wvel</span> <span class="o">=</span> <span class="n">make_array</span><span class="p">(</span><span class="n">ds_dict</span><span class="p">,</span><span class="s1">&#39;W&#39;</span><span class="p">,</span><span class="n">times</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">z</span><span class="p">,</span><span class="n">press</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>attrs={&#39;units&#39;: &#39;m/s&#39;}
+working on ensemble=0
+working on ensemble=1
+working on ensemble=2
+working on ensemble=3
+working on ensemble=4
+working on ensemble=5
+working on ensemble=6
+working on ensemble=7
+working on ensemble=8
+working on ensemble=9
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### Do the ensemble and horizontal flux average</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">w_mean</span> <span class="o">=</span> <span class="n">wvel</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;ensemble&#39;</span><span class="p">])</span>
+<span class="n">w_perturb</span> <span class="o">=</span> <span class="n">wvel</span> <span class="o">-</span> <span class="n">w_mean</span>
+<span class="n">theta_mean</span> <span class="o">=</span> <span class="n">theta</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;ensemble&#39;</span><span class="p">])</span>
+<span class="n">theta_perturb</span> <span class="o">=</span> <span class="n">theta</span> <span class="o">-</span> <span class="n">theta_mean</span>
+<span class="n">theta_flux</span> <span class="o">=</span> <span class="n">theta_perturb</span><span class="o">*</span><span class="n">w_perturb</span>
+<span class="n">ensemble_mean</span> <span class="o">=</span> <span class="n">theta_flux</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;ensemble&#39;</span><span class="p">])</span>
+<span class="n">ensemble_horizavg</span> <span class="o">=</span> <span class="n">ensemble_mean</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">,</span><span class="s1">&#39;y&#39;</span><span class="p">])</span>
+<span class="n">ensemble_horizavg</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(48, 130)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">the_ds</span><span class="o">.</span><span class="n">attrs</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;heat_flux_W_m2&#39;: 100, &#39;gamma_K_km&#39;: 10}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">timestep</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">ntimes</span><span class="p">,</span><span class="mi">3</span><span class="p">):</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ensemble_horizavg</span><span class="p">[</span><span class="n">timestep</span><span class="p">,:],</span><span class="n">z</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="n">timestep</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;best&#39;</span><span class="p">)</span>
+<span class="n">heat_flux</span> <span class="o">=</span> <span class="n">the_ds</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;heat_flux_W_m2&#39;</span><span class="p">]</span>
+<span class="n">gamma</span> <span class="o">=</span> <span class="n">the_ds</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;gamma_K_km&#39;</span><span class="p">]</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;theta flux with heat flux = </span><span class="si">{</span><span class="n">heat_flux</span><span class="si">}</span><span class="s2"> W/m2 and inversion strength = </span><span class="si">{</span><span class="n">gamma</span><span class="si">}</span><span class="s2"> K/km&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/7ac7824a2ecc7806456a77c76906d71949a65685b9df139c0713b9ae245f2c55.png" src="../_images/7ac7824a2ecc7806456a77c76906d71949a65685b9df139c0713b9ae245f2c55.png" />
+</div>
+</div>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./assignments"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="md_dry_les.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">MD: les dry layer assignment solution</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="hydrostatic_2024.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Assign 2: Scale heights for typical atmospheric soundings</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#find-the-netcdf-file-an-dump-its-contents">Find the netcdf file an dump its contents</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#open-the-first-ensemble-member-c1">Open the first ensemble member c1</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#get-variable-vectors-and-dimension-sizes">Get variable vectors and dimension sizes</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#check-height-and-pressure">check height and pressure</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#function-to-convert-to-theta">Function to convert to <span class="math notranslate nohighlight">\(\theta\)</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#get-the-horizontal-average">Get the horizontal average</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#assignment-targeting-tuesday">Assignment – targeting Tuesday</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#assignment-solution">Assignment solution</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#collect-all-10-ensemble-members-into-a-dicionary">Collect all 10 ensemble members into a dicionary</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#function-to-turn-tabs-and-press-membeers-from-a-dictionary-into-a-5-d-theta-array">Function to turn TABS and press membeers from a  dictionary into a 5-d theta array</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#first-try-this-without-broadcasting">First try this without broadcasting</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#now-do-this-with-broadcasting">Now do this with broadcasting</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-theta-dataset-and-write-to-disk">create a theta dataset and write to disk</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-wvel-array">create a wvel array</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Philip Austin
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=bd9e20870c6007c4c509"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=bd9e20870c6007c4c509"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
