@@ -26,6 +26,7 @@ Read Chapter 1 of BLM.  For notation, especially virtual temperature, see the fi
 * Thermodymamic review -- thermodynamic diagrams and scale height
 * Buoyancy perturbations
 * Solutions to the dry les notebook
+* [Good tutorial on xarray](https://coecms-training.github.io/parallel/case-studies/loading_ensemble.html )
 * How big are the pressure perturbation in the tropical_subset.nc notebook?
 
 ### For next week:
