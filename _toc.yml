@@ -44,5 +44,8 @@ parts:
     - url: https://www.dropbox.com/scl/fi/k1gswj3eocbsehbu4xvrq/skew_coords_solution.ipynb?rlkey=f6kp1pzzf4u14nwgk5gfvtffs&dl=0
       title: thermodynamic worksheet download
     - file: notebooks/hydrostatic_2024.md
+    - url: https://www.dropbox.com/scl/fi/etj9r3hvt5rm3azz650l0/hydrostatic_2024.ipynb?rlkey=5fkvw08t872305rn9zboktw57&dl=0
+      title: Assignment 2 hydrostatic balance notebook download
+      
       
 

@@ -21,3 +21,7 @@ Read Chapter 1 of BLM.  For notation, especially virtual temperature, see the fi
 * Read Stull chapter 3 and the Week 3 supplmentary notes
 * Do the dry les notebook assignment -- soft deadline is Tuesday
 
+## Week 3
+
+* Thermodymamic review -- thermodynamic diagrams and scale height
+* Buoyancy perturbations
