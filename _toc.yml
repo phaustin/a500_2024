@@ -33,6 +33,9 @@ parts:
       title: Weighted averages and scale heights
     - url: https://www.dropbox.com/scl/fi/ygb2bi2riqo23ostxo8lw/buoyancy.pdf?rlkey=b80rbwtzartk4qp5dt9gjvsf6&dl=0
       title: Week 3 - Bouyancy
+  - caption: Assignments
+    chapters:
+    - file: notebooks/hydrostatic_2024.md
   - caption: Notebooks
     chapters:
     - url: https://www.dropbox.com/scl/fi/f1y4uj9potzahxmv06kgg/dry_les_2024.ipynb?rlkey=vfpxzcck7t3rhcel7wcg4vxpv&dl=0
@@ -43,7 +46,6 @@ parts:
     - file: notebooks/skew_coords_solution.md
     - url: https://www.dropbox.com/scl/fi/k1gswj3eocbsehbu4xvrq/skew_coords_solution.ipynb?rlkey=f6kp1pzzf4u14nwgk5gfvtffs&dl=0
       title: thermodynamic worksheet download
-    - file: notebooks/hydrostatic_2024.md
     - url: https://www.dropbox.com/scl/fi/etj9r3hvt5rm3azz650l0/hydrostatic_2024.ipynb?rlkey=5fkvw08t872305rn9zboktw57&dl=0
       title: Assignment 2 hydrostatic balance notebook download
       
