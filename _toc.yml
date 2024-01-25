@@ -35,7 +35,9 @@ parts:
       title: Week 3 - Bouyancy
   - caption: Assignments
     chapters:
-    - file: notebooks/hydrostatic_2024.md
+    - file: assignments/md_dry_les.ipynb
+    - file: dry_les_2024_solution.md
+    - file: assignements/hydrostatic_2024.md
     - url: https://www.dropbox.com/scl/fi/etj9r3hvt5rm3azz650l0/hydrostatic_2024.ipynb?rlkey=5fkvw08t872305rn9zboktw57&dl=0
       title: Assignment 2 hydrostatic balance notebook download
   - caption: Notebooks

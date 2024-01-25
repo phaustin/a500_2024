@@ -2,6 +2,7 @@ _build
 docs/*pdf
 __pycache__
 *pyc
+*checkpoints*
 build/
 auto/
 *~
