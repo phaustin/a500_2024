@@ -12,7 +12,7 @@ only_build_toc_files: true
 exclude_patterns: [".jupyter_cache/*",_build, Thumbs.db, .DS_Store, "*.ipynb_checkpoints"]
 
 execute:
-  execute_notebooks: force
+  execute_notebooks: cache
   cache: .jupyter_cache
   allow_errors: true
   timeout: 120
