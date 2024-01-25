@@ -36,8 +36,8 @@ parts:
   - caption: Assignments
     chapters:
     - file: assignments/md_dry_les.ipynb
-    - file: dry_les_2024_solution.md
-    - file: assignements/hydrostatic_2024.md
+    - file: assignments/dry_les_2024_solution.md
+    - file: assignments/hydrostatic_2024.md
     - url: https://www.dropbox.com/scl/fi/etj9r3hvt5rm3azz650l0/hydrostatic_2024.ipynb?rlkey=5fkvw08t872305rn9zboktw57&dl=0
       title: Assignment 2 hydrostatic balance notebook download
   - caption: Notebooks
@@ -50,6 +50,7 @@ parts:
     - file: notebooks/skew_coords_solution.md
     - url: https://www.dropbox.com/scl/fi/k1gswj3eocbsehbu4xvrq/skew_coords_solution.ipynb?rlkey=f6kp1pzzf4u14nwgk5gfvtffs&dl=0
       title: thermodynamic worksheet download
-      
+    - url: https://www.dropbox.com/scl/fi/dfj80s9q920ljni5aakfc/tropical_subset.nc?rlkey=2fc2wr2yb70e4i6l9c7gwcyj3&dl=0
+      title: tropical_subset.nc download
       
 
