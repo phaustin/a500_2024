@@ -34,3 +34,17 @@ Read Chapter 1 of BLM.  For notation, especially virtual temperature, see the fi
 * Read [Dave Randalls scalling quickstudy](https://hogback.atmos.colostate.edu/group/dave/pdf/Dimensional_Analysis.pdf)
 * Read Stull Chapter 4
 
+## Week 4
+
+* Go over 
+  
+  - notes on Taylor's series and Reynold's averaging
+  - notes on the velocity scale
+  - notes on virtual potential temperature
+  
+* For next Tuesday
+
+  - Do Stull Chapter 4 problems 1, 3, 5
+  - For the tropical subset dataset plot soundings of the potetial temperature flux, the temperature flux and the virtual potential temperature flux -- are they different
+  - For the same notebook, plot the turbulent kinetic energy scaled by the convective velocity scale and the surface velocity scale -- are they different?
+  
