@@ -1,1 +1,3 @@
 git+https://github.com/phaustin/a500_2024.git
+git+https://github.com/eoas-ubc/jb_tools.git
+
