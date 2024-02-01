@@ -14,7 +14,9 @@ dependencies:
   - netcdf4
   - zarr
   - jupyterlab
+  - jupyter-book
   - jupytext
+  - ghp-import
   - pythia-datasets
   - eofs
   - intake-esm

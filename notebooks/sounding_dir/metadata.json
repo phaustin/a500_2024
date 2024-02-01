@@ -1,0 +1,35 @@
+{
+    "filelist": [
+        [
+            "Y2013_Jul_01_00Z.csv",
+            [
+                2013,
+                7,
+                1,
+                0,
+                0,
+                0,
+                0,
+                182,
+                0
+            ]
+        ]
+    ],
+    "attributes": {
+        "units": "hPa;m;C;C;%;g/kg;deg;knot;K;K;K",
+        "site_id": "71109",
+        "latitude": 50.68,
+        "longitude": -127.36,
+        "elevation": 1.0,
+        "header": "71109 YZT Port Hardy Observations at 00Z 01 Jul 2013",
+        "history": "written by test_requests.py"
+    },
+    "input_args": {
+        "region": "samer",
+        "year": "2013",
+        "month": "7",
+        "start": "0100",
+        "stop": "0110",
+        "station": "71109"
+    }
+}

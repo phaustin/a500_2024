@@ -1,0 +1,610 @@
+\documentclass[12pt]{article}
+\usepackage{geometry,fancyhdr,xr,hyperref,ifpdf,amsmath,rcs,indentfirst}
+\usepackage{lastpage,longtable,Ventry,url,paunits,shortcuts,smallsec,color,tightlist,float}
+\geometry{letterpaper,top=50pt,hmargin={20mm,20mm},headheight=15pt} 
+\usepackage[stable]{footmisc}
+
+\pagestyle{fancy} 
+
+\RCS $Revision: 1.5 $
+\RCS $Date: 2002/01/09 03:50:54 $
+
+\fancypagestyle{first}{
+\lhead{Liquid water static energy}
+\chead{}
+\rhead{page~\thepage/\pageref{LastPage}}
+\lfoot{} 
+\cfoot{} 
+\rfoot{}
+}
+
+\ifpdf
+    \usepackage[pdftex]{graphicx} 
+    \usepackage{hyperref}
+    \pdfcompresslevel=0
+    \DeclareGraphicsExtensions{.pdf,.jpg,.mps,.png}
+\else
+    \usepackage{hyperref}
+    \usepackage[dvips]{graphicx}
+    \DeclareGraphicsRule{.eps.gz}{eps}{.eps.bb}{`gzip -d #1}
+    \DeclareGraphicsExtensions{.eps,.eps.gz}
+\fi
+
+\begin{document}
+\pagestyle{first}
+
+
+\section{Thermodynamics}
+\label{sec:thermodynamics}
+
+It's a good idea to work with thermodynamic variables that are conserved under
+a known set of conditions, since they can act as passive tracers and provide
+information about the physical processes acting on the domain.  In particular,
+we have available:
+
+\begin{enumerate*}
+  \item \textit{Conservation of mass}
+  \item \textit{Conservation of momentum (newton's 2nd law)}
+  \item \textit{Conservation of energy (first law)}
+  \item \textit{Conservation of entropy (second law)}
+\end{enumerate*}
+
+The conditions we're interested in are horizontal and vertical
+displacement on time scales that are too short to be affected by
+radiation.  
+
+
+
+\subsection{Conservation of mass}
+\label{sec:conservation-mass}
+
+Starting with conservation of mass, we assume that in the absence
+of precip/evaporation the
+\textit{total water mixing ratio}, defined as $q_T$ = kg ($H_2O$)/kg
+(moist air), is conserved as a parcel moves, because while the volume,
+pressure and temperature all change, the mass remains constant (in the
+absence of mixing in regions with varying $r_v$), so:
+
+\begin{equation}
+  \label{eq:masscons}
+  \frac{d q_T}{dt} = 0
+\end{equation}
+if mass is conserved and there is no condensation evaporation.
+
+\subsection{Conservation of energy}
+\label{sec:conservation-energy}
+
+What about a conserved energy variable?  A good choice is the \textit{dry static energy},
+$h_d$, which is conserved for adiabatic motion in a hydrostatic atmosphere.
+To see why this is true, recall the definition of the first law:
+
+
+\begin{equation}
+  \label{eq:firstwh}
+  \frac{du}{dt} = q - w
+\end{equation}
+where $u$ is the specific internal energy (\jkg) and $q$ and $w$ (\jkgs) are respectively the
+rates at which the parcel is heated and work is done \textit{by} the parcel.
+In all the problems in this course, we will only be concerned with the pressure-volume
+working rate, which is defined by:
+
+\begin{equation}
+  \label{eq:pvwork}
+  w = p \frac{d \alpha}{dt}
+\end{equation}
+where $\alpha$  (\volkg), the specific volume, is $1/density$ = $1/\rho$ .
+
+It's not often that we get to work with constant volume situations in
+the atmosphere.  More useful than the internal energy in atmospheric
+thermodynamics is the \textit{specific enthalpy}, $h\ 
+(\un{J\,kg^{-1}})$, defined as:
+
+\begin{equation}
+  \label{eq:enthalpy}
+  h  = u + p\alpha
+\end{equation}
+Note that the $p \alpha$ term in (\ref{eq:enthalpy}) looks like pressure-volume
+work, and can be interpreted as the work required at constant pressure $p$
+to make room for the system with internal energy $u$\footnote{Schroeder, D. V., An Introduction
+to Thermal Physics,\ Addison-Wesley, p.~149}.
+
+Using $h$ we can rewrite the first law ($du/dt = q - p d\alpha/dt$) as
+
+\begin{equation}
+  \label{eq:entba}
+  \frac{dh}{dt} = q   + \alpha \frac{dp}{dt}
+\end{equation}
+
+Taking $dp/dt=0$ in (\ref{eq:entba}), we can say that the heating rate
+$q$ is equal to the time rate of change of enthalpy at constant
+pressure.  Since evaporation and condensation occur at constant
+pressure we will find $h$ useful when we deal with phase change.
+
+Now expand $h$ in $p,T$ using the chain rule:
+
+\begin{equation}
+  \label{eq:Hchain}
+  \frac{dh}{dt} = \frac{\partial h}{\partial T} \frac{dT}{dt} + 
+                  \frac{\partial h}{\partial p} \frac{dp}{dt}
+\end{equation}
+
+and substitute (\ref{eq:Hchain}) into (\ref{eq:entba}) to get:
+
+\begin{equation}
+  \label{eq:firstH}
+  q = \frac{\partial h}{\partial T} \frac{dT}{dt} + \left ( \frac{\partial h}{\partial p} - \alpha 
+                        \right ) \frac{dp}{dt}
+\end{equation}
+
+
+If the pressure is constant, then $dp/dt$=0, and (\ref{eq:firstH})
+produces the definition of the \textit{heat capacity at constant
+  pressure}:
+
+\begin{eqnarray}
+  \label{eq:hcp}
+  c_p &=& \frac{\partial{h}}{\partial T}\\
+  q &=& c_p \frac{\partial T}{\partial t}\ \mathrm{at\ constant\ pressure}
+\end{eqnarray}
+For dry air $c_{pd} = 1004\ \jkgk$.
+
+Also, thermodynamics tells us that over the range of atmospheric
+temperatures and pressure $\partial h/\partial p \approx 0$, so using
+\eqref{eq:firstH} and and \eqref{eq:entba} we can get:
+
+\begin{equation}
+  \label{eq:enthal}
+  \frac{dh}{dt} = c_p \frac{dT}{dt}
+\end{equation}
+since $c_p$ depends only very weakly on pressure.
+
+Now what about $dp/dt$ in \eqref{eq:entba} for the case of vertical
+motion?  For the boundary layer, it is a very good approximation to
+assume \textit{hydrostatic balance}, which is the statement that an
+the vertical pressure differential across a layer provides exactly the
+amount of force necessary to balance gravity:
+
+  \begin{figure}[H]
+    \begin{center}
+       \input hydro.pstex_t
+      \caption{hydrostatic balance for a $1 \times dz\  \un{m^3}$ layer}
+      \label{fig:hydro}
+    \end{center}
+  \end{figure}
+
+\vspace{0.1in}
+
+In symbols, the balance shown by Figure \ref{fig:hydro} implies that:
+
+\begin{equation}
+  \label{eq:hydro}
+  \frac{dp}{dt} = - \rho g \frac{dz}{dt}
+\end{equation}
+\textit{Question:  is this the same pressure p as the local pressure given by the equation of state: $p=\rho R_d T$?}
+
+Substituting \eqref{eq:hydro} into \eqref{eq:entba} and recognizing that
+$\alpha \rho$=1, the first law in the case of hydrostatic balance becomes:
+
+\begin{equation}
+  \label{eq:first2}
+  \frac{dh}{dt} = q - g \frac{dz}{dt}
+\end{equation}
+
+In particular, if the heating rate $q$=0, then:
+
+\begin{equation}
+  \label{eq:first3}
+  \frac{dh}{dt} +  g \frac{dz}{dt} = \frac{d h_d}{dt} =  0
+\end{equation}
+defines a conservation equation for the \textit{dry static energy} $h_d$, where:
+
+\begin{equation}
+  \label{eq:hd}
+  h_d = h + gz
+\end{equation}
+
+
+This conservation makes $h_d$
+a useful tracer, since changes to $h_d$ have to come from some
+diabatic process (radiation, evaporation), and can't come from simply
+lifting or sinking air.
+
+
+Note also that $gz$ is just the \textit{potential energy per
+  kilogram}.  So as the parcel decreases or increases its altitude,
+energy is moving between potential and internal, while $h_d$ is
+staying the same.
+
+We can also take \eqref{eq:first3} apart to get an equation for the
+\textit{dry adiabatic lapse rate}:
+
+\begin{subequations}
+\begin{eqnarray}
+  \label{eq:drylapse}
+\frac{dh_d}{dt} &=&   c_p \frac{dT}{dt} -g \frac{dz}{dt} = 0\\
+\mathrm{so}\ \frac{dT}{dz} &=& \Gamma_d = -\frac{g}{c_p} \approx -9.8\ \un{K\,{km^{-1}}}
+\end{eqnarray}
+\end{subequations}
+which is the rate at which internal energy is converted to
+potential energy during adiabatic ascent.
+
+
+\subsection{Conservation of entropy}
+\label{sec:conservation-entropy}
+
+First remember that the 2nd law of thermodynamics relates the entropy $s$ to the heating rate $q$
+and temperature $T$:
+
+\begin{equation}
+  \label{eq:second}
+  \frac{ds}{dt} \geq \frac{q}{T}
+\end{equation}
+where the $>$ sign holds when the process is \textit{irreversible}.
+
+Also note that the equation of state for dry air is given by:
+
+\begin{equation}
+  \label{eq:eos}
+  p = \rho R_d T
+\end{equation}
+where $R_d$ (287 \jkgk) is the gas constant for dry air.
+
+So divide \eqref{eq:entba} by $T$ and  rewrite the first law  as:
+
+\begin{equation}
+  \label{eq:poten1}
+  \frac{q}{T}  = \frac{1}{T} \left ( \frac{dh}{dt} - \alpha \frac{dp}{dt} \right ) =  
+    \frac{c_p}{T} \frac{dT}{dt} - \frac{R_d T}{T\, p} \frac{dp}{dt} = 
+    \frac{c_p}{T} \frac{dT}{dt} - \frac{R_d }{ p} \frac{dp}{dt} \leq \frac{ds}{dt}
+\end{equation}
+where I've also included invoked the second law to relate this to $s$.
+
+Again, if the process is  adiabatic then $q=0$, 
+
+\begin{subequations}
+\begin{eqnarray}
+  \label{eq:adiathet}
+  c_p \frac{1}{T} \frac{dT}{dt} &=& \frac{R_d}{p} \frac{dp}{dt}\\
+  c_p  d\log{T} &=& R_d d \log {p}\label{eq:adiathetb}
+\end{eqnarray}
+\end{subequations}
+
+ Integrating both sides of (\ref{eq:adiathetb}) from the
+surface, with (temperature, pressure) given by $(\theta, p_0)$
+to a lower pressure $p$ and lower (why?) temperature $T$
+gives  \textit{Poisson's equation}:
+
+\begin{equation}
+  \label{eq:poisson}
+  \frac{c_p}{R_d} \log \left ( \frac{T}{\theta} \right ) = \log \left ( \frac{p}{p_0} \right )
+\end{equation}
+
+Equation (\ref{eq:poisson}) defines the \textit{potential temperature}, $\theta$
+which is conserved for adiabatic ascent/descent  (BLM 1.5.1c):
+
+\begin{equation}
+  \label{eq:pottemp}
+  \theta =  T \left ( \frac{p_0}{p} \right )^{R_d/c_p} =
+ T \left ( \frac{p_0}{p} \right )^{(c_p - c_v)/c_p} =  
+ T \left ( \frac{p_0}{p} \right )^{\frac{\gamma - 1}{\gamma}} 
+\end{equation}
+where $R_d/c_p = 287/1004 =0.286$ and $\gamma = c_p/c_v$.  
+
+Like $h_d$, $\theta$ is constant for a dry adiabatic process. To see this
+first  differentiate \eqref{eq:pottemp} to get:
+
+\begin{equation}
+  \label{eq:differ}
+\frac{c_p}{\theta} \frac{d \theta} {dt} =  \frac{c_p}{T} \frac{dT}{dt} - \frac{R_d }{ p} \frac{dp}{dt}
+\end{equation}
+
+Then use \eqref{eq:poten1} to show that:
+
+\begin{equation}
+  \label{eq:thetaIsS}
+  \frac{c_p}{\theta} \frac{d \theta} {dt} = \frac{ds} {dt} \geq \frac{q}{T}
+\end{equation}
+and if $q$=0 and the process is reversible, both $\theta$ and $s$ are constant.
+
+This means that there's a one to one relationship between $\theta$ and the
+entropy $s$:
+
+\begin{equation}
+  \label{eq:entrop1}
+  ds = c_p \frac{d \theta}{\theta}
+\end{equation}
+
+or 
+
+\begin{equation}
+  \label{eq:entrop2}
+  s \propto  c_p \log \theta
+\end{equation}
+
+\section{Liquid water static energy}
+\label{sec:liquid-water-static}
+
+
+Once we introduce water vapor and liquid water, we're dealing
+with a new mixture that can't be described by the ideal gas equation.
+It does have an enthalpy $H$ (J):
+
+\begin{equation}
+  \label{eq:hmix}
+  H=m_d h_d + m_v h_v + m_l h_l
+\end{equation}
+where $m$ stands for mass, $H$ is the total enthalpy (J) and $h_x$ 
+(\un{J\,kg^{-1}}) is the specific enthalpy where
+subscripts $x=(d,v,l)$ respectively denote dry air, water vapor
+and liquid water. 
+
+We will assume that the mass of dry air stays fixed, and
+write the specific enthalpy of the mixture as:
+
+\begin{equation}
+  \label{eq:mix}
+  h = H/m_d\ \un{J\,kg^{-1}}
+\end{equation}
+
+Note that the total entropy still obeys the first law:
+
+\begin{equation}
+  \label{eq:first}
+  q\,dt= dh - \alpha dp
+\end{equation}
+But what is $dh$?  Calculus says:
+
+\begin{equation}
+  \label{eq:Hchain}
+  dH = \frac{\partial H}{\partial T} dT + 
+       \frac{\partial H}{\partial p} dp +
+       \frac{\partial H}{\partial m_v} d m_v + 
+       \frac{\partial H}{\partial m_l} d m_l
+\end{equation}
+
+And by the definition of the heat capacity:
+
+\begin{equation}
+  \label{eq:partialT}
+  \frac{\partial H}{\partial T} = m_d c_{pd} + m_v c_{pv} + m_l c_l
+\end{equation}
+Which, after dividing through by $m_d$, produces the heat
+capacity of the mixture, $c_p\ (\un{J\,kg^{-1}\,K^{-1}})$:
+
+\begin{equation}
+  \label{eq:partialTspec}
+  \frac{\partial h}{\partial T} =  c_{pd} + r_v c_{pv} + r_l c_l = 
+      c_p
+\end{equation}
+
+The second term in (\ref{eq:Hchain}),
+$\frac{\partial H}{\partial p}=0$ to an excellent approximation
+(remember that $H=U + PV$), and looking at (\ref{eq:hmix}) it's
+apparent that $\frac{\partial H}{\partial m_v}=h_v$ and
+$\frac{\partial H}{\partial m_l}=h_l$, yielding a new version of
+(\ref{eq:Hchain}):
+
+\begin{equation}
+  \label{eq:newH}
+  dh = c_p dT + 
+       h_v d r_v +
+       h_l d r_l
+\end{equation}
+We'll start with the simplest scenario: the total water mass is
+conserved and the mixture is at its saturation mixing ratio
+$r_{sat} = \epsilon e_s(T)/(p - e_s(T))$.  Then the total water mass
+$m_t=m_v + m_l$  satisfies 
+$d m_t = 0 = d m_v + d m_l = d m_s + dm_l = d r_{sat} + d r_l$, so
+that $dr_v = d r_{sat} = - d r_l$ and (\ref{eq:newH}) becomes:
+
+\begin{equation}
+  \label{eq:newHsat}
+  dh = c_p dT + 
+       (h_v - h_l) d r_{sat} = c_p dT + l_v d r_{sat}
+\end{equation}
+where $l_v\ (\un{J\,kg^{-1}}) = h_v - h_l$ 
+is called the \textit{enthalpy of evaporation}
+or the \textit{latent heat}.  It represents the energy needed to
+break a liquid water molecule away from its neighbors and send it
+into  the vapor phase.  It takes about 2.5 
+$\times 10^{6}\ \un{J}$ to evaporate a kg of water at
+0 \degc.
+
+Note that because the mass of water is conserved, I could just as well write (\ref{eq:newHsat}) as:
+
+\begin{equation}
+  \label{eq:newHsatb}
+  dh = c_p dT  - l_v dr_l
+\end{equation}
+
+
+I could also go through the steps above for a more general  mixture of droplets, rain and ice
+and get the expression for enthalpy used in Khairoutdinov and Randall:
+
+
+\begin{equation}
+  \label{eq:newHsatKR}
+  dh = c_p dT + 
+        c_p dT - l_v (dr_l + dr_r) - l_s (dr_i + dr_s + dr_g)
+\end{equation}
+
+Since $dh$ is still the enthalpy, it has to obey the first law:
+
+\begin{equation}
+  \label{eq:newHsatKR2}
+  \frac{dh}{dt} = q - \alpha \frac{dp}{dt} 
+\end{equation}
+or if we have hydrostatic balance:
+
+\begin{equation}
+  \label{eq:newHsatKR3}
+  \frac{dh}{dt} + g\frac{dz}{dt}  = q
+\end{equation}
+
+Note that (\ref{eq:newHsatKR3}) can be rearranged to give the saturated moist adiabatic lapse rate
+with q=0:
+
+\begin{equation}
+  \label{eq:newHsatKR3b}
+ds_v =  dh + g dz   = c_p dT + l_v d r_{sat} + g dz = 0
+\end{equation}
+Equation (\ref{eq:newHsatKR3}b) defines the \textit{moist static energy}, $s_v$,
+which is conserved for adiabatic ascent.  Again, since total water is conserved,
+we are also free to define the \textit{liquid water static energy, $s_l$}:
+
+\begin{equation}
+  \label{eq:newHsatKR3c}
+ds_l =  dh + g dz   = c_p dT - l_v d r_l + g dz = 0
+\end{equation}
+Integrating (\ref{eq:newHsatKR3c}) gives
+\begin{equation}
+  \label{eq:newHsatKR3d}
+s_l = c_p T - l_v r_l + g z
+\end{equation}
+
+How much does condensation heating change the dry adiabatic lapse rate?
+We can calculate this:
+
+\begin{equation}
+  \label{eq:newHsatKR4}
+  dh + g dz  = c_p dT + l_v d r_{sat} + g dz = 0
+\end{equation}
+
+\begin{equation}
+  \label{eq:newHsatKR5}
+  \frac{dh}{dz}= c_p \frac{dT}{dz} + l_v \frac{d r_{sat}}{dz} =  -g
+\end{equation}
+
+\begin{equation}
+  \label{eq:newHsatKR6}
+  \frac{dh}{dz}= c_p \frac{dT}{dz} + l_v \frac{d r_{sat}}{dT} \frac{dT}{dz} =  -g
+\end{equation}
+
+
+\begin{equation}
+  \label{eq:newHsatKR6b}
+ \frac{dT}{dz} = - \left ( \frac{g}{c_p}  \right ) \left ( \frac{1}{1 + l_v \frac{d r_{sat}}{dT}} 
+\right ) 
+\end{equation}
+
+For typical midlatitude conditions, the evaporation and condensation of water reduces the
+magnitude of $dT/dz$ from about -10 \un{K/km} to -6 \un{K/km}.
+
+\section{Moist entropy}
+\label{sec:moist-entropy}
+
+
+We can divide (\ref{eq:first}) by $T$ and
+substitute (\ref{eq:newH}) for $dh$ to get
+the entropy of the mixture:
+
+\begin{equation}
+  \label{eq:s}
+ds = \frac{q dt}{T} = \frac{c_p}{T} dT + \frac{l_v}{T} d r_{sat} - 
+\frac{R_d}{p} dp
+\end{equation}
+Note that we have made the approximation that $\alpha$, the specific density,
+is about the same for moist and dry air.  You'll integrate (\ref{eq:s})
+numerically using python, but for now we can make some progress by
+using the approximation that
+
+\begin{equation}
+  \label{eq:lvapprx}
+  \frac{l_v}{T} d r_{sat} \approx d \left ( \frac{l_v r_{sat}}{ T} \right )
+\end{equation}
+(note that this is not a good approximation (errors of about 30\% at high temperature,
+but fortuitously there's cancellation in the neglected terms that makes it nearly exact, we'll
+derive the full version later in the course)
+
+
+We'll also need the result from the entropy notes  that:
+
+\begin{equation}
+  \label{eq:theta}
+  c_p \frac{d\theta}{\theta} = c_p \frac{dT}{T} - R_d\frac{dp}{p}
+\end{equation}
+Substituting (\ref{eq:theta}) and (\ref{eq:lvapprx}) into
+(\ref{eq:s}), and taking the adiabatic case ($q=0$) gives a
+a differential equation for the potential temperature under
+an adiabatic transformation:
+
+\begin{equation}
+\label{eq:thetaode}
+c_p \frac{ d \theta}{\theta} = - \frac{l_v}{T} d r_{sat} \approx - d \left ( \frac{l_v r_{sat}}{ T} \right )  
+\end{equation}
+
+As usual, I can fatten and thin (\ref{eq:thetaode}) to get an equation
+for the change in $\theta$ wrt, say, height, for an adiabatic parcel:
+
+\begin{equation}
+\label{eq:dheight}
+ \frac{ d \log \theta}{dz} = - \frac{l_v}{c_ p T}\frac{ d r_{sat}}{dz}
+\end{equation}
+\textit{Convince yourself that (\ref{eq:dheight}) implies that
+  $\theta$ increases with height along a moist adiabat}.  We can
+integrate (\ref{eq:dheight}) to give $\theta$ as a function of height
+(or equivalently, pressure or time).  Since
+$dr_l$ = $-dr_{sat}$, (\ref{eq:dheight}) is equivalent to:
+
+\begin{equation}
+\label{eq:dheightl}
+ \frac{ d \log \theta}{dz} = \frac{l_v}{c_ p T}\frac{d r_l}{dz}
+\end{equation}
+
+There are quite a few different ways to label (\ref{eq:dheight}) or 
+(\ref{eq:dheightl}) but they all provide different names for the
+same adiabat.  In this course we'll use either the 
+\textit{equivalent potential temperature} $\theta_e$, the 
+\textit{liquid water potential temperature} $\theta_l$ or the
+\textit{wet bulb potential temperature} $\theta_w$.  To find the
+\thetae label use (\ref{eq:lvapprx}) and integrate the approximate
+equation from a height where the temperature is so cold that
+effectively $r_{sat}^\prime$ = 0, down to the height of interest, where
+$r_{sat}^\prime = r_w$:
+
+\begin{equation}
+  \label{eq:thetae0}
+  \int_{\thetae}^\theta d \log \theta^\prime = 
+\int_0^{r_{sat}} d \left ( - \frac{l_v r_{sat}^\prime}{c_p T} \right )
+\end{equation}
+
+Since both sides are perfect differentials we can immediately write
+down (\ref{eq:thetae0}) as:
+
+\begin{equation}
+  \label{eq:thetae1}
+  \log \left ( \frac{\theta}{\thetae} \right ) = -\frac{l_v r_{sat}}{c_p T} 
+\end{equation}
+
+or:
+
+\begin{equation}
+  \label{eq:thetae2}
+  \thetae = \theta \exp \left ( \frac{l_v r_{sat}}{c_p T} \right )
+\end{equation}
+
+I'll leave it to you to show by the same approach that (\ref{eq:dheightl}) can
+be integrated to give:
+
+\begin{equation}
+  \label{eq:thetal}
+  \thetal = \theta \exp \left ( - \frac{l_v r_l}{c_p T} \right )
+\end{equation}
+
+One especially useful feature of \thetae is that it is approximately
+constant for precipitation parcels, because $r_l$ doesn't appear in
+(\ref{eq:s}), except as a small term in the mixture heat capacity $c_p$.
+In contrast \thetal assumes implicitly that there is no precipitation
+along the vertical integration, since we assume $dr_l = dr_{sat}$ everywhere.
+The advantage of $\theta_l$ is that it reduces to $\theta$ when
+liquid water is zero (say below or outside of cloud).
+
+
+
+\end{document}
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

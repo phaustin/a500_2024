@@ -1,0 +1,302 @@
+\documentclass[12pt]{article}
+\usepackage{geometry,fancyhdr,xr,hyperref,ifpdf,amsmath,rcs,shortcuts,amsfonts}
+\usepackage{longtable,color,paunits,amsmath,smallsec}
+%\usepackage{lastpage,longtable,color,paunits,amsmath,smallsec}
+%\usepackage{showlabels}
+\geometry{letterpaper,top=50pt,hmargin={20mm,20mm},headheight=15pt} 
+
+
+\pagestyle{fancy} 
+
+\RCS $Revision: 1.1 $
+
+\RCS $Date: 2007/11/23 17:26:55 $
+\fancypagestyle{first}{
+\lhead{A500}
+\chead{Velocity scales}
+%\rhead{page~\thepage/\pageref{LastPage}}
+\rhead{page~\thepage}
+\lfoot{} 
+\cfoot{} 
+\rfoot{}
+}
+
+\ifpdf
+    \usepackage[pdftex]{graphicx} 
+    \usepackage{hyperref}
+    \pdfcompresslevel=0
+    \DeclareGraphicsExtensions{.pdf,.jpg,.mps,.png}
+\else
+    \usepackage{hyperref}
+    \usepackage[dvips]{graphicx}
+    \DeclareGraphicsRule{.eps.gz}{eps}{.eps.bb}{`gzip -d #1}
+    \DeclareGraphicsExtensions{.eps,.eps.gz}
+\fi
+
+\newcommand{\vect}[1]{\mathbf{{#1}}}
+
+\begin{document}
+
+\pagestyle{first}
+
+\begin{center}
+Convective and surface velocity scales\\
+\end{center}
+
+\section{Convective velocity scale $w_*$}
+\label{sec:recap}
+
+Two ways to understand Stull (4.2a) for the convective velocity scale:
+
+\begin{equation}
+  \label{eq:wstar}
+  w_* = \left (  \frac{ g z_i}{\overline{ \theta_v}} \left (  \overline{ w^\prime \theta_v^\prime } \right )_s \right )^{1/3}
+\end{equation}
+
+
+\begin{enumerate}
+\item Intuitively the scales that matter in free convection are the surface buoyancy flux and the inversion height.
+From the energy equation 5.1.a we know that the buoyancy flux has the form:
+
+\begin{equation}
+  \label{eq:buoyflux}
+F_{B} =  \frac{ g }{\overline{ \theta_v}} \left (  \overline{ w^\prime \theta_v^\prime } \right )_s
+\end{equation}
+with units of $m^2\,s^{-3}$, the only way to get a quantity with units of length/time from $z_i$ and $F_b$ is to take the cube
+root of $z_i F_B$.
+
+
+\item Vertical integration of the TKE equation:  We know that by definition in
+a well-mixed layer with temeprature changing uniformly with height the
+buoyancy flux has to depend linearly on z (see, e.g. Figure 6.7 p. 223).
+
+\begin{equation}
+  \label{eq:linear}
+ \left (\overline{ w^\prime \theta_v^\prime } \right ) =  \left (\overline{ w^\prime \theta_v^\prime } \right )_s  \left (    1 - \frac{ z}{z_i}  \right )
+\end{equation}
+
+What is the contribution of  $\left (\overline{ w^\prime \theta_v^\prime } \right )$ to the layer TKE?
+
+\begin{equation}
+  \label{eq:contrib}
+  \begin{split}
+  \int_{ 0}^{z_i} \frac{ \partial e}{\partial t} \!\,d z =\int_{ 0}^{z_i} \frac{ g }{\overline{\theta_v}} \left (\overline{ w^\prime \theta_v^\prime } \right )_s \left (   1 - z/z_i  \right )\, dz\\
+ = \frac{ g }{\overline{\theta_v}}  \left [ \left [ \left (\overline{ w^\prime \theta_v^\prime } \right )_s z \right ]_s^{z_i}  
+ - \left [ \frac{\left (\overline{ w^\prime \theta_v^\prime } \right )_s }{z_i} \frac{ z^2}{2} \right ]_0^{z_i}  \right ] = 
+\frac{ g }{\overline{\theta_v}} \frac{\left (\overline{ w^\prime \theta_v^\prime } \right )_s  }{2} z_i  
+  \end{split}
+\end{equation}
+If we ignore the time dependence of $z_i$ and write the vertical average TKE as $\hat{e} = \frac{ 1}{z_i} \int_{ 0}^{z_i} e\!\,d z$
+the (\ref{eq:contrib}) becomes:
+
+\begin{equation}
+  \label{eq:contrib2}
+  \frac{ \partial }{ \partial t} \left ( z_i \hat{e}  \right ) = \frac{ g }{\overline{\theta_v}} 
+\frac{  \left (\overline{ w^\prime \theta_v^\prime } \right )_s }{2} z_i
+\end{equation}
+and since we've assume $z_i$ constant:
+
+\begin{equation}
+  \label{eq:contrib3}
+  \frac{ \partial  \hat{e}}{ \partial t}   = \frac{ g }{\overline{\theta_v}} 
+\frac{  \left (\overline{ w^\prime \theta_v^\prime } \right )_s }{2}
+\end{equation}
+
+So we recover the definition of \eqref{eq:final} $w^3_* = \frac{ g }{\overline{\theta_v}} \left (\overline{ w^\prime \theta_v^\prime } \right )_s z_i$ 
+if we:
+
+\begin{enumerate}
+\item Assume that the layer-averaged TKE scales as a velocity-squared:  $\hat{e} \sim \frac{w_* w_* }{2}$
+\item Assume that the principal time scale of interest is the time it takes air moving at velocity $w_*$ to move the
+depth of the boundary layer $z_i$:  $t_* = z_i/w_*$.
+\end{enumerate}
+
+The we can form new nondimensional variables $\frac{w_* w*} {2} \widetilde{e}=  \hat{e} $ and
+$\frac{z_i }{w_*} \widetilde{t} = t$, so that (\ref{eq:contrib3}) gets written as:
+
+\begin{equation}
+  \label{eq:contrib4}
+\frac{ w_*^2}{2} \frac{w_* }{z_i}  \frac{ \partial }{ \partial \widetilde{t}} \left (\widetilde{e}  \right ) = 
+\frac{ g }{\overline{\theta_v}} 
+\frac{  \left (\overline{ w^\prime \theta_v^\prime } \right )_s }{2} 
+\end{equation}
+but if we've done the scaling right, then $\frac{\partial \widetilde{e} }{ \partial \widetilde{t}} \sim 1$, so rearrange
+and get:
+
+
+\begin{equation}
+  \label{eq:final}
+    w_*^3 = \left (  \frac{ g z_i}{\overline{ \theta_v}} \left (  \overline{ w^\prime \theta_v^\prime } \right )_s \right )
+\end{equation}
+
+
+\end{enumerate}
+
+\section{Convective velocity scale $w_*$ including entrainment}
+
+
+In reality, in clear air entrainment changes the vertical profile of the buoyancy flux from
+
+\begin{equation}
+  \label{eq:linear2}
+ \left (\overline{ w^\prime \theta_v^\prime } \right ) =  \left (\overline{ w^\prime \theta_v^\prime } \right )_s  \left (    1 - \frac{ z}{z_i}  \right )
+\end{equation}
+
+
+to
+
+\begin{equation}
+  \label{eq:linearent}
+ \left (\overline{ w^\prime \theta_v^\prime } \right ) =  \left (\overline{ w^\prime \theta_v^\prime } \right )_s  \left (    1 - \frac{ z}{z_i}  \right )
+  + \left (\overline{ w^\prime \theta_v^\prime } \right )_i  
+\end{equation}
+where $\left (\overline{ w^\prime \theta_v^\prime } \right )_i$ is the buoyancy flux at the inversion, which the dry boundary layer
+we will take to be some fraction (and opposite sign) of the  surface buoyancy flux:
+
+\begin{equation}
+  \label{eq:propto}
+  (\overline{ w^\prime \theta_v^\prime })_i = -A (\overline{ w^\prime \theta_v^\prime })_s
+\end{equation}
+where A=0.2 for the dry boundary layer
+
+Using \eqref{eq:propto} gives:
+\begin{equation}
+  \label{eq:linear2}
+ \left (\overline{ w^\prime \theta_v^\prime } \right ) =  \left (\overline{ w^\prime \theta_v^\prime } \right )_s  \left (    1 - \frac{12}{10}\frac{ z}{z_i}  \right )
+\end{equation}
+
+Taking the vertical integral
+\begin{equation}
+  \label{eq:linear3}
+\int_0^{z_i} \left (\overline{ w^\prime \theta_v^\prime } \right ) dz =  
+\int_0^{z_i} \left (\overline{ w^\prime \theta_v^\prime } \right )_s  \left (    1 - \frac{12}{10}\frac{ z}{z_i}  \right )dz
+\end{equation}
+
+and if we define the convective velocity scale as:
+
+\begin{equation}
+  \label{eq:convent}
+  w_*^3 =  2.5 \frac{g}{\theta_0} \int_0^{z_i} \left (\overline{ w^\prime \theta_v^\prime } \right ) dz =  
+2.5 \frac{g}{\theta_0} \int_0^{z_i} \left (\overline{ w^\prime \theta_v^\prime } \right )_s  \left (    1 - \frac{12}{10}\frac{ z}{z_i}  \right )dz
+= \frac{g}{\theta_0} z_i \left ( \overline{ w^\prime \theta_v^\prime } \right )_s
+\end{equation}
+we recover the original definition of \eqref{eq:final}.
+
+
+\section{Surface (friction) velocity scale $u_*$}
+\label{sec:surf-frict-veloc}
+
+From p.~67 we know that the friction velociy is a measure of the loss of momentum to the
+ground:
+
+\begin{equation}
+  \label{eq:friction}
+  u_*^2 \sim \langle u^\prime w^\prime \rangle_s
+\end{equation}
+
+There is an addition connection between $u_*$ and the lower part of the boundary layer, discussed
+in chapter 9 (p.~378).  In statically neutral conditions it is not unusual to find
+$\left (\overline{ w^\prime u^\prime } \right )$ constant to witin about 10\% through the
+bottom couple of hundred meters (the ``constant flux surface layer'').  Given that, and introducing
+the idea of a ``mixing length'' $l$ that represents the size of turbulent eddies that proudce
+downgradient turbulent momentum transport towards the surface such that
+
+\begin{equation}
+  \label{eq:uprime}
+  u^\prime  \sim - l \frac{\partial  \overline{ u}}{\partial z} 
+\end{equation}
+(see Stull Figure 6.1)
+
+Then the momentum flux is given by 
+
+\begin{equation}
+  \label{eq:momflux}
+  \overline{ \rho} \left (\overline{ w^\prime u^\prime } \right ) = - \overline{ \rho}
+\left (   \overline{ w^\prime l }  \right ) \frac{\partial  \overline{ u}}{\partial z} 
+\end{equation}
+If the turbulence is fully developed then the eddies are roughly isotropic and we have
+
+\begin{equation}
+  \label{eq:wprime}
+  w^\prime  \sim - l \frac{\partial  \overline{ u}}{\partial z} 
+\end{equation}
+so combining (\ref{eq:uprime}) and (\ref{eq:uprime}) we get:
+
+\begin{equation}
+  \label{eq:prandtl}
+  \left (\overline{ w^\prime u^\prime } \right ) \sim l^2 \left ( \frac{\partial  \overline{ u}}{\partial z}   \right )^2
+\end{equation}
+
+
+
+
+ 
+\subsection{The von Karman constant and the log-layer profile (Stull Section 5.8}
+\label{sec:von-karman-constant}
+
+Prandtl assumed that most of the transport at height z was due to eddies
+with size $\sim$ z, i.e.~l $sim$ kz where $k$, the von Karman constant is
+taken from measurements to be in the range 0.3-0.4.  If we are in the constant
+stress layer where $u_*$ doesn't change with height, then
+
+ \begin{equation}
+  \label{eq:stress}
+  u_* \sim l \left ( \frac{\partial  \overline{ u}}{\partial z} \right )  = kz \frac{\partial  \overline{ u}}{\partial z}
+\end{equation}
+can easily be integrated from height $z_0$ (the roughness length) to $z$:
+
+\begin{equation}
+  \label{eq:integ}
+  \int_{ z_0}^{z}\!\, d \overline{u } = \int_{ z_0}^{z}\!\,\frac{u_* }{k}  d \ln z
+\end{equation}
+which yields:
+
+\begin{equation}
+  \label{eq:integ2}
+  \overline{u }(z) = \frac{ u_*}{k}  \ln \frac{z }{z_0} 
+\end{equation}c
+
+
+\subsection{Neutral drag coefficient}
+\label{sec:neutr-drag-coeff}
+
+The momentum transport in the neutral surface layer can also be written in the form of a \textit{neutral drag coefficient}
+$C_{DN}$ (Stull 7.4.1a):
+
+\begin{equation}
+  \label{eq:drag}
+  u_*^2 = - C_{DN} \overline{ M}^2
+\end{equation}
+where $M^2 = u^2 + v^2$, or using (\ref{eq:integ2}) we can get Stull 7.4.1i:
+
+\begin{equation}
+  \label{eq:cdn}
+  C_{DN} = k^2 \left ( \ln \left ( \frac{ z}{z_0}   \right )  \right )^{-2}
+\end{equation}
+which is used in the drag laws (p. 262):
+
+
+\begin{gather}
+  \overline{u^\prime w^\prime}_s = -C_D \overline{M} \overline{U}\\
+\overline{v^\prime w^\prime}_s = -C_D \overline{M} \overline{V}
+\end{gather}
+
+Next lecture we will show that 
+$z_i$, $w_*$  and $u_*$ are related by the Obukhov Length $L$,
+(Stull Section 5.7)
+
+\begin{equation}
+  \label{eq:mo}
+  \frac{ z_i}{L} = -k \frac{ w^3_*}{u_*^3} 
+\end{equation}
+
+
+\end{document}
+
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:
+

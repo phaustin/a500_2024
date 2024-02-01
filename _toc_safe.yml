@@ -29,23 +29,13 @@ parts:
       title: Thermo - First law of thermodynamics
     - url: https://www.dropbox.com/scl/fi/iknh9dm4iu1tfssa4724j/entropy.pdf?rlkey=buxyohh3w52ou6vk774s3xexq&dl=0
       title: Thermo - Entropy and potential temperature
-    - url: https://www.dropbox.com/scl/fi/zuk9evzf47qdsxi9tvgx7/thermo.pdf?rlkey=hbz3bpt6gxv5ly8rg1njfj9e4&dl=0
-      title: Thermo - moist static energy
     - url: https://www.dropbox.com/scl/fi/sosiyoxa9bzhecea5qas9/hydro.pdf?rlkey=7wll6s0yc4t0dlojzx56082iw&dl=0
       title: Weighted averages and scale heights
     - url: https://www.dropbox.com/scl/fi/ygb2bi2riqo23ostxo8lw/buoyancy.pdf?rlkey=b80rbwtzartk4qp5dt9gjvsf6&dl=0
       title: Week 3 - Bouyancy
-    - url: https://www.dropbox.com/scl/fi/5m7x5opmp5p6ooe86imlj/virtual_temperature.pdf?rlkey=yjmfkbt417gpjv0cwwfyoi0c4&dl=0
-      title: Week 4 - virtual temperature
-    - url: https://www.dropbox.com/scl/fi/ezjs46bsqegvnzasujnic/velocity_scales.pdf?rlkey=tkgf0zu4kxjnpmssa3zwglp2i&dl=0
-      title: Week4 - velocity scales (just part 1)
-    - url: https://www.dropbox.com/scl/fi/zwjwuzed05cvya6xydj9e/taylor_series.pdf?rlkey=jt7zu8gedkwxaosty87e7h0o8&dl=0
-      title: Taylor series and Reynolds averaging
   - caption: Assignments
-    chapters:
-    - file: assignments/md_dry_les.ipynb
-    - file: assignments/dry_les_2024_solution.md
-    - file: assignments/hydrostatic_2024.md
+    chaprers:
+    - file: notebooks/hydrostatic_2024.md
     - url: https://www.dropbox.com/scl/fi/etj9r3hvt5rm3azz650l0/hydrostatic_2024.ipynb?rlkey=5fkvw08t872305rn9zboktw57&dl=0
       title: Assignment 2 hydrostatic balance notebook download
   - caption: Notebooks
@@ -58,17 +48,13 @@ parts:
     - file: notebooks/skew_coords_solution.md
     - url: https://www.dropbox.com/scl/fi/k1gswj3eocbsehbu4xvrq/skew_coords_solution.ipynb?rlkey=f6kp1pzzf4u14nwgk5gfvtffs&dl=0
       title: thermodynamic worksheet download
-    - url: https://www.dropbox.com/scl/fi/dfj80s9q920ljni5aakfc/tropical_subset.nc?rlkey=2fc2wr2yb70e4i6l9c7gwcyj3&dl=0
-      title: tropical_subset.nc download
-    - file:  notebooks/tropical_clouds_solution.md
-    - file:  notebooks/tropical_fluxes.md
-    - url: https://www.dropbox.com/scl/fi/v7vqzumfbegh3yvpoex9f/tropical_fluxes.ipynb?rlkey=n3gktdca6nk12sjyn4iot1v55&dl=0
-      title: tropical_fluxes.ipynb download
   - caption: Journal articles
     chapters:
     - url: https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9704743/
-      title: Are global climate models obsolete?
-    - url: https://journals.ametsoc.org/view/journals/bams/85/11/bams-85-11-1673.xml
-      title: Betts 2004 Horton medal lecture -- GCM hydrology
-    - url: https://agupubs.onlinelibrary.wiley.com/doi/10.3894/James.2009.1.4
-      title: Betts - Land-Surface-Atmosphere coupling review
+      title: 2023 - Are general circulation models obsolete?
+      
+
+#
+# open ~/Dropbox/phil_files/a500/stull_blm_springer.pdf &
+#
+#

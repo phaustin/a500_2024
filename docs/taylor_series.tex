@@ -1,0 +1,120 @@
+\documentclass[12pt]{article}
+\usepackage{geometry,fancyhdr,xr,hyperref,ifpdf,amsmath,rcs,indentfirst}
+\usepackage{lastpage,longtable,Ventry,url,paunits,shortcuts,smallsec,color,tightlist,float}
+\geometry{letterpaper,top=50pt,hmargin={20mm,20mm},headheight=15pt} 
+\usepackage[stable]{footmisc}
+\pagestyle{fancy} 
+
+\RCS $Revision: 1.5 $
+\RCS $Date: 2002/01/09 03:50:54 $
+
+\fancypagestyle{first}{
+\lhead{Taylor's series vs. Reynold's decomposition}
+\chead{}
+\rhead{page~\thepage/\pageref{LastPage}}
+\lfoot{} 
+\cfoot{} 
+\rfoot{}
+}
+
+\ifpdf
+    \usepackage[pdftex]{graphicx} 
+    \usepackage{hyperref}
+    \pdfcompresslevel=0
+    \DeclareGraphicsExtensions{.pdf,.jpg,.mps,.png}
+\else
+    \usepackage{hyperref}
+    \usepackage[dvips]{graphicx}
+    \DeclareGraphicsRule{.eps.gz}{eps}{.eps.bb}{`gzip -d #1}
+    \DeclareGraphicsExtensions{.eps,.eps.gz}
+\fi
+
+
+\begin{document}
+\newcommand{\vect}[1]{\boldsymbol{\vec{#1}}}
+\pagestyle{first}
+
+\section{Expanding the equation of state -- Taylor's series}
+
+
+Let's compare two different ways to calculate perturbations --  expand the equation of state via a Taylor's
+series expansion or Reynold's decomposition.  Specifically consider this equation from the
+\href{http://en.wikipedia.org/wiki/Taylor_series}{Wikipedia entry on Taylor series}:
+
+\begin{align}
+  \label{eq:taylor}
+f(x,y) & \approx f(a,b) +(x-a)\, f_x(a,b) +(y-b)\, f_y(a,b)\nonumber \\
+& {}\quad + \frac{1}{2!}\left[ (x-a)^2\,f_{xx}(a,b) + 2(x-a)(y-b)\,f_{xy}(a,b) +(y-b)^2\, f_{yy}(a,b) \right]
+\end{align}
+where $f_{xy} = \frac{ \partial^2 f}{\partial x \partial y }$, etc.  The goal
+of this problem is to expand $f=p=\rho R_d T$ about the point 
+$p_0(z) = \rho_0(z) R_d T_0(z)$ where $p_0,\ \rho_0,\ T_0$ are the pressure,
+density and temperature at height $z$ for a hydrostatic atmosphere.  Using (\ref{eq:taylor}) with $a=\rho_0$ and $b=T_0$ you should be able to show that
+to second order:
+
+\begin{equation}
+  \label{eq:delta}
+\frac{\Delta p }{p_0}    = \frac{ \Delta T}{T_0} + \frac{ \Delta \rho}{\rho_0} 
+ + \frac{ \Delta T \Delta \rho}{T_0 \rho_0} 
+\end{equation}
+where $\Delta p = p - p_0$, $\Delta T = T - T_0$, $\Delta \rho = \rho - \rho_0$
+
+Note that $\Delta p$, $\Delta T$, and $\Delta \rho$ are all functions of
+(t,x,y,z).
+
+If the atmosphere is close to to hydrostatic balance, then we can neglect the second order 
+$\frac{ \Delta T \Delta \rho}{T_0 \rho_0} $ term and write
+
+\begin{equation}
+  \label{eq:delta}
+\frac{\Delta p }{p_0}    = \frac{ \Delta T}{T_0} + \frac{ \Delta \rho}{\rho_0} 
+\end{equation}
+
+
+\section{Expanding the equation of state -- Reynold's decomposition}
+
+Compare what you just did in Equation~(\ref{eq:delta}) with a Reynold's decomposition:
+
+Define:
+
+\begin{subequations}
+\begin{align}
+  \label{eq:pbar}
+  \langle p \rangle & = \int_{ 0}^{\infty} f(p) p \!\,d p\\
+  p^\prime& = p - \langle p \rangle \\
+  \langle {T \,\rho } \rangle & = \int_{ 0}^{\infty} \int_{ 0}^{\infty} f(T, \rho) \; T \; \rho \; \,dT d \rho \label{eq:corel}
+\end{align}
+\end{subequations}
+where is $f$ is the pdf.
+
+Substituting $T = \langle T \rangle + T^\prime$ and $\rho = \langle {\rho} \rangle + \rho^\prime$ into (\ref{eq:corel})
+and using the definition of probability averaging gives:
+
+\begin{subequations}
+\begin{align}
+  \label{eq:p}
+  p &= R_d \left [ \langle {\rho} \rangle \; \langle {T} \rangle  + \langle {\rho} \rangle  T^\prime + \langle {T} \rangle  \rho^\prime + \rho^\prime T^\prime \right ] \\
+\langle {p} \rangle  & = R_d \left [ \langle {\rho} \rangle  \; \langle {T} \rangle  + \langle {\rho^\prime T^\prime} \rangle  \right ] 
+\end{align}
+\end{subequations}
+
+If the density and temperature fluctuations were uncorrelated, then $\langle {\rho^\prime T^\prime} \rangle \approx 0$ and
+$\langle {p} \rangle  = R_d \langle {\rho} \rangle  \langle {T} \rangle $ and 
+
+
+\begin{subequations}
+\begin{align}
+  \label{eq:pbar}
+  p^\prime& = p - \langle {p} \rangle  \approx R_d \left [  \langle {\rho} \rangle  T^\prime + \langle {T} \rangle  \rho^\prime + \rho^\prime T^\prime \right ] \\
+\frac{p^\prime}{\langle {p} \rangle } & \approx \frac{ T^\prime}{ \langle {T} \rangle } + \frac{\rho^\prime }{\langle {\rho} \rangle } 
++\frac{T^\prime \rho^\prime }{ \langle {T} \rangle  \langle {\rho} \rangle }
+\end{align}
+\end{subequations}
+Note that we haven't said anything about the size of $T^\prime$ or $\rho^\prime$, just their correlation.
+
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:
