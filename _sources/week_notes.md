@@ -48,3 +48,17 @@ Read Chapter 1 of BLM.  For notation, especially virtual temperature, see the fi
   - For the tropical subset dataset plot soundings of the potetial temperature flux, the temperature flux and the virtual potential temperature flux -- are they different
   - For the same notebook, plot the turbulent kinetic energy scaled by the convective velocity scale and the surface velocity scale -- are they different?
   
+*  Week 4 - Thursday
+
+   - Focus on Stull sections 4.4.2 and 4.4.3 on moisture and heat fluxes
+   - Look at sensible and latent fluxes in this notebook: {ref}`tropical_fluxes`
+   - Go over my notes on [moist static energy](https://www.dropbox.com/scl/fi/sosiyoxa9bzhecea5qas9/hydro.pdf?rlkey=7wll6s0yc4t0dlojzx56082iw&dl=0) 
+   - Prep for the Clausius-Clayron equation: [notes on Maxwell's relations](https://www.dropbox.com/scl/fi/o7d278acumkgmwe4y6qlu/clausius.pdf?rlkey=ktd5fvdwaz7ishuxozwmf6kwa&dl=0)
+   - New example articles covering material from Chapter 7:  [Betts Horton Lecture](https://journals.ametsoc.org/view/journals/bams/85/11/bams-85-11-1673.xml) and [Betts Land Surface Coupling review](https://agupubs.onlinelibrary.wiley.com/doi/10.3894/James.2009.1.4)
+
+   - For next Tuesday:
+   
+     - Read Stull Chapter 5
+     - Read my [static energy notes](https://www.dropbox.com/scl/fi/sosiyoxa9bzhecea5qas9/hydro.pdf?rlkey=7wll6s0yc4t0dlojzx56082iw&dl=0) through page 6
+     - Read my derivation of the [Clausius-Clapyron equation](https://www.dropbox.com/scl/fi/o7d278acumkgmwe4y6qlu/clausius.pdf?rlkey=ktd5fvdwaz7ishuxozwmf6kwa&dl=0)
+     
