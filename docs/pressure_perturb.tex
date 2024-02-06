@@ -1,0 +1,157 @@
+\documentclass[12pt]{article}
+\usepackage{geometry,fancyhdr,xr,hyperref,ifpdf,amsmath,rcs,shortcuts,amsfonts}
+\usepackage{lastpage,longtable,color,paunits,amsmath,smallsec}
+%\usepackage{showlabels}
+\geometry{letterpaper,top=50pt,hmargin={20mm,20mm},headheight=15pt} 
+
+
+\pagestyle{fancy} 
+
+\RCS $Revision: 1.1 $
+
+\RCS $Date: 2007/11/23 17:26:55 $
+\fancypagestyle{first}{
+\lhead{}
+\chead{Pressure perturbations}
+\rhead{page~\thepage/\pageref{LastPage}}
+\lfoot{} 
+\cfoot{} 
+\rfoot{}
+}
+
+\ifpdf
+    \usepackage[pdftex]{graphicx} 
+    \usepackage{hyperref}
+    \pdfcompresslevel=0
+    \DeclareGraphicsExtensions{.pdf,.jpg,.mps,.png}
+\else
+    \usepackage{hyperref}
+    \usepackage[dvips]{graphicx}
+    \DeclareGraphicsRule{.eps.gz}{eps}{.eps.bb}{`gzip -d #1}
+    \DeclareGraphicsExtensions{.eps,.eps.gz}
+\fi
+
+\newcommand{\vect}[1]{\mathbf{{#1}}}
+
+\begin{document}
+
+\pagestyle{first}
+
+\begin{center}
+Atsc500: The pressure perturbation\\
+\end{center}
+
+
+\textit{below I'm following the argument in Garratt, J. R., The atmospheric boundary layer, p. 36}
+
+In section 4.3 (p.~123) Stull derives the equation for the time evolution of 
+the perturbation kinetic energy/kg  which is
+ $\frac{1 }{2} \left [ {u_1^\prime}^2 + {u_2^\prime}^2 + {u_3^\prime}^2 \right ]$.  This produces 
+pressure perturbation terms of the form:
+
+\begin{gather}
+  -2 \overline{  \left (  \frac{ {u_i^\prime}  }{ \rho}   \right )  \frac{\partial p^\prime  }{\partial x_i} }
+\end{gather}
+which Roland rewrites using the chain rule as:
+
+\begin{gather}
+    -2 \overline{  \left (  \frac{ {u_i^\prime}  }{ \rho}   \right )  \frac{\partial p^\prime  }{\partial x_i} }
+=  \underbrace{  - \frac{2 }{\rho} \frac{\partial \overline{  (u_i^\prime p^\prime )}  }{\partial x_i }  }_I
++ \underbrace{
+2 \overline{ \left (  \frac{p^\prime  }{\rho}  \right ) \left (  \frac{\partial   u_i^\prime }  {\partial x_i }  \right ) }}_{II}
+\end{gather}
+
+He notes that term (II) sums to zero, because the Bousinesq continuity
+equation requires that $\nabla \cdot \vect{u} =0$.  Term (II) is still
+important though, because it ``switches'' the kinetic energy between
+components, producing what is sometimes called ``return to isotropy''.
+
+First note Stull's derivation (eq.~4.3.1b, p. 122) where he shows that the dissipation rate $\epsilon$ 
+can be written as: 
+
+\begin{gather}
+ 2 \nu u_i\prime \frac{\partial^2 \overline{ {u_i^\prime}^2 } }{\partial x_j \partial x_j}     = 
+2 \nu \overline{ \vect{u} \cdot \nabla^2 \vect{u}    }  \approx
+- 2 \nu \overline{ \nabla \vect{u} \cdot \nabla \vect{u}    }
+ = - 2 \nu \overline{ \left (  \frac{\partial u^\prime_i }{\partial x_j}  \right )^2 } = - 2 \epsilon < 0
+\end{gather}
+
+Now consider a boundary layer in which there is  $u(z)$ component, with no variation in $x$ or $y$.  
+Since $\epsilon$ only
+becomes large on the smallest scales, and since turbulence on the smallest scale is isotropic,
+we will divide $2 \epsilon$ evenly between the three velocity components.  Neglecting the 
+Coriolis force, the three components of 4.3.1a can be written:
+
+\begin{subequations}
+\label{eq:perturb}
+\begin{align}
+  \frac{\partial  \overline{ u^{^\prime 2}}}{\partial t} = & 
+- \overline{ u^\prime w^\prime  } \frac{\partial  \overline{u } }{\partial  z} &
++ \frac{ 1}{\rho} \left (    \overline{ p^\prime \frac{ \partial u^\prime }{\partial x}  }  \right ) & - \frac{2 \epsilon }{3} \label{eq:up}\\
+  \frac{\partial  \overline{ v^{^\prime 2}}}{\partial t} = & \text{ }
+  &
++ \frac{ 1}{\rho} \left (   \overline{ p^\prime \frac{ \partial v^\prime }{\partial y}  }  \right ) & - \frac{2 \epsilon }{3}\label{eq:vp}\\
+  \frac{\partial  \overline{ w^{^\prime 2}}}{\partial t} = & \text{ }
+  &  
++ \frac{ 1}{\rho} \left (   \overline{ p^\prime \frac{ \partial w^\prime }{\partial z}  }  \right )  & - \frac{2 \epsilon }{3}\label{eq:wp}
+\end{align}
+\end{subequations}
+
+What does this tell us about the $p^\prime$ terms?  We already know that they sum to zero.  We also know
+that at the smallest scales, where $\epsilon$ is large (and positive) and turbulence is
+isotropic,
+$\overline{ u^{^\prime 2}}, \overline{ v^{^\prime 2}}$ and 
+$\overline{ w^{^\prime 2}}$ are all about the
+same size, so the time derivatives for $\overline{ u^{^\prime 2}}$ and  
+$\overline{ v^{^\prime 2}}$ can't be
+negative, or horizontal turbulence will fall to zero.   That means
+that the pressure perturbation terms in (\ref{eq:vp}) and (\ref{eq:wp})
+have to be positive to achieve steady state.
+And again because  $\epsilon$ is positive, that means that the only source
+of TKE in this system is $\overline{ u^\prime w^\prime  } \frac{\partial  \overline{u } }{\partial  z}$, i.e. all of the turbulent energy is entering through
+(\ref{eq:up}).
+So if we 
+ write the individual pressure perturbation terms as $P=\frac{2 \epsilon }{3}$ 
+then $P$ has to
+be positive in equations (\ref{eq:wp}) and (\ref{eq:wp}) and in
+steady state 
+$  \frac{\partial  \overline{ v^{^\prime 2}}}{\partial t}$ =
+$  \frac{\partial  \overline{ w^{^\prime 2}}}{\partial t}$=0, 
+we know that $P = \frac{2 \epsilon }{3} > 0$. Again, since 
+the sum of the total pressure perturbation across all components
+has to be 0, we know that $\frac{ 1}{\rho} \left (    \overline{ p^\prime \frac{ \partial u^\prime }{\partial x}  } \right )$ needs to be $-2P$ to make this
+happen.  So  rewrite
+(\ref{eq:perturb}) as:
+
+\begin{subequations}
+\label{eq:perturb2}
+\begin{align}
+  \frac{\partial  \overline{ u^{^\prime 2}}}{\partial t} = & 
+- \overline{ u^\prime w^\prime  } \frac{\partial  \overline{u } }{\partial  z} &
+-  2 P & - \frac{2 \epsilon }{3} \\
+  \frac{\partial  \overline{ v^{^\prime 2}}}{\partial t} = & \text{ }
+  &
++ P & - \frac{2 \epsilon }{3}\\
+  \frac{\partial  \overline{ w^{^\prime 2}}}{\partial t} = & \text{ }
+  & + P  & - \frac{2 \epsilon }{3}
+\end{align}
+\end{subequations}
+
+Equation (\ref{eq:perturb2}) is saying that, as $u^\prime$ grows, it
+develops a large negative correlation between the horizontal shear
+of the turbulence and the pressure perturbation:
+$2P = - \frac{ 1}{\rho} \left (    \overline{ p^\prime \frac{ \partial u^\prime }{\partial x}  }  \right )$.  This removes TKE from the horizontal, and
+distributes it into the meridional and vertical components, 
+keeping the turbulence isotropic.
+
+
+
+
+
+\end{document}
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:
