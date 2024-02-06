@@ -62,6 +62,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'week_notes';</script>
     <link rel="canonical" href="https://phaustin.github.io/a500_2024/week_notes.html" />
     <link rel="index" title="Index" href="genindex.html" />
@@ -192,6 +194,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fi/5m7x5opmp5p6ooe86imlj/virtual_temperature.pdf?rlkey=yjmfkbt417gpjv0cwwfyoi0c4&amp;dl=0">Week 4 - virtual temperature</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fi/ezjs46bsqegvnzasujnic/velocity_scales.pdf?rlkey=tkgf0zu4kxjnpmssa3zwglp2i&amp;dl=0">Week4 - velocity scales (just part 1)</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fi/zwjwuzed05cvya6xydj9e/taylor_series.pdf?rlkey=jt7zu8gedkwxaosty87e7h0o8&amp;dl=0">Taylor series and Reynolds averaging</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fi/7tkg65ar1u9emumxervu5/pressure_perturb.pdf?rlkey=gu3miynu1k28cs1985mrxxu4h&amp;dl=0">pressure perturbation notes</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fi/yqegu0q64a2t6sipms7t4/bussinger_critical_ri.pdf?rlkey=34m6gyzz5lv9oaxum8xx7ynge&amp;dl=0">Bussinger on the critical Richardson number</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Assignments</span></p>
 <ul class="nav bd-sidenav">
@@ -213,6 +217,10 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 <li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fi/v7vqzumfbegh3yvpoex9f/tropical_fluxes.ipynb?rlkey=n3gktdca6nk12sjyn4iot1v55&amp;dl=0">tropical_fluxes.ipynb download</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notebooks/clausius_claphyron_rootfind.html">Using a rootfinder to solve implicit equations</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fi/545s100t4a5ikdwr3hk4o/clausius_claphyron_rootfind.ipynb?rlkey=v8fkd78xtx23y7qhi42v20npv&amp;dl=0">Clausius-Clapyron notebook download</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notebooks/moist_adiabats.html">Moist adiabats and the LCL</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fi/smr3r2wdjecql7vzt257o/moist_adiabats.ipynb?rlkey=wnrfuygfj15zdfscbce6dufqg&amp;dl=0">moist adiabat notebook</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Journal articles</span></p>
 <ul class="nav bd-sidenav">
@@ -379,7 +387,21 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#for-next-week">For next week:</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#week-4">Week 4</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#week-4">Week 4</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tuesday">Tuesday</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#for-next-tuesday">For next Tuesday</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#thursday">Thursday</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">For next Tuesday:</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#week-5">Week 5</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Tuesday</a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -437,38 +459,80 @@ document.write(`
 </section>
 <section id="week-4">
 <h2>Week 4<a class="headerlink" href="#week-4" title="Permalink to this heading">#</a></h2>
+<section id="tuesday">
+<h3>Tuesday<a class="headerlink" href="#tuesday" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
-<li><p>Go over</p>
-<ul>
 <li><p>notes on Taylor’s series and Reynold’s averaging</p></li>
 <li><p>notes on the velocity scale</p></li>
 <li><p>notes on virtual potential temperature</p></li>
 </ul>
-</li>
-<li><p>For next Tuesday</p>
-<ul>
+<section id="for-next-tuesday">
+<h4>For next Tuesday<a class="headerlink" href="#for-next-tuesday" title="Permalink to this heading">#</a></h4>
+<ul class="simple">
 <li><p>Do Stull Chapter 4 problems 1, 3, 5</p></li>
 <li><p>For the tropical subset dataset plot soundings of the potetial temperature flux, the temperature flux and the virtual potential temperature flux – are they different</p></li>
 <li><p>For the same notebook, plot the turbulent kinetic energy scaled by the convective velocity scale and the surface velocity scale – are they different?</p></li>
 </ul>
-</li>
-<li><p>Week 4 - Thursday</p>
-<ul>
+</section>
+</section>
+<section id="thursday">
+<h3>Thursday<a class="headerlink" href="#thursday" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
 <li><p>Focus on Stull sections 4.4.2 and 4.4.3 on moisture and heat fluxes</p></li>
-<li><p>Look at sensible and latent fluxes in this notebook: <a class="reference internal" href="notebooks/tropical_fluxes.html#tropical-fluxes"><span class="std std-ref">Energy and vapor fluxes in the tropical boundary layer</span></a></p></li>
+<li><p>Look at sensible and latent fluxes in this notebook: <span class="xref std std-ref">tropical_fluxes</span></p></li>
 <li><p>Go over my notes on <a class="reference external" href="https://www.dropbox.com/scl/fi/sosiyoxa9bzhecea5qas9/hydro.pdf?rlkey=7wll6s0yc4t0dlojzx56082iw&amp;dl=0">moist static energy</a></p></li>
 <li><p>Prep for the Clausius-Clayron equation: <a class="reference external" href="https://www.dropbox.com/scl/fi/o7d278acumkgmwe4y6qlu/clausius.pdf?rlkey=ktd5fvdwaz7ishuxozwmf6kwa&amp;dl=0">notes on Maxwell’s relations</a></p></li>
 <li><p>New example articles covering material from Chapter 7:  <a class="reference external" href="https://journals.ametsoc.org/view/journals/bams/85/11/bams-85-11-1673.xml">Betts Horton Lecture</a> and <a class="reference external" href="https://agupubs.onlinelibrary.wiley.com/doi/10.3894/James.2009.1.4">Betts Land Surface Coupling review</a></p></li>
-<li><p>For next Tuesday:</p>
+</ul>
+<section id="id1">
+<h4>For next Tuesday:<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h4>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span> - Read Stull Chapter 5
+ - Read my [static energy notes](https://www.dropbox.com/scl/fi/zuk9evzf47qdsxi9tvgx7/thermo.pdf?rlkey=hbz3bpt6gxv5ly8rg1njfj9e4&amp;dl=0)
+ - Read my derivation of the [Clausius-Clapyron equation](https://www.dropbox.com/scl/fi/o7d278acumkgmwe4y6qlu/clausius.pdf?rlkey=ktd5fvdwaz7ishuxozwmf6kwa&amp;dl=0)
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+<section id="week-5">
+<h2>Week 5<a class="headerlink" href="#week-5" title="Permalink to this heading">#</a></h2>
+<section id="id2">
+<h3>Tuesday<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h3>
 <ul>
-<li><p>Read Stull Chapter 5</p></li>
-<li><p>Read my <a class="reference external" href="https://www.dropbox.com/scl/fi/sosiyoxa9bzhecea5qas9/hydro.pdf?rlkey=7wll6s0yc4t0dlojzx56082iw&amp;dl=0">static energy notes</a> through page 6</p></li>
-<li><p>Read my derivation of the <a class="reference external" href="https://www.dropbox.com/scl/fi/o7d278acumkgmwe4y6qlu/clausius.pdf?rlkey=ktd5fvdwaz7ishuxozwmf6kwa&amp;dl=0">Clausius-Clapyron equation</a></p></li>
+<li><p>Thermodyamics – important points</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>- Equations 39 and 41 for the moist and liquid static energies: 
+
+  $$
+  \begin{align}
+  s_v &amp;= c_p T + l_v r_v + gz \\
+  s_l &amp; = c_p T - l_v r_l + gz 
+  \end{align}
+  $$
+</pre></div>
+</div>
+<ul>
+<li><p>Equation 54 and 55  for the equivalent potential temperature and liquid water potential temperature</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+        \begin{align}
+         \theta_e &amp;= \theta \exp \left ( \frac{l_v r_{sat}}{c_p T} \right )\\
+         \theta_l &amp;= \theta \exp \left ( - \frac{l_v r_l}{c_p T} \right )
+        \end{align}
+       \end{split}\]</div>
+</li>
+<li><p>Note that <span class="math notranslate nohighlight">\(s_v\)</span>, <span class="math notranslate nohighlight">\(s_l\)</span>, <span class="math notranslate nohighlight">\(\theta_v\)</span> and <span class="math notranslate nohighlight">\(theta_l\)</span> all approximately label the same moist adiabat on a tephigram, because they are all approximately conserved for adiabatic ascent and descent</p></li>
+</ul>
+</li>
+<li><p>Thermodynamics: <a class="reference internal" href="notebooks/clausius_claphyron_rootfind.html#rootfind"><span class="std std-ref">Using a rootfinder to solve implicit equations</span></a></p></li>
+<li><p>Thermodynamics: <a class="reference internal" href="notebooks/moist_adiabats.html#moist-adiabats"><span class="std std-ref">Moist adiabats and the LCL</span></a></p></li>
+<li><p>Chapter 4/5 topics</p>
+<ul class="simple">
+<li><p>Chapter 4: <a class="reference external" href="https://www.dropbox.com/scl/fi/7tkg65ar1u9emumxervu5/pressure_perturb.pdf?rlkey=gu3miynu1k28cs1985mrxxu4h&amp;dl=0">pressure perturbation notes</a></p></li>
+<li><p>Chapter 5: Bussinger article on the <a class="reference external" href="https://www.dropbox.com/scl/fi/yqegu0q64a2t6sipms7t4/bussinger_critical_ri.pdf?rlkey=34m6gyzz5lv9oaxum8xx7ynge&amp;dl=0">critcial Richardson number</a></p></li>
 </ul>
 </li>
 </ul>
-</li>
-</ul>
+</section>
 </section>
 </section>
 
@@ -548,7 +612,21 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#for-next-week">For next week:</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#week-4">Week 4</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#week-4">Week 4</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tuesday">Tuesday</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#for-next-tuesday">For next Tuesday</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#thursday">Thursday</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">For next Tuesday:</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#week-5">Week 5</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Tuesday</a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 

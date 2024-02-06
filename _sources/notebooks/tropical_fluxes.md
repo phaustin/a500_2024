@@ -12,7 +12,7 @@ kernelspec:
   name: python3
 ---
 
-(tropical_fluxes)=
+(tropical_fluxes)=o
 # Energy and vapor fluxes in the tropical boundary layer
 
 Stull Chapter 4.4.2 and 4.4.3 give equations for the turbulent heat and moisture fluxes.  In this notebook
