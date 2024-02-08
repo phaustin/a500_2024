@@ -58,9 +58,9 @@ Read Chapter 1 of BLM.  For notation, especially virtual temperature, see the fi
 
    #### For next Tuesday:
    
-     - Read Stull Chapter 5
-     - Read my [static energy notes](https://www.dropbox.com/scl/fi/zuk9evzf47qdsxi9tvgx7/thermo.pdf?rlkey=hbz3bpt6gxv5ly8rg1njfj9e4&dl=0)
-     - Read my derivation of the [Clausius-Clapyron equation](https://www.dropbox.com/scl/fi/o7d278acumkgmwe4y6qlu/clausius.pdf?rlkey=ktd5fvdwaz7ishuxozwmf6kwa&dl=0)
+   - Read Stull Chapter 5
+   - Read my [static energy notes](https://www.dropbox.com/scl/fi/zuk9evzf47qdsxi9tvgx7/thermo.pdf?rlkey=hbz3bpt6gxv5ly8rg1njfj9e4&dl=0)
+   - Read my derivation of the [Clausius-Clapyron equation](https://www.dropbox.com/scl/fi/o7d278acumkgmwe4y6qlu/clausius.pdf?rlkey=ktd5fvdwaz7ishuxozwmf6kwa&dl=0)
      
 
 ## Week 5
@@ -69,14 +69,14 @@ Read Chapter 1 of BLM.  For notation, especially virtual temperature, see the fi
 
 - Thermodyamics -- important points
 
-      - Equations 39 and 41 for the moist and liquid static energies: 
-  
-        $$
-        \begin{align}
-        s_v &= c_p T + l_v r_v + gz \\
-        s_l & = c_p T - l_v r_l + gz 
-        \end{align}
-        $$
+    - Equations 39 and 41 for the moist and liquid static energies: 
+
+      $$
+      \begin{align}
+      s_v &= c_p T + l_v r_v + gz \\
+      s_l & = c_p T - l_v r_l + gz 
+      \end{align}
+      $$
     
     - Equation 54 and 55  for the equivalent potential temperature and liquid water potential temperature
     
@@ -87,7 +87,7 @@ Read Chapter 1 of BLM.  For notation, especially virtual temperature, see the fi
         \end{align}
        $$
   
-    - Note that $s_v$, $s_l$, $\theta_v$ and $theta_l$ all approximately label the same moist adiabat on a tephigram, because they are all approximately conserved for adiabatic ascent and descent
+    - Note that $s_v$, $s_l$, $\theta_v$ and $\theta_l$ all approximately label the same moist adiabat on a tephigram, because they are all approximately conserved for adiabatic ascent and descent
 
 - Thermodynamics: {ref}`rootfind`
 
@@ -98,3 +98,31 @@ Read Chapter 1 of BLM.  For notation, especially virtual temperature, see the fi
   - Chapter 4: [pressure perturbation notes](https://www.dropbox.com/scl/fi/7tkg65ar1u9emumxervu5/pressure_perturb.pdf?rlkey=gu3miynu1k28cs1985mrxxu4h&dl=0)
   - Chapter 5: Bussinger article on the [critcial Richardson number](https://www.dropbox.com/scl/fi/yqegu0q64a2t6sipms7t4/bussinger_critical_ri.pdf?rlkey=34m6gyzz5lv9oaxum8xx7ynge&dl=0)
   
+### Thursday
+
+- Projext decision tree
+
+  - Dry or cloudy boundary layer?
+  - Stable or unstable?
+  - GCMs, LES, or observations?
+  
+- Topic ideas
+
+  - Compare GCM boundary layer performance using the CMIP6 dataset for different models
+    - surface fluxes, shear, boundary layer height for similar large scale forcings
+  - Compare LES results or tower measureements against a parameterization
+  - Verify scaling relationships using LES
+  - Fourier/wavelet analysis of LES boundary layer data  (Stull Figure 5.16)
+  - Conditional sampling of LES or aircraft data
+  - New article: [Canadian Climate Model boundary layer parameterization](https://agupubs.onlinelibrary.wiley.com/doi/10.1029/2018MS001532)
+  
+- Chapter 5 topics
+
+  - Surface layer scaling:
+    - [Velocity scale notes part 2](https://www.dropbox.com/scl/fi/ezjs46bsqegvnzasujnic/velocity_scales.pdf?rlkey=tkgf0zu4kxjnpmssa3zwglp2i&dl=0)
+    - [Surface layer scaling notes](https://www.dropbox.com/scl/fi/e6cq3sodf0fq2rwuynsfm/boussinesq.pdf?rlkey=8josihsmcn1fskhl6mvnlu4eh&dl=0)
+    - [Boussinesq approximation notes](https://www.dropbox.com/scl/fi/e6cq3sodf0fq2rwuynsfm/boussinesq.pdf?rlkey=8josihsmcn1fskhl6mvnlu4eh&dl=0)
+    
+- For next Tuesday
+
+  - For next Tuesday read Chapter 6 through section 6.5 and do problems 6.14, 6.15, 6.16, 6.17
