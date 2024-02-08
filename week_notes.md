@@ -59,7 +59,6 @@ Read Chapter 1 of BLM.  For notation, especially virtual temperature, see the fi
    #### For next Tuesday:
    
      - Read Stull Chapter 5
-<<<<<<< Updated upstream
      - Read my [static energy notes](https://www.dropbox.com/scl/fi/zuk9evzf47qdsxi9tvgx7/thermo.pdf?rlkey=hbz3bpt6gxv5ly8rg1njfj9e4&dl=0)
      - Read my derivation of the [Clausius-Clapyron equation](https://www.dropbox.com/scl/fi/o7d278acumkgmwe4y6qlu/clausius.pdf?rlkey=ktd5fvdwaz7ishuxozwmf6kwa&dl=0)
      
@@ -99,13 +98,3 @@ Read Chapter 1 of BLM.  For notation, especially virtual temperature, see the fi
   - Chapter 4: [pressure perturbation notes](https://www.dropbox.com/scl/fi/7tkg65ar1u9emumxervu5/pressure_perturb.pdf?rlkey=gu3miynu1k28cs1985mrxxu4h&dl=0)
   - Chapter 5: Bussinger article on the [critcial Richardson number](https://www.dropbox.com/scl/fi/yqegu0q64a2t6sipms7t4/bussinger_critical_ri.pdf?rlkey=34m6gyzz5lv9oaxum8xx7ynge&dl=0)
   
-=======
-     - Read my [static energy notes](https://www.dropbox.com/scl/fi/tfgz28syrhn1zk6y066nm/thermo.pdf?rlkey=eigclji5ypji0p12cfww6w2x1&dl=0) through page 6
-     - Read my derivation of the [Clausius-Clapyron equation](https://www.dropbox.com/scl/fi/o7d278acumkgmwe4y6qlu/clausius.pdf?rlkey=ktd5fvdwaz7ishuxozwmf6kwa&dl=0)
-     
-* Week 5 - Tuesday
-
-  - Hand in Stull Chapter 4 problems 1, 3, 5, plus notebook with virtual temperature flux and turbulent kinetic energy profiles
-
-  - Working with moisture variables, the most important are 
->>>>>>> Stashed changes
