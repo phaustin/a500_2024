@@ -1,0 +1,381 @@
+\documentclass[11pt]{article}
+\usepackage{geometry,ifpdf,smallsec,amsmath}
+\geometry{letterpaper,top=50pt,hmargin={20mm,20mm},headheight=15pt} 
+
+\ifpdf
+    \usepackage[pdftex]{graphicx} 
+    \usepackage{hyperref}
+    \pdfcompresslevel=0
+    \DeclareGraphicsExtensions{.pdf,.jpg,.mps,.png}
+\else
+    \usepackage{hyperref}
+    \usepackage[dvips]{graphicx}
+    \DeclareGraphicsRule{.eps.gz}{eps}{.eps.bb}{`gzip -d #1}
+    \DeclareGraphicsExtensions{.eps,.eps.gz}
+\fi
+
+\usepackage{fancyheadings}
+\pagestyle{fancy} 
+\lhead{ATSC500} 
+\rhead{page~\thepage} 
+\chead{Surface layer simlarity}
+\lfoot{}
+\cfoot{}
+\rfoot{}
+
+\def\lb{\left(}
+\def\rb{\right)}
+\def\LB{\left[}
+\def\RB{\right]}
+\def\Lb{\left\{}
+\def\Rb{\right\}}
+\def\la{\langle}
+\def\ra{\rangle}
+
+\def\dl{\partial}
+\def\nb{\nabla}
+\def\vp{\varphi}
+
+\newcommand{\vect}[1]{\boldsymbol{\vec{#1}}}
+
+
+\begin{document}
+
+\section{Stability review -- Chapter 5}
+
+
+\subsection{Richardson number}
+\label{sec:richardson-number}
+
+Stull section 5.6 gives us several definitions for
+the Richardson number:
+
+
+\begin{align}
+  \label{eq:ri}
+\text{gradient } Ri&= \frac{    \frac{ g }{\overline{\theta_v}} \left ( \frac{\partial \overline{  \theta_v} }{\partial z}  \right )  }%
+{ \left [ \left ( \frac{ \partial \overline{ U}}{\partial z} \right )^2  + 
+\left ( \frac{ \partial \overline{ V}}{\partial z} \right )^2  \right ]} \\
+\text{flux }Ri_f&= \frac{    \frac{ g }{\overline{\theta_v}} \left ( \overline{ w^\prime \theta_v^\prime }   \right )  }%
+{\left [ \left ( \overline{ w^\prime u^\prime } \right ) \frac{ \partial \overline{ U}}{\partial z}   + 
+\left (\overline{ w^\prime v^\prime }\right ) \frac{ \partial \overline{ V}}{\partial z}   \right ]} \\
+\text{bulk }Ri_B&=  \frac{ g }{\overline{\theta_v}} \frac{ \Delta \overline{\theta_v } \Delta z  }%
+{ \left [ \left ( \Delta \overline{U } \right )^2 + \left ( \Delta \overline{V } \right )^2   \right ]}
+\end{align}
+
+Each of these is the \textit{\textbf{negative}} of the ratio of the buoyancy production/consumption
+term in the TKE equation to the shear
+production term (i.e.~ -(III)/IV in 5.1a on p.~152). Note the sign convention is such that 
+a postive Richardson number is typically found in a stable layer where $M$ increases
+with height away from the surface and the buoyancy flux is negative, so that TKE
+would be decreasing if only Stull 5.1a terms III and IV are considered. 
+If Ri falls below about 1, then there is net energy release either from
+large shear (for positive Ri) or convection (for negative Ri)
+and instabilities can move energy from the mean shear to the
+perturbations.  
+
+In Chapter 6 we will see that under a fairly broad set of circumstances we can use
+``first order closure'' aka ``gradient diffusion'' or ``K-theory'' to approximate fluxes of entropy and momentum as:
+
+\begin{eqnarray}
+\overline{w^\prime \theta^\prime} &\approx K_H \frac{d\overline{\theta}}{dz}   \\
+\overline{w^\prime u^\prime} & \approx K_M \frac{d\overline{U}}{dz}
+\end{eqnarray}
+
+
+Using first order closure the flux and
+gradient Richardson numbers are related by:
+
+\begin{equation}
+  \label{eq:fluxgrad}
+  R_f = (K_H/K_M) Ri
+\end{equation}
+
+
+\subsection{Obukhov length}
+\label{sec:obukhov-length}
+
+On p.~180 Stull introduces the Obukhov length L, which is also formed by taking the ratio
+of the buoyancy to the shear terms in the TKE equation.  The major additional information
+that is contained in $L$ is that there is a comparison with the shear profile that
+would be expected from a neutral surface layer.   This is found by nondimensionalizing the
+speed shear $dM/dz$ and the stability $d\theta/dz$ by the expected surface layer results, 
+and using that to non-dimensionalize the ratio of the buoyancy to shear production terms.
+
+First remember that from 
+\href{http://clouds.eos.ubc.ca/~phil/courses/atsc500/docs/velocity_scales.pdf}{velocity scale notes} or
+that in the neutral
+surface layer where $u^\prime w^\prime$ is constant with height:
+
+\begin{equation}
+  \label{eq:shear}
+  \frac{ \partial M}{\partial z} = \frac{ u_*}{kz} 
+\end{equation}
+So use this value of the neutral layer gradient for speed to non-dimensionalize
+an observed $\frac{  \partial \overline{ M}  }{\partial z}$ profile in conditions
+that differ from neutral stratification: (cf. Stull 9.7.1.c on p.~378):
+
+
+\begin{equation}
+  \label{eq:surface}
+\phi_M  =   \frac{kz  }{u_*} \frac{  \partial \overline{ M}  }{\partial z}
+\end{equation}
+and for buoyancy:
+
+\begin{equation}
+  \label{eq:buoyancy}
+\phi_H = \frac{k z}{\theta_*}  \frac{\partial  \overline{   \theta_v }    }{\partial z}  
+\end{equation}
+where $\theta_* =  \left (\overline{ w^\prime \theta_v^\prime } \right )/u_*$.  
+
+In the surface layer first order closure gives:
+
+\begin{gather}
+  \label{eq:ktheory}
+   \left (\overline{ w^\prime \theta_v^\prime } \right ) = K_H \frac{\partial \overline{ \theta_v} }{\partial z} = u_* \theta_*\\
+   \left (\overline{ w^\prime u^\prime } \right ) = K_M \frac{\partial M }{\partial z} = u*^2
+\end{gather}
+and inserting (\ref{eq:surface}) and (\ref{eq:buoyancy}) into (\ref{eq:ktheory}) gives:
+
+\begin{equation}
+  \label{eq:ksurface}
+  \frac{\phi_M }{\phi_H} = \frac{K_H }{K_M} 
+\end{equation}
+
+If we use $u_*^2 \frac{ \partial  M}{\partial z} $ as the neutral surface
+layer value for $\left [ \left ( \overline{ w^\prime u^\prime } \right ) \frac{ \partial \overline{ U}}{\partial z}   + 
+\left (\overline{ w^\prime v^\prime }\right ) \frac{ \partial \overline{ V}}{\partial z}   \right ]$
+and put in (\ref{eq:shear}) for neutral surface layer $\frac{ \partial  M}{\partial z}$, then the
+ratio of the buoyancy production to the shear production in the neutral surface layer
+becomes (Stull p. 181):
+
+\begin{multline}
+  \label{eq:rinew}
+\frac{   - \frac{ g }{\overline{\theta_v}} \left ( \overline{ w^\prime \theta_v^\prime }   \right )  }%
+{ \left [ \left ( \overline{ w^\prime u^\prime } \right ) \frac{ \partial \overline{ U}}{\partial z}   + 
+\left (\overline{ w^\prime v^\prime }\right ) \frac{ \partial \overline{ V}}{\partial z}   \right ]}
+= \frac{  -  \frac{ g }{\overline{\theta_v}} \left ( \overline{ w^\prime \theta_v^\prime }   \right )  }%
+{u_*^2 \frac{ \partial  M}{\partial z}} =\\
+ \frac{  -  \frac{ g }{\overline{\theta_v}} \left ( \overline{ w^\prime \theta_v^\prime }   \right )  }%
+{u_*^2 \frac{u_* }{kz}}  = z \frac{- k g \left ( \overline{ w^\prime \theta_v^\prime }   \right ) }%
+{\overline{\theta_v} u_*^3} =
+  z \left ( -\frac{k g \left ( \overline{ w^\prime \theta_v^\prime }   \right ) }%
+{\overline{\theta_v} u_*^3} \right ) 
+=  \frac{ z}{L}  = \zeta
+\end{multline}
+where the negative sign in the numerator gives $\zeta$ the same sign as $Ri$, so that positive
+Obukhov length $L$, where
+
+\begin{equation}
+  \label{eq:ol}
+  L = \frac{-\overline{\theta_v} u_*^3 }{k g \overline{  w^\prime \theta_v^\prime }} 
+\end{equation}
+indicates a negative buoyancy flux  we
+a stable surface layer.  Given the definition of the convective velocity scale
+in the \href{http://clouds.eos.ubc.ca/~phil/courses/atsc500/docs/velocity_scales.pdf}{velocity scale notes}:
+
+\begin{equation}
+  \label{eq:wstar}
+  w_* = \left (  \frac{ g z_i}{\overline{ \theta_v}} \left (  \overline{ w^\prime \theta_v^\prime } \right )_s \right )^{1/3}
+\end{equation}
+
+We can set $z=z_i$ in (\ref{eq:ol}) and get:
+
+\begin{equation}
+  \label{eq:mo}
+  \frac{ z_i}{L} = -k \frac{ w^3_*}{u_*^3} 
+\end{equation}
+
+\textbf{Material below here applieds to chapter 7, p. 267 and Chapter 9}
+
+\subsection{Relating $Ri$ and $L$}
+\label{sec:relating-ri-l}
+
+We can write  a general relationship between $\zeta$ and $Ri$ in the non-neutral surface
+layer given the Bussinger-Dyer relations of Stull Section 9.6.1.  
+Inserting  (\ref{eq:surface}) and (\ref{eq:buoyancy}) into (\ref{eq:ri}) and using
+(\ref{eq:ol}) and (\ref{eq:ktheory}) gives:
+
+\begin{equation}
+  \label{eq:ri-mo}
+  Ri = \zeta \frac{ \phi_H}{\phi_M^2} 
+\end{equation}
+
+The suface layer fits are given in Stull p.~369.  The typical way to present them
+(e.g.~Garrett 3.33)
+
+\begin{equation}
+  \label{eq:busdy1}
+\phi_M = 
+\begin{cases}
+   ( 1 - \gamma_1 \zeta )^{-1/4}  &  \text{for $-2 < \zeta < 0$ (unstable)}\\
+  1 + \beta \zeta  & \text{for $0 \le \zeta < 1$ (stable)}
+\end{cases}
+\end{equation}
+
+\begin{equation}
+  \label{eq:busdy2}
+\phi_H = 
+\begin{cases}
+  Pr_t ( 1 - \gamma_2 \zeta )^{-1/2}  &  \text{for $-2 < \zeta < 0$ (unstable)}\\
+  Pr_t + \beta \zeta  & \text{for $0 \le \zeta < 1$ (stable)}
+\end{cases}
+\end{equation}
+where $Pr_t$ is the turbulent Prandtl number = $K_M/K_H$ for neutral stability ($\zeta=0$).
+
+As Bretherton (UW547 Lecture 6) explains, there is some leeway in the fit coefficients.
+Roland using the Kansas (Businger et al., 1971) values of $Pr_t=0.74$, $\beta=4.7$ $\gamma_1 = 15$, $\gamma_2=9$,
+Dyer, 1974 recommends $Pr_t=1$, $\beta=5$ $\gamma_1 = 16$, $\gamma_2=16$ (see Garrett Appendix 4).
+If we adopt the Dyer values and plug them into (\ref{eq:ri-mo}) we get
+
+\begin{equation}
+  \label{eq:busdy3}
+\zeta = 
+\begin{cases}
+  Ri  &  \text{for $-2 < \zeta < 0$ (unstable)}\\
+  \frac{Ri }{1 - 5 Ri}  & \text{for $0 \le \zeta < 0.2$ (stable)}
+\end{cases}
+\end{equation}
+ 
+\section{Integrating the surface layer winds}
+\label{sec:integr-surf-layer}
+
+\subsection{Stable layer}
+\label{sec:stable-layer}
+
+
+
+To get dimensional winds from the non-dimensional gradients, recall that for the neutral
+surface layer
+
+\begin{equation}
+  \label{eq:neutral}
+  \frac{ \partial \overline{ u}}{\partial z}  = \frac{ u_*}{kz} 
+\end{equation}
+(Stull 9.7.1c on p.~378), and in the non-neutral surface layer we can rearrange~(\ref{eq:surface})
+to get:
+
+\begin{equation}
+  \label{eq:non-neutral}
+\frac{ k}{u_*} \int_{z_0 }^{z}\! d \overline{ u}
+= \int_{z_0 }^{z}\!\phi_M(\zeta) \frac{ d z^\prime}{z} = \int_{z_0 }^{z}\!\phi_M(\zeta) \frac{ d \zeta^\prime}{\zeta}
+\end{equation}
+since $\zeta = z/L$.  The lhs is a perfect differential, and for the rhs use the
+trick of adding and subtracting a factor of $\frac{d\zeta^\prime }{\zeta^\prime}$ to get
+
+\begin{equation}
+  \label{eq:integbus}
+  \frac{ k u}{u_*} = \int_{z_0 }^{z}\! \frac{ d \zeta^\prime}{\zeta}- \int_{z_0 }^{z}\!(1 - \phi_M(\zeta)) \frac{ d \zeta^\prime}{\zeta}
+  = \ln \left ( \frac{z }{z_0} \right ) - \Psi_M(\zeta)
+\end{equation}
+which is Stull 9.7.5g on p.~385 (note the sign change in front of $\Psi_M$).
+
+Simlarly, the dimensional $\theta$ profile is:
+
+\begin{equation}
+  \label{eq:integbus2}
+  \frac{ k \theta}{\theta_*} =  \ln \left ( \frac{z }{z_{T0}} \right ) - \Psi_H(\zeta)
+\end{equation}
+
+If we take the Dyer fit for the stable layer $\phi_M$ of $\phi_M = 1 + 5 \zeta$ we
+can integrate (\ref{eq:integbus}) to get 
+
+\begin{equation}
+  \label{eq:integbus3}
+\Psi_M(\zeta) = \int_{0 }^{\zeta}\!(1 - \phi_M(\zeta)) \frac{ d \zeta^\prime}{\zeta^\prime}
+  = \int_{0 }^{\zeta}\!(1 - (1 + 5 \zeta^\prime )) \frac{ d \zeta^\prime}{\zeta^\prime}
+  = \int_{0 }^{\zeta}\!(- 5 )) d \zeta^\prime = -5 \zeta
+\end{equation}
+for $0 < \zeta < 1$.  This means that we have for the stable layer that
+
+\begin{equation}
+  \label{eq:stable-final}
+  \frac{ u}{u_*} = k^{-1} \left [ \ln \left ( \frac{ z}{z_0} \right ) + \frac{ 5 z}{L}  \right ]
+\end{equation}
+(Stull 9.7.5g on p.~385), and $u$ increases more rapidily with height away from the surface, as
+shown in Figure 9.5 on  p.~377.
+
+\subsection{Unstable layer}
+\label{sec:unstable-layer}
+
+For unstable conditions we need to
+integrate $\phi_M(\zeta)=(1-16\zeta)^{-1/4}$ and
+$\phi_H(\zeta)=(1-16\zeta)^{-1/2}$.  We'll do $\phi_M$ here
+and leave $\phi_H$ as an exercise.  Change variables
+to $\phi_M^{-1}=(1 - 16\zeta)^{1/4} = x$.  Then
+$\zeta=\frac{ 1-x^4}{4}$ and $d\zeta = - x^3 dx$.  Then just as before we
+need to integrate:
+
+\begin{equation}
+  \label{eq:unstable1}
+  \Psi_M = \int_{0 }^{\zeta}\!(1 - \phi_M(\zeta)) \frac{ d \zeta^\prime}{\zeta^\prime}
+= \int_{ 0}^{\zeta}\! (1 - x^{-1}) \frac{ -4 x^3 dx}{(1 - x^4)} 
+\end{equation}
+We can tackle (\ref{eq:unstable1}) using partial fractions and get,
+for the unstable regime $-2 < \zeta < 0$:
+
+\begin{align}
+  \Psi_M &= \ln \left [ \left ( \frac{ 1 + x^2}{2} \right ) 
+\left ( \frac{ 1 + x}{2} \right )^2 \right ] - 2\tan^{-1} x + \pi/2\\
+  \Psi_H & = 2 \ln \left ( \frac{ 1 + x^2}{2} \right )
+\end{align}
+
+\subsection{Exchange coefficients}
+\label{sec:exch-coeff}
+
+Now use all this to get an expression for the exchange coefficients $C_D$ and
+$C_H$:
+
+\begin{gather}
+\text{The definition of $C_D$: } u_*^2 = C_D U^2\\
+\text{MO expression for U}: \frac{ k U}{u_*} = \ln \left ( \frac{ z}{z_0} \right ) - \Psi_M(\zeta)
+\end{gather}
+put these together to get:
+
+\begin{equation}
+  \label{eq:drag}
+  C_D = \frac{ u_*^2}{U^2} = \frac{ k^2}{ \ln(z/z_0) - \Psi_M(\zeta)} 
+\end{equation}
+
+
+And for energy or moisture:
+
+\begin{gather}
+\text{The definition of $C_H$: } \left (\overline{ w^\prime \theta_v^\prime } \right )  = 
+         C_H U (\theta_{v0} - \theta_v) \label{eq:ch}\\
+\text{MO expressure for $\theta_v$}: \frac{k(\theta_{v0} - \theta_v)}{\theta_{v*}} = 
+\ln \left ( \frac{ z}{z_T} \right ) - \Psi_H(\zeta)
+\end{gather}
+Put the MO relationships for $\theta$ and $U$ into \eqref{eq:ch} to get:
+
+\begin{equation}
+  \label{eq:chfinal}
+u_* \theta_{v*} = C_H   \frac{\left [\ln \left ( \frac{ z}{z_T} \right ) - \Psi_H(\zeta)\right ] }{k} 
+\frac{ \left [  \ln \left ( \frac{ z}{z_0} \right ) - \Psi_M(\zeta)\right ] }{k} u_* \theta_* 
+\end{equation}
+or neglectingthe differnce between $\theta_{v*}$ and $ \theta_* $:
+
+\begin{equation}
+  \label{eq:chfinal}
+ C_H = k^2   \left [\ln \left ( \frac{ z}{z_T} \right ) - \Psi_H(\zeta)\right ]^{-1} 
+\left [  \ln \left ( \frac{ z}{z_0} \right ) - \Psi_M(\zeta)\right ]^{-1} 
+\end{equation}
+
+So you can find the fluxes of momentum and energy: $\overline{ w^\prime \theta_v^\prime }$
+and $\overline{u^\prime w^\prime}$ at height $z$ if you know
+the $L$.
+
+\end{document}
+  
+
+
+
+
+
+
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

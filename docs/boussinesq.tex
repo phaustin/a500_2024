@@ -1,0 +1,604 @@
+\documentclass[12pt]{article}
+\usepackage{geometry,fancyhdr,xr,hyperref,ifpdf,amsmath,rcs,indentfirst}
+\usepackage{lastpage,longtable,Ventry,url,paunits,shortcuts,smallsec,color,tightlist,float}
+\geometry{letterpaper,top=50pt,hmargin={20mm,20mm},headheight=15pt} 
+\usepackage[stable]{footmisc}
+
+\pagestyle{fancy} 
+
+\RCS $Revision: 1.5 $
+\RCS $Date: 2002/01/09 03:50:54 $
+
+\fancypagestyle{first}{
+\lhead{Anelastic and Bousinesq approximation}
+\chead{}
+\rhead{page~\thepage/\pageref{LastPage}}
+\lfoot{} 
+\cfoot{} 
+\rfoot{}
+}
+
+\ifpdf
+    \usepackage[pdftex]{graphicx} 
+    \usepackage{hyperref}
+    \pdfcompresslevel=0
+    \DeclareGraphicsExtensions{.pdf,.jpg,.mps,.png}
+\else
+    \usepackage{hyperref}
+    \usepackage[dvips]{graphicx}
+    \DeclareGraphicsRule{.eps.gz}{eps}{.eps.bb}{`gzip -d #1}
+    \DeclareGraphicsExtensions{.eps,.eps.gz}
+\fi
+
+
+\begin{document}
+\newcommand{\vect}[1]{\boldsymbol{\vec{#1}}}
+\pagestyle{first}
+
+
+\section{Scaling}
+\label{sec:thermodynamics}
+
+
+Here's my version of  
+\href{https://hogback.atmos.colostate.edu/group/dave/QuickStudies.html}{David Randall's}
+discussion of the anelastic and Boussinesq approximations.  
+
+It differs from Stull p. 84 in that rather than starting with a Reynold's decomposition it takes
+the more general approach of starting with perturbations around a hydrostatic
+base state.  This has the advantage of not requiring the assumption that the
+atmosphere is in hydrostatic equilibrium.
+
+
+\subsection{Conservation equations}
+\label{sec:cons-equat}
+
+
+\begin{align}
+  \text{entropy:\ }& \frac{ ds}{dt}=\frac{ q}{T} + \nu_s \nabla^2 s\\
+  \text{water vapor:\ }& \frac{ dq_v}{dt}= \nu_s \nabla^2 q_v \\
+  \text{momentum:\ }& \rho \frac{ d \vect{v}}{dt}= -\nabla p + \rho \vect{g} + 
+             \mu \nabla^2 \vect{v} + \rho f_c \vect{k} \times \vect{v} \\
+ \intertext{and the \textit{flux form} of the continuity equation}
+\text{mass:\ }&= \frac{\partial \rho }{\partial t} + \nabla \rho \cdot \vect{v} = 0
+\end{align}
+
+\subsection{Dropping the viscous terms: Reynolds number: Stull p.~93}
+\label{sec:stull93}
+
+What about the viscosity?  $\nu_{air}=\mu/\rho \sim 1.5 \times 10^{-5}\ \ms$.  
+For our problems typically $| \vect{v} | \sim 5\ \ms$, $L \sim 100\ $ m, 
+so scale the viscous term in comparison to $\rho \frac{ du}{dt}$, as
+represented by the advection term: $\rho \vect{v} \cdot \nabla \vect{v}$. 
+
+
+First, consider viscous dissipation:
+\begin{gather}
+  \frac{\mu }{\rho} \nabla^2 \vect{v} \sim \frac{10^{-5} }{(100)^2} \cdot 5 \sim 10^{-8}\ \un{m\,s^{-2}}
+\end{gather}
+and compare this to the acceleration scale (assuming local steady state where $ \partial u/\partial t \sim 0$ )
+
+\begin{gather}
+  \frac{ d \vect{v}}{dt} \sim |u|/(L/|u|) \sim 5/(100|5) \sim 0.25
+\end{gather}
+
+The ratio of these two numbers is 
+the Reynold's number = advection/diffusion =
+
+\begin{gather}
+Re=(\rho \vect{v} \cdot \nabla \vect{v} /\mu \nabla^2 \vect{v}) \sim  |u| L/\nu \sim 10^{8}
+\end{gather}
+So neglect molecular viscosity/diffusivity compared to other momentum sources
+and sinks
+
+\subsection{Hydrostatic balance and the equations of state}
+\label{sec:energy}
+
+On p.~81 Stull expands the density, virtual temperature and pressure into
+``mean and turbulent parts''.  The people who specialize in deriving
+these equations take a slightly different approach, which we'll follow
+here:
+
+\begin{itemize}
+\item Expand the thermodynamic variables about a hydrostatic base state at rest
+\item Expand the deviation from the hydrostatic base state into mean and turbulent parts
+\end{itemize}
+What is the advantage of this approach?  Basically it produces equations that are
+easier to extend to non-hydrostatic atmospheres.
+
+So write each of the thermodynamic variables as a combination of a static reference profile
+and a departure from the reference.  This is \textit{not} a Reynold's expansion since
+the base state isn't an average, it's  a Taylor's series approximation in
+two dimensions (see the 
+\href{https://www.dropbox.com/scl/fi/zwjwuzed05cvya6xydj9e/taylor_series.pdf?rlkey=jt7zu8gedkwxaosty87e7h0o8&dl=0}{Taylor series notes}  from week 4)
+
+
+Look at
+the total entropy $s_T$, pressure $p_T$, temperature $T_T$, density $\rho_T$ and specific
+volume $\alpha_T = 1/\rho_T$:
+
+\begin{subequations}
+\begin{align}
+  s_T =& s_0(z) + s(x,y,z,t) = c_p \ln \theta_0 (z) + c_p \ln \theta (x,y,z,t)\\ 
+  p_T =& p_0(z) + p(x,y,z,t) \\
+  T_T =& T_0(z) + T(x,y,z,t) \\
+  \rho_T =& \rho_0(z) + \rho(x,y,z,t) \\
+  \alpha_T =& \alpha_0(z) + \alpha(x,y,z,t)
+\end{align}
+\end{subequations}
+
+Require that the total atmosphere and the base state both satisfy the
+equation of state:
+
+\begin{subequations}
+
+\begin{align}
+  p_T =& \rho_T R_d T_T\\
+  p_0 +  p =& R_d(\rho_0 + \rho)(T_0 + T)\\
+  p_0 +  p =& R_d(\rho_0 T_0 + \rho_0 T + \rho T_0 + \rho T)\\
+  1 + \frac{p}{p_0(z)}  =& R_d \left ( \frac{\rho_0 T_0}{p_0}  + \frac{\rho_0 T}{p_0} + \frac{\rho T_0}{p_0}
+           + \frac{\rho T}{p_0} \right )\\
+\intertext{and since $p_0 = R_d \rho_0 T_0$}
+1 + \frac{p}{p_0(z)}  =& \left ( 1  + \frac{ T}{T_0} + \frac{\rho }{\rho_0} +  \frac{\rho T}{\rho_0 T_0} \right )
+\end{align}
+\end{subequations}
+
+Recognize that the atmosphere is close to hydrostatic balance, so that $\frac{\rho}{\rho_0}$ and
+$\frac{T}{T_0}$ are both small.  Drop the last term and get the perturbation equation of state:
+
+
+\begin{align}
+  \frac{p}{p_0(z)} \approx & \frac{T}{T_0(z)}  + \frac{\rho}{\rho_0(z)} 
+\end{align}
+Note that this is not what Roland has on p.~81, (3.3.1a) since we haven't done any Reynold's averaging
+yet.
+
+\section{Mass conservation: Bousinesq and anelastic versions}
+\label{sec:cont}
+
+  Separate  out the vertical and horizontal terms in the continuity equation for the total density:
+
+\begin{equation}
+\frac{\partial \rho_T}{\partial t} + \nabla_H \cdot  ( \rho_T \vect{v}_H) + 
+          \frac{\partial (\rho_T w)}{\partial z} = 0
+\end{equation}
+
+\begin{equation}
+  \label{eq:split}
+\frac{(\partial \rho_0 + \rho)}{\partial t} + 
+       \nabla_H \cdot  (( \rho_0 + \rho) \vect{v}_H) + 
+          \frac{\partial ((\rho_0 + \rho) w)}{\partial z} = 0
+  \end{equation}
+(note that our base state is at rest, so $w_0=0$)
+
+Now expand, using the fact that the reference density $\rho_0$ depends only
+on z to throw out some derivatives:
+\begin{equation}
+\label{eq:bigone}
+\underbrace{\frac{\partial \rho }{\partial t}}_1 + 
+\underbrace{\rho_0(z) \nabla_H \cdot \vect{v}_H}_2 + 
+\underbrace{\rho \nabla_H \cdot \vect{v}_H}_3 +
+\underbrace{\vect{v}_H \cdot \nabla \rho}_4 +
+\underbrace{w \frac{\partial \rho_0(z) }{\partial z}}_5 +
+\underbrace{\rho_0(z) \frac{\partial w }{\partial z}}_6 +
+\underbrace{w \frac{\partial \rho }{\partial z}  }_7 +
+\underbrace{\rho \frac{\partial w }{\partial z}}_8 = 0
+ \end{equation}
+
+So how many of these 8 terms to we keep?  
+We will work through 2 different approximations:  the Bousinesq approximation,
+in which we drop everything except terms (2) and (6), and the anelastic
+approximation, in which we also keep (5).
+How do we justify eliminating the other 5 terms?  We will compare them
+to (6), which controls the vertical divergence/convergence of mass.
+
+\subsection{Detour: Buoyancy}
+\label{sec:buoyancy}
+
+Before we go any further, we need a specific definition of the
+buoyancy.  Start with Newton's second law:
+
+\begin{equation}
+  \label{eq:newton}
+  m a = F
+\end{equation}
+
+Rewrite this in for  the vertical velocity component:
+and gravity:
+\begin{equation}
+  \label{eq:newt2}
+  \rho_T \frac{ dw}{dt}  = - \frac{ \partial p_T}{\partial z} - \rho_T g
+\end{equation}
+where as usual $p_T = p_0 + p$ and $p_0$ is the pressure in hydrostatic
+balance with the density $\rho_0(z)$.
+
+Hydrostatic balance means that:
+
+\begin{gather}
+  dp_0 = - \rho_0 g dz\\
+  -\frac{ 1}{\rho_0} \frac{ \partial p_0}{\partial z} -g = 0 \label{eq:one}
+\end{gather}
+
+So expand (\ref{eq:newt2}):
+
+\begin{equation}
+  \label{eq:newt3}
+   \frac{ dw}{dt}  = - \frac{1 }{(\rho_0 + \rho)} 
+\frac{ \partial }{\partial z} (p_0 + p ) -  g
+\end{equation}
+and expand the density term in a Taylor's series:
+
+\begin{equation}
+  \label{eq:taylor}
+  \frac{ 1}{(\rho_0 + \rho)} = \frac{ 1}{\rho_0} 
+\left ( \frac{ 1}{1 + \rho/\rho_0}   \right ) = 
+\frac{ 1}{\rho_0} \left [ 1 - \frac{ \rho}{\rho_0} + 
+\left ( \frac{ \rho}{\rho_0} \right )^2 + \ldots \right ]
+\end{equation}
+
+
+If we keep only the first order terms in (\ref{eq:taylor}) and plug into
+(\ref{eq:newt3}), again dropping second order terms like $wp$,
+we get
+ 
+
+\begin{equation}
+  \label{eq:newt4}
+   \frac{ dw}{dt}  = \underbrace{- \frac{1 }{\rho_0} 
+\frac{ \partial p_o }{\partial z} -  g}_a
+- \frac{1 }{\rho_0} \frac{ \partial p }{\partial z} +
+ \underbrace{\frac{1 }{\rho_0} \frac{ \partial p_0 }{\partial z}}_b \left ( \frac{ \rho}{\rho_0} \right )
+\end{equation}
+Now I can use hydrostatic balance twice: once to eliminate (a), and again
+to write (b) as $-g$.  Doing this I get:
+
+
+\begin{equation}
+  \label{eq:newt5}
+   \frac{ dw}{dt}  = - \frac{1 }{\rho_0} \frac{ \partial p }{\partial z} 
+- g \left ( \frac{ \rho}{\rho_0} \right ) =
+- \frac{1 }{\rho_0} \frac{ \partial p }{\partial z} 
++ B
+\end{equation}
+where the buoyancy, $B$, is defined by:
+
+\begin{equation}
+  \label{eq:B}
+B = - g \left ( \frac{ \rho}{\rho_0} \right )
+\end{equation}
+
+
+\subsection{Scaling equation (\ref{eq:bigone})}
+
+
+To scale the 8 terms, we need to:
+
+\begin{enumerate}
+\item write derivatives as finite differences, i.e.~ $\frac{\partial w }{\partial z}  \sim \frac{ \Delta w}{\Delta z}$
+\item Make guess about how big terms like $\Delta w$ and $\Delta z$ could
+get for the phenomena we are interested in
+\end{enumerate}
+
+
+\subsubsection{Term 1:  $\frac{\partial \rho }{    \partial t}$}
+\label{sec:term-1}
+
+
+We want to guestimate 1) using dimensional values:
+
+$\frac{\partial \rho }{\partial t} = \frac{\Delta \rho}{\Delta \tau}$:
+
+\begin{enumerate}
+\item Let $\Delta \rho \ll \rho_0$ (assume small depatures from hydrostatic balance)
+
+\item $\Delta \rho \sim |\rho |$: density changes as big as the difference
+between the total density $\rho_T$ and the base state density $\rho_0$
+\item Compare term (1) to term (6): 
+$\rho_0(z) \frac{\partial w }{\partial z} \sim \rho_0 \frac{\Delta w }{\Delta z}
+\sim \rho_0 \frac{ |w|}{D}$  
+where $|w|$, $D$ and $\tau$ are typical velocity, length and time scales
+(whatever we can defend).  For example, assume that we are interested
+in a boundary layer dominated by eddies of size $D \sim 100$ m,
+which turnover at a velocity of about 0.1 \ms, yielding a timescale
+of $\tau \sim 100$ s.  
+
+The eddy turnover velocity is going to be slower than the vertical
+velocity of a typical updraft, which is driven by buoyancy.  We expect
+these buoyant updrafts to scale as:
+
+\begin{equation}
+  \label{eq:buoy}
+  \frac{\partial w }{\partial t} \sim \frac{|w| }{\tau} \sim B \sim -\frac{ g \rho}{\rho_0(z)} 
+\end{equation}
+where we've neglected the vertical pressure gradient in (\ref{eq:newt5})
+
+So compare $\underbrace{\frac{\partial \rho }{\partial t}}_1$ 
+against the yardstick:
+
+\begin{equation}
+  \label{eq:yardstick}
+  \frac{ \frac{ \partial \rho}{\partial t} }{\rho_0 \frac{ \partial w}{\partial z} } \sim 
+\frac{ |\rho|/\tau}{|w|\rho_0/D} \sim
+\frac{ |\rho|}{\rho_0} \frac{ D}{|w| \tau}  
+\end{equation}
+but $|w| \sim \tau g \frac{ |\rho|}{\rho_0}$ so:
+
+\begin{equation}
+  \label{eq:term1comp}
+  \frac{ \frac{ \partial \rho}{\partial t} }{\rho_0 \frac{ \partial w}{\partial z} } \sim 
+\frac{|\rho| }{\rho_0} \frac{D }{\tau^2} \frac{ 1}{g \frac{ |\rho| }{\rho_0} } 
+= \frac{D }{g \tau^2} 
+\end{equation}
+so we can ignore term 1 if $D/(g \tau^2)$  is $\ll 1$.  This is Stull point 2) on p.~81.
+
+\end{enumerate}
+
+In other words, we require that the timescale we're interested is
+``much larger'' than $\sqrt{10} \sim 3 s$, since that means
+
+\begin{equation}
+  \label{eq:comp1b}
+  \tau^2 \gg \frac{ D}{g}  \sim \frac{100 }{10} \sim 10\ s^2
+\end{equation}
+and as we increase the size of the scale of interest $D$, we have
+to recognize that we can only ask questions about longer timescales
+(several minutes).  It is possible to show explicitly that
+this means that both the anelastic and Boussinesq approximations
+filter out sound waves (see Randall).
+
+
+\subsubsection{The horizontal terms}
+\label{sec:horizontal-terms}
+
+
+Next look at the horizontal terms in (\ref{eq:bigone}):
+
+\begin{equation}
+  \label{eq:horiz}
+  \underbrace{\rho_0(z) \nabla_H \cdot \vect{v}_H}_2 + 
+\underbrace{\rho \nabla_H \cdot \vect{v}_H}_3 +
+\underbrace{\vect{v}_H \cdot \nabla \rho}_4 
+\end{equation}
+where the $H$ means ``horizontal''
+Keep term (2) for now since it's multiplied by $\rho_0$ and we're
+assuming $\rho_0 \gg \rho$
+
+For terms 3) and 4) assume $\vect{v}_H \sim 5\ \ms = |v|$ and $L$ =
+the horizontal scale for synoptic disturbances $\sim$ 100 km (rainbands,
+etc., so that  $\nabla_H \sim 1/L$l.
+
+So therm 3) scale as 
+
+\begin{equation}
+  \label{eq:scaleH}
+  \frac{\rho \nabla_H \cdot \vect{v}_H }{\rho_0 \frac{ \partial w}{\partial z} }
+\sim \frac{|\rho| }{\rho_0} \frac{|v| }{L}  \frac{ D}{w} 
+\sim \frac{|\rho| }{\rho_0} \frac{|v| }{L} \frac{D }{\tau g \frac{|\rho| }{\rho_0} }  \sim \frac{|v| D }{L \tau g} 
+\end{equation}
+If $\tau \sim 100$ s this is $\frac{5 }{100 \times 10^3} 
+\frac{100 }{100 \cdot 10}  \sim 5 \times 10^{-4}$, so we can safely drop
+3) and,
+ if you repeat this process, 4).
+
+ What about $\underbrace{w \frac{\partial \rho_0(z) }{\partial z}}_5$?  As we saw in scale height
+notebook the density for the
+hydrostatic base state is well-approximated by:
+
+\begin{equation}
+  \label{eq:hydrodens}
+  \rho_0 (z) = \rho_{0s} \exp \left ( \frac{-z }{H_\rho} \right )
+\end{equation}
+where $H_\rho$, the density scale height $\sim$ 8 km.  So 
+$\frac{\partial \rho_0 }{\partial z}  \sim \frac{\rho_{0s} }{H_\rho}$
+and
+
+\begin{equation}
+  \label{eq:term5}
+ \frac{w \frac{\partial \rho_0(z) }{\partial z} }{\text{term 6}}   \sim \frac{|w| 
+\frac{\rho_{0s} }{H_\rho}  }{\rho_0 \frac{ |w|}{D}  } \sim \frac{ D}{H_\rho} 
+\end{equation}
+this term is small asl on as the largest eddy size is a few hunder meters.
+This is the ``shallow motion'' approximation on p.~81.
+We cannot neglect this term for convective clouds, which might have thicknesses
+of several km or more.  
+
+
+\subsubsection{Terms 7 and 8}
+\label{sec:terms-7-8}
+
+
+What about the final two terms:  $\underbrace{w \frac{\partial \rho }{\partial z}  }_7 +
+\underbrace{\rho \frac{\partial w }{\partial z}}_8 $?  For problems the atmosphere is
+close to hydrostatic, so $\rho/\rho_0$ is small.  If that's the case,
+we can ignore 7) because:
+
+\begin{equation}
+  \label{eq:term7}
+  \frac{ w \frac{\partial \rho }{\partial z} }{\rho_0 \frac{ \partial w}{\partial z}} \sim \frac{ |w|\frac{ |\rho|}{D} }{\rho_0 \frac{|w| }{D} }  
+\sim \frac{ |\rho|}{\rho_0}  \ll 1
+\end{equation}
+and you should show that the same reasoning holds for 8).
+
+
+That leaves us with two different versions of the continuity equation:
+
+\subsubsection{Anelastic}
+\label{sec:anelastic}
+
+\begin{equation}
+  \label{eq:anel1}
+  \underbrace{\rho_0(z) \nabla_H \cdot \vect{v}_H}_2 + 
+\underbrace{w \frac{\partial \rho_0(z) }{\partial z}}_5 +
+\underbrace{\rho_0(z) \frac{\partial w }{\partial z}}_6 =0
+\end{equation}
+Since $\vect{v}_H \cdot \nabla_H \rho_0$=0, we can add this
+term into (\ref{eq:anel1}) and use the chain rule to wind up
+with:
+
+\begin{equation}
+  \label{eq:anel2}
+  \nabla ( \rho_0 \vect{v} ) = 0
+\end{equation}
+
+\subsubsection{Boussinesq}
+\label{sec:boussinesq}
+
+If we are in a situation where $\frac{D }{H_\rho} \ll 1$ as well,
+then we can drop 5) and we're left with:
+
+\begin{equation}
+  \label{eq:bous1}
+  \underbrace{\rho_0(z) \nabla_H \cdot \vect{v}_H}_2 + 
+\underbrace{\rho_0(z) \frac{\partial w }{\partial z}}_6 =0
+\end{equation}
+and putting the gradient back together gives:
+
+\begin{gather}
+  \label{eq:bous2}
+\rho_0(z) \nabla \vect{v} =0\\
+\intertext{or dividing by $\rho_0$: }
+\nabla \vect{v} =0
+\end{gather}
+So the Bousinesq approximation yields the incompressible continuity equation.
+
+
+\subsection{Back to Buoyancy}
+\label{sec:back-buoyancy}
+
+On p.~82-83 Stull makes an argument for neglecting pressure pertubations compared 
+to the perturbations in density and temperature for Reynold's averaged
+quantities.  But remember we still haven't done the Reynolds averaging 
+in this derivation.  Instead of following him and neglecting pressure perturbations
+(3.3.1.d and 3.3.1.e),  we can develop a more accurate form of the 
+buoyancy with a little algebra.
+
+Recall~(\ref{eq:newt5})
+\begin{equation}
+  \label{eq:buoyb}
+   \frac{ dw}{dt}  = - \frac{1 }{\rho_0} \frac{ \partial p }{\partial z} 
+- g \left ( \frac{ \rho}{\rho_0} \right ) =
+- \frac{1 }{\rho_0} \frac{ \partial p }{\partial z} 
++ B
+\end{equation}
+
+Use the chain rule to show that (\ref{eq:buoyb}) is identical to the
+following:
+
+\begin{equation}
+  \label{eq:buoyc}
+   - \frac{1 }{\rho_0} \frac{ \partial p }{\partial z} 
++ B =
+- \frac{\partial  }{\partial z} \left ( \frac{  p }{\rho_0} \right )
+- \frac{p }{\rho_0} \frac{\partial  }{\partial z} (\ln \rho_0)
++ B
+\end{equation}
+Why is this an improvement?  Recall the definition of the potential
+temperature from 
+\href{https://www.dropbox.com/scl/fi/zuk9evzf47qdsxi9tvgx7/thermo.pdf?rlkey=hbz3bpt6gxv5ly8rg1njfj9e4&dl=0}{the thermo notes}:
+
+\begin{equation}
+  \label{eq:theta}
+  \theta_T \equiv T_T \left ( \frac{p_{00} }{p_T}  \right )^{R_d/c_p} = 
+T_T \left ( \frac{p_{00} }{p_T}  \right )^\kappa
+\end{equation}
+
+
+In the problem set you're asked to show using the ideal gas law
+that:
+
+\begin{equation}
+  \label{eq:ideal}
+  c_p \ln \theta_T = c_v \ln p_T - c_p \ln \rho_T - c_p \ln R_d 
+- R_d \ln p_{00}
+\end{equation}
+and for the base state:
+
+\begin{equation}
+  \label{eq:ideal2}
+  c_p \ln \theta_0 = c_v \ln p_0 - c_p \ln \rho_0 - c_p \ln R_d 
+- R_d \ln p_{00}
+\end{equation}
+and that:
+
+\begin{equation}
+  \label{eq:perturbTheta}
+  c_p \frac{ \theta}{\theta_0} \approx c_v \frac{ p}{p_0}  - 
+c_p \frac{ \rho}{\rho_0} 
+\end{equation}
+
+%check the derivation
+Defining $\gamma=c_p/c_v$ and inserting these into (\ref{eq:buoyc}) along with
+the hydrostatic equation yields:
+
+\begin{multline}
+  \label{eq:buoyd}
+   - \frac{1 }{\rho_0} \frac{ \partial p }{\partial z}  - g \left ( \frac{\rho}{\rho_0} \right )
+\approx -\frac{\partial  }{ \partial z} \left ( \frac{ p}{\rho_0} \right )
++ \frac{p }{\rho_0}  \frac{ \partial }{\partial z} 
+\left ( \ln \theta_0 - \frac{1}{\gamma} \ln p_0 \right )
++ g \left ( \frac{ \theta}{\theta_0} - \frac{ 1}{\gamma} \frac{p }{p_0} \right ) \\
+= \underbrace{-\frac{\partial  }{ \partial z} \left ( \frac{ p}{\rho_0} \right )}_I
++ \underbrace{\frac{p }{\rho_0}  \frac{ \partial }{\partial z} 
+\left ( \ln \theta_0  \right )}_{II}
++ \underbrace{g \left ( \frac{ \theta}{\theta_0} \right ) }_{III}
+\end{multline}
+
+We can eliminate term II) by recognizing that $\frac{\partial  }{\partial z} 
+(\ln \theta_0$ ) = $\frac{1 }{\theta_0}\frac{d \theta_0 }{dz} = \frac{1 }{H_\theta}  $ defines another scale height, like $H_p$ or $H_\rho$. It is typically bigger than 8 km,
+so we can use this to compare terms I) and II):
+
+
+ \begin{equation}
+   \label{eq:compare}
+\frac{ \frac{p }{\rho_0}  \frac{ \partial }{\partial z} ( \ln \theta_0 )}
+{\frac{\partial  }{ \partial z} \left ( \frac{ p}{\rho_0} \right )}
+\sim \frac{\frac{p }{\rho_0} \frac{1 }{H_\theta}  }
+{\frac{p }{\rho_0} \frac{1 }{D} } = \frac{D}{H_\theta} = \frac{100 }{8000}  
+\end{equation}
+so it's safe to drop term II) and write the vertical velocity
+equation for the anelastic approximation as 
+
+
+\begin{equation}
+  \label{eq:anelvert}
+\frac{dw }{dt}  =   - \frac{1 }{\rho_0} \frac{ \partial p }{\partial z}  - g\left ( \frac{ \rho }{\rho_0} \right )
+\approx -\frac{\partial  }{ \partial z} \left ( \frac{ p}{\rho_0} \right )
++ g \left ( \frac{ \theta}{\theta_0} \right )
+=  -\frac{\partial  }{ \partial z} \left ( \frac{ p}{\rho_0} \right )
++ B_a
+\end{equation}
+where the anelastic buoyancy term is defined by
+$B_a=g \left ( \frac{ \theta}{\theta_0} \right )$
+
+\section{Energy and entropy}
+\label{sec:energy-entropy}
+
+Recall from the \href{https://www.dropbox.com/scl/fi/zuk9evzf47qdsxi9tvgx7/thermo.pdf?rlkey=hbz3bpt6gxv5ly8rg1njfj9e4&dl=0}{the thermo notes} that for a reversible process we can write the
+second law as:
+
+\begin{equation}
+  \label{eq:2nd}
+  \frac{d \ln \theta_T }{dt} = \frac{q }{\rho_T c_p T_T} 
+\end{equation}
+where the subscript $T$ as before indicates the sum of the
+hydrostatic base state (i.e.~$\theta_0$  and perubation (i.e.~$\theta$)).
+
+Plugging the $\theta_0 + \theta$, $\rho_0 + \rho$ and $T_0 + T$ 
+expansions into (\ref{eq:2nd}) and rearranging gives 
+\href{https://www.dropbox.com/scl/fi/ugg14cvujp9m5b99c2vbf/bannon95a.pdf?rlkey=d8v4qvqpncduunwqpb1wdgtz1&dl=0}{Bannon(2.3c)}:
+
+\begin{equation}
+  \label{eq:bannon2nd}
+  \frac{D \theta }{Dt}  + w \frac{ d \theta_0}{dz}  = \frac{\theta_0 q}{\rho_0 c_p T_0} 
+\end{equation}
+
+
+
+\end{document}
+
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

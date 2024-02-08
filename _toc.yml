@@ -38,13 +38,17 @@ parts:
     - url: https://www.dropbox.com/scl/fi/5m7x5opmp5p6ooe86imlj/virtual_temperature.pdf?rlkey=yjmfkbt417gpjv0cwwfyoi0c4&dl=0
       title: Week 4 - virtual temperature
     - url: https://www.dropbox.com/scl/fi/ezjs46bsqegvnzasujnic/velocity_scales.pdf?rlkey=tkgf0zu4kxjnpmssa3zwglp2i&dl=0
-      title: Week4 - velocity scales (just part 1)
+      title: Week4 - velocity scales 
     - url: https://www.dropbox.com/scl/fi/zwjwuzed05cvya6xydj9e/taylor_series.pdf?rlkey=jt7zu8gedkwxaosty87e7h0o8&dl=0
       title: Taylor series and Reynolds averaging
     - url: https://www.dropbox.com/scl/fi/7tkg65ar1u9emumxervu5/pressure_perturb.pdf?rlkey=gu3miynu1k28cs1985mrxxu4h&dl=0
       title: pressure perturbation notes
     - url:   https://www.dropbox.com/scl/fi/yqegu0q64a2t6sipms7t4/bussinger_critical_ri.pdf?rlkey=34m6gyzz5lv9oaxum8xx7ynge&dl=0
       title: Bussinger on the critical Richardson number
+    - url: https://www.dropbox.com/scl/fi/0bip672b25he2ikr2honz/surface_layer.pdf?rlkey=iurhmsxfrbxkodzkzqxoa66yd&dl=0
+      title: surface layer scaling notes
+    - url: https://www.dropbox.com/scl/fi/e6cq3sodf0fq2rwuynsfm/boussinesq.pdf?rlkey=8josihsmcn1fskhl6mvnlu4eh&dl=0
+      title: Boussinesq and anelastic scaling notes
   - caption: Assignments
     chapters:
     - file: assignments/md_dry_les.ipynb
@@ -82,3 +86,5 @@ parts:
       title: Betts 2004 Horton medal lecture -- GCM hydrology
     - url: https://agupubs.onlinelibrary.wiley.com/doi/10.3894/James.2009.1.4
       title: Betts - Land-Surface-Atmosphere coupling review
+    - url: https://agupubs.onlinelibrary.wiley.com/doi/10.1029/2018MS001532
+      title: Canadian Climate model boundary layer parameterization
