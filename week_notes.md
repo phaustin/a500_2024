@@ -100,6 +100,8 @@ Read Chapter 1 of BLM.  For notation, especially virtual temperature, see the fi
   
 ### Thursday
 
+- [Assignment 3](https://phaustin.github.io/a500_2024/week_notes.html#for-next-tuesday) due:  Monday
+
 - Projext decision tree
 
   - Dry or cloudy boundary layer?
