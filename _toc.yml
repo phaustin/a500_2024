@@ -78,6 +78,12 @@ parts:
     - file:  notebooks/moist_adiabats.md
     - url: https://www.dropbox.com/scl/fi/smr3r2wdjecql7vzt257o/moist_adiabats.ipynb?rlkey=wnrfuygfj15zdfscbce6dufqg&dl=0
       title: moist adiabat notebook
+    - file: notebooks/dry_les_2024_partII.md
+    - url: https://www.dropbox.com/scl/fi/vooei7m2dalaeeev9m63x/dry_les_2024_partII.ipynb?rlkey=tbfyyirvgajytsy46kwqlm5ef&dl=0
+      title: dry_les_2024_partII.ipynb download
+    - file: notebooks/read_cabauw.md
+    - url: https://www.dropbox.com/scl/fi/44quhfmej8gzqia28h5fz/read_cabauw.ipynb?rlkey=gk4hsyvwihmrzvja9k0qhr158&dl=0
+      title: read_cabauw.ipynb download
   - caption: Journal articles
     chapters:
     - url: https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9704743/
@@ -88,3 +94,6 @@ parts:
       title: Betts - Land-Surface-Atmosphere coupling review
     - url: https://agupubs.onlinelibrary.wiley.com/doi/10.1029/2018MS001532
       title: Canadian Climate model boundary layer parameterization
+    - url: https://www.dropbox.com/scl/fi/oewkjlpdod168tvg3lok3/cabauw_les.pdf?rlkey=kigrdkur74r6irafyhcn7pr40&dl=0
+      title: Cabauw LES simulation
+      

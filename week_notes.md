@@ -100,9 +100,10 @@ Read Chapter 1 of BLM.  For notation, especially virtual temperature, see the fi
   
 ### Thursday
 
+
 - [Assignment 3](https://phaustin.github.io/a500_2024/week_notes.html#for-next-tuesday) due:  Monday
 
-- Projext decision tree
+- Project decision tree
 
   - Dry or cloudy boundary layer?
   - Stable or unstable?
@@ -128,3 +129,16 @@ Read Chapter 1 of BLM.  For notation, especially virtual temperature, see the fi
 - For next Tuesday
 
   - For next Tuesday read Chapter 6 through section 6.5 and do problems 6.14, 6.15, 6.16, 6.17
+
+## Week 6
+
+### Tuesday
+
+- Revisit the dry les notebook -- question for post-break: why is the inversion height growing as $\sqrt{\text{time}}$?  see: {ref}`dry_lesII`
+
+- Introduce Cabauw tower data:  [Cabauw home page](https://www.knmi.nl/research/observations-data-technology/projects/cabauw-in-situ-measurements), [wikipedia entry](https://en.wikipedia.org/wiki/KNMI-mast_Cabauw)
+- [LES simulations focussed on Cabauw](https://www.dropbox.com/scl/fi/oewkjlpdod168tvg3lok3/cabauw_les.pdf?rlkey=kigrdkur74r6irafyhcn7pr40&dl=0)
+- Data for July and December, 2014: [cabauw.zip](https://www.dropbox.com/scl/fi/he3cyb6y2nd36gm959rke/cabauw.zip?rlkey=calxnyzv4yct8bo09e4p2o06u&dl=0)
+- Notebook to read the data: {ref}`read_cabauw`
+
+#### For Thursday, read the first 10 pages of Chapter 7
