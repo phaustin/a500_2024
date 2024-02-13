@@ -49,6 +49,8 @@ parts:
       title: surface layer scaling notes
     - url: https://www.dropbox.com/scl/fi/e6cq3sodf0fq2rwuynsfm/boussinesq.pdf?rlkey=8josihsmcn1fskhl6mvnlu4eh&dl=0
       title: Boussinesq and anelastic scaling notes
+    - url: https://www.dropbox.com/scl/fi/hdbpj7stnutwva85njr2k/mellor_yamada_notes.pdf?rlkey=kxlb7tpfo3bc2ogyzt1iht936&dl=0
+      title: Mellor-Yamada TKE notes
   - caption: Assignments
     chapters:
     - file: assignments/md_dry_les.ipynb
@@ -96,4 +98,7 @@ parts:
       title: Canadian Climate model boundary layer parameterization
     - url: https://www.dropbox.com/scl/fi/oewkjlpdod168tvg3lok3/cabauw_les.pdf?rlkey=kigrdkur74r6irafyhcn7pr40&dl=0
       title: Cabauw LES simulation
+    - url: https://www.dropbox.com/scl/fi/yu9362gnf3mq0s4rrl1ja/mellor_1982.pdf?rlkey=duea0woyu0fwvqo1kndjqr41u&dl=0
+      title: Mellor and Yamada, 1982 - TKE parameterization
+      
       
