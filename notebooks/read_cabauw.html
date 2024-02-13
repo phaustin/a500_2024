@@ -1,0 +1,1065 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Read cabauw data &#8212; ATSC 500 2024</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/read_cabauw';</script>
+    <link rel="canonical" href="https://phaustin.github.io/a500_2024/notebooks/read_cabauw.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="II: dry boundary layer – inversion height" href="dry_les_2024_partII.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">ATSC 500 2024</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../index.html">
+                    ATSC 500  syllabus
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Logistics test</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../schedule.html">Course schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../learning_goals.html">Learning goals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python_install.html">Python links</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Weekly topics</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../week_notes.html">Week notes</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Supplmentary readings</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fi/0wm3y9zbcwrxjy9cm7oen/fluids_01.pdf?rlkey=1d3pll22h2ui689jequbhznkd&amp;dl=0">Week 2 - Jardine Fluids 1</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fi/gb1ryz0x0tszgtfz31iom/fluids_02.pdf?rlkey=neyvhm8k8xhj2yupm8vmuf371&amp;dl=0">Week 2 - Jardine Fluids 2</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fi/whin2z8vct1fp9p03ovsf/lagrangian_eulerian.pdf?rlkey=76g3xlkx36udhjvqhc70e9r88&amp;dl=0">Week 2 - Lagrangian and Eulerian reference frames</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://foundations.projectpythia.org/core/xarray/xarray-intro.html">Week 3 - xarray tutorial</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fi/tkipa4u60xdbt3cd546cs/ensemle_averaging.pdf?rlkey=08k3hvbaz00zi5a5ua7pnhcw9&amp;dl=0">Week 3 - Ensemble averaging</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://gw2jh3xr2c.search.serialssolutions.com/?sid=sersol&amp;SS_jc=TC0001980404&amp;title=An%20introduction%20to%20clouds%20%3A%20from%20the%20microscale%20to%20climate">Lohmann et al. thermodynamics text</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fi/uanlie1sdyiz4ezbclopt/temperature_notes.pdf?rlkey=leatk6yrhmw137i9dl6j8ojlq&amp;dl=0">Thermo - Kinetic Temperature notes</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fi/j7bq6cc7r40vkx3og14qh/first_law_notes.pdf?rlkey=66r1y4umxtc1hgwfbylxlzoxt&amp;dl=0">Thermo - First law of thermodynamics</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fi/iknh9dm4iu1tfssa4724j/entropy.pdf?rlkey=buxyohh3w52ou6vk774s3xexq&amp;dl=0">Thermo - Entropy and potential temperature</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fi/zuk9evzf47qdsxi9tvgx7/thermo.pdf?rlkey=hbz3bpt6gxv5ly8rg1njfj9e4&amp;dl=0">Thermo - moist static energy</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fi/sosiyoxa9bzhecea5qas9/hydro.pdf?rlkey=7wll6s0yc4t0dlojzx56082iw&amp;dl=0">Weighted averages and scale heights</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fi/ygb2bi2riqo23ostxo8lw/buoyancy.pdf?rlkey=b80rbwtzartk4qp5dt9gjvsf6&amp;dl=0">Week 3 - Bouyancy</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fi/5m7x5opmp5p6ooe86imlj/virtual_temperature.pdf?rlkey=yjmfkbt417gpjv0cwwfyoi0c4&amp;dl=0">Week 4 - virtual temperature</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fi/ezjs46bsqegvnzasujnic/velocity_scales.pdf?rlkey=tkgf0zu4kxjnpmssa3zwglp2i&amp;dl=0">Week4 - velocity scales</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fi/zwjwuzed05cvya6xydj9e/taylor_series.pdf?rlkey=jt7zu8gedkwxaosty87e7h0o8&amp;dl=0">Taylor series and Reynolds averaging</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fi/7tkg65ar1u9emumxervu5/pressure_perturb.pdf?rlkey=gu3miynu1k28cs1985mrxxu4h&amp;dl=0">pressure perturbation notes</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fi/yqegu0q64a2t6sipms7t4/bussinger_critical_ri.pdf?rlkey=34m6gyzz5lv9oaxum8xx7ynge&amp;dl=0">Bussinger on the critical Richardson number</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fi/0bip672b25he2ikr2honz/surface_layer.pdf?rlkey=iurhmsxfrbxkodzkzqxoa66yd&amp;dl=0">surface layer scaling notes</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fi/e6cq3sodf0fq2rwuynsfm/boussinesq.pdf?rlkey=8josihsmcn1fskhl6mvnlu4eh&amp;dl=0">Boussinesq and anelastic scaling notes</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Assignments</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../assignments/md_dry_les.html">MD: les dry layer assignment solution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assignments/dry_les_2024_solution.html">PHA Dry LES Assign solution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assignments/hydrostatic_2024.html">Assign 2: Scale heights for typical atmospheric soundings</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fi/etj9r3hvt5rm3azz650l0/hydrostatic_2024.ipynb?rlkey=5fkvw08t872305rn9zboktw57&amp;dl=0">Assignment 2 hydrostatic balance notebook download</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Notebooks</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fi/f1y4uj9potzahxmv06kgg/dry_les_2024.ipynb?rlkey=vfpxzcck7t3rhcel7wcg4vxpv&amp;dl=0">dry les notebook ipynb download</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dry_les_2024.html">Working with LES data: dry boundary layer</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fi/9s7o6uccqzhrnvdee35z0/case_60_10.nc?rlkey=a40nnj4i6ddlfomqqg6t179dl&amp;dl=0">case_50_10.nc download (470 Mbytes)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="skew_coords_solution.html">Week2: Theromodynamic diagrams worksheet – solution</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fi/k1gswj3eocbsehbu4xvrq/skew_coords_solution.ipynb?rlkey=f6kp1pzzf4u14nwgk5gfvtffs&amp;dl=0">thermodynamic worksheet download</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fi/dfj80s9q920ljni5aakfc/tropical_subset.nc?rlkey=2fc2wr2yb70e4i6l9c7gwcyj3&amp;dl=0">tropical_subset.nc download</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tropical_clouds_solution.html">Week 3 worksheet: Tropical clouds – solution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tropical_fluxes.html">Energy and vapor fluxes in the tropical boundary layer</a></li>
+
+
+<li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fi/v7vqzumfbegh3yvpoex9f/tropical_fluxes.ipynb?rlkey=n3gktdca6nk12sjyn4iot1v55&amp;dl=0">tropical_fluxes.ipynb download</a></li>
+<li class="toctree-l1"><a class="reference internal" href="clausius_claphyron_rootfind.html">Using a rootfinder to solve implicit equations</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fi/545s100t4a5ikdwr3hk4o/clausius_claphyron_rootfind.ipynb?rlkey=v8fkd78xtx23y7qhi42v20npv&amp;dl=0">Clausius-Clapyron notebook download</a></li>
+<li class="toctree-l1"><a class="reference internal" href="moist_adiabats.html">Moist adiabats and the LCL</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fi/smr3r2wdjecql7vzt257o/moist_adiabats.ipynb?rlkey=wnrfuygfj15zdfscbce6dufqg&amp;dl=0">moist adiabat notebook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dry_les_2024_partII.html">II: dry boundary layer – inversion height</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Read cabauw data</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Journal articles</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference external" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9704743/">Are global climate models obsolete?</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://journals.ametsoc.org/view/journals/bams/85/11/bams-85-11-1673.xml">Betts 2004 Horton medal lecture -- GCM hydrology</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://agupubs.onlinelibrary.wiley.com/doi/10.3894/James.2009.1.4">Betts - Land-Surface-Atmosphere coupling review</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://agupubs.onlinelibrary.wiley.com/doi/10.1029/2018MS001532">Canadian Climate model boundary layer parameterization</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/notebooks/read_cabauw.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Read cabauw data</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sorting-by-month">Sorting by month</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-first-look">Data first look</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#checkpoint-all-the-data-into-one-netcdf-file">Checkpoint all the data into one netcdf file</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <p>To do the sunrise/sunset calculations you’ll need to do:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mamba</span> <span class="n">install</span> <span class="n">ephem</span>
+</pre></div>
+</div>
+<section class="tex2jax_ignore mathjax_ignore" id="read-cabauw-data">
+<span id="read-cabauw"></span><h1>Read cabauw data<a class="headerlink" href="#read-cabauw-data" title="Permalink to this heading">#</a></h1>
+<p>This notebook opens and reads two months of cabauw data: July, 2014 and
+December 2014.  It combines those two days and the measurements we care
+about in a new file called cabauw_ubc.nc</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">glob</span>
+<span class="kn">from</span> <span class="nn">netCDF4</span> <span class="kn">import</span> <span class="n">Dataset</span>
+<span class="kn">from</span> <span class="nn">dateutil.parser</span> <span class="kn">import</span> <span class="n">parse</span>
+<span class="kn">import</span> <span class="nn">datetime</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.dates</span> <span class="k">as</span> <span class="nn">mdates</span>
+<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+
+<span class="n">filelist</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;cesar_nubiscope_cloudcover_la1_t10_v1.0_201407.nc&#39;</span><span class="p">,</span>
+          <span class="s1">&#39;cesar_nubiscope_cloudcover_la1_t10_v1.0_201412.nc&#39;</span><span class="p">,</span>
+          <span class="s1">&#39;cesar_surface_flux_lc1_t10_v1.0_201407.nc&#39;</span><span class="p">,</span>
+          <span class="s1">&#39;cesar_surface_flux_lc1_t10_v1.0_201412.nc&#39;</span><span class="p">,</span>
+          <span class="s1">&#39;cesar_surface_meteo_lc1_t10_v1.0_201407.nc&#39;</span><span class="p">,</span>
+          <span class="s1">&#39;cesar_surface_meteo_lc1_t10_v1.0_201412.nc&#39;</span><span class="p">,</span>
+          <span class="s1">&#39;cesar_tower_meteo_lb1_t10_v1.1_201407.nc&#39;</span><span class="p">,</span>
+          <span class="s1">&#39;cesar_tower_meteo_lb1_t10_v1.1_201412.nc&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The make_date function takes an open CESAR ncfile and turns the time
+vector from hours past the start date into a python datetime object
+in UTC.  It uses the dateutil parse function to turn the date_start_of_data string into a date.</p>
+<p>This function is used in the cells below to create two dictionaries:</p>
+<ol class="arabic simple">
+<li><p><strong>data_dict</strong> with six keys for the 3 file/2 month combinations
+with each (file,month) entry holding a dictionary
+with the numpy array data for the file variables (F, UST, etc.)</p></li>
+<li><p><strong>var_attr</strong> with a key for each variable holding dictionaries with
+the variable attributes (units, long name, etc.)</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">make_date</span><span class="p">(</span><span class="n">ncfile</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    ncfile:  open netCDF4 Dataset</span>
+<span class="sd">    returns:</span>
+<span class="sd">       numpy array of datetime objects</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">the_time</span><span class="o">=</span><span class="n">f</span><span class="o">.</span><span class="n">variables</span><span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">][</span><span class="o">...</span><span class="p">]</span>
+    <span class="n">start_date</span><span class="o">=</span><span class="n">f</span><span class="o">.</span><span class="n">variables</span><span class="p">[</span><span class="s1">&#39;product&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">date_start_of_data</span>
+    <span class="n">start_date</span> <span class="o">=</span> <span class="n">parse</span><span class="p">(</span><span class="n">start_date</span><span class="p">)</span>
+    <span class="n">time_vec</span><span class="o">=</span><span class="p">[]</span>
+    <span class="k">for</span> <span class="n">the_hour</span> <span class="ow">in</span> <span class="n">the_time</span><span class="p">:</span>
+        <span class="n">time_vec</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">start_date</span> <span class="o">+</span> <span class="n">datetime</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="n">hours</span><span class="o">=</span><span class="nb">float</span><span class="p">(</span><span class="n">the_hour</span><span class="p">)))</span>
+    <span class="n">time_vec</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">time_vec</span><span class="p">)</span>
+    <span class="n">time_vec</span><span class="o">=</span><span class="n">time_vec</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">24</span><span class="p">,</span><span class="mi">6</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">time_vec</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Loop through all the files and make a dictionary with keys determined
+by the netcdf file attributes.  Initially the dictionary contains the
+filename, start_date, lat, lon and start time.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_attrs</span><span class="p">(</span><span class="n">ncvar</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        input: open netcdf variable handle</span>
+<span class="sd">        output: dictionary containing name,attribute pairs</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">attributes</span><span class="o">=</span><span class="n">ncvar</span><span class="o">.</span><span class="n">ncattrs</span><span class="p">()</span>
+    <span class="n">attr_dict</span><span class="o">=</span><span class="p">{}</span>
+    <span class="k">for</span> <span class="n">attr</span> <span class="ow">in</span> <span class="n">attributes</span><span class="p">:</span>
+        <span class="n">attr_dict</span><span class="p">[</span><span class="n">attr</span><span class="p">]</span><span class="o">=</span><span class="nb">getattr</span><span class="p">(</span><span class="n">ncvar</span><span class="p">,</span><span class="n">attr</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">attr_dict</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_dir</span> <span class="o">=</span> <span class="n">Path</span><span class="o">.</span><span class="n">home</span><span class="p">()</span> <span class="o">/</span> <span class="s2">&quot;Dropbox/phil_files/a500/data/cabauw&quot;</span>
+<span class="n">all_files</span><span class="o">=</span><span class="n">data_dir</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s1">&#39;cesar*.nc&#39;</span><span class="p">)</span>
+<span class="n">data_dict</span><span class="o">=</span><span class="p">{}</span>
+<span class="n">var_attrs</span><span class="o">=</span><span class="p">{}</span>
+<span class="k">for</span> <span class="n">the_file</span> <span class="ow">in</span> <span class="n">all_files</span><span class="p">:</span>
+    <span class="n">str_name</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">the_file</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">str_name</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;nubiscope&#39;</span><span class="p">)</span> <span class="o">&gt;</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+        <span class="c1">#</span>
+        <span class="c1"># skip cloud data</span>
+        <span class="c1">#</span>
+        <span class="k">continue</span>
+    <span class="k">with</span> <span class="n">Dataset</span><span class="p">(</span><span class="n">the_file</span><span class="p">,</span><span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">details</span><span class="o">=</span><span class="n">f</span><span class="o">.</span><span class="n">variables</span><span class="p">[</span><span class="s1">&#39;iso_dataset&#39;</span><span class="p">]</span>
+        <span class="n">attr_dict</span><span class="o">=</span><span class="n">get_attrs</span><span class="p">(</span><span class="n">details</span><span class="p">)</span>
+        <span class="n">lon</span><span class="o">=</span><span class="n">attr_dict</span><span class="p">[</span><span class="s1">&#39;westbound_longitude&#39;</span><span class="p">]</span>
+        <span class="n">lat</span><span class="o">=</span><span class="n">attr_dict</span><span class="p">[</span><span class="s1">&#39;northbound_latitude&#39;</span><span class="p">]</span>
+        <span class="n">title</span><span class="o">=</span><span class="n">attr_dict</span><span class="p">[</span><span class="s1">&#39;title&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+        <span class="n">the_time</span> <span class="o">=</span> <span class="n">make_date</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+        <span class="c1">#</span>
+        <span class="c1"># turn a title like:</span>
+        <span class="c1">#&quot;CESAR surface fluxes validated and gap filled&quot;</span>
+        <span class="c1"># into the string: surface_fluxes</span>
+        <span class="c1">#</span>
+        <span class="n">filetype</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">{}</span><span class="s1">_</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="o">*</span><span class="n">title</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">])</span>
+        <span class="n">start_date</span><span class="o">=</span><span class="n">f</span><span class="o">.</span><span class="n">variables</span><span class="p">[</span><span class="s1">&#39;product&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">date_start_of_data</span>
+        <span class="n">start_date</span><span class="o">=</span><span class="n">parse</span><span class="p">(</span><span class="n">start_date</span><span class="p">)</span>
+        <span class="n">start_month</span><span class="o">=</span><span class="n">start_date</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;%Y%m&#39;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">str_name</span><span class="si">=}</span><span class="s2">, </span><span class="si">{</span><span class="n">filetype</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">data_dict</span><span class="p">[</span><span class="n">filetype</span><span class="p">,</span><span class="n">start_month</span><span class="p">]</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">the_file</span><span class="p">,</span><span class="n">timevec</span><span class="o">=</span><span class="n">the_time</span><span class="p">,</span><span class="n">lon</span><span class="o">=</span><span class="n">lon</span><span class="p">,</span><span class="n">lat</span><span class="o">=</span><span class="n">lat</span><span class="p">,</span>
+                                        <span class="n">start_date</span><span class="o">=</span><span class="n">start_date</span><span class="p">)</span>
+<span class="c1">#</span>
+<span class="c1">#  lat and lon shouldn&#39;t change, use the last values for the netcdf file attribute</span>
+<span class="c1">#</span>
+<span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;lat&#39;</span><span class="p">,</span><span class="s1">&#39;lon&#39;</span><span class="p">]:</span>
+    <span class="n">var_attrs</span><span class="p">[</span><span class="n">name</span><span class="p">]</span><span class="o">=</span><span class="n">data_dict</span><span class="p">[</span><span class="n">filetype</span><span class="p">,</span><span class="n">start_month</span><span class="p">][</span><span class="n">name</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>str_name=&#39;/Users/phil/Dropbox/phil_files/a500/data/cabauw/cesar_surface_flux_lc1_t10_v1.0_201407.nc&#39;, filetype=&#39;surface_fluxes&#39;
+str_name=&#39;/Users/phil/Dropbox/phil_files/a500/data/cabauw/cesar_surface_flux_lc1_t10_v1.0_201412.nc&#39;, filetype=&#39;surface_fluxes&#39;
+str_name=&#39;/Users/phil/Dropbox/phil_files/a500/data/cabauw/cesar_tower_meteo_lb1_t10_v1.1_201412.nc&#39;, filetype=&#39;tower_meteorological&#39;
+str_name=&#39;/Users/phil/Dropbox/phil_files/a500/data/cabauw/cesar_surface_meteo_lc1_t10_v1.0_201412.nc&#39;, filetype=&#39;meteorological_surface&#39;
+str_name=&#39;/Users/phil/Dropbox/phil_files/a500/data/cabauw/cesar_tower_meteo_lb1_t10_v1.1_201407.nc&#39;, filetype=&#39;tower_meteorological&#39;
+str_name=&#39;/Users/phil/Dropbox/phil_files/a500/data/cabauw/cesar_surface_meteo_lc1_t10_v1.0_201407.nc&#39;, filetype=&#39;meteorological_surface&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now loop through the dictionary and add the flux and tower variables.
+Each variable is a linear vector of measurements taken every 10 minutes, and
+for tower variables, at 7 levels.</p>
+<p>The numpy command:
+var.reshape(-1,24,6,7)
+takes the linear vector and folds it into either 28,29,30,31 days (depending on month)
+24 hours, 6 10 minute intervals, and 7 levels</p>
+<p>That allows us to do an hourly average by saying:
+var.mean(axis=2)  to average over the 6 10 minute measurements.</p>
+<section id="sorting-by-month">
+<h2>Sorting by month<a class="headerlink" href="#sorting-by-month" title="Permalink to this heading">#</a></h2>
+<p>This cell goes through the data_dict dictionaries and combines the six
+(file,month) keys into two dictionaries, one for each month.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#</span>
+<span class="c1"># collect all the data from the three files into a dictionary indexed</span>
+<span class="c1"># by month called month_dict</span>
+<span class="c1">#</span>
+<span class="c1">#  use defaultdict(dict) so that every time we add a new month</span>
+<span class="c1">#  we create an empty dictionary to hold the variables</span>
+<span class="c1">#  </span>
+<span class="c1">#</span>
+<span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">defaultdict</span>
+<span class="n">month_dict</span><span class="o">=</span><span class="n">defaultdict</span><span class="p">(</span><span class="nb">dict</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">the_key</span> <span class="ow">in</span> <span class="n">data_dict</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+    <span class="n">var_dict</span><span class="o">=</span><span class="n">data_dict</span><span class="p">[</span><span class="n">the_key</span><span class="p">]</span>
+    <span class="n">the_month</span><span class="o">=</span><span class="n">the_key</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;working on: &#39;</span><span class="p">,</span><span class="n">the_month</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">the_key</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;tower_meteorological&#39;</span><span class="p">:</span>
+        <span class="k">with</span> <span class="n">Dataset</span><span class="p">(</span><span class="n">var_dict</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">],</span><span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+            <span class="k">if</span> <span class="s1">&#39;has_time&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">month_dict</span><span class="p">[</span><span class="n">the_month</span><span class="p">]:</span>
+                <span class="n">month_dict</span><span class="p">[</span><span class="n">the_month</span><span class="p">][</span><span class="s1">&#39;timevec&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">var_dict</span><span class="p">[</span><span class="s1">&#39;timevec&#39;</span><span class="p">]</span>
+                <span class="n">month_dict</span><span class="p">[</span><span class="n">the_month</span><span class="p">][</span><span class="s1">&#39;has_time&#39;</span><span class="p">]</span><span class="o">=</span><span class="kc">True</span>
+            <span class="n">month_dict</span><span class="p">[</span><span class="n">the_month</span><span class="p">][</span><span class="s1">&#39;z&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">variables</span><span class="p">[</span><span class="s1">&#39;z&#39;</span><span class="p">][</span><span class="o">...</span><span class="p">]</span>
+            <span class="k">for</span> <span class="n">var</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;F&#39;</span><span class="p">,</span><span class="s1">&#39;TA&#39;</span><span class="p">,</span><span class="s1">&#39;TD&#39;</span><span class="p">,</span><span class="s1">&#39;Q&#39;</span><span class="p">,</span><span class="s1">&#39;D&#39;</span><span class="p">]:</span>
+                <span class="n">month_dict</span><span class="p">[</span><span class="n">the_month</span><span class="p">][</span><span class="n">var</span><span class="p">]</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">variables</span><span class="p">[</span><span class="n">var</span><span class="p">][</span><span class="o">...</span><span class="p">]</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">24</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">)</span>
+                <span class="n">var_attrs</span><span class="p">[</span><span class="n">var</span><span class="p">]</span><span class="o">=</span><span class="n">get_attrs</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">variables</span><span class="p">[</span><span class="n">var</span><span class="p">])</span>
+    <span class="k">elif</span> <span class="n">the_key</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;surface_fluxes&#39;</span><span class="p">:</span> 
+        <span class="k">with</span> <span class="n">Dataset</span><span class="p">(</span><span class="n">var_dict</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">],</span><span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">var</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;H&#39;</span><span class="p">,</span><span class="s1">&#39;UST&#39;</span><span class="p">,</span><span class="s1">&#39;LE&#39;</span><span class="p">]:</span>
+                <span class="n">month_dict</span><span class="p">[</span><span class="n">the_month</span><span class="p">][</span><span class="n">var</span><span class="p">]</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">variables</span><span class="p">[</span><span class="n">var</span><span class="p">][</span><span class="o">...</span><span class="p">]</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">24</span><span class="p">,</span><span class="mi">6</span><span class="p">)</span>
+                <span class="n">var_attrs</span><span class="p">[</span><span class="n">var</span><span class="p">]</span><span class="o">=</span><span class="n">get_attrs</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">variables</span><span class="p">[</span><span class="n">var</span><span class="p">])</span>
+    <span class="k">elif</span> <span class="n">the_key</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;meteorological_surface&#39;</span><span class="p">:</span> 
+        <span class="k">with</span> <span class="n">Dataset</span><span class="p">(</span><span class="n">var_dict</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">],</span><span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">var</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;P0&#39;</span><span class="p">,</span><span class="s1">&#39;TA002&#39;</span><span class="p">,</span><span class="s1">&#39;Q002&#39;</span><span class="p">,</span><span class="s1">&#39;F010&#39;</span><span class="p">]:</span>
+                <span class="n">month_dict</span><span class="p">[</span><span class="n">the_month</span><span class="p">][</span><span class="n">var</span><span class="p">]</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">variables</span><span class="p">[</span><span class="n">var</span><span class="p">][</span><span class="o">...</span><span class="p">]</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">24</span><span class="p">,</span><span class="mi">6</span><span class="p">)</span>
+                <span class="n">var_attrs</span><span class="p">[</span><span class="n">var</span><span class="p">]</span><span class="o">=</span><span class="n">get_attrs</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">variables</span><span class="p">[</span><span class="n">var</span><span class="p">])</span>
+    <span class="k">elif</span> <span class="n">the_key</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;scanning_radiometer&#39;</span><span class="p">:</span>
+        <span class="k">pass</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;didn&#39;t recognize </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">the_key</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;finished: &#39;</span><span class="p">,</span><span class="n">month_dict</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>working on:  201407
+working on:  201412
+working on:  201412
+working on:  201412
+working on:  201407
+working on:  201407
+finished:  dict_keys([&#39;201407&#39;, &#39;201412&#39;])
+</pre></div>
+</div>
+</div>
+</div>
+<p>We’ll need to know sunrise, sunset and solar noon to interpret our
+data.  Here is how you find these with the
+<a class="reference external" href="http://stackoverflow.com/questions/2637293/calculating-dawn-and-sunset-times-using-pyephem">pyephem</a> module</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">ephem</span>
+<span class="k">for</span> <span class="n">the_month</span> <span class="ow">in</span> <span class="n">month_dict</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+    <span class="n">var</span><span class="o">=</span><span class="s1">&#39;tower_meteorological&#39;</span>
+    <span class="n">start_time</span><span class="o">=</span><span class="n">month_dict</span><span class="p">[</span><span class="n">the_month</span><span class="p">][</span><span class="s1">&#39;timevec&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">cabauw</span><span class="o">=</span><span class="n">ephem</span><span class="o">.</span><span class="n">Observer</span><span class="p">()</span>
+    <span class="n">cabauw</span><span class="o">.</span><span class="n">date</span><span class="o">=</span><span class="n">start_time</span>
+    <span class="n">cabauw</span><span class="o">.</span><span class="n">lon</span> <span class="o">=</span> <span class="n">var_attrs</span><span class="p">[</span><span class="s1">&#39;lon&#39;</span><span class="p">]</span>
+    <span class="n">cabauw</span><span class="o">.</span><span class="n">lat</span> <span class="o">=</span> <span class="n">var_attrs</span><span class="p">[</span><span class="s1">&#39;lat&#39;</span><span class="p">]</span>
+    <span class="n">sunrise</span><span class="o">=</span><span class="n">cabauw</span><span class="o">.</span><span class="n">next_rising</span><span class="p">(</span><span class="n">ephem</span><span class="o">.</span><span class="n">Sun</span><span class="p">())</span>
+    <span class="n">noon</span> <span class="o">=</span> <span class="n">cabauw</span><span class="o">.</span><span class="n">next_transit</span><span class="p">(</span><span class="n">ephem</span><span class="o">.</span><span class="n">Sun</span><span class="p">(),</span><span class="n">start</span><span class="o">=</span><span class="n">sunrise</span><span class="p">)</span>
+    <span class="n">sunset</span> <span class="o">=</span> <span class="n">cabauw</span><span class="o">.</span><span class="n">next_setting</span><span class="p">(</span><span class="n">ephem</span><span class="o">.</span><span class="n">Sun</span><span class="p">())</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;sunrise is </span><span class="si">{}</span><span class="s1"> UTC&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">sunrise</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;solar noon </span><span class="si">{}</span><span class="s1"> UTC&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">noon</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;sunset is </span><span class="si">{}</span><span class="s1"> UTC&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">sunset</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sunrise is 2014/7/1 03:24:19 UTC
+solar noon 2014/7/1 11:44:09 UTC
+sunset is 2014/7/1 20:03:38 UTC
+sunrise is 2014/12/1 07:25:04 UTC
+solar noon 2014/12/1 11:29:17 UTC
+sunset is 2014/12/1 15:33:10 UTC
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="data-first-look">
+<h2>Data first look<a class="headerlink" href="#data-first-look" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;ggplot&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">(</span><span class="s1">&#39;all&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;starting: &#39;</span><span class="p">,</span><span class="n">month_dict</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>    
+<span class="k">for</span> <span class="n">the_month</span> <span class="ow">in</span> <span class="n">month_dict</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+    <span class="n">hourly_wind_avg</span> <span class="o">=</span> <span class="n">month_dict</span><span class="p">[</span><span class="n">the_month</span><span class="p">][</span><span class="s1">&#39;F&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">z</span><span class="o">=</span><span class="n">month_dict</span><span class="p">[</span><span class="n">the_month</span><span class="p">][</span><span class="s1">&#39;z&#39;</span><span class="p">]</span>
+    <span class="n">hour</span><span class="o">=</span><span class="mi">2</span>
+    <span class="n">fig</span><span class="p">,</span><span class="n">ax</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+    <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">hourly_wind_avg</span><span class="p">[:,</span><span class="n">hour</span><span class="p">,:]</span><span class="o">.</span><span class="n">T</span><span class="p">,</span><span class="n">z</span><span class="p">)</span>
+    <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;hour: </span><span class="si">{}</span><span class="s1"> UTC&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">hour</span><span class="p">))</span>
+    <span class="n">hour</span><span class="o">=</span><span class="mi">14</span>
+    <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">hourly_wind_avg</span><span class="p">[:,</span><span class="n">hour</span><span class="p">,:]</span><span class="o">.</span><span class="n">T</span><span class="p">,</span><span class="n">z</span><span class="p">)</span>
+    <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;hour: </span><span class="si">{}</span><span class="s1"> UTC&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">hour</span><span class="p">))</span>
+    <span class="n">fig</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{}</span><span class="s1"> hourly avg winds&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">the_month</span><span class="p">))</span>
+
+    <span class="c1">#</span>
+    <span class="c1"># date plotting tips at http://matplotlib.org/users/recipes.html</span>
+    <span class="c1">#</span>
+    <span class="n">the_time</span> <span class="o">=</span> <span class="n">month_dict</span><span class="p">[</span><span class="n">the_month</span><span class="p">][</span><span class="s1">&#39;timevec&#39;</span><span class="p">]</span>
+    <span class="n">H</span><span class="o">=</span><span class="n">month_dict</span><span class="p">[</span><span class="n">the_month</span><span class="p">][</span><span class="s1">&#39;H&#39;</span><span class="p">]</span>
+    <span class="n">fig</span><span class="p">,</span><span class="n">ax</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+    <span class="n">fig</span><span class="o">.</span><span class="n">autofmt_xdate</span><span class="p">()</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">the_time</span><span class="o">.</span><span class="n">ravel</span><span class="p">(),</span><span class="n">H</span><span class="o">.</span><span class="n">ravel</span><span class="p">())</span>
+    <span class="n">title</span><span class="o">=</span><span class="s1">&#39;sensible heat flux for </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">the_month</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="n">title</span><span class="p">,</span><span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;H $(W\,m^{-2})$&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;finished plot: &#39;</span><span class="p">,</span><span class="n">month_dict</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>starting: 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> dict_keys([&#39;201407&#39;, &#39;201412&#39;])
+finished plot:  dict_keys([&#39;201407&#39;, &#39;201412&#39;])
+</pre></div>
+</div>
+<img alt="../_images/2bdfb5ff674f1a99c13ccbc5466820201a6b33ba3a0c16edf0d43b3f64fc1f00.png" src="../_images/2bdfb5ff674f1a99c13ccbc5466820201a6b33ba3a0c16edf0d43b3f64fc1f00.png" />
+<img alt="../_images/445cab9e6b4a63bd600abbf1d04e3c7f8070c952124cac97d4887fc503de57fd.png" src="../_images/445cab9e6b4a63bd600abbf1d04e3c7f8070c952124cac97d4887fc503de57fd.png" />
+<img alt="../_images/e54934e8be00193c575c703765ec580c7ad7608719e20e0523fc9d158e40d019.png" src="../_images/e54934e8be00193c575c703765ec580c7ad7608719e20e0523fc9d158e40d019.png" />
+<img alt="../_images/717bdd533ff43cd635ad2ef2ee7a10c9bf917a56d761f7fc649d55e7e1a16134.png" src="../_images/717bdd533ff43cd635ad2ef2ee7a10c9bf917a56d761f7fc649d55e7e1a16134.png" />
+</div>
+</div>
+</section>
+<section id="checkpoint-all-the-data-into-one-netcdf-file">
+<h2>Checkpoint all the data into one netcdf file<a class="headerlink" href="#checkpoint-all-the-data-into-one-netcdf-file" title="Permalink to this heading">#</a></h2>
+<p>I want to save month_dict into a netcdf file so we don’t need
+to repeat this processing but can start with a merged dataset
+that has all days of interest and all
+instruments in a single place.   To do that, I group the measurements
+into individual days using <a class="reference external" href="http://unidata.github.io/netcdf4-python">netcdf groups</a></p>
+<p>I transfer all the attributes I read into the var_attrs dict so I maintain
+the original metadata as much as possible</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">write_attrs</span><span class="p">(</span><span class="n">ncvar</span><span class="p">,</span><span class="n">attr_dict</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">name</span><span class="p">,</span><span class="n">item</span> <span class="ow">in</span> <span class="n">attr_dict</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="k">if</span> <span class="n">name</span> <span class="o">!=</span> <span class="s1">&#39;_FillValue&#39;</span><span class="p">:</span>
+            <span class="nb">setattr</span><span class="p">(</span><span class="n">ncvar</span><span class="p">,</span><span class="n">name</span><span class="p">,</span><span class="n">item</span><span class="p">)</span>
+    <span class="k">return</span> <span class="kc">None</span>
+
+<span class="kn">from</span> <span class="nn">netCDF4</span> <span class="kn">import</span> <span class="n">Dataset</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="n">filename</span><span class="o">=</span><span class="s1">&#39;cabauw_ubc.nc&#39;</span>
+<span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>   
+<span class="k">with</span> <span class="n">Dataset</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span><span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">ncout</span><span class="p">:</span>
+    <span class="n">the_months</span> <span class="o">=</span> <span class="n">month_dict</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">the_month</span> <span class="ow">in</span> <span class="n">the_months</span><span class="p">:</span>
+        <span class="n">speed</span><span class="o">=</span><span class="n">month_dict</span><span class="p">[</span><span class="n">the_month</span><span class="p">][</span><span class="s1">&#39;F&#39;</span><span class="p">]</span>
+        <span class="n">days_name</span><span class="o">=</span><span class="s1">&#39;days</span><span class="si">{:2d}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">speed</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="n">dimnames</span><span class="o">=</span><span class="p">[</span><span class="n">days_name</span><span class="p">,</span><span class="s1">&#39;hours&#39;</span><span class="p">,</span><span class="s1">&#39;min10&#39;</span><span class="p">,</span><span class="s1">&#39;z&#39;</span><span class="p">]</span>
+        <span class="n">dim_info</span><span class="o">=</span><span class="nb">zip</span><span class="p">(</span><span class="n">dimnames</span><span class="p">,</span><span class="n">speed</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">name</span><span class="p">,</span><span class="n">length</span> <span class="ow">in</span> <span class="n">dim_info</span><span class="p">:</span>     
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">ncout</span><span class="o">.</span><span class="n">createDimension</span><span class="p">(</span><span class="n">name</span><span class="p">,</span><span class="n">length</span><span class="p">)</span> 
+            <span class="k">except</span> <span class="ne">RuntimeError</span><span class="p">:</span>
+                <span class="k">pass</span>
+        <span class="n">nc_month</span><span class="o">=</span><span class="s1">&#39;m</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">the_month</span><span class="p">)</span>
+        <span class="n">date_group</span><span class="o">=</span><span class="n">ncout</span><span class="o">.</span><span class="n">createGroup</span><span class="p">(</span><span class="n">nc_month</span><span class="p">)</span>
+        <span class="nb">setattr</span><span class="p">(</span><span class="n">date_group</span><span class="p">,</span><span class="s1">&#39;month&#39;</span><span class="p">,</span><span class="n">the_month</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">var</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;H&#39;</span><span class="p">,</span><span class="s1">&#39;LE&#39;</span><span class="p">,</span><span class="s1">&#39;UST&#39;</span><span class="p">,</span><span class="s1">&#39;P0&#39;</span><span class="p">,</span><span class="s1">&#39;TA002&#39;</span><span class="p">,</span><span class="s1">&#39;Q002&#39;</span><span class="p">,</span><span class="s1">&#39;F010&#39;</span><span class="p">]:</span>
+            <span class="n">the_data</span><span class="o">=</span><span class="n">month_dict</span><span class="p">[</span><span class="n">the_month</span><span class="p">][</span><span class="n">var</span><span class="p">]</span>
+            <span class="n">var_nc</span><span class="o">=</span><span class="n">date_group</span><span class="o">.</span><span class="n">createVariable</span><span class="p">(</span><span class="n">var</span><span class="p">,</span><span class="n">the_data</span><span class="o">.</span><span class="n">dtype</span><span class="p">,</span>
+                                             <span class="p">[</span><span class="n">days_name</span><span class="p">,</span><span class="s1">&#39;hours&#39;</span><span class="p">,</span><span class="s1">&#39;min10&#39;</span><span class="p">])</span>
+            <span class="n">var_nc</span><span class="p">[</span><span class="o">...</span><span class="p">]</span><span class="o">=</span><span class="n">the_data</span><span class="p">[</span><span class="o">...</span><span class="p">]</span>
+            <span class="n">write_attrs</span><span class="p">(</span><span class="n">var_nc</span><span class="p">,</span><span class="n">var_attrs</span><span class="p">[</span><span class="n">var</span><span class="p">])</span>
+        <span class="k">for</span> <span class="n">var</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;TA&#39;</span><span class="p">,</span><span class="s1">&#39;D&#39;</span><span class="p">,</span><span class="s1">&#39;Q&#39;</span><span class="p">,</span><span class="s1">&#39;TD&#39;</span><span class="p">,</span><span class="s1">&#39;F&#39;</span><span class="p">]:</span>
+            <span class="n">the_data</span><span class="o">=</span><span class="n">month_dict</span><span class="p">[</span><span class="n">the_month</span><span class="p">][</span><span class="n">var</span><span class="p">]</span>
+            <span class="n">var_nc</span><span class="o">=</span><span class="n">date_group</span><span class="o">.</span><span class="n">createVariable</span><span class="p">(</span><span class="n">var</span><span class="p">,</span><span class="n">the_data</span><span class="o">.</span><span class="n">dtype</span><span class="p">,</span>
+                                             <span class="p">[</span><span class="n">days_name</span><span class="p">,</span><span class="s1">&#39;hours&#39;</span><span class="p">,</span><span class="s1">&#39;min10&#39;</span><span class="p">,</span><span class="s1">&#39;z&#39;</span><span class="p">])</span>
+            <span class="n">var_nc</span><span class="p">[</span><span class="o">...</span><span class="p">]</span><span class="o">=</span><span class="n">the_data</span><span class="p">[</span><span class="o">...</span><span class="p">]</span>
+            <span class="n">write_attrs</span><span class="p">(</span><span class="n">var_nc</span><span class="p">,</span><span class="n">var_attrs</span><span class="p">[</span><span class="n">var</span><span class="p">])</span>
+
+        <span class="n">the_time</span><span class="o">=</span><span class="n">month_dict</span><span class="p">[</span><span class="n">the_month</span><span class="p">][</span><span class="s1">&#39;timevec&#39;</span><span class="p">]</span>
+        <span class="n">float_time</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">item</span><span class="o">.</span><span class="n">timestamp</span><span class="p">()</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">the_time</span><span class="o">.</span><span class="n">flat</span><span class="p">])</span>
+        <span class="n">float_time</span><span class="o">=</span><span class="n">float_time</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">24</span><span class="p">,</span><span class="mi">6</span><span class="p">)</span>   
+        <span class="n">time_nc</span><span class="o">=</span><span class="n">date_group</span><span class="o">.</span><span class="n">createVariable</span><span class="p">(</span><span class="s1">&#39;time&#39;</span><span class="p">,</span><span class="n">float_time</span><span class="o">.</span><span class="n">dtype</span><span class="p">,</span>
+                                     <span class="p">[</span><span class="n">days_name</span><span class="p">,</span><span class="s1">&#39;hours&#39;</span><span class="p">,</span><span class="s1">&#39;min10&#39;</span><span class="p">])</span> 
+        <span class="n">time_nc</span><span class="p">[</span><span class="o">...</span><span class="p">]</span><span class="o">=</span><span class="n">float_time</span><span class="p">[</span><span class="o">...</span><span class="p">]</span>
+        <span class="n">time_nc</span><span class="o">.</span><span class="n">timezone</span><span class="o">=</span><span class="s1">&#39;UTC&#39;</span>
+        <span class="n">time_nc</span><span class="o">.</span><span class="n">comment</span><span class="o">=</span><span class="s1">&#39;convert using datetime.fromtimestamp(var,pytz.utc)&#39;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">z</span><span class="o">=</span><span class="n">month_dict</span><span class="p">[</span><span class="n">the_month</span><span class="p">][</span><span class="s1">&#39;z&#39;</span><span class="p">]</span>
+            <span class="n">z_nc</span><span class="o">=</span><span class="n">ncout</span><span class="o">.</span><span class="n">createVariable</span><span class="p">(</span><span class="s1">&#39;z&#39;</span><span class="p">,</span><span class="n">z</span><span class="o">.</span><span class="n">dtype</span><span class="p">,[</span><span class="s1">&#39;z&#39;</span><span class="p">])</span>
+            <span class="n">z_nc</span><span class="p">[</span><span class="o">...</span><span class="p">]</span><span class="o">=</span><span class="n">z</span><span class="p">[</span><span class="o">...</span><span class="p">]</span>
+        <span class="k">except</span> <span class="ne">RuntimeError</span><span class="p">:</span>
+            <span class="c1">#</span>
+            <span class="c1"># only create ncout z vector once</span>
+            <span class="c1">#</span>
+            <span class="k">pass</span>
+        <span class="n">ncout</span><span class="o">.</span><span class="n">history</span><span class="o">=</span><span class="s1">&#39;written by read_cabauw.ipynb&#39;</span>
+        <span class="k">for</span> <span class="n">var</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;lat&#39;</span><span class="p">,</span><span class="s1">&#39;lon&#39;</span><span class="p">]:</span>
+            <span class="nb">setattr</span><span class="p">(</span><span class="n">ncout</span><span class="p">,</span><span class="n">var</span><span class="p">,</span><span class="nb">float</span><span class="p">(</span><span class="n">var_attrs</span><span class="p">[</span><span class="n">var</span><span class="p">]))</span>
+        <span class="n">ncout</span><span class="o">.</span><span class="n">lat_units</span><span class="o">=</span><span class="s1">&#39;degrees north&#39;</span>
+        <span class="n">ncout</span><span class="o">.</span><span class="n">lon_units</span><span class="o">=</span><span class="s1">&#39;degrees east&#39;</span>
+        <span class="n">filelist</span><span class="o">=</span><span class="p">[]</span>
+        <span class="k">for</span> <span class="n">key</span><span class="p">,</span><span class="n">value</span> <span class="ow">in</span> <span class="n">data_dict</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="n">filelist</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{}</span><span class="s1">;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">value</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]))</span>
+        <span class="n">filelista</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">filelist</span><span class="p">)</span>
+        <span class="nb">setattr</span><span class="p">(</span><span class="n">ncout</span><span class="p">,</span><span class="s1">&#39;filelist&#39;</span><span class="p">,</span><span class="n">filelist</span><span class="p">)</span>
+            
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>ncdump<span class="w"> </span>-h<span class="w"> </span>cabauw_ubc.nc
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>netcdf cabauw_ubc {
+dimensions:
+	days31 = 31 ;
+	hours = 24 ;
+	min10 = 6 ;
+	z = 7 ;
+variables:
+	float z(z) ;
+
+// global attributes:
+		:history = &quot;written by read_cabauw.ipynb&quot; ;
+		:lat = 51.97 ;
+		:lon = 4.926 ;
+		:lat_units = &quot;degrees north&quot; ;
+		:lon_units = &quot;degrees east&quot; ;
+		string :filelist = &quot;/Users/phil/Dropbox/phil_files/a500/data/cabauw/cesar_surface_flux_lc1_t10_v1.0_201407.nc;&quot;, &quot;/Users/phil/Dropbox/phil_files/a500/data/cabauw/cesar_surface_flux_lc1_t10_v1.0_201412.nc;&quot;, &quot;/Users/phil/Dropbox/phil_files/a500/data/cabauw/cesar_tower_meteo_lb1_t10_v1.1_201412.nc;&quot;, &quot;/Users/phil/Dropbox/phil_files/a500/data/cabauw/cesar_surface_meteo_lc1_t10_v1.0_201412.nc;&quot;, &quot;/Users/phil/Dropbox/phil_files/a500/data/cabauw/cesar_tower_meteo_lb1_t10_v1.1_201407.nc;&quot;, &quot;/Users/phil/Dropbox/phil_files/a500/data/cabauw/cesar_surface_meteo_lc1_t10_v1.0_201407.nc;&quot; ;
+
+group: m201407 {
+  variables:
+  	float H(days31, hours, min10) ;
+  		H:units = &quot;W m-2&quot; ;
+  		H:long_name = &quot;MERGED Surface sensible heat flux&quot; ;
+  		H:standard_name = &quot;surface_upward_sensible_heat_flux&quot; ;
+  		H:accuracy = &quot;10%&quot; ;
+  		H:ancillary_variables = &quot;IH&quot; ;
+  		H:cell_methods = &quot;time: mean&quot; ;
+  	float LE(days31, hours, min10) ;
+  		LE:units = &quot;W m-2&quot; ;
+  		LE:long_name = &quot;MERGED Surface latent heat flux&quot; ;
+  		LE:standard_name = &quot;surface_upward_latent_heat_flux&quot; ;
+  		LE:accuracy = &quot;10%&quot; ;
+  		LE:ancillary_variables = &quot;ILE&quot; ;
+  		LE:cell_methods = &quot;time: mean&quot; ;
+  	float UST(days31, hours, min10) ;
+  		UST:units = &quot;m s-1&quot; ;
+  		UST:long_name = &quot;MERGED Friction velocity&quot; ;
+  		UST:ancillary_variables = &quot;IUST&quot; ;
+  		UST:cell_methods = &quot;time: mean&quot; ;
+  	float P0(days31, hours, min10) ;
+  		P0:units = &quot;hPa&quot; ;
+  		P0:long_name = &quot;MERGED Atmospheric air pressure&quot; ;
+  		P0:standard_name = &quot;air_pressure_at_sensor_level&quot; ;
+  		P0:accuracy = &quot;0.1&quot; ;
+  		P0:ancillary_variables = &quot;IP0&quot; ;
+  		P0:cell_methods = &quot;time: mean&quot; ;
+  	float TA002(days31, hours, min10) ;
+  		TA002:units = &quot;degC&quot; ;
+  		TA002:long_name = &quot;MERGED Air temperature at   2 m&quot; ;
+  		TA002:standard_name = &quot;air_temperature&quot; ;
+  		TA002:accuracy = &quot;0.1&quot; ;
+  		TA002:ancillary_variables = &quot;ITA002&quot; ;
+  		TA002:cell_methods = &quot;time: mean&quot; ;
+  	float Q002(days31, hours, min10) ;
+  		Q002:units = &quot;1e-3&quot; ;
+  		Q002:long_name = &quot;MERGED Specific humidity     at   2 m&quot; ;
+  		Q002:ancillary_variables = &quot;IQ002&quot; ;
+  		Q002:cell_methods = &quot;time: mean&quot; ;
+  	float F010(days31, hours, min10) ;
+  		F010:units = &quot;m s-1&quot; ;
+  		F010:long_name = &quot;MERGED Wind speed at  10 m&quot; ;
+  		F010:standard_name = &quot;wind_speed&quot; ;
+  		F010:accuracy = &quot;0.5&quot; ;
+  		F010:ancillary_variables = &quot;IF010&quot; ;
+  		F010:cell_methods = &quot;time: mean&quot; ;
+  	float TA(days31, hours, min10, z) ;
+  		TA:units = &quot;K&quot; ;
+  		TA:long_name = &quot;Temperature&quot; ;
+  		TA:standard_name = &quot;air_temperature&quot; ;
+  		TA:cell_methods = &quot;time: mean&quot; ;
+  	float D(days31, hours, min10, z) ;
+  		D:units = &quot;degree&quot; ;
+  		D:long_name = &quot;Wind direction selected and corrected&quot; ;
+  		D:standard_name = &quot;wind_from_direction&quot; ;
+  		D:ancillary_variables = &quot;SD&quot; ;
+  		D:cell_methods = &quot;time: mean&quot; ;
+  	float Q(days31, hours, min10, z) ;
+  		Q:units = &quot;g kg-1&quot; ;
+  		Q:long_name = &quot;Specific humidity&quot; ;
+  		Q:cell_methods = &quot;time: mean&quot; ;
+  	float TD(days31, hours, min10, z) ;
+  		TD:units = &quot;K&quot; ;
+  		TD:long_name = &quot;Dew point&quot; ;
+  		TD:standard_name = &quot;dew_point_temperature&quot; ;
+  		TD:cell_methods = &quot;time: mean&quot; ;
+  	float F(days31, hours, min10, z) ;
+  		F:units = &quot;m s-1&quot; ;
+  		F:long_name = &quot;Wind speed selected and corrected&quot; ;
+  		F:standard_name = &quot;wind_speed&quot; ;
+  		F:ancillary_variables = &quot;PF MF SF&quot; ;
+  		F:cell_methods = &quot;time: mean&quot; ;
+  	double time(days31, hours, min10) ;
+  		time:timezone = &quot;UTC&quot; ;
+  		time:comment = &quot;convert using datetime.fromtimestamp(var,pytz.utc)&quot; ;
+
+  // group attributes:
+  		:month = &quot;201407&quot; ;
+  } // group m201407
+
+group: m201412 {
+  variables:
+  	float H(days31, hours, min10) ;
+  		H:units = &quot;W m-2&quot; ;
+  		H:long_name = &quot;MERGED Surface sensible heat flux&quot; ;
+  		H:standard_name = &quot;surface_upward_sensible_heat_flux&quot; ;
+  		H:accuracy = &quot;10%&quot; ;
+  		H:ancillary_variables = &quot;IH&quot; ;
+  		H:cell_methods = &quot;time: mean&quot; ;
+  	float LE(days31, hours, min10) ;
+  		LE:units = &quot;W m-2&quot; ;
+  		LE:long_name = &quot;MERGED Surface latent heat flux&quot; ;
+  		LE:standard_name = &quot;surface_upward_latent_heat_flux&quot; ;
+  		LE:accuracy = &quot;10%&quot; ;
+  		LE:ancillary_variables = &quot;ILE&quot; ;
+  		LE:cell_methods = &quot;time: mean&quot; ;
+  	float UST(days31, hours, min10) ;
+  		UST:units = &quot;m s-1&quot; ;
+  		UST:long_name = &quot;MERGED Friction velocity&quot; ;
+  		UST:ancillary_variables = &quot;IUST&quot; ;
+  		UST:cell_methods = &quot;time: mean&quot; ;
+  	float P0(days31, hours, min10) ;
+  		P0:units = &quot;hPa&quot; ;
+  		P0:long_name = &quot;MERGED Atmospheric air pressure&quot; ;
+  		P0:standard_name = &quot;air_pressure_at_sensor_level&quot; ;
+  		P0:accuracy = &quot;0.1&quot; ;
+  		P0:ancillary_variables = &quot;IP0&quot; ;
+  		P0:cell_methods = &quot;time: mean&quot; ;
+  	float TA002(days31, hours, min10) ;
+  		TA002:units = &quot;degC&quot; ;
+  		TA002:long_name = &quot;MERGED Air temperature at   2 m&quot; ;
+  		TA002:standard_name = &quot;air_temperature&quot; ;
+  		TA002:accuracy = &quot;0.1&quot; ;
+  		TA002:ancillary_variables = &quot;ITA002&quot; ;
+  		TA002:cell_methods = &quot;time: mean&quot; ;
+  	float Q002(days31, hours, min10) ;
+  		Q002:units = &quot;1e-3&quot; ;
+  		Q002:long_name = &quot;MERGED Specific humidity     at   2 m&quot; ;
+  		Q002:ancillary_variables = &quot;IQ002&quot; ;
+  		Q002:cell_methods = &quot;time: mean&quot; ;
+  	float F010(days31, hours, min10) ;
+  		F010:units = &quot;m s-1&quot; ;
+  		F010:long_name = &quot;MERGED Wind speed at  10 m&quot; ;
+  		F010:standard_name = &quot;wind_speed&quot; ;
+  		F010:accuracy = &quot;0.5&quot; ;
+  		F010:ancillary_variables = &quot;IF010&quot; ;
+  		F010:cell_methods = &quot;time: mean&quot; ;
+  	float TA(days31, hours, min10, z) ;
+  		TA:units = &quot;K&quot; ;
+  		TA:long_name = &quot;Temperature&quot; ;
+  		TA:standard_name = &quot;air_temperature&quot; ;
+  		TA:cell_methods = &quot;time: mean&quot; ;
+  	float D(days31, hours, min10, z) ;
+  		D:units = &quot;degree&quot; ;
+  		D:long_name = &quot;Wind direction selected and corrected&quot; ;
+  		D:standard_name = &quot;wind_from_direction&quot; ;
+  		D:ancillary_variables = &quot;SD&quot; ;
+  		D:cell_methods = &quot;time: mean&quot; ;
+  	float Q(days31, hours, min10, z) ;
+  		Q:units = &quot;g kg-1&quot; ;
+  		Q:long_name = &quot;Specific humidity&quot; ;
+  		Q:cell_methods = &quot;time: mean&quot; ;
+  	float TD(days31, hours, min10, z) ;
+  		TD:units = &quot;K&quot; ;
+  		TD:long_name = &quot;Dew point&quot; ;
+  		TD:standard_name = &quot;dew_point_temperature&quot; ;
+  		TD:cell_methods = &quot;time: mean&quot; ;
+  	float F(days31, hours, min10, z) ;
+  		F:units = &quot;m s-1&quot; ;
+  		F:long_name = &quot;Wind speed selected and corrected&quot; ;
+  		F:standard_name = &quot;wind_speed&quot; ;
+  		F:ancillary_variables = &quot;PF MF SF&quot; ;
+  		F:cell_methods = &quot;time: mean&quot; ;
+  	double time(days31, hours, min10) ;
+  		time:timezone = &quot;UTC&quot; ;
+  		time:comment = &quot;convert using datetime.fromtimestamp(var,pytz.utc)&quot; ;
+
+  // group attributes:
+  		:month = &quot;201412&quot; ;
+  } // group m201412
+}
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./notebooks"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="dry_les_2024_partII.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">II: dry boundary layer – inversion height</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sorting-by-month">Sorting by month</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-first-look">Data first look</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#checkpoint-all-the-data-into-one-netcdf-file">Checkpoint all the data into one netcdf file</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Philip Austin
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

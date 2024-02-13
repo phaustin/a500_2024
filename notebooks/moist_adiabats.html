@@ -68,6 +68,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="canonical" href="https://phaustin.github.io/a500_2024/notebooks/moist_adiabats.html" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Read cabauw data" href="read_cabauw.html" />
     <link rel="prev" title="Using a rootfinder to solve implicit equations" href="clausius_claphyron_rootfind.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -191,10 +192,12 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fi/sosiyoxa9bzhecea5qas9/hydro.pdf?rlkey=7wll6s0yc4t0dlojzx56082iw&amp;dl=0">Weighted averages and scale heights</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fi/ygb2bi2riqo23ostxo8lw/buoyancy.pdf?rlkey=b80rbwtzartk4qp5dt9gjvsf6&amp;dl=0">Week 3 - Bouyancy</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fi/5m7x5opmp5p6ooe86imlj/virtual_temperature.pdf?rlkey=yjmfkbt417gpjv0cwwfyoi0c4&amp;dl=0">Week 4 - virtual temperature</a></li>
-<li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fi/ezjs46bsqegvnzasujnic/velocity_scales.pdf?rlkey=tkgf0zu4kxjnpmssa3zwglp2i&amp;dl=0">Week4 - velocity scales (just part 1)</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fi/ezjs46bsqegvnzasujnic/velocity_scales.pdf?rlkey=tkgf0zu4kxjnpmssa3zwglp2i&amp;dl=0">Week4 - velocity scales</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fi/zwjwuzed05cvya6xydj9e/taylor_series.pdf?rlkey=jt7zu8gedkwxaosty87e7h0o8&amp;dl=0">Taylor series and Reynolds averaging</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fi/7tkg65ar1u9emumxervu5/pressure_perturb.pdf?rlkey=gu3miynu1k28cs1985mrxxu4h&amp;dl=0">pressure perturbation notes</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fi/yqegu0q64a2t6sipms7t4/bussinger_critical_ri.pdf?rlkey=34m6gyzz5lv9oaxum8xx7ynge&amp;dl=0">Bussinger on the critical Richardson number</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fi/0bip672b25he2ikr2honz/surface_layer.pdf?rlkey=iurhmsxfrbxkodzkzqxoa66yd&amp;dl=0">surface layer scaling notes</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fi/e6cq3sodf0fq2rwuynsfm/boussinesq.pdf?rlkey=8josihsmcn1fskhl6mvnlu4eh&amp;dl=0">Boussinesq and anelastic scaling notes</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Assignments</span></p>
 <ul class="nav bd-sidenav">
@@ -220,12 +223,17 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fi/545s100t4a5ikdwr3hk4o/clausius_claphyron_rootfind.ipynb?rlkey=v8fkd78xtx23y7qhi42v20npv&amp;dl=0">Clausius-Clapyron notebook download</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Moist adiabats and the LCL</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fi/smr3r2wdjecql7vzt257o/moist_adiabats.ipynb?rlkey=wnrfuygfj15zdfscbce6dufqg&amp;dl=0">moist adiabat notebook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="read_cabauw.html">Read cabauw data</a></li>
+
+
+
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Journal articles</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference external" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9704743/">Are global climate models obsolete?</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://journals.ametsoc.org/view/journals/bams/85/11/bams-85-11-1673.xml">Betts 2004 Horton medal lecture -- GCM hydrology</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://agupubs.onlinelibrary.wiley.com/doi/10.3894/James.2009.1.4">Betts - Land-Surface-Atmosphere coupling review</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://agupubs.onlinelibrary.wiley.com/doi/10.1029/2018MS001532">Canadian Climate model boundary layer parameterization</a></li>
 </ul>
 
     </div>
@@ -409,11 +417,36 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">5</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">from</span> <span class="nn">pprint</span> <span class="kn">import</span> <span class="n">pformat</span>
+<span class="ne">----&gt; </span><span class="mi">5</span> <span class="kn">from</span> <span class="nn">a500.thermo.constants</span> <span class="kn">import</span> <span class="n">constants</span> <span class="k">as</span> <span class="n">c</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="kn">from</span> <span class="nn">a500.thermo.thermlib</span> <span class="kn">import</span> <span class="n">convertSkewToTemp</span><span class="p">,</span> <span class="n">convertTempToSkew</span>
+<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="kn">from</span> <span class="nn">a500.skewT.fullskew</span> <span class="kn">import</span> <span class="n">makeSkewWet</span><span class="p">,</span><span class="n">find_corners</span><span class="p">,</span><span class="n">make_default_labels</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;a500&#39;
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">a500.soundings.wyominglib</span> <span class="kn">import</span> <span class="n">write_soundings</span><span class="p">,</span> <span class="n">read_soundings</span>
 <span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">from</span> <span class="nn">a500.soundings.wyominglib</span> <span class="kn">import</span> <span class="n">write_soundings</span><span class="p">,</span> <span class="n">read_soundings</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;a500&#39;
 </pre></div>
 </div>
 </div>
@@ -432,70 +465,15 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>687501
-header is:  72340 LZK Little Rock Observations at 00Z 01 Jul 2012
-here is the day:  120701
-here is the day:  120701
-here is the day:  120702
-here is the day:  120702
-here is the day:  120703
-here is the day:  120703
-here is the day:  120704
-here is the day:  120704
-here is the day:  120705
-here is the day:  120705
-here is the day:  120706
-here is the day:  120706
-here is the day:  120707
-here is the day:  120707
-here is the day:  120708
-here is the day:  120708
-here is the day:  120709
-here is the day:  120709
-here is the day:  120710
-here is the day:  120710
-here is the day:  120711
-here is the day:  120711
-here is the day:  120712
-here is the day:  120712
-here is the day:  120713
-here is the day:  120713
-here is the day:  120714
-here is the day:  120714
-here is the day:  120715
-here is the day:  120715
-here is the day:  120716
-here is the day:  120716
-here is the day:  120717
-here is the day:  120717
-here is the day:  120718
-here is the day:  120718
-here is the day:  120719
-here is the day:  120719
-here is the day:  120720
-here is the day:  120720
-here is the day:  120721
-here is the day:  120721
-here is the day:  120722
-here is the day:  120722
-here is the day:  120723
-here is the day:  120723
-here is the day:  120724
-here is the day:  120724
-here is the day:  120725
-here is the day:  120725
-here is the day:  120726
-here is the day:  120726
-here is the day:  120727
-here is the day:  120727
-here is the day:  120728
-here is the day:  120728
-here is the day:  120729
-here is the day:  120729
-here is the day:  120730
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>files written to littlerock
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">line</span> <span class="mi">4</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">values</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">region</span><span class="o">=</span><span class="s1">&#39;naconf&#39;</span><span class="p">,</span><span class="n">year</span><span class="o">=</span><span class="s1">&#39;2012&#39;</span><span class="p">,</span><span class="n">month</span><span class="o">=</span><span class="s1">&#39;7&#39;</span><span class="p">,</span><span class="n">start</span><span class="o">=</span><span class="s1">&#39;0100&#39;</span><span class="p">,</span><span class="n">stop</span><span class="o">=</span><span class="s1">&#39;3000&#39;</span><span class="p">,</span><span class="n">station</span><span class="o">=</span><span class="s1">&#39;72340&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="k">if</span> <span class="n">get_data</span><span class="p">:</span>
+<span class="ne">----&gt; </span><span class="mi">4</span>     <span class="n">write_soundings</span><span class="p">(</span><span class="n">values</span><span class="p">,</span> <span class="s1">&#39;littlerock&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">soundings</span><span class="o">=</span> <span class="n">read_soundings</span><span class="p">(</span><span class="s1">&#39;littlerock&#39;</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;write_soundings&#39; is not defined
 </pre></div>
 </div>
 </div>
@@ -507,7 +485,12 @@ here is the day:  120730
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dict_keys([(2012, 7, 1, 0), (2012, 7, 1, 12), (2012, 7, 2, 0), (2012, 7, 2, 12), (2012, 7, 3, 0), (2012, 7, 3, 12), (2012, 7, 4, 0), (2012, 7, 4, 12), (2012, 7, 5, 0), (2012, 7, 5, 12), (2012, 7, 6, 0), (2012, 7, 6, 12), (2012, 7, 7, 0), (2012, 7, 7, 12), (2012, 7, 8, 0), (2012, 7, 8, 12), (2012, 7, 9, 0), (2012, 7, 9, 12), (2012, 7, 10, 0), (2012, 7, 10, 12), (2012, 7, 11, 0), (2012, 7, 11, 12), (2012, 7, 12, 0), (2012, 7, 12, 12), (2012, 7, 13, 0), (2012, 7, 13, 12), (2012, 7, 14, 0), (2012, 7, 14, 12), (2012, 7, 15, 0), (2012, 7, 15, 12), (2012, 7, 16, 0), (2012, 7, 16, 12), (2012, 7, 17, 0), (2012, 7, 17, 12), (2012, 7, 18, 0), (2012, 7, 18, 12), (2012, 7, 19, 0), (2012, 7, 19, 12), (2012, 7, 20, 0), (2012, 7, 20, 12), (2012, 7, 21, 0), (2012, 7, 21, 12), (2012, 7, 22, 0), (2012, 7, 22, 12), (2012, 7, 23, 0), (2012, 7, 23, 12), (2012, 7, 24, 0), (2012, 7, 24, 12), (2012, 7, 25, 0), (2012, 7, 25, 12), (2012, 7, 26, 0), (2012, 7, 26, 12), (2012, 7, 27, 0), (2012, 7, 27, 12), (2012, 7, 28, 0), (2012, 7, 28, 12), (2012, 7, 29, 0), (2012, 7, 29, 12), (2012, 7, 30, 0)])
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">soundings</span><span class="p">[</span><span class="s1">&#39;sounding_dict&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+
+<span class="ne">NameError</span>: name &#39;soundings&#39; is not defined
 </pre></div>
 </div>
 </div>
@@ -524,9 +507,14 @@ here is the day:  120730
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index([&#39;Unnamed: 0&#39;, &#39;pres&#39;, &#39;hght&#39;, &#39;temp&#39;, &#39;dwpt&#39;, &#39;relh&#39;, &#39;mixr&#39;, &#39;drct&#39;,
-       &#39;sknt&#39;, &#39;thta&#39;, &#39;thte&#39;, &#39;thtv&#39;],
-      dtype=&#39;object&#39;)
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">5</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">the_time</span><span class="o">=</span><span class="p">(</span><span class="mi">2012</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">17</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">sounding</span><span class="o">=</span><span class="n">soundings</span><span class="p">[</span><span class="s1">&#39;sounding_dict&#39;</span><span class="p">][</span><span class="n">the_time</span><span class="p">]</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">sounding</span><span class="o">.</span><span class="n">columns</span>
+
+<span class="ne">NameError</span>: name &#39;soundings&#39; is not defined
 </pre></div>
 </div>
 </div>
@@ -553,18 +541,14 @@ here is the day:  120730
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>location: 72340 LZK Little Rock
-units: {&#39;drct&#39;: &#39;deg&#39;,
- &#39;dwpt&#39;: &#39;C&#39;,
- &#39;hght&#39;: &#39;m&#39;,
- &#39;mixr&#39;: &#39;g/kg&#39;,
- &#39;pres&#39;: &#39;hPa&#39;,
- &#39;relh&#39;: &#39;%&#39;,
- &#39;sknt&#39;: &#39;knot&#39;,
- &#39;temp&#39;: &#39;C&#39;,
- &#39;thta&#39;: &#39;K&#39;,
- &#39;thte&#39;: &#39;K&#39;,
- &#39;thtv&#39;: &#39;K&#39;}
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">6</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">title_string</span><span class="o">=</span><span class="n">soundings</span><span class="p">[</span><span class="s1">&#39;attributes&#39;</span><span class="p">][</span><span class="s1">&#39;header&#39;</span><span class="p">]</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">index</span><span class="o">=</span><span class="n">title_string</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39; Observations at&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">location</span><span class="o">=</span><span class="n">title_string</span><span class="p">[:</span><span class="n">index</span><span class="p">]</span>
+
+<span class="ne">NameError</span>: name &#39;soundings&#39; is not defined
 </pre></div>
 </div>
 </div>
@@ -581,6 +565,19 @@ units: {&#39;drct&#39;: &#39;deg&#39;,
 <span class="k">for</span> <span class="n">a_temp</span><span class="p">,</span><span class="n">a_dew</span><span class="p">,</span><span class="n">a_pres</span> <span class="ow">in</span> <span class="n">triplets</span><span class="p">:</span>
     <span class="n">xcoord_T</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">convertTempToSkew</span><span class="p">(</span><span class="n">a_temp</span><span class="p">,</span><span class="n">a_pres</span><span class="p">,</span><span class="n">skew</span><span class="p">))</span>
     <span class="n">xcoord_Td</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">convertTempToSkew</span><span class="p">(</span><span class="n">a_dew</span><span class="p">,</span><span class="n">a_pres</span><span class="p">,</span><span class="n">skew</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">7</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">skew</span><span class="o">=</span><span class="mf">35.</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">triplets</span><span class="o">=</span><span class="nb">zip</span><span class="p">(</span><span class="n">sounding</span><span class="p">[</span><span class="s1">&#39;temp&#39;</span><span class="p">],</span><span class="n">sounding</span><span class="p">[</span><span class="s1">&#39;dwpt&#39;</span><span class="p">],</span><span class="n">sounding</span><span class="p">[</span><span class="s1">&#39;pres&#39;</span><span class="p">])</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">xcoord_T</span><span class="o">=</span><span class="p">[]</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">xcoord_Td</span><span class="o">=</span><span class="p">[]</span>
+
+<span class="ne">NameError</span>: name &#39;sounding&#39; is not defined
 </pre></div>
 </div>
 </div>
@@ -625,7 +622,16 @@ units: {&#39;drct&#39;: &#39;deg&#39;,
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/ae853ba63b0e4ab98f0e36398437a793e050801085372e29716a5dc71552a990.png" src="../_images/ae853ba63b0e4ab98f0e36398437a793e050801085372e29716a5dc71552a990.png" />
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">9</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">fig</span><span class="p">,</span><span class="n">ax</span> <span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">corners</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">35</span><span class="p">]</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">ax</span><span class="p">,</span> <span class="n">skew</span> <span class="o">=</span> <span class="n">makeSkewWet</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">corners</span><span class="o">=</span><span class="n">corners</span><span class="p">,</span> <span class="n">skew</span><span class="o">=</span><span class="n">skew</span><span class="p">,</span><span class="n">label_fun</span><span class="o">=</span><span class="n">label_fun</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;plt&#39; is not defined
+</pre></div>
+</div>
 </div>
 </div>
 </section>
@@ -647,12 +653,37 @@ units: {&#39;drct&#39;: &#39;deg&#39;,
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">10</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">from</span> <span class="nn">a500.thermo.thermlib</span> <span class="kn">import</span> <span class="p">(</span><span class="n">find_Tmoist</span><span class="p">,</span><span class="n">find_thetaep</span><span class="p">,</span><span class="n">find_rsat</span><span class="p">,</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span>                                  <span class="n">find_Tv</span><span class="p">,</span><span class="n">find_lcl</span><span class="p">,</span><span class="n">find_thetaes</span><span class="p">,</span><span class="n">find_thetaet</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="c1">#</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="c1"># find thetae of the surface air, which is at index 0</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="c1">#</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="n">sfc_press</span><span class="p">,</span><span class="n">sfc_temp</span><span class="p">,</span><span class="n">sfc_td</span> <span class="o">=</span><span class="p">[</span><span class="n">sounding</span><span class="p">[</span><span class="n">key</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;pres&#39;</span><span class="p">,</span><span class="s1">&#39;temp&#39;</span><span class="p">,</span><span class="s1">&#39;dwpt&#39;</span><span class="p">]]</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;a500&#39;
+</pre></div>
+</div>
+</div>
 </div>
 <section id="what-is-the-lcl-of-this-air">
 <h3>What is the LCL of this air?<a class="headerlink" href="#what-is-the-lcl-of-this-air" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Tlcl</span><span class="p">,</span> <span class="n">plcl</span><span class="o">=</span><span class="n">find_lcl</span><span class="p">(</span><span class="n">sfc_td</span><span class="p">,</span> <span class="n">sfc_temp</span><span class="p">,</span><span class="n">sfc_press</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">11</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">Tlcl</span><span class="p">,</span> <span class="n">plcl</span><span class="o">=</span><span class="n">find_lcl</span><span class="p">(</span><span class="n">sfc_td</span><span class="p">,</span> <span class="n">sfc_temp</span><span class="p">,</span><span class="n">sfc_press</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;find_lcl&#39; is not defined
 </pre></div>
 </div>
 </div>
@@ -664,7 +695,12 @@ units: {&#39;drct&#39;: &#39;deg&#39;,
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>found Tlcl=294.4 K, plcl=87210.4 Pa
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">12</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;found Tlcl=</span><span class="si">{</span><span class="n">Tlcl</span><span class="si">:</span><span class="s1">0.1f</span><span class="si">}</span><span class="s1"> K, plcl=</span><span class="si">{</span><span class="n">plcl</span><span class="si">:</span><span class="s1">0.1f</span><span class="si">}</span><span class="s1"> Pa&#39;</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;Tlcl&#39; is not defined
 </pre></div>
 </div>
 </div>
@@ -715,11 +751,18 @@ units: {&#39;drct&#39;: &#39;deg&#39;,
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/phil/mini310/envs/a405/lib/python3.11/site-packages/a500/thermo/thermlib.py:469: RuntimeWarning: invalid value encountered in log
-  s = cp * np.log(T) - c.Rd * np.log(pd) + lv * rv / T - vapor_term
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">13</span><span class="p">],</span> <span class="n">line</span> <span class="mi">3</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1">#  convert to mks and find surface rv and thetae</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="c1">#</span>
+<span class="ne">----&gt; </span><span class="mi">3</span> <span class="n">sfc_rvap</span> <span class="o">=</span> <span class="n">find_rsat</span><span class="p">(</span><span class="n">sfc_td</span><span class="p">,</span><span class="n">sfc_press</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">lcl_rvap</span> <span class="o">=</span> <span class="n">find_rsat</span><span class="p">(</span><span class="n">Tlcl</span><span class="p">,</span><span class="n">plcl</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">sfc_thetae</span><span class="o">=</span><span class="n">find_thetaes</span><span class="p">(</span><span class="n">Tlcl</span><span class="p">,</span><span class="n">plcl</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;find_rsat&#39; is not defined
 </pre></div>
 </div>
-<img alt="../_images/6245c42e3dc7149fba0d14d57360ec87c8d7b4c3258dc0c7fc2faedba21a38e3.png" src="../_images/6245c42e3dc7149fba0d14d57360ec87c8d7b4c3258dc0c7fc2faedba21a38e3.png" />
 </div>
 </div>
 </section>
@@ -764,6 +807,15 @@ units: {&#39;drct&#39;: &#39;deg&#39;,
         <p class="prev-next-subtitle">previous</p>
         <p class="prev-next-title">Using a rootfinder to solve implicit equations</p>
       </div>
+    </a>
+    <a class="right-next"
+       href="read_cabauw.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Read cabauw data</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
                 </footer>
