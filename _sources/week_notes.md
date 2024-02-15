@@ -146,5 +146,14 @@ Read Chapter 1 of BLM.  For notation, especially virtual temperature, see the fi
 - Notebook to read the data: {ref}`read_cabauw`
 
 
-
 #### For Thursday, read the first 10 pages of Chapter 7
+
+### Thursday
+
+* Surface layer review and first order closure
+
+* Go over how to do first order closure for A$\theta$ using {ref}`simple_integrator`
+
+* For break -- finish Chapter 7  -- work on proposals/papers
+
+

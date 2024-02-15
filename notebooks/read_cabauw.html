@@ -66,6 +66,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="canonical" href="https://phaustin.github.io/a500_2024/notebooks/read_cabauw.html" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Integrate a \(\theta_v(z)\) profile wrt to time using scipy.integrate" href="simple_integrator.html" />
     <link rel="prev" title="II: dry boundary layer – inversion height" href="dry_les_2024_partII.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -225,6 +226,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fi/vooei7m2dalaeeev9m63x/dry_les_2024_partII.ipynb?rlkey=tbfyyirvgajytsy46kwqlm5ef&amp;dl=0">dry_les_2024_partII.ipynb download</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Read cabauw data</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fi/44quhfmej8gzqia28h5fz/read_cabauw.ipynb?rlkey=gk4hsyvwihmrzvja9k0qhr158&amp;dl=0">read_cabauw.ipynb download</a></li>
+<li class="toctree-l1"><a class="reference internal" href="simple_integrator.html">Integrate a <span class="math notranslate nohighlight">\(\theta_v(z)\)</span>  profile wrt to time using scipy.integrate</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Journal articles</span></p>
 <ul class="nav bd-sidenav">
@@ -620,14 +622,12 @@ data.  Here is how you find these with the
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">6</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">ephem</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="k">for</span> <span class="n">the_month</span> <span class="ow">in</span> <span class="n">month_dict</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span>     <span class="n">var</span><span class="o">=</span><span class="s1">&#39;tower_meteorological&#39;</span>
-
-<span class="ne">ModuleNotFoundError</span>: No module named &#39;ephem&#39;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sunrise is 2014/7/1 03:24:19 UTC
+solar noon 2014/7/1 11:44:09 UTC
+sunset is 2014/7/1 20:03:38 UTC
+sunrise is 2014/12/1 07:25:04 UTC
+solar noon 2014/12/1 11:29:17 UTC
+sunset is 2014/12/1 15:33:10 UTC
 </pre></div>
 </div>
 </div>
@@ -668,10 +668,11 @@ data.  Here is how you find these with the
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>starting:  dict_keys([&#39;201407&#39;, &#39;201412&#39;])
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>starting: 
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>finished plot:  dict_keys([&#39;201407&#39;, &#39;201412&#39;])
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> dict_keys([&#39;201407&#39;, &#39;201412&#39;])
+finished plot:  dict_keys([&#39;201407&#39;, &#39;201412&#39;])
 </pre></div>
 </div>
 <img alt="../_images/2bdfb5ff674f1a99c13ccbc5466820201a6b33ba3a0c16edf0d43b3f64fc1f00.png" src="../_images/2bdfb5ff674f1a99c13ccbc5466820201a6b33ba3a0c16edf0d43b3f64fc1f00.png" />
@@ -827,9 +828,7 @@ group: m201407 {
   		Q002:long_name = &quot;MERGED Specific humidity     at   2 m&quot; ;
   		Q002:ancillary_variables = &quot;IQ002&quot; ;
   		Q002:cell_methods = &quot;time: mean&quot; ;
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  	float F010(days31, hours, min10) ;
+  	float F010(days31, hours, min10) ;
   		F010:units = &quot;m s-1&quot; ;
   		F010:long_name = &quot;MERGED Wind speed at  10 m&quot; ;
   		F010:standard_name = &quot;wind_speed&quot; ;
@@ -996,6 +995,15 @@ group: m201412 {
         <p class="prev-next-subtitle">previous</p>
         <p class="prev-next-title">II: dry boundary layer – inversion height</p>
       </div>
+    </a>
+    <a class="right-next"
+       href="simple_integrator.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Integrate a <span class="math notranslate nohighlight">\(\theta_v(z)\)</span>  profile wrt to time using scipy.integrate</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
                 </footer>
