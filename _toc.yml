@@ -86,6 +86,9 @@ parts:
     - file: notebooks/read_cabauw.md
     - url: https://www.dropbox.com/scl/fi/44quhfmej8gzqia28h5fz/read_cabauw.ipynb?rlkey=gk4hsyvwihmrzvja9k0qhr158&dl=0
       title: read_cabauw.ipynb download
+    - file: notebooks/simple_integrator.md
+    - url: https://www.dropbox.com/scl/fi/6gt4ssm43ia391bmnk3hf/simple_integrator.ipynb?rlkey=d3fqy8tt1j04by0pcblp63hv3&dl=0
+      title: simple_integrator.ipynb download
   - caption: Journal articles
     chapters:
     - url: https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9704743/
