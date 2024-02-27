@@ -96,7 +96,7 @@ Read Chapter 1 of BLM.  For notation, especially virtual temperature, see the fi
 - Chapter 4/5 topics
 
   - Chapter 4: [pressure perturbation notes](https://www.dropbox.com/scl/fi/7tkg65ar1u9emumxervu5/pressure_perturb.pdf?rlkey=gu3miynu1k28cs1985mrxxu4h&dl=0)
-  - Chapter 5: Bussinger article on the [critcial Richardson number](https://www.dropbox.com/scl/fi/yqegu0q64a2t6sipms7t4/bussinger_critical_ri.pdf?rlkey=34m6gyzz5lv9oaxum8xx7ynge&dl=0)
+  - Chapter 5: Businger article on the [critcial Richardson number](https://www.dropbox.com/scl/fi/yqegu0q64a2t6sipms7t4/bussinger_critical_ri.pdf?rlkey=34m6gyzz5lv9oaxum8xx7ynge&dl=0)
   
 ### Thursday
 
@@ -123,7 +123,7 @@ Read Chapter 1 of BLM.  For notation, especially virtual temperature, see the fi
 
   - Surface layer scaling:
     - [Velocity scale notes part 2](https://www.dropbox.com/scl/fi/ezjs46bsqegvnzasujnic/velocity_scales.pdf?rlkey=tkgf0zu4kxjnpmssa3zwglp2i&dl=0)
-    - [Surface layer scaling notes](https://www.dropbox.com/scl/fi/e6cq3sodf0fq2rwuynsfm/boussinesq.pdf?rlkey=8josihsmcn1fskhl6mvnlu4eh&dl=0)
+    - [Surface layer scaling notes](https://www.dropbox.com/scl/fi/0bip672b25he2ikr2honz/surface_layer.pdf?rlkey=iurhmsxfrbxkodzkzqxoa66yd&dl=0)
     - [Boussinesq approximation notes](https://www.dropbox.com/scl/fi/e6cq3sodf0fq2rwuynsfm/boussinesq.pdf?rlkey=8josihsmcn1fskhl6mvnlu4eh&dl=0)
     
 - For next Tuesday
@@ -156,4 +156,28 @@ Read Chapter 1 of BLM.  For notation, especially virtual temperature, see the fi
 
 * For break -- finish Chapter 7  -- work on proposals/papers
 
+
+## Week 7
+
+### Tuesday
+
+* Go over the material from Stull Chapter 7 page 267-271 on the Businger-Dyer relationshipes,  which is repeated in Chapter 9 p. 383-385.
+
+* Finish my [Surface layer scaling notes](https://www.dropbox.com/scl/fi/0bip672b25he2ikr2honz/surface_layer.pdf?rlkey=iurhmsxfrbxkodzkzqxoa66yd&dl=0) to get the drag coefficients $C_D$ and $C_H$.
+
+* Surface-layer scaling at Cabauw:  [Verkaik and Holtslag](https://link-springer-com.ezproxy.library.ubc.ca/article/10.1007/s10546-006-9121-1)
+
+  - Take home point from that paper:  Surface layer scaling can be disturbed by upstream changes in surface roughness  (although it still does pretty well)
+
+  - Figure 5 on page 710 shows the agreement/disagreement with Businger-Dyer relationships depending on upstream conditions/wind direction
+  
+- Side note -- an interesting [historical note from Businger](https://www.dropbox.com/scl/fi/961z9gwv9h9gh1a7ka0ty/businger_history_87.pdf?rlkey=5zbjdff8vn3349e9y3xrqx0uh&dl=0) on how Bussinger and Dyer independently came up with the surface layer relationships for $\Phi_m$ and $\Phi_h$.
+  
+- For a detailed derivation of $\Phi_{\mathrm{m}}=(1-\alpha \mathrm{Ri})^{-1 / 4}$ see
+    [Fleagle and Businger, 1980, p. 275-277](https://www.dropbox.com/scl/fi/o43cv43ymuxj35nti2c2b/fleagle_bussinger_1980.pdf?rlkey=eb98rznjih3efu185wxeljsd5&dl=0)
+    
+
+- Here's a Jupyter notebook that implements {ref}`businger-dyer`
+
+- Assignment 5: Modify {ref}`simple_integrator` so that it works with a specified surface temperature instead of a surface flux.  Use the Businger-Dyer drag coefficients to calculate the flux.  To keep the layer growing you can specify that the surface temperature is a couple of degrees warmer than the air just above it (make that tmeperature difference an adjustable parameter)
 

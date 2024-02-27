@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Using a rootfinder to solve implicit equations &#8212; ATSC 500 2024</title>
+    <title>Businger-Dyer drag coefficients &#8212; ATSC 500 2024</title>
   
   
   
@@ -64,12 +64,11 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/clausius_claphyron_rootfind';</script>
-    <link rel="canonical" href="https://phaustin.github.io/a500_2024/notebooks/clausius_claphyron_rootfind.html" />
+    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/businger_dyer';</script>
+    <link rel="canonical" href="https://phaustin.github.io/a500_2024/notebooks/businger_dyer.html" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Moist adiabats and the LCL" href="moist_adiabats.html" />
-    <link rel="prev" title="Energy and vapor fluxes in the tropical boundary layer" href="tropical_fluxes.html" />
+    <link rel="prev" title="Integrate a mean profile wrt to time using scipy.integrate" href="simple_integrator.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -220,7 +219,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 <li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fi/v7vqzumfbegh3yvpoex9f/tropical_fluxes.ipynb?rlkey=n3gktdca6nk12sjyn4iot1v55&amp;dl=0">tropical_fluxes.ipynb download</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Using a rootfinder to solve implicit equations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="clausius_claphyron_rootfind.html">Using a rootfinder to solve implicit equations</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fi/545s100t4a5ikdwr3hk4o/clausius_claphyron_rootfind.ipynb?rlkey=v8fkd78xtx23y7qhi42v20npv&amp;dl=0">Clausius-Clapyron notebook download</a></li>
 <li class="toctree-l1"><a class="reference internal" href="moist_adiabats.html">Moist adiabats and the LCL</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fi/smr3r2wdjecql7vzt257o/moist_adiabats.ipynb?rlkey=wnrfuygfj15zdfscbce6dufqg&amp;dl=0">moist adiabat notebook</a></li>
@@ -230,7 +229,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fi/44quhfmej8gzqia28h5fz/read_cabauw.ipynb?rlkey=gk4hsyvwihmrzvja9k0qhr158&amp;dl=0">read_cabauw.ipynb download</a></li>
 <li class="toctree-l1"><a class="reference internal" href="simple_integrator.html">Integrate a mean profile wrt to time using scipy.integrate</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fi/6gt4ssm43ia391bmnk3hf/simple_integrator.ipynb?rlkey=d3fqy8tt1j04by0pcblp63hv3&amp;dl=0">simple_integrator.ipynb download</a></li>
-<li class="toctree-l1"><a class="reference internal" href="businger_dyer.html">Businger-Dyer drag coefficients</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Businger-Dyer drag coefficients</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fi/xptgi4noyxdfip705tzcz/businger_dyer.ipynb?rlkey=59q960f829rm8aejevl1qy2f5&amp;dl=0">businger-dyer.ipynb download</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Journal articles</span></p>
@@ -295,7 +294,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="../_sources/notebooks/clausius_claphyron_rootfind.md" target="_blank"
+      <li><a href="../_sources/notebooks/businger_dyer.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -366,9 +365,7 @@ document.write(`
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="fa-solid fa-list"></span>
-</label>
+
 </div></div>
       
     </div>
@@ -379,23 +376,11 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Using a rootfinder to solve implicit equations</h1>
+    <h1>Businger-Dyer drag coefficients</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
-            <div>
-                <h2> Contents </h2>
-            </div>
-            <nav aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-cell-below-shows-how-to-use-a-rootfinder-to-solve-the-equation">The cell below shows how to use a rootfinder to solve the equation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#apply-to-the-clausius-clapyron-equation">Apply to the Clausius-Clapyron equation</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#chect-the-answer">Chect the answer</a></li>
-</ul>
-</li>
-</ul>
-            </nav>
         </div>
     </div>
 </div>
@@ -405,154 +390,100 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="using-a-rootfinder-to-solve-implicit-equations">
-<span id="rootfind"></span><h1>Using a rootfinder to solve implicit equations<a class="headerlink" href="#using-a-rootfinder-to-solve-implicit-equations" title="Permalink to this heading">#</a></h1>
-<p>We’ll need this to solve equations like finding the lifting condensation level where the dewpoint=temperature</p>
-<p>Documentation is here <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.brentq.html">scipy.optimize.brentq</a></p>
-<section id="the-cell-below-shows-how-to-use-a-rootfinder-to-solve-the-equation">
-<h2>The cell below shows how to use a rootfinder to solve the equation<a class="headerlink" href="#the-cell-below-shows-how-to-use-a-rootfinder-to-solve-the-equation" title="Permalink to this heading">#</a></h2>
-<div class="math notranslate nohighlight">
-\[
-cos(x) - 0.75 = 0
-\]</div>
-<p>The algorithm evaluates the function for increasing values of x until in sees a sign change.  It then backtracks to the other side of the sign change and starts increaing x again until it sees the sign change.  It will stop when the change in x is below a selected tolerance</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="businger-dyer-drag-coefficients">
+<span id="businger-dyer"></span><h1>Businger-Dyer drag coefficients<a class="headerlink" href="#businger-dyer-drag-coefficients" title="Permalink to this heading">#</a></h1>
+<p>Python code to calculate the transfer coefficients <span class="math notranslate nohighlight">\(C_D\)</span>, <span class="math notranslate nohighlight">\(C_H\)</span> in neutral and diabatic conditions</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">optimize</span>
-<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;ggplot&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">log</span><span class="p">,</span><span class="n">arctan</span><span class="p">,</span><span class="n">pi</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 
 
-<span class="n">xvals</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mf">10.</span><span class="p">)</span>
-<span class="n">fig</span><span class="p">,</span><span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xvals</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">xvals</span><span class="p">))</span>
-<span class="n">straight_line</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">ones_like</span><span class="p">(</span><span class="n">xvals</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xvals</span><span class="p">,</span><span class="n">straight_line</span><span class="o">*</span><span class="mf">0.75</span><span class="p">,</span><span class="s1">&#39;b-&#39;</span><span class="p">)</span>
-
-<span class="k">def</span> <span class="nf">root_function</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Function we want to find the root of</span>
-<span class="sd">       input: x value</span>
-<span class="sd">       output: y value -- should be zero when x is a root</span>
+<span class="k">def</span> <span class="nf">surfaceScale</span><span class="p">(</span><span class="n">zeta</span><span class="p">,</span><span class="n">zz0</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">       zeta= z/L</span>
+<span class="sd">       zz0 = z/roughness length</span>
+<span class="sd">       </span>
+<span class="sd">       stull equations 7.4.11</span>
+<span class="sd">       zeta can be either a number (scalar)</span>
+<span class="sd">       or a vector</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">-</span> <span class="mf">0.75</span>
+    <span class="c1">#</span>
+    <span class="c1"># the function monin always returns a numpy array</span>
+    <span class="c1"># if we pass zeta as a scalar, unpack that array</span>
+    <span class="c1"># and return the drag coefficients as scalars</span>
+    <span class="c1">#</span>
+    <span class="n">is_scalar</span><span class="o">=</span><span class="kc">False</span>
+    <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">isscalar</span><span class="p">(</span><span class="n">zeta</span><span class="p">):</span>
+        <span class="n">is_scalar</span> <span class="o">=</span> <span class="kc">True</span>   
+    <span class="p">(</span><span class="n">psim</span><span class="p">,</span><span class="n">psih</span><span class="p">)</span><span class="o">=</span><span class="n">monin</span><span class="p">(</span><span class="n">zeta</span><span class="p">)</span>
+    <span class="n">k</span><span class="o">=</span><span class="mf">0.4</span>
+    <span class="n">CD</span><span class="o">=</span><span class="n">k</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="p">(</span><span class="n">log</span><span class="p">(</span><span class="n">zz0</span><span class="p">)</span> <span class="o">-</span> <span class="n">psim</span><span class="p">)</span><span class="o">**</span><span class="mf">2.</span>
+    <span class="n">CH</span><span class="o">=</span><span class="p">(</span><span class="n">k</span><span class="o">**</span><span class="mf">2.</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">log</span><span class="p">(</span><span class="n">zz0</span><span class="p">)</span> <span class="o">-</span> <span class="n">psim</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">log</span><span class="p">(</span><span class="n">zz0</span><span class="p">)</span> <span class="o">-</span> <span class="n">psih</span><span class="p">)</span>
+    <span class="n">CDN</span><span class="o">=</span><span class="p">(</span><span class="n">k</span><span class="o">**</span><span class="mf">2.</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">log</span><span class="p">(</span><span class="n">zz0</span><span class="p">)</span><span class="o">**</span><span class="mf">2.</span><span class="p">)</span>
+    <span class="n">CHN</span><span class="o">=</span><span class="n">CDN</span>
+    <span class="k">if</span> <span class="n">is_scalar</span><span class="p">:</span>
+        <span class="n">CD</span><span class="o">=</span><span class="n">CD</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">CH</span><span class="o">=</span><span class="n">CH</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">CD</span><span class="p">,</span><span class="n">CH</span><span class="p">,</span><span class="n">CDN</span><span class="p">,</span><span class="n">CHN</span><span class="p">)</span>
 
-<span class="n">root1</span> <span class="o">=</span> <span class="n">optimize</span><span class="o">.</span><span class="n">brentq</span><span class="p">(</span><span class="n">root_function</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
-<span class="n">root2</span> <span class="o">=</span> <span class="n">optimize</span><span class="o">.</span><span class="n">brentq</span><span class="p">(</span><span class="n">root_function</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">6</span><span class="p">)</span>
-<span class="n">root3</span> <span class="o">=</span> <span class="n">optimize</span><span class="o">.</span><span class="n">brentq</span><span class="p">(</span><span class="n">root_function</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">8</span><span class="p">)</span>
-<span class="n">xvals</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">root1</span><span class="p">,</span><span class="n">root2</span><span class="p">,</span><span class="n">root3</span><span class="p">])</span>
-<span class="n">yvals</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">xvals</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xvals</span><span class="p">,</span><span class="n">yvals</span><span class="p">,</span><span class="s1">&#39;ro&#39;</span><span class="p">,</span><span class="n">markersize</span><span class="o">=</span><span class="mi">20</span><span class="p">);</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../_images/6a4cb548ccb6bc04ec270afa9a7fdd24741ffab7891ca9c7f3c8c40d2b46bc18.png" src="../_images/6a4cb548ccb6bc04ec270afa9a7fdd24741ffab7891ca9c7f3c8c40d2b46bc18.png" />
-</div>
-</div>
-</section>
-<section id="apply-to-the-clausius-clapyron-equation">
-<h2>Apply to the Clausius-Clapyron equation<a class="headerlink" href="#apply-to-the-clausius-clapyron-equation" title="Permalink to this heading">#</a></h2>
-<p>Given an the Clausius Clapyron equation and a saturation vapor pressure in <span class="math notranslate nohighlight">\(es\)</span> in Pa, find the dewpoint temperature in Kelvin, i.e. the teperature where:</p>
-<p>es = find_esat(Tdewpoint)</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">find_esat</span><span class="p">(</span><span class="n">temp</span><span class="p">):</span>
-    <span class="c1">#</span>
-    <span class="c1"># curve fit to the cC equation</span>
-    <span class="c1"># </span>
-    <span class="n">Tc</span> <span class="o">=</span> <span class="n">temp</span> <span class="o">-</span> <span class="mf">273.15</span>
-    <span class="n">esatOut</span> <span class="o">=</span> <span class="mf">611.2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="mf">17.67</span> <span class="o">*</span> <span class="n">Tc</span> <span class="o">/</span> <span class="p">(</span><span class="n">Tc</span> <span class="o">+</span> <span class="mf">243.5</span><span class="p">))</span>
-    <span class="k">return</span> <span class="n">esatOut</span>
+<span class="k">def</span> <span class="nf">monin</span><span class="p">(</span><span class="n">zeta</span><span class="p">):</span>
+    <span class="c1">#Bussinger-dyer relationships (Stull p. 383, eq. 9.7.5)</span>
+    <span class="c1">#or Fleagle and Bussinger page 180.</span>
+    <span class="n">zeta</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">atleast_1d</span><span class="p">(</span><span class="n">zeta</span><span class="p">)</span>
+    <span class="n">psim</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">empty_like</span><span class="p">(</span><span class="n">zeta</span><span class="p">)</span>
+    <span class="n">psih</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">empty_like</span><span class="p">(</span><span class="n">zeta</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">the_zeta</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">zeta</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">the_zeta</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+           <span class="n">x</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="mi">16</span><span class="o">*</span><span class="n">the_zeta</span><span class="p">)</span><span class="o">**</span><span class="p">(</span><span class="mf">0.25</span><span class="p">)</span>
+           <span class="n">psim</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="n">log</span><span class="p">(((</span><span class="mi">1</span><span class="o">+</span><span class="n">x</span><span class="o">**</span><span class="mf">2.</span><span class="p">)</span><span class="o">/</span><span class="mf">2.</span><span class="p">)</span><span class="o">*</span><span class="p">((</span><span class="mi">1</span><span class="o">+</span><span class="n">x</span><span class="p">)</span><span class="o">/</span><span class="mf">2.</span><span class="p">)</span><span class="o">**</span><span class="mf">2.</span><span class="p">)</span> <span class="o">-</span> <span class="mf">2.</span><span class="o">*</span><span class="n">arctan</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">+</span> <span class="n">pi</span><span class="o">/</span><span class="mf">2.</span>
+           <span class="n">psih</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="mf">2.</span><span class="o">*</span><span class="n">log</span><span class="p">((</span><span class="mf">1.</span><span class="o">+</span><span class="n">x</span><span class="o">**</span><span class="mf">2.</span><span class="p">)</span><span class="o">/</span><span class="mf">2.</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="p">(</span><span class="n">the_zeta</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">):</span>
+           <span class="n">psim</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">=</span> <span class="o">-</span><span class="mf">5.</span><span class="o">*</span><span class="n">the_zeta</span>
+           <span class="n">psih</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">=</span> <span class="o">-</span><span class="mf">5.</span><span class="o">*</span><span class="n">the_zeta</span>
+        <span class="k">else</span><span class="p">:</span>
+          <span class="n">psim</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="mf">0.</span>
+          <span class="n">psih</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="mf">0.</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">psim</span><span class="p">,</span><span class="n">psih</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">root_function</span><span class="p">(</span><span class="n">tdew</span><span class="p">,</span> <span class="n">the_es</span><span class="p">):</span>
-    <span class="c1">#</span>
-    <span class="c1"># find tdew where the_es = esat_guess</span>
-    <span class="c1">#</span>
-    <span class="n">esat_guess</span> <span class="o">=</span> <span class="n">find_esat</span><span class="p">(</span><span class="n">tdew</span><span class="p">)</span>
-    <span class="n">zero_val</span> <span class="o">=</span> <span class="n">the_es</span> <span class="o">-</span> <span class="n">esat_guess</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">esat_guess</span><span class="si">=:</span><span class="s2">5.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">zero_val</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">the_es</span> <span class="o">=</span> <span class="mi">1917</span> <span class="c1"># Pa</span>
-<span class="n">the_dew</span> <span class="o">=</span> <span class="n">optimize</span><span class="o">.</span><span class="n">brentq</span><span class="p">(</span><span class="n">root_function</span><span class="p">,</span><span class="mi">250</span><span class="p">,</span><span class="mi">330</span><span class="p">,</span><span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">the_es</span><span class="p">,))</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">the_dew</span><span class="si">=:</span><span class="s2">5.3f</span><span class="si">}</span><span class="s2"> K&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>esat_guess=95.489
-esat_guess=17326.411
-esat_guess=196.513
-esat_guess=2497.786
-esat_guess=1406.220
-esat_guess=1849.108
-esat_guess=1918.586
-esat_guess=1916.975
-esat_guess=1917.000
-esat_guess=1917.000
-esat_guess=1917.000
-the_dew=289.992 K
-</pre></div>
-</div>
-</div>
-</div>
-<section id="chect-the-answer">
-<h3>Chect the answer<a class="headerlink" href="#chect-the-answer" title="Permalink to this heading">#</a></h3>
-<p>Use <a class="reference external" href="https://phaustin.github.io/a405_lib/full_listing.html#a405.thermo.thermlib.find_esat">find_esat</a> from the a405 thermo library to check that your dewpoint temperature produces the correct vapor press.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">a405.thermo</span> <span class="kn">import</span> <span class="n">thermlib</span> <span class="k">as</span> <span class="n">tl</span>
-<span class="n">help</span><span class="p">(</span><span class="n">tl</span><span class="o">.</span><span class="n">find_esat</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Help on function find_esat in module a405.thermo.thermlib:
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">zeta</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mf">1.0</span><span class="p">,</span><span class="mf">1.0</span><span class="p">,</span><span class="mf">0.01</span><span class="p">)</span>
+<span class="n">zz0</span><span class="o">=</span><span class="mf">1.e5</span>
+<span class="p">(</span><span class="n">CDa</span><span class="p">,</span><span class="n">CHa</span><span class="p">,</span><span class="n">CDNa</span><span class="p">,</span><span class="n">CHNa</span><span class="p">)</span><span class="o">=</span><span class="n">surfaceScale</span><span class="p">(</span><span class="n">zeta</span><span class="p">,</span><span class="n">zz0</span><span class="p">)</span>
+<span class="n">zz0</span><span class="o">=</span><span class="mf">1.e3</span>
+<span class="p">(</span><span class="n">CDb</span><span class="p">,</span><span class="n">CHb</span><span class="p">,</span><span class="n">CDNb</span><span class="p">,</span><span class="n">CHNb</span><span class="p">)</span><span class="o">=</span><span class="n">surfaceScale</span><span class="p">(</span><span class="n">zeta</span><span class="p">,</span><span class="n">zz0</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">clf</span><span class="p">()</span>
+<span class="n">ax1</span><span class="o">=</span><span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">zeta</span><span class="p">,</span><span class="n">CDa</span><span class="o">/</span><span class="n">CDNa</span><span class="p">,</span><span class="s1">&#39;b-&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$z/z0=10^5$&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">zeta</span><span class="p">,</span><span class="n">CDb</span><span class="o">/</span><span class="n">CDNb</span><span class="p">,</span><span class="s1">&#39;r-&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$z/z0=10^3$&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;z/L&#39;</span><span class="p">);</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$C_D/C_</span><span class="si">{DN}</span><span class="s1">$&#39;</span><span class="p">);</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;normalized drag coefficient (momentum) vs. stability&#39;</span><span class="p">);</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 
-find_esat(temp)
-    Calculates the saturation water vapor pressure over a flat
-    surface of water at temperature &#39;temp&#39;.
-    
-    Parameters
-    ----------
-    
-    temp : float or array_like
-           Temperature of parcel (K).
-    
-    Returns
-    -------
-    
-    esatOut : float or list
-        Saturation water vapour pressure (Pa).
-    
-    Examples
-    --------
-    
-    &gt;&gt;&gt; find_esat(300.)
-    3534.5196668891358
-    &gt;&gt;&gt; find_esat([300., 310.])
-    array([ 3534.5197,  6235.5322])
-    
-    References
-    ----------
-    Emanuel 4.4.14 p. 117
+<span class="n">fig</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">clf</span><span class="p">()</span>
+<span class="n">ax1</span><span class="o">=</span><span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">zeta</span><span class="p">,</span><span class="n">CHa</span><span class="o">/</span><span class="n">CHNa</span><span class="p">,</span><span class="s1">&#39;b-&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$z/z0=10^5$&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">zeta</span><span class="p">,</span><span class="n">CHb</span><span class="o">/</span><span class="n">CHNb</span><span class="p">,</span><span class="s1">&#39;r-&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$z/z0=10^3$&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;z/L&#39;</span><span class="p">);</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$C_H/C_</span><span class="si">{HN}</span><span class="s1">$&#39;</span><span class="p">);</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;normalized drag coefficient (heat) vs. stability&#39;</span><span class="p">);</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="../_images/a0c6ca96e4ec2549c63d7bb19253788f79dbb03405a12a7e0549f6b7708f7405.png" src="../_images/a0c6ca96e4ec2549c63d7bb19253788f79dbb03405a12a7e0549f6b7708f7405.png" />
+<img alt="../_images/20b821f0e6aa658ce079dae731eb6157bd9f58e3fe8b5682beebb3717e694474.png" src="../_images/20b821f0e6aa658ce079dae731eb6157bd9f58e3fe8b5682beebb3717e694474.png" />
 </div>
-</section>
-</section>
+</div>
 </section>
 
     <script type="text/x-thebe-config">
@@ -586,22 +517,13 @@ find_esat(temp)
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="tropical_fluxes.html"
+       href="simple_integrator.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Energy and vapor fluxes in the tropical boundary layer</p>
+        <p class="prev-next-title">Integrate a mean profile wrt to time using scipy.integrate</p>
       </div>
-    </a>
-    <a class="right-next"
-       href="moist_adiabats.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Moist adiabats and the LCL</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
                 </footer>
@@ -610,24 +532,7 @@ find_esat(temp)
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
-
-  <div class="sidebar-secondary-item">
-  <div class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> Contents
-  </div>
-  <nav class="bd-toc-nav page-toc">
-    <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-cell-below-shows-how-to-use-a-rootfinder-to-solve-the-equation">The cell below shows how to use a rootfinder to solve the equation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#apply-to-the-clausius-clapyron-equation">Apply to the Clausius-Clapyron equation</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#chect-the-answer">Chect the answer</a></li>
-</ul>
-</li>
-</ul>
-  </nav></div>
-
-</div></div>
+                <div class="bd-sidebar-secondary bd-toc"></div>
               
             
           </div>
