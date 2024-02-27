@@ -165,7 +165,7 @@ Read Chapter 1 of BLM.  For notation, especially virtual temperature, see the fi
 
 * Finish my [Surface layer scaling notes](https://www.dropbox.com/scl/fi/0bip672b25he2ikr2honz/surface_layer.pdf?rlkey=iurhmsxfrbxkodzkzqxoa66yd&dl=0) to get the drag coefficients $C_D$ and $C_H$.
 
-* Surface-layer scaling at Cabauw:  [Verkaik and Holtslag](https://link-springer-com.ezproxy.library.ubc.ca/article/10.1007/s10546-006-9121-1)
+* Paper: Surface-layer scaling at Cabauw:  [Verkaik and Holtslag](https://link-springer-com.ezproxy.library.ubc.ca/article/10.1007/s10546-006-9121-1)
 
   - Take home point from that paper:  Surface layer scaling can be disturbed by upstream changes in surface roughness  (although it still does pretty well)
 
@@ -179,5 +179,5 @@ Read Chapter 1 of BLM.  For notation, especially virtual temperature, see the fi
 
 - Here's a Jupyter notebook that implements {ref}`businger-dyer`
 
-- Assignment 5: Modify {ref}`simple_integrator` so that it works with a specified surface temperature instead of a surface flux.  Use the Businger-Dyer drag coefficients to calculate the flux.  To keep the layer growing you can specify that the surface temperature is a couple of degrees warmer than the air just above it (make that tmeperature difference an adjustable parameter)
+- Assignment 5: Modify the {ref}`simple_integrator` notebook so that it works with a specified surface temperature instead of a fixed surface flux.  Use the Businger-Dyer drag coefficients to calculate the flux.  To keep the layer growing you can specify that the surface temperature is a couple of degrees warmer than the air just above it (make that tmeperature difference an adjustable parameter)
 
