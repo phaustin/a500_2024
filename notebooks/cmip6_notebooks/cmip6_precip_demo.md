@@ -12,6 +12,7 @@ kernelspec:
   name: python3
 ---
 
+(cmip6_historical)=
 # Loading the CMIP historical precip data 
 
 ## Author:  Ben Farris --  2024
@@ -35,10 +36,6 @@ import cartopy
 ```
 
 Pull the data from the sit itself and put into pandas df in order to be able to visualize it.
-
-```{code-cell} ipython3
-len(col.df)
-```
 
 ```{code-cell} ipython3
 cat_url = "https://storage.googleapis.com/cmip6/pangeo-cmip6.json"

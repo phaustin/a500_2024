@@ -12,8 +12,7 @@ kernelspec:
   name: python3
 ---
 
-+++ {"user_expressions": []}
-
+(betts_data_fetch)=
 # Betts 2009 diurnal lcl -- CMIP6 comparison
 
 **Author:** Andrew Loeppky (Lots of code stolen from Jamie Byer)
@@ -252,7 +251,9 @@ my_ds['huss'].shape
 ```
 
 ```{code-cell} ipython3
-my_ds.to_netcdf(f"./data/{source_id}-{experiment_id}.nc", engine="netcdf4")
+write=False
+if write:
+    my_ds.to_netcdf(f"./data/{source_id}-{experiment_id}.nc", engine="netcdf4")
 ```
 
 ```{code-cell} ipython3

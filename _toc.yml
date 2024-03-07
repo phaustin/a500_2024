@@ -90,10 +90,20 @@ parts:
     - url: https://www.dropbox.com/scl/fi/6gt4ssm43ia391bmnk3hf/simple_integrator.ipynb?rlkey=d3fqy8tt1j04by0pcblp63hv3&dl=0
       title: simple_integrator.ipynb download
     - file: notebooks/cabauw_notebooks/cesar_tower_list.md
+    - url: https://www.dropbox.com/scl/fi/8v7m4oj9qrmhkeecq1q7s/cesar_tower_list.ipynb?rlkey=ceyxaaq114b6ckweawznjchk5&dl=0
+      title: cesar_tower_list notebook download
     - file: notebooks/cabauw_notebooks/cesar_surface_list.md
+    - url: https://www.dropbox.com/scl/fi/bc8d5vvg3o5o1cmz2l5ri/cesar_surface_list.ipynb?rlkey=bzd68jy9h82p1io87lwltev4m&dl=0
+      title: cesar_surface_list notebook download
     - file: notebooks/cmip6_notebooks/cmip6_precip_demo.md
-      file: notebooks/cmip6_notebooks/betts_3hourly_get_domain.md
+    - url:  https://www.dropbox.com/scl/fi/gc9gsmd0kzhxf4mjh9oms/cmip6_precip_demo.ipynb?rlkey=3v60qwx3aj554tajm4zs0hbic&dl=0
+      title: cmip6 precip demo notebook
+    - file: notebooks/cmip6_notebooks/betts_3hourly_get_domain.md
+    - url: https://www.dropbox.com/scl/fi/kqtufo2k396ajtvr1npli/betts_3hourly_get_domain.ipynb?rlkey=z7erd7f2xcwk30cfvgljqekyi&dl=0
+      title: Betts cmip6 data download notebook
     - file: notebooks/cmip6_notebooks/betts_diurnal_lcl_plots.md
+    - url: https://www.dropbox.com/scl/fi/eior2i10fz8u7ftsy4fiy/betts_diurnal_lcl_plots.ipynb?rlkey=5e86qc0d2qqhmtf4uuq3uc6su&dl=0
+      title: betts_diurnal notebook download
   - caption: Journal articles
     chapters:
     - url: https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9704743/

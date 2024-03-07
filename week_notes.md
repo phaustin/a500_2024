@@ -157,3 +157,24 @@ Read Chapter 1 of BLM.  For notation, especially virtual temperature, see the fi
 * For break -- finish Chapter 7  -- work on proposals/papers
 
 
+## Week 7
+
+### merge material here
+
+## Week 8
+
+- Go over the KNMI data download api for Cabauw, and CMiP6 notebooks for precipitation
+  and the Betts surface energy budget analysis [Betts 2009 fig 10](https://agupubs.onlinelibrary.wiley.com/doi/10.3894/James.2009.1.4)
+  
+- {ref}`cesar_tower`
+- {ref}`cesar_surface`
+- {ref}`cmip6_historical`
+- {ref}`betts_data_fetch`
+- {ref}`betts_diurnal_lcl`
+
+### For Tuesday
+
+- Read Stull Chapter 11 thorugh page 458 (mixed layers)
+- Also  Read [Garratt Chapter 6](https://www.dropbox.com/scl/fi/vqvpsg4isduv02cth3g98/garratt_ch6.pdf?rlkey=rqp14mmbk6pcm3o1fhmfmvsbt&dl=0)
+- Finish the surface layer assignment
+

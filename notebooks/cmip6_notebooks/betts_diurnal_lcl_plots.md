@@ -5,15 +5,14 @@ jupytext:
     extension: .md
     format_name: myst
     format_version: 0.13
-    jupytext_version: 1.14.5
+    jupytext_version: 1.16.1
 kernelspec:
   display_name: Python 3 (ipykernel)
   language: python
   name: python3
 ---
 
-+++ {"user_expressions": []}
-
+(betts_diurnal_lcl)=
 # Betts diurnal lcl plots
 
 Take a domain with mandatory variables and generate the fields required to plot [Betts 2009 fig 10](https://agupubs.onlinelibrary.wiley.com/doi/10.3894/James.2009.1.4)
