@@ -96,7 +96,7 @@ Read Chapter 1 of BLM.  For notation, especially virtual temperature, see the fi
 - Chapter 4/5 topics
 
   - Chapter 4: [pressure perturbation notes](https://www.dropbox.com/scl/fi/7tkg65ar1u9emumxervu5/pressure_perturb.pdf?rlkey=gu3miynu1k28cs1985mrxxu4h&dl=0)
-  - Chapter 5: Businger article on the [critcial Richardson number](https://www.dropbox.com/scl/fi/yqegu0q64a2t6sipms7t4/bussinger_critical_ri.pdf?rlkey=34m6gyzz5lv9oaxum8xx7ynge&dl=0)
+  - Chapter 5: Bussinger article on the [critcial Richardson number](https://www.dropbox.com/scl/fi/yqegu0q64a2t6sipms7t4/bussinger_critical_ri.pdf?rlkey=34m6gyzz5lv9oaxum8xx7ynge&dl=0)
   
 ### Thursday
 
@@ -123,7 +123,7 @@ Read Chapter 1 of BLM.  For notation, especially virtual temperature, see the fi
 
   - Surface layer scaling:
     - [Velocity scale notes part 2](https://www.dropbox.com/scl/fi/ezjs46bsqegvnzasujnic/velocity_scales.pdf?rlkey=tkgf0zu4kxjnpmssa3zwglp2i&dl=0)
-    - [Surface layer scaling notes](https://www.dropbox.com/scl/fi/0bip672b25he2ikr2honz/surface_layer.pdf?rlkey=iurhmsxfrbxkodzkzqxoa66yd&dl=0)
+    - [Surface layer scaling notes](https://www.dropbox.com/scl/fi/e6cq3sodf0fq2rwuynsfm/boussinesq.pdf?rlkey=8josihsmcn1fskhl6mvnlu4eh&dl=0)
     - [Boussinesq approximation notes](https://www.dropbox.com/scl/fi/e6cq3sodf0fq2rwuynsfm/boussinesq.pdf?rlkey=8josihsmcn1fskhl6mvnlu4eh&dl=0)
     
 - For next Tuesday
@@ -159,25 +159,22 @@ Read Chapter 1 of BLM.  For notation, especially virtual temperature, see the fi
 
 ## Week 7
 
-### Tuesday
+### merge material here
 
-* Go over the material from Stull Chapter 7 page 267-271 on the Businger-Dyer relationships,  which is repeated in Chapter 9 p. 383-385.
+## Week 8
 
-* Finish my [Surface layer scaling notes](https://www.dropbox.com/scl/fi/0bip672b25he2ikr2honz/surface_layer.pdf?rlkey=iurhmsxfrbxkodzkzqxoa66yd&dl=0) to get the drag coefficients $C_D$ and $C_H$.
-
-* Paper: Surface-layer scaling at Cabauw:  [Verkaik and Holtslag](https://link-springer-com.ezproxy.library.ubc.ca/article/10.1007/s10546-006-9121-1)
-
-  - Take home point from that paper:  Surface layer scaling can be disturbed by upstream changes in surface roughness  (although it still does pretty well)
-
-  - Figure 5 on page 710 shows the agreement/disagreement with Businger-Dyer relationships depending on upstream conditions/wind direction
+- Go over the KNMI data download api for Cabauw, and CMiP6 notebooks for precipitation
+  and the Betts surface energy budget analysis [Betts 2009 fig 10](https://agupubs.onlinelibrary.wiley.com/doi/10.3894/James.2009.1.4)
   
-- Side note -- an interesting [historical note from Businger](https://www.dropbox.com/scl/fi/961z9gwv9h9gh1a7ka0ty/businger_history_87.pdf?rlkey=5zbjdff8vn3349e9y3xrqx0uh&dl=0) on how Bussinger and Dyer independently came up with the surface layer relationships for $\Phi_m$ and $\Phi_h$.
-  
-- For a detailed derivation of $\Phi_{\mathrm{m}}=(1-\alpha \mathrm{Ri})^{-1 / 4}$ see
-    [Fleagle and Businger, 1980, p. 275-277](https://www.dropbox.com/scl/fi/o43cv43ymuxj35nti2c2b/fleagle_bussinger_1980.pdf?rlkey=eb98rznjih3efu185wxeljsd5&dl=0)
-    
+- {ref}`cesar_tower`
+- {ref}`cesar_surface`
+- {ref}`cmip6_historical`
+- {ref}`betts_data_fetch`
+- {ref}`betts_diurnal_lcl`
 
-- Here's a Jupyter notebook that implements {ref}`businger-dyer`
+### For Tuesday
 
-- Assignment 5: Modify the {ref}`simple_integrator` notebook so that it works with a specified surface temperature instead of a fixed surface flux.  Use the Businger-Dyer drag coefficients to calculate the flux.  To keep the layer growing you can specify that the surface temperature is a couple of degrees warmer than the air just above it (make that tmeperature difference an adjustable parameter).  Try to adjust your parameters so you produce about 50-100 $W/m^2$ of buoyancy flux.
+- Read Stull Chapter 11 thorugh page 458 (mixed layers)
+- Also  Read [Garratt Chapter 6](https://www.dropbox.com/scl/fi/vqvpsg4isduv02cth3g98/garratt_ch6.pdf?rlkey=rqp14mmbk6pcm3o1fhmfmvsbt&dl=0)
+- Finish the surface layer assignment
 
