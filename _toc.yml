@@ -89,6 +89,11 @@ parts:
     - file: notebooks/simple_integrator.md
     - url: https://www.dropbox.com/scl/fi/6gt4ssm43ia391bmnk3hf/simple_integrator.ipynb?rlkey=d3fqy8tt1j04by0pcblp63hv3&dl=0
       title: simple_integrator.ipynb download
+    - file: notebooks/cabauw_notebooks/cesar_tower_list.md
+    - file: notebooks/cabauw_notebooks/cesar_surface_list.md
+    - file: notebooks/cmip6_notebooks/cmip6_precip_demo.md
+      file: notebooks/cmip6_notebooks/betts_3hourly_get_domain.md
+    - file: notebooks/cmip6_notebooks/betts_diurnal_lcl_plots.md
   - caption: Journal articles
     chapters:
     - url: https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9704743/
