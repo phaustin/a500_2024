@@ -15,6 +15,7 @@ kernelspec:
 # Cabauw tower data
 
 The KNMI data server uses [REST](https://www.redhat.com/en/topics/api/what-is-a-rest-api) (representational state transfer) to return datasets from requests sent via http to the server.  In python, this is done using the 
+[requests library](https://realpython.com/python-requests/).  Basically a restfull api sends and receives data using an html connection.  All the cloud data providers use rest for data uploads and downloads.  For example, here is the documentation for [AWS](https://boto3.amazonaws.com/v1/documentation/api/latest/guide/quickstart.html#using-boto3)
 
 Resources:
 
@@ -87,7 +88,7 @@ for the_file in out["files"]:
 ## Get the download url
 
 Once you know the filename, download it into a tempory file and
-rename it
+rename it.  The request module takes a web address, parameters and headers and puts together a get request.  The server responds with a jason file that is then turned into a python dictionary.  One of the dictionary members gives the temporary url for the file to be downloaded.
 
 ```{code-cell} ipython3
 filename = "cesar_tower_meteo_lb1_t10_v1.2_200005.nc"
@@ -105,6 +106,8 @@ download_url = out["temporaryDownloadUrl"]
 ```
 
 ## Read the file into a local version
+
+By setting "stream=True" we tell requests not to close the connection to the file, so we can repeatedly read chunks of data from the url and write the data to disk
 
 ```{code-cell} ipython3
 filename = "tower2_test.nc"
