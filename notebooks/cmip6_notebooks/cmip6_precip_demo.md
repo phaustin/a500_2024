@@ -37,6 +37,10 @@ import cartopy
 Pull the data from the sit itself and put into pandas df in order to be able to visualize it.
 
 ```{code-cell} ipython3
+len(col.df)
+```
+
+```{code-cell} ipython3
 cat_url = "https://storage.googleapis.com/cmip6/pangeo-cmip6.json"
 col = intake.open_esm_datastore(cat_url)
 col.df
@@ -69,7 +73,7 @@ if write:
 ```
 
 ```{code-cell} ipython3
-bc_dset = xr.open_dataset('can_bc_dset.nc')
+bc_dset = xr.open_dataset('can_bc_dset.zarr')
 mean_precip = bc_dset.groupby('time.year').mean('time').mean(['lon', 'lat'])*86400*365
 plt.figure()
 mean_precip.mean('member_id').pr.plot()
