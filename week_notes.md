@@ -152,14 +152,33 @@ Read Chapter 1 of BLM.  For notation, especially virtual temperature, see the fi
 
 * Surface layer review and first order closure
 
-* Go over how to do first order closure for A$\theta$ using {ref}`simple_integrator`
+* Go over how to do first order closure for $\theta$ using {ref}`simple_integrator`
 
 * For break -- finish Chapter 7  -- work on proposals/papers
 
 
 ## Week 7
 
-### merge material here
+### Tuesday
+
+- Go over the material from Stull Chapter 7 page 267-271 on the Businger-Dyer relationships, which is repeated in Chapter 9 p. 383-385.
+
+- Finish my [Surface layer scaling notes](https://www.dropbox.com/scl/fi/0bip672b25he2ikr2honz/surface_layer.pdf?rlkey=iurhmsxfrbxkodzkzqxoa66yd&dl=0) to get the drag coefficients 
+  and  $C_D$ and $C_H$
+
+- Paper: Surface-layer scaling at Cabauw: [Verkaik and Holtslag](https://login.ezproxy.library.ubc.ca/login?qurl=https://link.springer.com%2farticle%2f10.1007%2fs10546-006-9121-1)
+
+  - Take home point from that paper: Surface layer scaling can be disturbed by upstream changes in  
+    surface roughness (although it still does pretty well)
+
+  - Figure 5 on page 710 shows the agreement/disagreement with Businger-Dyer relationships
+    depending on upstream conditions/wind direction
+
+- Side note – an interesting [historical note from Businger](https://www.dropbox.com/scl/fi/961z9gwv9h9gh1a7ka0ty/businger_history_87.pdf?rlkey=5zbjdff8vn3349e9y3xrqx0uh&dl=0) on how Businger and Dyer independently
+  came up with the surface layer relationships for $\Phi_m$ and $\Phi_h$
+
+- For a detailed derivation of $\Phi_{\mathrm{m}}=(1-\alpha \mathrm{Ri})^{-1 / 4} \mathrm{~s}$
+  see [Fleagle and Businger, 1980, p. 275-277](https://www.dropbox.com/scl/fi/o43cv43ymuxj35nti2c2b/fleagle_bussinger_1980.pdf?rlkey=eb98rznjih3efu185wxeljsd5&dl=0)
 
 ## Week 8
 
@@ -177,3 +196,18 @@ Read Chapter 1 of BLM.  For notation, especially virtual temperature, see the fi
 - Read Stull Chapter 11 thorugh page 458 (mixed layers)
 - Also  Read [Garratt Chapter 6](https://www.dropbox.com/scl/fi/vqvpsg4isduv02cth3g98/garratt_ch6.pdf?rlkey=rqp14mmbk6pcm3o1fhmfmvsbt&dl=0)
 - Finish the surface layer assignment
+
+## Week 9
+
+- Material
+
+  - Stull p. 271 Section 7.4.3
+
+  - Stull Chapter 11 p. 453-458
+
+  - Garratt pp. 151-159
+
+  - [Liebniz review notes](https://www.dropbox.com/scl/fi/s75gp821y8riznrjioem4/liebniz.pdf?rlkey=u13g1jtrnqx55t4f90uf3gzuo&dl=0)
+
+  - [mixed layer notes](https://www.dropbox.com/scl/fi/8l9qb7mqtfhs58b4s7jf6/mixed_layer.pdf?rlkey=a2av8cmvjvvti44723hn69acw&dl=0)
+  
