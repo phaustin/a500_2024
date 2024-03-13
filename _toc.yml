@@ -51,6 +51,12 @@ parts:
       title: Boussinesq and anelastic scaling notes
     - url: https://www.dropbox.com/scl/fi/hdbpj7stnutwva85njr2k/mellor_yamada_notes.pdf?rlkey=kxlb7tpfo3bc2ogyzt1iht936&dl=0
       title: Mellor-Yamada TKE notes
+    - url: https://www.dropbox.com/scl/fi/ugg14cvujp9m5b99c2vbf/bannon95a.pdf?rlkey=d8v4qvqpncduunwqpb1wdgtz1&dl=0
+      title: bannon anelastic article
+    - url: https://www.dropbox.com/scl/fi/8l9qb7mqtfhs58b4s7jf6/mixed_layer.pdf?rlkey=a2av8cmvjvvti44723hn69acw&dl=0
+      title: mixed layer notes
+    - url: https://www.dropbox.com/scl/fi/s75gp821y8riznrjioem4/liebniz.pdf?rlkey=u13g1jtrnqx55t4f90uf3gzuo&dl=0
+      title: Liebniz review notes
   - caption: Assignments
     chapters:
     - file: assignments/md_dry_les.ipynb
@@ -104,6 +110,9 @@ parts:
     - file: notebooks/cmip6_notebooks/betts_diurnal_lcl_plots.md
     - url: https://www.dropbox.com/scl/fi/eior2i10fz8u7ftsy4fiy/betts_diurnal_lcl_plots.ipynb?rlkey=5e86qc0d2qqhmtf4uuq3uc6su&dl=0
       title: betts_diurnal notebook download
+    - file: notebooks/businger_dyer.md
+    - url: https://www.dropbox.com/scl/fi/xptgi4noyxdfip705tzcz/businger_dyer.ipynb?rlkey=59q960f829rm8aejevl1qy2f5&dl=0
+      title: businger-dyer.ipynb download
   - caption: Journal articles
     chapters:
     - url: https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9704743/
@@ -118,5 +127,10 @@ parts:
       title: Cabauw LES simulation
     - url: https://www.dropbox.com/scl/fi/yu9362gnf3mq0s4rrl1ja/mellor_1982.pdf?rlkey=duea0woyu0fwvqo1kndjqr41u&dl=0
       title: Mellor and Yamada, 1982 - TKE parameterization
-      
-      
+    - url: https://link-springer-com.ezproxy.library.ubc.ca/article/10.1007/s10546-006-9121-1
+      title: Verkaik and Holtslag -- Wind profiles, momentum fluxes and roughness lengths at Cabauw revisited
+    - url: https://www.dropbox.com/scl/fi/961z9gwv9h9gh1a7ka0ty/businger_history_87.pdf?rlkey=5zbjdff8vn3349e9y3xrqx0uh&dl=0
+      title: Businger history of surface layer stability scaling
+    - url: https://www.dropbox.com/scl/fi/o43cv43ymuxj35nti2c2b/fleagle_bussinger_1980.pdf?rlkey=eb98rznjih3efu185wxeljsd5&dl=0
+      title: Fleagle and Businger Chapter 6 excerpt on surface layer similarity
+
