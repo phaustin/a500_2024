@@ -179,6 +179,12 @@ Read Chapter 1 of BLM.  For notation, especially virtual temperature, see the fi
 
 - For a detailed derivation of $\Phi_{\mathrm{m}}=(1-\alpha \mathrm{Ri})^{-1 / 4} \mathrm{~s}$
   see [Fleagle and Businger, 1980, p. 275-277](https://www.dropbox.com/scl/fi/o43cv43ymuxj35nti2c2b/fleagle_bussinger_1980.pdf?rlkey=eb98rznjih3efu185wxeljsd5&dl=0)
+  
+### Thursday
+
+- Here’s a Jupyter notebook that implements {ref}`businger-dyer`
+- Assignment 5: Modify the {ref}`simple_integrator` notebook
+  so that it works with a specified surface temperature instead of a fixed surface flux. Use the Businger-Dyer drag coefficients to calculate the flux. To keep the layer growing you can specify that the surface temperature is a couple of degrees warmer than the air just above it (make that tmeperature difference an adjustable parameter). Try to adjust your parameters so you produce about 50-100  of buoyancy flux.
 
 ## Week 8
 
