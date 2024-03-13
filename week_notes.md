@@ -177,4 +177,3 @@ Read Chapter 1 of BLM.  For notation, especially virtual temperature, see the fi
 - Read Stull Chapter 11 thorugh page 458 (mixed layers)
 - Also  Read [Garratt Chapter 6](https://www.dropbox.com/scl/fi/vqvpsg4isduv02cth3g98/garratt_ch6.pdf?rlkey=rqp14mmbk6pcm3o1fhmfmvsbt&dl=0)
 - Finish the surface layer assignment
-
