@@ -459,11 +459,18 @@ by incresing the ‘maxKeys’ parameter below</p></li>
     <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">json_file</span><span class="p">,</span><span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">outfile</span><span class="p">:</span>
         <span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">knmi_dict</span><span class="p">,</span><span class="n">outfile</span><span class="p">)</span>
 
-<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">json_file</span><span class="p">,</span><span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">infile</span><span class="p">:</span>
-    <span class="n">api_dict</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">infile</span><span class="p">)</span>
-<span class="n">api_key</span> <span class="o">=</span> <span class="n">api_dict</span><span class="p">[</span><span class="s1">&#39;knmi_api&#39;</span><span class="p">]</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">api_key</span><span class="p">)</span>
-<span class="n">api_key</span> <span class="o">=</span> <span class="s2">&quot;eyJvcmciOiI1ZTU1NGUxOTI3NGE5NjAwMDEyYTNlYjEiLCJpZCI6IjNlZDU0YTdlZjk0OTRlM2Q4NWQzZGI5ZjdmYmU0ZmZkIiwiaCI6Im11cm11cjEyOCJ9&quot;</span>
+<span class="c1">#</span>
+<span class="c1"># use the public api key</span>
+<span class="c1">#</span>
+<span class="n">private</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="k">if</span> <span class="n">private</span><span class="p">:</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">json_file</span><span class="p">,</span><span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">infile</span><span class="p">:</span>
+        <span class="n">api_dict</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">infile</span><span class="p">)</span>
+    <span class="n">api_key</span> <span class="o">=</span> <span class="n">api_dict</span><span class="p">[</span><span class="s1">&#39;knmi_api&#39;</span><span class="p">]</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">api_key</span><span class="o">=</span><span class="s2">&quot;eyJvcmciOiI1ZTU1NGUxOTI3NGE5NjAwMDEyYTNlYjEiLCJpZCI6ImE1OGI5NGZmMDY5NDRhZDNhZjFkMDBmNDBmNTQyNjBkIiwiaCI6Im11cm11cjEyOCJ9&quot;</span>
+
+
 
 <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s1">&#39;accept&#39;</span><span class="p">:</span> <span class="s1">&#39;application/json&#39;</span><span class="p">,</span>
@@ -497,25 +504,19 @@ by incresing the ‘maxKeys’ parameter below</p></li>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">19</span>
-<span class="g g-Whitespace">     </span><span class="mi">16</span>     <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">json_file</span><span class="p">,</span><span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">outfile</span><span class="p">:</span>
-<span class="g g-Whitespace">     </span><span class="mi">17</span>         <span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">knmi_dict</span><span class="p">,</span><span class="n">outfile</span><span class="p">)</span>
-<span class="ne">---&gt; </span><span class="mi">19</span> <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">json_file</span><span class="p">,</span><span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">infile</span><span class="p">:</span>
-<span class="g g-Whitespace">     </span><span class="mi">20</span>     <span class="n">api_dict</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">infile</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">21</span> <span class="n">api_key</span> <span class="o">=</span> <span class="n">api_dict</span><span class="p">[</span><span class="s1">&#39;knmi_api&#39;</span><span class="p">]</span>
-
-<span class="nn">File ~/mini310/envs/a405/lib/python3.11/site-packages/IPython/core/interactiveshell.py:310,</span> in <span class="ni">_modified_open</span><span class="nt">(file, *args, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">303</span> <span class="k">if</span> <span class="n">file</span> <span class="ow">in</span> <span class="p">{</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">}:</span>
-<span class="g g-Whitespace">    </span><span class="mi">304</span>     <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">305</span>         <span class="sa">f</span><span class="s2">&quot;IPython won&#39;t let you open fd=</span><span class="si">{</span><span class="n">file</span><span class="si">}</span><span class="s2"> by default &quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">306</span>         <span class="s2">&quot;as it is likely to crash IPython. If you know what you are doing, &quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">307</span>         <span class="s2">&quot;you can use builtins&#39; open.&quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">308</span>     <span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">310</span> <span class="k">return</span> <span class="n">io_open</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-
-<span class="ne">FileNotFoundError</span>: [Errno 2] No such file or directory: &#39;/Users/phil/.knmi_key.json&#39;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2010-01-01T00:00:00+00:00
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>cesar_tower_meteo_lb1_t10_v1.2_202311.nc
+cesar_tower_meteo_lb1_t10_v1.2_202310.nc
+cesar_tower_meteo_lb1_t10_v1.2_202308.nc
+cesar_tower_meteo_lb1_t10_v1.2_202307.nc
+cesar_tower_meteo_lb1_t10_v1.2_202306.nc
+cesar_tower_meteo_lb1_t10_v1.2_202305.nc
+cesar_tower_meteo_lb1_t10_v1.2_202304.nc
+cesar_tower_meteo_lb1_t10_v1.2_202303.nc
+cesar_tower_meteo_lb1_t10_v1.2_202301.nc
+cesar_tower_meteo_lb1_t10_v1.2_202210.nc
 </pre></div>
 </div>
 </div>
@@ -546,22 +547,6 @@ rename it.  The request module takes a web address, parameters and headers and p
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>https://api.dataplatform.knmi.nl/open-data/v1/datasets/cesar_tower_meteo_lb1_t10/versions/v1.2/files/cesar_tower_meteo_lb1_t10_v1.2_200005.nc/url
 </pre></div>
 </div>
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">line</span> <span class="mi">8</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">url</span> <span class="o">=</span> <span class="n">part1</span> <span class="o">+</span> <span class="n">part2</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="nb">print</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
-<span class="g g-Whitespace">      </span><span class="mi">7</span>     <span class="n">url</span><span class="p">,</span>
-<span class="ne">----&gt; </span><span class="mi">8</span>     <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">,</span>
-<span class="g g-Whitespace">      </span><span class="mi">9</span>     <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span>
-<span class="g g-Whitespace">     </span><span class="mi">10</span> <span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">11</span> <span class="n">out</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
-<span class="g g-Whitespace">     </span><span class="mi">12</span> <span class="n">download_url</span> <span class="o">=</span> <span class="n">out</span><span class="p">[</span><span class="s2">&quot;temporaryDownloadUrl&quot;</span><span class="p">]</span>
-
-<span class="ne">NameError</span>: name &#39;params&#39; is not defined
-</pre></div>
-</div>
 </div>
 </div>
 </section>
@@ -580,29 +565,6 @@ rename it.  The request module takes a web address, parameters and headers and p
 <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
     <span class="n">logger</span><span class="o">.</span><span class="n">exception</span><span class="p">(</span><span class="s2">&quot;Unable to download file using download URL&quot;</span><span class="p">)</span>
     <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">line</span> <span class="mi">3</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="k">try</span><span class="p">:</span>
-<span class="ne">----&gt; </span><span class="mi">3</span>     <span class="k">with</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">download_url</span><span class="p">,</span> <span class="n">stream</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="k">as</span> <span class="n">r</span><span class="p">:</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span>         <span class="n">r</span><span class="o">.</span><span class="n">raise_for_status</span><span class="p">()</span>
-
-<span class="ne">NameError</span>: name &#39;download_url&#39; is not defined
-
-<span class="n">During</span> <span class="n">handling</span> <span class="n">of</span> <span class="n">the</span> <span class="n">above</span> <span class="n">exception</span><span class="p">,</span> <span class="n">another</span> <span class="n">exception</span> <span class="n">occurred</span><span class="p">:</span>
-
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">line</span> <span class="mi">9</span>
-<span class="g g-Whitespace">      </span><span class="mi">7</span>                 <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">chunk</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
-<span class="ne">----&gt; </span><span class="mi">9</span>     <span class="n">logger</span><span class="o">.</span><span class="n">exception</span><span class="p">(</span><span class="s2">&quot;Unable to download file using download URL&quot;</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">10</span>     <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-
-<span class="ne">NameError</span>: name &#39;logger&#39; is not defined
 </pre></div>
 </div>
 </div>

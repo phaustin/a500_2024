@@ -33,9 +33,13 @@ if write:
     with open(json_file,'w') as outfile:
         json.dump(knmi_dict,outfile)
 
-with open(json_file,'r') as infile:
-    api_dict = json.load(infile)
-api_key = api_dict['knmi_api']
+private = False
+if private:
+    with open(json_file,'r') as infile:
+        api_dict = json.load(infile)
+    api_key = api_dict['knmi_api']
+else:
+    api_key="eyJvcmciOiI1ZTU1NGUxOTI3NGE5NjAwMDEyYTNlYjEiLCJpZCI6ImE1OGI5NGZmMDY5NDRhZDNhZjFkMDBmNDBmNTQyNjBkIiwiaCI6Im11cm11cjEyOCJ9"
 
 headers = {
     'accept': 'application/json',

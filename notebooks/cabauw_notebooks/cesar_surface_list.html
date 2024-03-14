@@ -430,9 +430,13 @@ document.write(`
     <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">json_file</span><span class="p">,</span><span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">outfile</span><span class="p">:</span>
         <span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">knmi_dict</span><span class="p">,</span><span class="n">outfile</span><span class="p">)</span>
 
-<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">json_file</span><span class="p">,</span><span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">infile</span><span class="p">:</span>
-    <span class="n">api_dict</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">infile</span><span class="p">)</span>
-<span class="n">api_key</span> <span class="o">=</span> <span class="n">api_dict</span><span class="p">[</span><span class="s1">&#39;knmi_api&#39;</span><span class="p">]</span>
+<span class="n">private</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="k">if</span> <span class="n">private</span><span class="p">:</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">json_file</span><span class="p">,</span><span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">infile</span><span class="p">:</span>
+        <span class="n">api_dict</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">infile</span><span class="p">)</span>
+    <span class="n">api_key</span> <span class="o">=</span> <span class="n">api_dict</span><span class="p">[</span><span class="s1">&#39;knmi_api&#39;</span><span class="p">]</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">api_key</span><span class="o">=</span><span class="s2">&quot;eyJvcmciOiI1ZTU1NGUxOTI3NGE5NjAwMDEyYTNlYjEiLCJpZCI6ImE1OGI5NGZmMDY5NDRhZDNhZjFkMDBmNDBmNTQyNjBkIiwiaCI6Im11cm11cjEyOCJ9&quot;</span>
 
 <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s1">&#39;accept&#39;</span><span class="p">:</span> <span class="s1">&#39;application/json&#39;</span><span class="p">,</span>
@@ -458,25 +462,16 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">18</span>
-<span class="g g-Whitespace">     </span><span class="mi">15</span>     <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">json_file</span><span class="p">,</span><span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">outfile</span><span class="p">:</span>
-<span class="g g-Whitespace">     </span><span class="mi">16</span>         <span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">knmi_dict</span><span class="p">,</span><span class="n">outfile</span><span class="p">)</span>
-<span class="ne">---&gt; </span><span class="mi">18</span> <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">json_file</span><span class="p">,</span><span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">infile</span><span class="p">:</span>
-<span class="g g-Whitespace">     </span><span class="mi">19</span>     <span class="n">api_dict</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">infile</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">20</span> <span class="n">api_key</span> <span class="o">=</span> <span class="n">api_dict</span><span class="p">[</span><span class="s1">&#39;knmi_api&#39;</span><span class="p">]</span>
-
-<span class="nn">File ~/mini310/envs/a405/lib/python3.11/site-packages/IPython/core/interactiveshell.py:310,</span> in <span class="ni">_modified_open</span><span class="nt">(file, *args, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">303</span> <span class="k">if</span> <span class="n">file</span> <span class="ow">in</span> <span class="p">{</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">}:</span>
-<span class="g g-Whitespace">    </span><span class="mi">304</span>     <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">305</span>         <span class="sa">f</span><span class="s2">&quot;IPython won&#39;t let you open fd=</span><span class="si">{</span><span class="n">file</span><span class="si">}</span><span class="s2"> by default &quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">306</span>         <span class="s2">&quot;as it is likely to crash IPython. If you know what you are doing, &quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">307</span>         <span class="s2">&quot;you can use builtins&#39; open.&quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">308</span>     <span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">310</span> <span class="k">return</span> <span class="n">io_open</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-
-<span class="ne">FileNotFoundError</span>: [Errno 2] No such file or directory: &#39;/Users/phil/.knmi_key.json&#39;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>cesar_surface_flux_lb1_t10_v1.0_202106.nc
+cesar_surface_flux_lb1_t10_v1.0_202105.nc
+cesar_surface_flux_lb1_t10_v1.0_202012.nc
+cesar_surface_flux_lb1_t10_v1.0_202011.nc
+cesar_surface_flux_lb1_t10_v1.0_202010.nc
+cesar_surface_flux_lb1_t10_v1.0_202009.nc
+cesar_surface_flux_lb1_t10_v1.0_202008.nc
+cesar_surface_flux_lb1_t10_v1.0_202007.nc
+cesar_surface_flux_lb1_t10_v1.0_202006.nc
+cesar_surface_flux_lb1_t10_v1.0_202005.nc
 </pre></div>
 </div>
 </div>
