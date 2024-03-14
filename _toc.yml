@@ -113,6 +113,7 @@ parts:
     - file: notebooks/businger_dyer.md
     - url: https://www.dropbox.com/scl/fi/xptgi4noyxdfip705tzcz/businger_dyer.ipynb?rlkey=59q960f829rm8aejevl1qy2f5&dl=0
       title: businger-dyer.ipynb download
+    - file: notebooks/dry_mixed_layer.md
   - caption: Journal articles
     chapters:
     - url: https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9704743/

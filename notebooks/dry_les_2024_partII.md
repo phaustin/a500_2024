@@ -129,9 +129,7 @@ temp_mean=temp.mean(dim=["x","y"])
 temp_mean[0,-5:]
 ```
 
-```{code-cell} ipython3
 ## Plot the timestep theta,height profiles for c1
-```
 
 ```{code-cell} ipython3
 ---
