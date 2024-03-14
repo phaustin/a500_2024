@@ -223,5 +223,21 @@ Read Chapter 1 of BLM.  For notation, especially virtual temperature, see the fi
 
 #### Dry mixed layers 2
 
-- Recall the difference between {ref}`dry_lesII`
+- Coverage: Entrainment zone: Stull pp. 473-483
 
+- How do we get entrainment into the mixed layer model?
+
+  - Recall the difference between {ref}`dry_lesII` and  {ref}`simple_integrator`
+  - My [mixed layer jump notes](https://www.dropbox.com/scl/fi/b53feva305h7yqnkq35db/mixed_layer_jump.pdf?rlkey=8tavsjdviy1js1zol69772fcc&dl=0)
+  - Put this into a notebook: {ref}`dry_mixed_layer`  [dry_mixed_layer.ipynb](https://www.dropbox.com/scl/fi/e2mcdo9zfxclizf334efl/dry_mixed_layer.ipynb?rlkey=r9q8veh2ul9ck6rm73013pjwm&dl=0)`
+  
+
+### For Tuesday
+
+- Read [Stephan de Roode's stratocumulus notes](https://www.dropbox.com/scl/fi/6ep2orutcgusmsyyfpytg/deroode_strat.pdf?rlkey=64yhkwd5mu9a3g2ioaw89bran&dl=0).  This is an excerpt from his [
+T. U. Delft cloud course](https://www.dropbox.com/scl/fi/n6scqt3wql8otdfvsif1r/de_roode_clouds.pdf?rlkey=v82zcoh7doaib9xvy1mjh8zj1&dl=0)
+- Read [Nuijens and Siebesma stratocumulus review](https://www.dropbox.com/scl/fi/045ir1w65lwh0rm4hot4z/nuijens_siebesma_review.pdf?rlkey=vdtgfpwatcuq794ijk4gl29ak&dl=0)
+
+- A useful resource: the [ECMWF parameterization lecture notes](https://confluence.ecmwf.int/display/OPTR/Parametrization)
+ - [dropbox folder](https://www.dropbox.com/scl/fo/cc7e1fczy5zhe3h3m5ow1/h?rlkey=fgaopp026vu99mqm4nfz2fqic&dl=0)
+ 
