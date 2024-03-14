@@ -55,6 +55,8 @@ if write:
 with open(json_file,'r') as infile:
     api_dict = json.load(infile)
 api_key = api_dict['knmi_api']
+print(api_key)
+api_key = "eyJvcmciOiI1ZTU1NGUxOTI3NGE5NjAwMDEyYTNlYjEiLCJpZCI6IjNlZDU0YTdlZjk0OTRlM2Q4NWQzZGI5ZjdmYmU0ZmZkIiwiaCI6Im11cm11cjEyOCJ9"
 
 headers = {
     'accept': 'application/json',

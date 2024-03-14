@@ -454,7 +454,14 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#week-9">Week 9</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tuesday-mixed-layers">Tuesday - mixed layers</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">Tuesday</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#dry-mixed-layers-1">Dry mixed layers 1</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">Thursday</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#dry-mixed-layers-2">Dry mixed layers 2</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -582,7 +589,7 @@ document.write(`
 <li><p>Chapter 4/5 topics</p>
 <ul class="simple">
 <li><p>Chapter 4: <a class="reference external" href="https://www.dropbox.com/scl/fi/7tkg65ar1u9emumxervu5/pressure_perturb.pdf?rlkey=gu3miynu1k28cs1985mrxxu4h&amp;dl=0">pressure perturbation notes</a></p></li>
-<li><p>Chapter 5: Businger article on the <a class="reference external" href="https://www.dropbox.com/scl/fi/yqegu0q64a2t6sipms7t4/bussinger_critical_ri.pdf?rlkey=34m6gyzz5lv9oaxum8xx7ynge&amp;dl=0">critcial Richardson number</a></p></li>
+<li><p>Chapter 5: Bussinger article on the <a class="reference external" href="https://www.dropbox.com/scl/fi/yqegu0q64a2t6sipms7t4/bussinger_critical_ri.pdf?rlkey=34m6gyzz5lv9oaxum8xx7ynge&amp;dl=0">critcial Richardson number</a></p></li>
 </ul>
 </li>
 </ul>
@@ -617,7 +624,7 @@ document.write(`
 <li><p>Surface layer scaling:</p>
 <ul>
 <li><p><a class="reference external" href="https://www.dropbox.com/scl/fi/ezjs46bsqegvnzasujnic/velocity_scales.pdf?rlkey=tkgf0zu4kxjnpmssa3zwglp2i&amp;dl=0">Velocity scale notes part 2</a></p></li>
-<li><p><a class="reference external" href="https://www.dropbox.com/scl/fi/0bip672b25he2ikr2honz/surface_layer.pdf?rlkey=iurhmsxfrbxkodzkzqxoa66yd&amp;dl=0">Surface layer scaling notes</a></p></li>
+<li><p><a class="reference external" href="https://www.dropbox.com/scl/fi/e6cq3sodf0fq2rwuynsfm/boussinesq.pdf?rlkey=8josihsmcn1fskhl6mvnlu4eh&amp;dl=0">Surface layer scaling notes</a></p></li>
 <li><p><a class="reference external" href="https://www.dropbox.com/scl/fi/e6cq3sodf0fq2rwuynsfm/boussinesq.pdf?rlkey=8josihsmcn1fskhl6mvnlu4eh&amp;dl=0">Boussinesq approximation notes</a></p></li>
 </ul>
 </li>
@@ -652,7 +659,7 @@ document.write(`
 <h3>Thursday<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Surface layer review and first order closure</p></li>
-<li><p>Go over how to do first order closure for A<span class="math notranslate nohighlight">\(\theta\)</span> using <a class="reference internal" href="notebooks/simple_integrator.html#simple-integrator"><span class="std std-ref">Integrate a mean profile wrt to time using scipy.integrate</span></a></p></li>
+<li><p>Go over how to do first order closure for <span class="math notranslate nohighlight">\(\theta\)</span> using <a class="reference internal" href="notebooks/simple_integrator.html#simple-integrator"><span class="std std-ref">Integrate a mean profile wrt to time using scipy.integrate</span></a></p></li>
 <li><p>For break – finish Chapter 7  – work on proposals/papers</p></li>
 </ul>
 </section>
@@ -662,26 +669,29 @@ document.write(`
 <section id="id6">
 <h3>Tuesday<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
-<li><p>Go over the material from Stull Chapter 7 page 267-271 on the Businger-Dyer relationships,  which is repeated in Chapter 9 p. 383-385.</p></li>
-<li><p>Finish my <a class="reference external" href="https://www.dropbox.com/scl/fi/0bip672b25he2ikr2honz/surface_layer.pdf?rlkey=iurhmsxfrbxkodzkzqxoa66yd&amp;dl=0">Surface layer scaling notes</a> to get the drag coefficients <span class="math notranslate nohighlight">\(C_D\)</span> and <span class="math notranslate nohighlight">\(C_H\)</span>.</p></li>
-<li><p>Paper: Surface-layer scaling at Cabauw:  <a class="reference external" href="https://link-springer-com.ezproxy.library.ubc.ca/article/10.1007/s10546-006-9121-1">Verkaik and Holtslag</a></p>
+<li><p>Go over the material from Stull Chapter 7 page 267-271 on the Businger-Dyer relationships, which is repeated in Chapter 9 p. 383-385.</p></li>
+<li><p>Finish my <a class="reference external" href="https://www.dropbox.com/scl/fi/0bip672b25he2ikr2honz/surface_layer.pdf?rlkey=iurhmsxfrbxkodzkzqxoa66yd&amp;dl=0">Surface layer scaling notes</a> to get the drag coefficients
+and  <span class="math notranslate nohighlight">\(C_D\)</span> and <span class="math notranslate nohighlight">\(C_H\)</span></p></li>
+<li><p>Paper: Surface-layer scaling at Cabauw: <a class="reference external" href="https://login.ezproxy.library.ubc.ca/login?qurl=https://link.springer.com%2farticle%2f10.1007%2fs10546-006-9121-1">Verkaik and Holtslag</a></p>
 <ul>
-<li><p>Take home point from that paper:  Surface layer scaling can be disturbed by upstream changes in surface roughness  (although it still does pretty well)</p></li>
-<li><p>Figure 5 on page 710 shows the agreement/disagreement with Businger-Dyer relationships depending on upstream conditions/wind direction</p></li>
+<li><p>Take home point from that paper: Surface layer scaling can be disturbed by upstream changes in<br />
+surface roughness (although it still does pretty well)</p></li>
+<li><p>Figure 5 on page 710 shows the agreement/disagreement with Businger-Dyer relationships
+depending on upstream conditions/wind direction</p></li>
 </ul>
 </li>
-</ul>
-<ul class="simple">
-<li><p>Side note – an interesting <a class="reference external" href="https://www.dropbox.com/scl/fi/961z9gwv9h9gh1a7ka0ty/businger_history_87.pdf?rlkey=5zbjdff8vn3349e9y3xrqx0uh&amp;dl=0">historical note from Businger</a> on how Bussinger and Dyer independently came up with the surface layer relationships for <span class="math notranslate nohighlight">\(\Phi_m\)</span> and <span class="math notranslate nohighlight">\(\Phi_h\)</span>.</p></li>
-<li><p>For a detailed derivation of <span class="math notranslate nohighlight">\(\Phi_{\mathrm{m}}=(1-\alpha \mathrm{Ri})^{-1 / 4}\)</span> see
-<a class="reference external" href="https://www.dropbox.com/scl/fi/o43cv43ymuxj35nti2c2b/fleagle_bussinger_1980.pdf?rlkey=eb98rznjih3efu185wxeljsd5&amp;dl=0">Fleagle and Businger, 1980, p. 275-277</a></p></li>
+<li><p>Side note – an interesting <a class="reference external" href="https://www.dropbox.com/scl/fi/961z9gwv9h9gh1a7ka0ty/businger_history_87.pdf?rlkey=5zbjdff8vn3349e9y3xrqx0uh&amp;dl=0">historical note from Businger</a> on how Businger and Dyer independently
+came up with the surface layer relationships for <span class="math notranslate nohighlight">\(\Phi_m\)</span> and <span class="math notranslate nohighlight">\(\Phi_h\)</span></p></li>
+<li><p>For a detailed derivation of <span class="math notranslate nohighlight">\(\Phi_{\mathrm{m}}=(1-\alpha \mathrm{Ri})^{-1 / 4} \mathrm{~s}\)</span>
+see <a class="reference external" href="https://www.dropbox.com/scl/fi/o43cv43ymuxj35nti2c2b/fleagle_bussinger_1980.pdf?rlkey=eb98rznjih3efu185wxeljsd5&amp;dl=0">Fleagle and Businger, 1980, p. 275-277</a></p></li>
 </ul>
 </section>
 <section id="id7">
 <h3>Thursday<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Here’s a Jupyter notebook that implements <a class="reference internal" href="notebooks/businger_dyer.html#businger-dyer"><span class="std std-ref">Businger-Dyer drag coefficients</span></a></p></li>
-<li><p>Assignment 5: Modify the <a class="reference internal" href="notebooks/simple_integrator.html#simple-integrator"><span class="std std-ref">Integrate a mean profile wrt to time using scipy.integrate</span></a> notebook so that it works with a specified surface temperature instead of a fixed surface flux.  Use the Businger-Dyer drag coefficients to calculate the flux.  To keep the layer growing you can specify that the surface temperature is a couple of degrees warmer than the air just above it (make that tmeperature difference an adjustable parameter).  Try to adjust your parameters so you produce about 50-100 <span class="math notranslate nohighlight">\(W/m^2\)</span> of buoyancy flux.</p></li>
+<li><p>Assignment 5: Modify the <a class="reference internal" href="notebooks/simple_integrator.html#simple-integrator"><span class="std std-ref">Integrate a mean profile wrt to time using scipy.integrate</span></a> notebook
+so that it works with a specified surface temperature instead of a fixed surface flux. Use the Businger-Dyer drag coefficients to calculate the flux. To keep the layer growing you can specify that the surface temperature is a couple of degrees warmer than the air just above it (make that tmeperature difference an adjustable parameter). Try to adjust your parameters so you produce about 50-100  of buoyancy flux.</p></li>
 </ul>
 </section>
 </section>
@@ -707,19 +717,27 @@ and the Betts surface energy budget analysis <a class="reference external" href=
 </section>
 <section id="week-9">
 <h2>Week 9<a class="headerlink" href="#week-9" title="Permalink to this heading">#</a></h2>
-<section id="tuesday-mixed-layers">
-<h3>Tuesday - mixed layers<a class="headerlink" href="#tuesday-mixed-layers" title="Permalink to this heading">#</a></h3>
+<section id="id8">
+<h3>Tuesday<a class="headerlink" href="#id8" title="Permalink to this heading">#</a></h3>
+<section id="dry-mixed-layers-1">
+<h4>Dry mixed layers 1<a class="headerlink" href="#dry-mixed-layers-1" title="Permalink to this heading">#</a></h4>
 <ul class="simple">
-<li><p>Material</p>
-<ul>
 <li><p>Stull p. 271 Section 7.4.3</p></li>
 <li><p>Stull Chapter 11 p. 453-458</p></li>
 <li><p>Garratt pp. 151-159</p></li>
 <li><p><a class="reference external" href="https://www.dropbox.com/scl/fi/s75gp821y8riznrjioem4/liebniz.pdf?rlkey=u13g1jtrnqx55t4f90uf3gzuo&amp;dl=0">Liebniz review notes</a></p></li>
 <li><p><a class="reference external" href="https://www.dropbox.com/scl/fi/8l9qb7mqtfhs58b4s7jf6/mixed_layer.pdf?rlkey=a2av8cmvjvvti44723hn69acw&amp;dl=0">mixed layer notes</a></p></li>
 </ul>
-</li>
+</section>
+</section>
+<section id="id9">
+<h3>Thursday<a class="headerlink" href="#id9" title="Permalink to this heading">#</a></h3>
+<section id="dry-mixed-layers-2">
+<h4>Dry mixed layers 2<a class="headerlink" href="#dry-mixed-layers-2" title="Permalink to this heading">#</a></h4>
+<ul class="simple">
+<li><p>Recall the difference between <a class="reference internal" href="notebooks/dry_les_2024_partII.html#dry-lesii"><span class="std std-ref">II: dry boundary layer – inversion height</span></a></p></li>
 </ul>
+</section>
 </section>
 </section>
 </section>
@@ -834,7 +852,14 @@ and the Betts surface energy budget analysis <a class="reference external" href=
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#week-9">Week 9</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tuesday-mixed-layers">Tuesday - mixed layers</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">Tuesday</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#dry-mixed-layers-1">Dry mixed layers 1</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">Thursday</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#dry-mixed-layers-2">Dry mixed layers 2</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
