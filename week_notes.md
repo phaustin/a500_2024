@@ -241,3 +241,10 @@ T. U. Delft cloud course](https://www.dropbox.com/scl/fi/n6scqt3wql8otdfvsif1r/d
 - A useful resource: the [ECMWF parameterization lecture notes](https://confluence.ecmwf.int/display/OPTR/Parametrization)
  - [dropbox folder](https://www.dropbox.com/scl/fo/cc7e1fczy5zhe3h3m5ow1/h?rlkey=fgaopp026vu99mqm4nfz2fqic&dl=0)
  
+## Week 10
+
+### Tuesday
+
+- [de Roode lecture slides Part I](https://www.dropbox.com/scl/fi/85ebprdn52ar4c6c1e8le/Roode_1_BB.pdf?rlkey=3lyhxjt7hwyszsedq3mmb4owt&dl=0)
+- [de Roode lecture slices Part II](https://www.dropbox.com/scl/fi/hq7bnhb5dnvzmsehnhxgd/Roode_2_BB.pdf?rlkey=go05jddf8dm0qjb1ztytazl40&dl=0)
+- [Gesso et al. 2014 equilibrium boundary layer]
