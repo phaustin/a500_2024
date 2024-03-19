@@ -1,0 +1,158 @@
+\documentclass[12pt]{article}
+\usepackage{geometry,fancyhdr,xr,hyperref,ifpdf,amsmath,rcs,indentfirst}
+\usepackage{lastpage,longtable,Ventry,url,paunits,shortcuts,smallsec,color,tightlist,float}
+\geometry{letterpaper,top=50pt,hmargin={20mm,20mm},headheight=15pt} 
+\usepackage[stable]{footmisc}
+
+\pagestyle{fancy} 
+
+\RCS $Revision: 1.5 $
+\RCS $Date: 2002/01/09 03:50:54 $
+
+\fancypagestyle{first}{
+\lhead{Week 3: Chapter 2}
+\chead{}
+\rhead{page~\thepage/\pageref{LastPage}}
+\lfoot{} 
+\cfoot{} 
+\rfoot{}
+}
+
+\ifpdf
+    \usepackage[pdftex]{graphicx} 
+    \usepackage{hyperref}
+    \pdfcompresslevel=0
+    \DeclareGraphicsExtensions{.pdf,.jpg,.mps,.png}
+\else
+    \usepackage{hyperref}
+    \usepackage[dvips]{graphicx}
+    \DeclareGraphicsRule{.eps.gz}{eps}{.eps.bb}{`gzip -d #1}
+    \DeclareGraphicsExtensions{.eps,.eps.gz}
+\fi
+
+\begin{document}
+\pagestyle{first}
+
+
+\section{Probability integrals and stationarity}
+\label{sec:total-derivitive}
+
+A couple of details on Stull section 2.4, in particular
+equation (2.4.1d) and the ergodic condition.  First step back and define
+an ensemble (probability) average.  To be concrete consider
+velocity.  The function that gives the probability
+that a velocity measurement is smaller that some value
+$V$ is called the  \textit{cumulutive distribution function},
+$F(V)$, and we'll simply appeal to common sense and
+state that this is a number between 0 and 1 that satisfies the
+conditions:
+
+\begin{equation}
+  \label{eq:one}
+  F(-\infty) = 0
+\end{equation}
+
+\begin{equation}
+  \label{eq:two}
+  F(\infty) = 1
+\end{equation}
+
+\begin{equation}
+  \label{eq:three}
+  F(V_b) \geq F(V_a) \text{\ for\ }  V_b > V_a 
+\end{equation}
+i.e. $F$ is a non-decreasing function.
+
+Given the CDF $F$, the probability density function $f$ is
+defined its derivative:
+
+\begin{equation}
+  \label{eq:pdf}
+  f(V) = \frac{dF(V) }{dV}
+\end{equation}
+and from the CDF properties above we know that $f(V) \ge 0$ and
+
+\begin{equation}
+  \label{eq:norm}
+  \int_{ -\infty}^{\infty} f(V) \!\,dV = 1
+\end{equation}
+and $f(\infty)=f(-\infty)=0$
+
+Since we've got a well-behaved function we also know that
+the probability that V lies between two values is:
+\begin{equation}
+  P(V_a \le V < V_b) = F(V_b) - F(V_a) = \int_{V_a }^{V_b}f(V)\!\,dV
+\end{equation}
+or for infinitesimal values
+
+\begin{equation}
+  \label{eq:infintie}
+  P(V_a  \le V < V_a + dV) = f(V_a) dV = f(V) dV
+\end{equation}
+
+So the \textit{ensemble average} is just the integral
+
+\begin{equation}
+  \label{eq:ensemble}
+  \langle V \rangle = \int_{ -\infty}^{\infty} V f(V) \!\,dV
+\end{equation}
+
+\begin{equation}
+  \label{eq:ensemble2}
+  \langle V^2 \rangle = \int_{ -\infty}^{\infty} V^2 f(V) \!\,dV
+\end{equation}
+etc.
+
+The limits of integration are fixed at $\pm \infty$
+for an ensemble average, so that it satisfies all the Reynold's averaging conditions of
+Stull pp.~37-39.  From the definition of integration and differentiation
+we can use (\ref{eq:ensemble}) to prove that:
+
+\begin{equation}
+  \label{eq:sum}
+  \langle f + g \rangle = \langle f \rangle + \langle g \rangle
+\end{equation}
+
+\begin{equation}
+  \label{eq:sum2}
+  \langle a f \rangle = a \langle f \rangle
+\end{equation}
+
+\begin{equation}
+  \label{eq:sum3}
+\left  \langle \frac{\partial f }{\partial s} \right \rangle =  \frac{\partial  }{\partial s} \left  \langle f \right \rangle
+\end{equation}
+
+
+Note that in particular, a running mean doesn't satisfy these conditions.
+For example, take a look at what happens when you try to apply
+(\ref{eq:sum3}) fo a running mean using Liebniz' rule:
+
+\begin{equation}
+  \label{eq:running}
+  \frac{ \partial }{ \partial t} \left [ \frac{ 1}{2T} \int_{ t-T}^{t+T} f(t^\prime) \!\,d t^\prime \right ]
+=   \frac{ 1}{2T} \int_{ t-T}^{t+T} \frac{\partial f(t^\prime)} {\partial t} \!\,d t^\prime 
++ \frac{ 1}{2T} \left [ f(t+T) -f(t-T) \right ]
+\end{equation}
+which only satisfies (\ref{eq:sum3}) as $T \rightarrow \infty$
+
+
+
+How to get around this?  One way is to fix the intervals over which the average is calculated, instead of
+using a running mean.  This is called ``coarse graining''  
+
+\begin{equation}
+  \label{eq:coarse}
+  \frac{ \partial }{ \partial t} \left [ \frac{ 1}{2T} \int_{ t_1-T}^{t_1`+T} f(t^\prime) \!\,d t^\prime \right ]
+=   \frac{ 1}{2T} \int_{ t_1-T}^{t_1+T} \frac{\partial f(t^\prime)} {\partial t} \!\,d t^\prime 
+\end{equation}
+where we lose the extra Liebniz terms because $t_1$ and $T$ are both constant.  Note that this doesn't have the
+same resolution as an ensemble average, because we've reduced the resolution of the measurement to the bin width
+$2T$.
+
+
+\end{document}
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

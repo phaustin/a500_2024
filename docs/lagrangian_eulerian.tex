@@ -1,0 +1,182 @@
+\documentclass[12pt]{article}
+\usepackage{geometry,fancyhdr,xr,hyperref,ifpdf,amsmath,rcs,indentfirst}
+\usepackage{lastpage,longtable,Ventry,url,paunits,shortcuts,smallsec,color,tightlist,float}
+\geometry{letterpaper,top=50pt,hmargin={20mm,20mm},headheight=15pt}
+\usepackage[stable]{footmisc}
+
+\pagestyle{fancy} 
+
+\RCS $Revision: 1.5 $
+\RCS $Date: 2002/01/09 03:50:54 $
+
+\fancypagestyle{first}{
+\chead{Chapter 1: Eulerian and Lagrangian derivatives}
+\lhead{2019/Sep/10}
+\rhead{page~\thepage/\pageref{LastPage}}
+\lfoot{} 
+\cfoot{} 
+\rfoot{}
+}
+
+\ifpdf
+    \usepackage[pdftex]{graphicx} 
+    \usepackage{hyperref}
+    \pdfcompresslevel=0
+    \DeclareGraphicsExtensions{.pdf,.jpg,.mps,.png}
+\else
+    \usepackage{hyperref}
+    \usepackage[dvips]{graphicx}
+    \DeclareGraphicsRule{.eps.gz}{eps}{.eps.bb}{`gzip -d #1}
+    \DeclareGraphicsExtensions{.eps,.eps.gz}
+\fi
+
+\begin{document}
+\pagestyle{first}
+
+
+\section{Total (or material) derivative}
+\label{sec:total-derivitive}
+
+Make sure you understand
+the important distinction between the total and partial derivative
+on page 6 of Stull Chapter 1.   We need them both, because we use the
+total derivitive to write \textit{conservation laws} (for mass, momentum,
+energy and entropy) in a reference frame moving with the flow, but
+models and observations are generally constructed/measured in a fixed 
+(eulerian) reference frame with $x,y,z$ constant. Here are two different approaches
+to deriving the p.~6 expression.  
+For the first derivation it helps to  to recall some basic facts about
+\href{http://en.wikipedia.org/wiki/Taylor_series}{Taylor's series}
+(actually Gregory's series) and
+\href{http://bit.ly/TaylorsTheorem}{Taylor's theorem}
+
+In particular in the neighborhood of the point $t=t_0$, $x=a$, $y=b$
+
+\begin{eqnarray*}
+f(x,y)
+&\approx& f(a,b,t_0) + (t-t_0)\frac{\partial f }{\partial t}(a,b,t_0) +(x-a)\frac{\partial f }{\partial x}(a,b,t_0) +(y-b)\, \frac{\partial f }{\partial y}(a,b,t_0) \\
+&+& \mathrm{higher\ order\ terms}
+\end{eqnarray*}
+or keeping only terms of first order and rearranging
+
+\begin{eqnarray*}
+f(x,y,t) - f(a,b,t_0) = \Delta f
+&\approx& \Delta t \frac{\partial f }{\partial t}(a,b,t_0) +  \Delta x \frac{\partial f }{\partial x}(a,b,t_0) + \Delta y\, \frac{\partial f }{\partial y}(a,b,t_0)
+\end{eqnarray*}
+and dividing through by $\Delta t$:
+
+\begin{eqnarray*}
+\frac{\Delta f }{\Delta t} 
+&\approx& \frac{\Delta t }{\Delta t} \frac{\partial f }{\partial t}(a,b,t_0) +  \frac{\Delta x }{\Delta t} \frac{\partial f }{\partial x}(a,b,t_0) + \frac{\Delta x }{\Delta t} \frac{\partial f }{\partial y}(a,b,t_0) \\
+&=& \frac{\partial f }{\partial t} +  \boldmath{u} \cdot \nabla f
+\end{eqnarray*}
+
+But how do we know that $\frac{\Delta f }{\Delta t}$ is the \textit{material} derivative -- i.e. the
+derivative in a reference frame moving with the flow?  Take a look 
+at two fluid mechanics lectures by
+\href{http://star-www.st-and.ac.uk/~mmj}{Moira Jardine} of the University
+of St.~Andrews, \href{https://www.dropbox.com/s/e2q2eruf7d0kk4w/fluids_01.pdf?dl=0}{Fluid lecture 1} and
+\href{https://www.dropbox.com/s/7d89qa4v2kus0r6/fluids_02.pdf?dl=0}{Fluid lecture 2}.
+
+Her definition of $\frac{ dQ}{dt}$ is:
+
+
+\begin{equation}
+  \label{eq:dqdt}
+  \frac{ dQ}{dt} = \frac{ Q(r + \delta r, t + \delta t) - Q(r,t) }{\delta t}
+\end{equation}
+with the implicit idea that $Q(r + \delta r, t + \delta t)$ is the same piece of fluid
+as $Q(r,t) {\delta t}$, observed at time $t + \delta t$ -- that is, the displacement
+$\delta r$ is whatever is needed to track the fluid parcel.
+
+If this seems a little ad hoc,
+it is possible to make this more
+explicit by specifically labeling the fluid volumes by their
+initial positions, and being clear about the fact that we
+are following the volumes as time progresses.  Here I'm
+relying on a derivation 
+given in Salmon, 1998, Lectures on Geophysical Fluid Dynamics.
+
+In Salmon's notation, for the
+\textit{Eulerian description}, the independent variables are the space
+coordinates $\mathbf{x}=(x,y,z)$ and the time $t$.  In the
+\textit{Lagrangian description}, the independent coordinates are a
+set of particle labels which uniquely identify a small region of the
+fluid.  For example the label could be the three coordinates
+$\mathbf{a}=(a,b,c)$, where $(a,b,c)$ have the numerical values
+of $(x,y,z)$ at time $t=0$.  It is also helpful to give a separate
+symbol to the time in the Lagrangian frame, $\tau$, to remind us that
+as $\tau$ varies the label $(a,b,c)$ is kept fixed, while as $t$, varies
+the position $(x,y,z)$ is kept fixed.  In this notation the material
+or total derivative is by definition the time derivitive keeping the
+labels constant:
+
+\begin{equation}
+  \label{eq:material}
+  \frac{\partial Q}{\partial \tau} = \frac{d Q}{dt}
+\end{equation}
+where $Q$ is a property of the fluid, like vapor mixing ratio
+or energy. Eq. \eqref{eq:material} gives  the rate of change of $Q$ for a tagged region of 
+of fluid, with evolving spatial coordinates given by $x(a,b,c,\tau)$,
+$y(a,b,c,\tau)$, $z(a,b,c,\tau)$.
+
+Then using the chain rule we have:
+
+\begin{equation}
+  \label{eq:chain}
+  \frac{\partial Q}{\partial \tau} = \frac{d Q}{dt} = 
+\frac{\partial Q}{\partial t} \frac{\partial t}{\partial \tau} + 
+\frac{\partial Q}{\partial x} \frac{\partial x}{\partial \tau} +
+\frac{\partial Q}{\partial y} \frac{\partial y}{\partial \tau} +
+\frac{\partial Q}{\partial z} \frac{\partial z}{\partial \tau}
+\end{equation}
+But the velocity of the infinitesimal volume is by definition:
+
+\begin{equation}
+  \label{eq:velocity}
+  \mathbf{v} \equiv 
+\left ( \frac{\partial x}{\partial \tau} , \frac{\partial y}{\partial \tau}, 
+   \frac{\partial z}{\partial \tau} \right ) =
+\left ( u, v, w \right )
+\end{equation}
+So we can rewrite (\ref{eq:chain}) as:
+
+\begin{equation}
+  \label{eq:chain2}
+  \frac{\partial Q}{\partial \tau} = \frac{d Q}{dt} = 
+\frac{\partial Q}{\partial t} +
+u \frac{\partial Q}{\partial x}  + 
+v \frac{\partial Q}{\partial y} +
+w \frac{\partial Q}{\partial y} =
+\frac{\partial Q}{\partial t} +
+\mathbf{v} \cdot \nabla Q
+\end{equation}
+Thus   $\mathbf{v} \equiv 
+   \left ( \frac{\partial x}{\partial \tau} , \frac{\partial y}{\partial \tau}, 
+   \frac{\partial z}{\partial \tau} \right )$
+makes explicit the idea that $\frac{\delta r }{\delta t}$ is the velocity
+``following the flow''.
+
+
+Then Taylor's frozen turbulence hypothesis is equivalent to the statement that:
+
+\begin{equation}
+  \label{eq:taylor}
+\frac{\partial Q}{\partial \tau} =  \frac{d Q}{dt} = 0
+\end{equation}
+i.e., there are no sources or sinks of $Q$ changing the properties of the
+fluid in the infinitesimal box.    In particular, the turbulence is
+\textit{frozen}, and is not able to mix adjacent boxes on the time and
+space scales of interest in the problem.  This doesn't mean that
+there are no fluctuations, it just means that the \textit{statistics} of 
+the fluctuations are stationary.  (Note that
+the idea of frozen turbulence is due to 
+\href{http://en.wikipedia.org/wiki/Geoffrey_Ingram_Taylor}{G. I. Taylor} (b.~1886, d.~1075)
+not \href{http://en.wikipedia.org/wiki/Brook_Taylor}{Brook Taylor} (b.~1685, d.~1731). 
+
+
+\end{document}
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

@@ -1,0 +1,188 @@
+\documentclass[12pt]{article}
+\usepackage{geometry,fancyhdr,xr,hyperref,ifpdf,amsmath,rcs,indentfirst}
+\usepackage{lastpage,longtable,Ventry,url,paunits,shortcuts,smallsec,color,tightlist,float}
+\geometry{letterpaper,top=50pt,hmargin={20mm,20mm},headheight=15pt}
+\usepackage[stable]{footmisc}
+
+\pagestyle{fancy} 
+
+\RCS $Revision: 1.5 $
+\RCS $Date: 2002/01/09 03:50:54 $
+
+\fancypagestyle{first}{
+\chead{Thermo review: Virtual temperature}
+\lhead{2019/Sep/10}
+\rhead{page~\thepage/\pageref{LastPage}}
+\lfoot{} 
+\cfoot{} 
+\rfoot{}
+}
+
+\ifpdf
+    \usepackage[pdftex]{graphicx} 
+    \usepackage{hyperref}
+    \pdfcompresslevel=0
+    \DeclareGraphicsExtensions{.pdf,.jpg,.mps,.png}
+\else
+    \usepackage{hyperref}
+    \usepackage[dvips]{graphicx}
+    \DeclareGraphicsRule{.eps.gz}{eps}{.eps.bb}{`gzip -d #1}
+    \DeclareGraphicsExtensions{.eps,.eps.gz}
+\fi
+
+\begin{document}
+\pagestyle{first}
+
+
+\section{Virtual temperature}
+\label{sec:virtual-temperature}
+
+A nice example of the use of Taylor's series is Stull (1.5.1a) on p.~7:
+
+\begin{equation*}
+  \theta_v = \theta ( 1 + 0.61 r_{sat} - r_l )
+\end{equation*}
+where $\theta$ called the \textit{potential temperature} is acutally a measure
+of the entropy of dry air (to be derived later), $r_{sat}$ is the saturation
+mixing ratio for water vapor (kg water/kg dry air) and $r_l$ is the
+mixing ratio for cloud droplets (kg water/kg dry air).
+
+We'll go into all of this in more detail, but it's worth looking at how
+the factor 0.61 comes about in equations for density like 
+\href{https://www.eoas.ubc.ca/books/Practical_Meteorology/prmet102/Ch03-thermo-v102b.pdf}%
+{Stull PM Chapter 3 eq. 3.15)}
+Virtual temperature provides a succinct way to describe the density of a mixture of
+dry air, water vapor, and hydrometeors like cloud droplets, raindrops, snow and ice.
+Specifically, write this density as:
+
+  \begin{equation}
+    \label{eq:dalton}
+    \rho = \rho_d + \frac{e}{R_v\, T} + \rho_l + \rho_r + \rho_i
+  \end{equation}
+where $\rho_d$ is the density of dry air, $e$ is the vapour pressure, $R_v$ is the
+gas constant for water vapor (461 \jkgk), $T$ is the temperature and
+$\rho_l,\  \rho_r,\ \rho_i$ are the densities of cloud droplets, rain drops and ice
+crystals.  (When we begin comparing densities to find the \textit{buoyancy} we'll
+need the additional assumption that the droplets, drops and crystals are all
+falling at constant velocity, so we can calculate the downward force they exert
+on the surrounding air). From the definition of the mixing ratio we know that:
+
+\begin{equation}
+  \label{eq:mixing}
+  r_v = \frac{\rho_v}{\rho_d} = \frac{\frac{e}{R_v T}}{\frac{p_d}{R_d T}} = \frac{R_d}{R_v} \frac{e}{p-e}
+      = \epsilon \frac{e}{p-e} \approx 0.622 \frac{e}{p-e}
+\end{equation}
+
+Inverting (\ref{eq:mixing}) gives:
+
+\begin{equation}
+  \label{eq:invert}
+  \frac{e}{p} = \frac{r_v}{r_v + \epsilon}
+\end{equation}
+
+Putting in the equation of state for dry air and group terms, (\ref{eq:dalton}) becomes:
+
+\begin{equation}
+  \label{eq:rho2}
+      \rho = \frac{p}{R_d T} \left ( 1 - \frac{e}{p} (1 - \epsilon) \right ) + \rho_l + \rho_r + \rho_i
+\end{equation}
+and using (\ref{eq:invert}):
+
+\begin{equation}
+  \label{eq:rho3}
+      \rho = \frac{p}{R_d T} \left ( 1 - \frac{r_v}{r_v + \epsilon} (1 - \epsilon) \right ) + \rho_l + \rho_r + \rho_i
+\end{equation}
+
+Now divide both sides of (\ref{eq:rho3}) by $\rho_d = (p-e)/(R_d T)$
+
+\begin{equation}
+  \label{eq:rho4}
+  \frac{\rho}{\rho_d} = \left ( \frac{p}{R_d T_v} \frac{R_d T}{p -e} \right ) =
+\frac{p}{R_d T} \frac{R_d T}{p-e} \left [ 1 -  \frac{r_v}{r_v + \epsilon} (1 - \epsilon) \right ] + r_l + r_r  + r_i
+\end{equation}
+where we've defined the virtual temperature, $T_v$ as the temperature that produces the correct
+density $\rho$ for the mixture given the (incorrect) dry air gas constant $R_d$.
+
+Cleaning this up by moving multiplying by $(p-e)/p$:
+
+\begin{equation}
+  \label{eq:rho5}
+ \frac{T}{ T_v} = 
+ \left [ 1 -  \frac{r_v}{r_v + \epsilon} (1 - \epsilon) \right ] +  \frac{p-e}{p} \left [ r_l + r_r  + r_i \right ] 
+\end{equation}
+
+But we know that in the atmosphere, $e/p,\ r_l,\ r_r,\ r_i$ are all small (below 0.02) so 
+neglect their products, which leaves:
+
+\begin{equation}
+  \label{eq:rho6}
+ \frac{T}{ T_v} = 
+ \left [ 1 -  \frac{r_v}{r_v + \epsilon} (1 - \epsilon) \right ] +   r_l + r_r  + r_i 
+\end{equation}
+ 
+Now rearrange (\ref{eq:rho6}), dropping all second order terms:
+
+\begin{equation}
+  \label{eq:rho7}
+ \frac{T}{T_v} = \frac{r_v + \epsilon - r_v + r_v \epsilon + \epsilon (r_l + r_r + r_i) }{r_v + \epsilon}
+\end{equation}
+
+or flipping:
+
+\begin{equation}
+  \label{eq:rho8}
+ T_v =  T \left ( \frac{r_v + \epsilon}{\epsilon} \right ) \left ( \frac{ 1  }{1 + (r_l + r_r + r_i)}
+ \right )
+\end{equation}
+
+To get the mixing ratios out of the denominator, use a Taylor series expansion:
+
+\begin{equation}
+  \label{eq:taylor}
+  f(x)  = f(x_0) + f^\prime(x_0)(x - x_0) + \frac{f^{\prime\prime}(x_0)}{2}(x-x_0)^2 +
+            \frac{f^{\prime\prime\prime}(x_0)}{2\cdot3}(x-x_0)^3 + \ldots
+\end{equation}
+
+You should show that expanding about $x_0 = 0$ yields:
+
+\begin{equation}
+  \label{eq:expan}
+\frac{1}{1 + r} = 1 - r + r^2 - r^3 + \ldots  
+\end{equation}
+
+So that
+
+
+\begin{equation}
+  \label{eq:rho9}
+ T_v \approx  T \left ( \frac{r_v + \epsilon}{\epsilon} \right ) \left ( 1 - (r_l + r_r + r_i)
+ \right )
+\end{equation}
+
+and rearranging and again dropping second order terms:
+
+\begin{equation}
+  \label{eq:rho10}
+ T_v \approx   \frac{T (\epsilon + (1-\epsilon) r_v - \epsilon(r_l + r_r + r_i))}{\epsilon}
+\end{equation}
+
+and finally:
+
+\begin{equation}
+  \label{eq:rho11}
+ T_v \approx   T \left ( 1 + \frac{( 1-\epsilon)}{\epsilon} r_v - (r_l + r_r + r_i) \right )
+ = T \left ( 1 + 0.608\, r_v - (r_l + r_r + r_i) \right )
+\end{equation}
+
+In words \eqref{eq:rho11} says that air becomes more buoyant (effectively ``warmer'')
+as $r_v$ increases (because light $H_2O$ replaces heavy $N_2$), and droplets,
+drops and ice concentrations decrease (because falling hydrometeors exert downward
+drag on the
+atmosphere).
+
+
+\end{document}
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

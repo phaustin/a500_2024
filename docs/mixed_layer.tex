@@ -1,0 +1,669 @@
+\documentclass[12pt]{article}
+\usepackage{geometry,fancyhdr,xr,hyperref,ifpdf,amsmath,rcs,shortcuts,amsfonts}
+\usepackage{lastpage,longtable,color,paunits,amsmath,smallsec}
+%\usepackage{showlabels}
+\geometry{letterpaper,top=50pt,hmargin={20mm,20mm},headheight=15pt} 
+
+
+\pagestyle{fancy} 
+
+\RCS $Revision: 1.1 $
+
+\RCS $Date: 2007/11/23 17:26:55 $
+\fancypagestyle{first}{
+\lhead{A500}
+\chead{Mixed layer equations I}
+\rhead{page~\thepage/\pageref{LastPage}}
+\lfoot{} 
+\cfoot{} 
+\rfoot{}
+}
+
+\ifpdf
+    \usepackage[pdftex]{graphicx} 
+    \usepackage{hyperref}
+    \pdfcompresslevel=0
+    \DeclareGraphicsExtensions{.pdf,.jpg,.mps,.png}
+\else
+    \usepackage{hyperref}
+    \usepackage[dvips]{graphicx}
+    \DeclareGraphicsRule{.eps.gz}{eps}{.eps.bb}{`gzip -d #1}
+    \DeclareGraphicsExtensions{.eps,.eps.gz}
+\fi
+
+\newcommand{\vect}[1]{\mathbf{{#1}}}
+
+\begin{document}
+
+\pagestyle{first}
+
+\begin{center}
+Atsc500: Mixed layer equations\\
+\end{center}
+\section{Review}
+\label{sec:sum9}
+
+From 
+\href{https://www.dropbox.com/scl/fi/e6cq3sodf0fq2rwuynsfm/boussinesq.pdf?rlkey=8josihsmcn1fskhl6mvnlu4eh&dl=0}{the Boussinesq and anelastic notes} we've got the following:
+
+
+\begin{itemize}
+\item Boussinesq continuity equation:
+
+\begin{gather}
+  \label{eq:bous2}
+\nabla \vect{v} =0
+\end{gather}
+
+
+\item Anelastic continuity equation:
+
+\begin{equation}
+  \label{eq:anel2}
+  \nabla ( \rho_0(z) \vect{v} ) = 0
+\end{equation}
+
+
+\item We also found two thermodynamic relationships between
+temperature, potential temperature, density and pressure in the anelastic
+approximation, given for example by 
+\href{https://journals.ametsoc.org/doi/abs/10.1175/1520-0469%281995%29052%3C2302%3APVCHAA%3E2.0.CO%3B2}{Bannon 1995} eq 2.17:
+
+\begin{gather}
+  \frac{ \theta}{\theta_0} \sim \frac{T }{T_0} 
+\end{gather}
+
+and the anelastic equation of state:
+
+\begin{gather}
+  \frac{p }{p_0}  \sim \frac{ \rho}{\rho_0}  + \frac{T }{T_0} 
+\end{gather}
+
+
+\item and for the Boussinesq approximation, these reduce to 
+\href{/Users/phil/Dropbox/phil_files/a500/docs/bannon95a.pdf}{Bannon 1995} (5.20)
+\begin{gather}
+  \frac{ \theta}{\theta_*} \sim \frac{T }{T_*} \\
+\theta_* \sim T_* \\
+\theta \sim T
+\end{gather}
+where $T_*$ and $\theta_*$ are numbers, not functions of height.  Also remember
+that $T$, etc. are not the total temperature $T_T$, but rather 
+the difference between the temperature and the base state, $T_T - T_0$.
+
+The equation of state for the Boussinesq approximation is Bannon (5.20e):
+\begin{gather}
+  \frac{ \rho}{\rho_*}  \sim  - \frac{T }{T_*} 
+\end{gather}
+
+
+\item You should  also show that conservation of entropy can be written
+as Bannon (2.3c)
+
+       \begin{equation}
+        \label{eq:base}
+         \frac{d \theta }{dt}  + w \frac{ d \theta_0}{dz}  = \frac{\theta_0 Q}{\rho_0 c_p T_0} 
+       \end{equation}
+
+which for the Boussinesq approximation simplifies to 
+
+       \begin{equation}
+         \frac{d \theta }{dt}  + w \frac{ d \theta_0}{dz}  = \frac{ Q}{\rho_* c_p } 
+       \end{equation}
+with $Q$ representing the heating rate.
+
+To simplify things we can make the base state $\theta_0$ independent of height,
+so $w \frac{d \theta_0}{dz} =0$ and we can specify no heating for the base
+state, so $Q_0=0$ (we've already assumed this in getting (\ref{eq:base}).
+
+\end{itemize}
+
+\section{Mixed layer equations}
+\label{sec:mixed-layer-equat}
+
+Now how do we go from these to something useful for the case in which
+turbulence is producing constant profiles of $\theta$ and $q_T$ (the
+total specific humidity) below an inversion at height $h=z_i$?  
+(See Stull Figure3.7, p. 104 for model and observations of mixed
+layer growth).
+
+Stull
+presents equations for this in Chapter 7, p. 271.  In this section, I'm using the approach of
+\href{http://ezproxy.library.ubc.ca/login?url=http://link.springer.com/10.1007/s00162-006-0032-z}{Stevens (2005)} to show how Stull 7.4.3 arises from
+the continuity equation and conservation of energy via
+the ``mixed layer equations''. This is a set of
+three equations in three unknowns:
+\begin{gather}
+  \text{mean temperature: } \frac{d \hat{\theta} }{dt} =(1 + k) F_0/(h c_p\rho_*)\label{eq:meantheta}\\
+\text{inversion height: } \frac{dh }{dt} = ( k F_0)/(\rho_* c_p \Delta \theta) + w_h \label{eq:hrise}\\
+\text{inversion jump: } \frac{d \Delta \theta }{dt} = \left ( \frac{dh }{dt}  - w_h \right ) \Gamma - \frac{d \hat{\theta} }{dt}\label{eq:jump}
+\end{gather}
+where all the symbols will be defined below. (Stevens writes $h$ for 
+Stull's  inversion top height $z_i^+$)
+
+\subsection{Definitions}
+
+Start with the definition of the mixed layer average.  Based on figure
+3.7 I know that in a well mixed dry boundary layer the potential
+temperature below the inversion can be represented as a single number:
+the vertical average.  I'll use the ``hat'' ($\widehat{\ }$) symbol
+for this:
+
+\begin{equation}
+  \label{eq:vertavg}
+  \widehat{\theta} = \frac{1}{h} \int_0^h \theta dz
+\end{equation}
+
+
+a boundary layer of height $h$ which varies with time but is assumed
+flat (i.e. $\nabla_H\,h = \partial_x h + \partial_y h = 0$. Stevens (2005)
+shows how to relax this assumption and consider a sloping inversion).  Some
+definitions: $\vect{u_H}=\mbox{horizontal velocity vector (u,v)}$,
+subscript $0$ denotes a surface quantity, subscript $h$ denotes an
+inversion-top,  property, and the vertical average is given by:
+
+\begin{equation}
+  \label{eq:vertavgphi}
+  \widehat{\phi} = \frac{1}{h} \int_0^h \phi dz
+\end{equation}
+
+
+\textbf{What to watch out for}:  As explained in lecture, there is an important distinction
+between $h$, which is the top of the inversion, and $z_i$, which
+is the base.  Only cumulus cloud tops can penetrate into $h$, whereas
+$z_i$ is in a fully turbulent environment at the top of the mixed
+layer.  The distance $\epsilon=h - z_i$ is perhaps 10 m under conditions
+of strong subsidence.
+
+
+
+\subsection{Continuity equation}
+\label{sec:continuity}
+
+Assume the Boussinesq approximation:
+
+\begin{equation}
+  \label{eq:incomp}
+\nabla_H \cdot \vect{u_H} =  -\partial_z w
+\end{equation}
+
+Integrate (\ref{eq:incomp}) over the boundary layer depth, from the surface ($z=0$), to
+just on top of the inversion jump, where turbulent fluxes vanish ($z_h = h$).  As noted above,
+we'll assume
+that the inversion has a thickness $\epsilon$, so that $(h - z_i) = \epsilon$, where $z_i$ is the
+height of the inversion base, inside the well-mixed layer.  We'll look at the inversion jump
+in more detail in Section~\ref{sec:anoth-view-entr} below.
+
+\begin{equation}
+  \label{eq:intcomp}
+ \int_0^h \nabla_H \cdot \vect{u_H} \, \, dz = \int_0^h -\partial_z w \, dz
+\end{equation}
+
+Using Liebniz' rule and (\ref{eq:vertavg}) on the lhs of (\ref{eq:intcomp}) gives:
+
+\begin{equation}
+  \label{eq:complhs}
+  \int_0^h \nabla_H \cdot \vect{u_H}   dz = \nabla_H \cdot \int_0^h \vect{u_H} \,\,dz
+               - \vect{u^h_H} \nabla_H\, h = \nabla_H \, h \widehat{\vect{u_H}}
+= h \nabla_H \widehat{\vect{u_H}}
+\end{equation}
+since $\nabla_H h = 0$
+
+Using (\ref{eq:complhs}) and doing the integration of the rhs of (\ref{eq:intcomp}):
+
+\begin{equation}
+  \label{eq:finalcont}
+  h \nabla_H \widehat{\vect{u_H}} = -w_h
+\end{equation}
+How would you illustrate (\ref{eq:finalcont}) with a simple cartoon? Note that if there
+is divergence in the column, $w_h$ is negative at the top of the inversion.  In a region of subtropical
+high pressure the value of $w_h$ will be a few cm/s.
+
+\section{First law}
+\label{sec:first-law}
+
+Now back to our energy equation where in the Boussinesq approximation we
+can use either $\theta$ or the static energy residual 
+$\phi = \phi_T - \phi_0 = c_p (T_T - T_0 ) + g (z_T - z_0)$:
+
+\begin{gather}
+  \label{eq:first}
+  \frac{d \theta}{dt} = \frac{q }{\rho_* c_p}\\
+\intertext{or}
+\frac{d \phi}{dt} = q
+\end{gather}
+where $q$ is the heating rate due to radiation and evaporation of
+precipitation falling into the layer.  I'll switch to the static
+energy below, because it works for the both the anelastic
+and Boussinesq approximations and it's easier to type.
+Multiplying both sides by
+$\rho_0$ and converting to flux form as usual gives:
+
+\begin{equation}
+  \label{eq:firsts}
+  \frac{d \rho_0 \phi}{dt} = \rho_0\, q
+\end{equation}
+
+
+We'll change to concentration units for the static energy and write $s=\rho \phi$.
+It's (finally) time to to a Reynold's decomposition (\ref{eq:firsts}),
+which looks like:
+
+\begin{equation}
+  \label{eq:reynolds}
+  \underbrace{\partial_t \overline{s}}_1 + \underbrace{\overline{u_H} \cdot \nabla_H \overline{s}}_2
++ \underbrace{\overline{w} \partial_z \overline{s}}_3 = -\underbrace{\nabla_H \overline{\vect{u_H^\prime} s^\prime}}_4
+- \underbrace{\partial_z \overline{w^\prime s^\prime}}_5 + \underbrace{\overline{\rho}\,\overline{q}}_6
+\end{equation}
+\textbf{Below I'll drop the over bar on all ensemble mean quantities except for the 
+correlations.} Note that we are now dealing with two different averages: Reynolds and vertical.
+We want to integrate (\ref{eq:reynolds}) vertically to get the mixed layer relations.  Start with the three
+terms on the lhs and use Leibniz' rule:
+
+
+\subsection{lhs}
+
+\noindent
+\textit{\textbf{Term 1 of (\ref{eq:reynolds})}}: $\partial_t \overline{s}$
+
+\begin{equation}
+  \label{eq:term1}
+  \int_0^h \partial_t s dz = \partial_t \int_0^h s dz - s_h \partial_t h
+\end{equation}
+and using (\ref{eq:vertavg}) this becomes:
+
+\begin{equation}
+  \label{eq:term1b}
+  \int_0^h \partial_t s dz = \partial_t ( h \hat{s} ) - s_h \partial_t h
+= h \, \partial_t \hat{s} + \hat{s} \partial_t\,h - s_h \partial_t h
+= h \, \partial_t \hat{s} - (s_h -  \hat{s}) \, \partial_t\,h 
+\end{equation}
+
+\noindent
+\textbf{\textit{Second term of (\ref{eq:reynolds}):}} $\overline{u_H} \cdot \nabla_H \overline{s}$
+
+\begin{equation}
+  \label{eq:second}
+  \int_0^h \vect{u_H} \cdot \nabla_H s \, dz =
+\int_0^h \, \nabla_H \cdot ( \vect{u_H} \, s ) \, dz -  
+\int_0^h\, s \nabla_H \cdot \vect{u_H} dz
+\end{equation}
+
+Again using Leibniz' rule (\ref{eq:second}) becomes:
+
+\begin{subequations}
+\begin{eqnarray}
+  \label{eq:secondb}
+  \int_0^h \vect{u_H} \cdot \nabla_H s \, dz & = &
+\nabla_H \cdot \int_0^h\,\vect{u_H} \,s   \, dz - \vect{u_{H\, +}}\, s_h \nabla_H h
+- \int_0^h\, s\, \nabla_H \cdot \vect{u_H} \, dz \mbox{ or: } \\
+\int_0^h \vect{u_H} \cdot \nabla_H s \, dz &=& \nabla_H \cdot ( h \, \widehat{\vect{u_H}} \hat{s}) - \int_0^h\, s\, \nabla_H \cdot \vect{u_H} \, dz \label{eq:secondc}
+\end{eqnarray}
+\end{subequations}
+Where we've assumed that $\widehat{\vect{u_H}\,s}=\widehat{\vect{u_H}}\,\hat{s} $ (This is called the \textit{allotropic}
+assumption)
+
+
+Finally look at the \textbf{\textit{third term of (\ref{eq:reynolds}):}} $\overline{w} \partial_z \overline{s}$
+
+\begin{equation}
+  \label{eq:third}
+  \int_0^h \,  w \, \partial_z s \, dz = \int_0^h\,\partial_z ( w\,s) \, dz
+- \int_0^h\,s \partial_z \, w \, dz = 
+\int_0^h\,\partial_z ( w\,s) \, dz
++ \int_0^h\,s \nabla_H \, \vect{u_H} dz
+\end{equation}
+where I've used the continuity equation~(\ref{eq:incomp}).  Note that the last
+term of (\ref{eq:third})  is going to cancel the last term of (\ref{eq:secondc}) when
+I combine all the lhs terms.
+
+Notice that since $w_0 = 0$ at the surface, we have:
+
+\begin{equation}
+  \label{eq:iter1}
+  \int_0^h\,\partial_z ( w\,s) \, dz = w_h\,s_h
+\end{equation}
+
+\noindent
+\textit{\textbf{Finish lhs}}: Now collect all of these terms for a complete lhs for the vertically integrated
+form of (\ref{eq:reynolds}):
+
+\begin{equation}
+  \label{eq:reynlhs}
+lhs = h \partial_t\, \hat{s} + h \widehat{\vect{u_H}} \cdot \nabla_H \hat{s} - (s_h - \hat{s} ) \partial_t\,h + h \hat{s} \, \nabla_H \cdot \widehat{\vect{u_H}} - w_h\,s_h  
+\end{equation}
+
+If we define a new \textit{horizontal only} version of the total derivative
+following the flow:
+
+
+
+\begin{equation}
+  \label{eq:hortotal}
+  \frac{d \hat{s}}{dt} = \partial_t\, \hat{s} + \widehat{\vect{u_H}} \cdot \nabla_H \hat{s}
+\end{equation}
+and use the vertically integrated continuity equation (\ref{eq:finalcont}) for $h\,\nabla_H \cdot \widehat{\vect{u_H}}$ then
+(\ref{eq:reynlhs}) can be rewritten as:
+
+\begin{equation}
+  \label{eq:reyn2}
+lhs =  h \,\frac{d \hat{s}}{dt} - (s_h - \hat{s} )
+\left (\frac{dh}{dt} - w_h \right )
+\end{equation}
+Be sure you can explain, in words with the help of a picture, what
+(\ref{eq:reyn2}) represents.
+
+
+\subsection{rhs of (\ref{eq:reynolds}):}
+\label{sec:rhs}
+
+OK, we're ready for the rhs of (\ref{eq:reynolds}).  First, make two assumptions.
+
+1) Assume that the horizontal turbulent fluxes are horizontally uniform, so
+we can write:
+
+\begin{equation}
+  \label{eq:lose1}
+  \nabla_H \overline{\vect{u_H^\prime} s^\prime} = 0
+\end{equation}
+
+2) Write the heating rate as the divergence of a flux $R$:
+
+\begin{equation}
+  \label{eq:heating}
+  \overline{\rho}\, \overline{q} = -\partial_z \ R
+\end{equation}
+
+With these two simplifications I lose term (4) and I only have to integrate perfect differentials
+with height, so the vertically integrated rhs of (\ref{eq:reynolds}) becomes:
+
+
+\begin{equation}
+  \label{eq:reynoldsint}
+rhs = \int_0^h \,- \partial_z \overline{w^\prime s^\prime}  - \partial_z \ R \,dz
+= - \left ( \overline{w^\prime s^\prime}_h - \overline{w^\prime s^\prime}_0 \right ) - ( R_h  - R_0 )
+\end{equation}
+As before, what is this saying, in words?
+
+\section{Full vertically averaged equation}
+\label{sec:fullint}
+
+Combining both sides, we now have:
+
+\begin{equation}
+  \label{eq:combine}
+  h \,\frac{d \hat{s}}{dt} - (s_h - \hat{s} )
+\left (\frac{dh}{dt} - w_h \right ) = - \left ( \overline{w^\prime s^\prime}_h - \overline{w^\prime s^\prime}_0 \right ) - ( R_h  - R_0 )
+\end{equation}
+
+Let's make two more assumptions:
+
+
+1) The transport at the top of the inversion inversion represented by the 
+$\overline{w^\prime s^\prime}_h$ term in (\ref{eq:combine}) is assumed to be due to
+small cumulus clouds and can be modelled as a positive velocity $M$ moving material
+upward through the inversion (remember from the beginning of Section \ref{sec:continuity} that
+turbulent fluctuations are damped at $h=z_+$, so $\overline{w^\prime s^\prime}_h$ can't be 
+due to normal turbulent Reynolds fluctuations):
+\begin{equation}
+  \label{eq:cumulus}
+  \overline{w^\prime s^\prime}_h = -(s_h - \hat{s} )\,M
+\end{equation}
+We'll be setting $M$, the cloud mass flux, to zero for now (dry boundary layer)
+and coming back to it later in the term.
+
+
+2) We'll see in chapter 7 that the surface flux $\overline{w^\prime s^\prime}_0$ can be modelled 
+using a bulk transport coefficient as a velocity V depends on the
+and the mean horizontal  wind:
+
+\begin{equation}
+  \label{eq:surface}
+  \overline{w^\prime s^\prime}_0 = -(\hat{s} - s_0 )\,V = F_0
+\end{equation}
+where $0$ subscript denotes the surface (z=0)
+
+With these two assumptions the final form of (\ref{eq:combine}) is:
+
+\begin{equation}
+  \label{eq:combine1}
+  h \,\frac{d \hat{s}}{dt} - (s_h - \hat{s} )
+\left (\frac{dh}{dt} - w_h - M \right ) =  (\hat{s} - s_0 )\,V - ( R_h  - R_0 )
+\end{equation}
+
+We \textit{define} the entrainment rate, $w_e$ as:
+
+\begin{equation}
+  \label{eq:entrain}
+  w_e = \frac{dh}{dt} - w_h - M
+\end{equation}
+
+Using (\ref{eq:entrain}), (\ref{eq:combine1}) becomes:
+
+
+\begin{equation}
+  \label{eq:combine2}
+ \frac{d \hat{s}}{dt} = \frac{ (s_h - \hat{s} )w_e + F_0 - ( R_h  - R_0 )}{h}
+\end{equation}
+
+Be sure you can sketch a physical rationale for each of the terms in (\ref{eq:combine2}).
+In the next section I'll relate the entrainment velocity $w_e$ to the flux at the
+\textit{base} of the the inversion, $\overline{w^\prime s^\prime}_{z_i}$  For now, note the resemblance between
+(\ref{eq:combine2}) and \ref{eq:meantheta}.  If we write $(s_h - \hat{s} )w_e = k F_0$,
+neglect the radiative/precip fluxes $F$, and recognize that under the Boussinesq
+approximation $\rho* c_p \theta = s$,  we have derived (\ref{eq:meantheta}).
+
+
+
+\section{Another view of entrainment: mass conservation across the inversion}
+\label{sec:anoth-view-entr}
+
+We can get a slightly different perspective on the top of the mixed
+layer by looking at mass continuity across a thin layer
+stretching from the top of the inversion layer $h=z_h$ down to the inversion base at $z_i$.
+As we noted in assumption 1) in Section~\ref{sec:fullint}, there is no
+turbulence at $z_h$ except for the occasional cloud pumping air into
+the layer above the inversion.  But what about the flux at the top of the mixed layer
+(base of the inversion),
+$(\overline{w^\prime s^\prime})_{z_i}$?.  We want to get the following entrainment equation
+
+\begin{equation}
+  \label{eq:ps5}
+  - (s_h - \hat{s}) \cdot E = \left ( \overline{w^\prime s^\prime}_i \right ) \overline{\rho}(z_i)
+\end{equation}
+
+To see how to do this starting from energy conservation, we'll first look at the continuity
+equation to get $E$, then use conservation of energy in the final section to get (\ref{eq:ps5}).
+
+\begin{equation}
+  \label{eq:cont}
+  \partial_t \rho + \partial_z (\rho w) = 0
+\end{equation}
+
+Integrate (\ref{eq:cont}) from the mixed layer top to above the jump:
+
+\begin{equation}
+  \label{eq:contint}
+  \int_{z_i}^{h} \! \partial_t \rho  \,dz = - \int_{z_i}^{h}\! \partial_z (\rho w) \,dz
+\end{equation}
+
+Use Leibniz' rule as usual on the lhs of (\ref{eq:contint}):
+
+\begin{equation}
+  \label{eq:contleib}
+ \partial_t \int_{z_i}^{h} \!  \rho  \,dz = \int_{z_i}^{h} \! \partial_t \rho  \,dz + \rho(h) \partial_t h
+ - \rho(z_i) \partial_t z_i
+\end{equation}
+
+Remembering that $h - z_i = \epsilon$, we can define an inversion average as:
+
+\begin{equation}
+  \label{eq:invavg}
+  \widetilde{\rho} = \int_{z_i}^{h} \!  \rho  \,dz / \epsilon
+\end{equation}
+Using (\ref{eq:invavg}) and (\ref{eq:contleib}) we can rewrite (\ref{eq:contint}) as:
+
+\begin{equation}
+  \label{eq:contint2}
+  \epsilon \widetilde{\rho} - ( \rho(h) - \rho(z_i)) \partial_t h = - \left [ (\rho\, w)_h - (\rho\, w)_{z_i} \right ]
+\end{equation}
+where we've assumed that the inversion thickness $\epsilon$ stays constant with time, so that $\partial_t h = \partial_t z_i$.
+
+If we let
+the inversion thickness $\epsilon \rightarrow 0 $, we can write (\ref{eq:contint2}) as:
+
+\begin{equation}
+  \label{eq:contint3}
+ \rho(h)(\partial_t h - w(h)) = \rho(z_i) (\partial_t h  - w(z_i) ) 
+\end{equation}
+
+Equation (\ref{eq:contint3}) defines the entrainment rate:
+
+\begin{gather}
+  \label{eq:erate}
+  E = \rho(z_i) (\partial_t h  - w(z_i) )\\
+\intertext{or to put it in the symbols of equation (\ref{eq:hrise})}
+E \sim \rho_* \left (\frac{dh }{dt}  - w_h \right )
+\end{gather}
+
+and the entrainment velocity is defined as:
+
+\begin{equation}
+  \label{eq:evel}
+  w_e = E / \rho(z_i)
+\end{equation}
+
+Physically, $E$ represents the mass flux across the inversion base, due to large scale subsidence and
+the action of turbulence bringing inversion air into the mixed layer.
+
+
+\textbf{\textit{Question: How would add cumulus transport, M, to this?}}  (compare (\ref{eq:erate}) with (\ref{eq:entrain})).
+
+\section{What about the turbulence?: energy conservation across the inversion}
+\label{sec:what-about-turb}
+
+Note that I haven't done any Reynolds averaging to get (\ref{eq:erate}) (how come?).  I've got $E$, the
+entrainment rate, but I'm still not all the way to (\ref{eq:ps5}), which I'll repeat here:
+
+
+  \begin{equation}
+    \label{eq:hd0}
+  - (s_h - \hat{s}) \cdot E  =  - \Delta s \cdot E = \left ( \overline{w^\prime s^\prime} \right )_{z_i} \overline{\rho}(z_i)
+  \end{equation}
+
+Look at the first law in flux form, neglecting the horizontal advection (why is this ok?) and
+\textbf{\textit{assuming no radiation}} (debatable) or precipitation in the thin inversion layer.
+
+\begin{equation}
+  \label{eq:reynoldsb}
+  \partial_t (\rho\,\phi) + \partial_z \, (w \,\rho\,\phi) =
+- \partial_z \overline{\rho\, w^\prime \phi^\prime} 
+\end{equation}
+Where  as before I've dropped the overbar on all mean quantities except for the 
+correlations.  
+
+
+Now as before integrate (\ref{eq:reynoldsb}) across the inversion:
+
+\begin{equation}
+  \label{eq:reynoldsInt}
+\int_{z_i}^{h} \! 
+  \partial_t (\,\rho\,\phi )\, dz  + 
+ \int_{z_i}^{h} \! \partial_z \, (\rho\,w \,\phi) \, dz  =
+ - \int_{z_i}^{h} \partial_z \overline{\rho\, w^\prime \phi^\prime} dz
+\end{equation}
+
+
+\noindent
+\textit{\textbf{Term 1 of (\ref{eq:reynoldsInt})}}:
+
+\begin{equation}
+  \label{eq:term1c}
+\int_{z_i}^{h} \! 
+  \partial_t (\,\rho\,\phi )\, dz = \partial_t \int_{z_i}^{h} \! 
+   (\,\rho\,\phi )\, dz - (\,\rho\,\phi )_+ \partial_t h  +  (\,\rho\,\phi )_i \partial_t z_i
+\end{equation}
+As before, if the inversion thickness $\epsilon$ is constant with time then $\partial_t h = \partial_t z_i$.
+Using (\ref{eq:invavg}) we can then write (\ref{eq:term1c}) as:
+
+\begin{equation}
+  \label{eq:term1d}
+\int_{z_i}^{h} \! 
+  \partial_t (\,\rho\,\phi )\, dz = \partial_t \,\left (- \epsilon \,\widetilde{\rho \phi} \right )
+     + ((\rho \phi)_h - (\rho \phi)_{z_i}) \partial_t h = ((\rho \phi)_h - (\rho \phi)_{z_i}) \partial_t h
+\end{equation}
+where we've taken $\lim{{\epsilon \rightarrow 0}}$
+
+
+
+\noindent
+\textbf{\textit{Second term of (\ref{eq:reynoldsInt}):}}
+
+The second term integrates to:
+
+\begin{equation}
+  \label{eq:secondd}
+(w\,\rho\,\phi)_h - (w\,\rho\,\phi)_{z_i} = \overline{w} (s_h - s_{z_i}) = \overline{w} (s_h - \widetilde{s})
+\end{equation}
+where I've used the fact that the large scale velocity $w$ is constant across the inversion and
+that since the layer is well-mixed, $s_{z_i} = \widetilde{s}$.
+
+\noindent
+\textit{\textbf{rhs}}
+
+If we assume no turbulence in the inversion, then $\overline{\rho\, w^\prime \phi^\prime}_h$=0 and
+
+\begin{equation}
+  \label{eq:rhs}
+   - \int_{z_i}^{h} \partial_z \overline{\rho\, w^\prime \phi^\prime} dz = - \left ( \overline{\rho\, w^\prime \phi^\prime}_h -
+\overline{\rho\, w^\prime \phi^\prime}_{z_i} \right ) = \overline{\rho\, w^\prime \phi^\prime}_{z_i} = F_i
+\end{equation}
+
+\section{Final version}
+
+Combining the terms from (\ref{eq:term1d}), (\ref{eq:secondd}) and (\ref{eq:rhs}) and moving everything to the rhs yields:
+
+\begin{equation}
+  \label{eq:final}
+(s_h - s_{z_i}) (\partial_t h - \overline{w}_{z_i}) =  F_i =  \overline{\rho\, w^\prime \phi^\prime}_{z_i}
+\end{equation}
+
+In words, equation (\ref{eq:final}) states that the flux $F_i$ at the inversion base
+changes the properties of the air coming into the layer from above from $s_h$ to $s_{z_i}$.  Since
+the inversion air is usually warmer and dryer than air in the mixed layer, this means that $F_i$ acts
+to cool and moisten the entrained inversion air.  This, is our second mixed layer equation (\ref{eq:hrise})
+in disguise.
+
+\section{Recap}
+\label{sec:recap}
+
+So far we've derived two of the three equations.  To review:
+Equation \eqref{eq:meantheta} is the same as Equation
+\eqref{eq:combine2}
+
+\begin{gather*}
+  \text{mean temperature: } \frac{d \hat{\theta} }{dt} =(1 + k) F_0/(h c_p\rho_*)\\
+\text{mean static energy: } \frac{d \hat{s}}{dt} = \frac{ (s_h - \hat{s} )w_e + F_0 - ( R_h  - R_0 )}{h}
+\end{gather*}
+because we've shown that $k F_0 = F_{z_i}= w_e \Delta s$ and we're assuming
+we can neglect the radiative and precipitation fluxes $R_x$ at $h$ and
+the surface and in the Boussinesq approximation $\hat{\theta}$ =
+$\hat{T} = \hat{s}/(\rho_* c_p)$
+
+Also Equation \eqref{eq:hrise} is equivalent to \eqref{eq:final}:
+
+\begin{gather*}
+\text{inversion height: } \frac{dh }{dt} = ( k F_0)/(\rho_* c_p \Delta \theta) + w_h \label{eq:hriseb}\\
+(s_h - s_{z_i}) (\partial_t h - \overline{w}_{z_i}) =  F_i =  \overline{\rho\, w^\prime \phi^\prime}_{z_i}
+\end{gather*}
+provided we neglect the difference between $w(h)$ and $w(z_i)$
+predicted by (\ref{eq:contint3}).
+
+
+
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

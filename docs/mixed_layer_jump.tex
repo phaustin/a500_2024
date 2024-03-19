@@ -1,0 +1,216 @@
+\documentclass[12pt]{article}
+\usepackage{geometry,fancyhdr,xr,hyperref,ifpdf,amsmath,rcs,shortcuts,amsfonts}
+\usepackage{lastpage,longtable,color,paunits,amsmath,smallsec}
+%\usepackage{showlabels}
+\geometry{letterpaper,top=50pt,hmargin={20mm,20mm},headheight=15pt} 
+
+
+\pagestyle{fancy} 
+
+\RCS $Revision: 1.1 $
+
+\RCS $Date: 2007/11/23 17:26:55 $
+\fancypagestyle{first}{
+\lhead{A500}
+\chead{Mixed layer equations II: jump condition}
+\rhead{page~\thepage/\pageref{LastPage}}
+\lfoot{} 
+\cfoot{} 
+\rfoot{}
+}
+
+\ifpdf
+    \usepackage[pdftex]{graphicx} 
+    \usepackage{hyperref}
+    \pdfcompresslevel=0
+    \DeclareGraphicsExtensions{.pdf,.jpg,.mps,.png}
+\else
+    \usepackage{hyperref}
+    \usepackage[dvips]{graphicx}
+    \DeclareGraphicsRule{.eps.gz}{eps}{.eps.bb}{`gzip -d #1}
+    \DeclareGraphicsExtensions{.eps,.eps.gz}
+\fi
+
+\newcommand{\vect}[1]{\mathbf{{#1}}}
+
+\begin{document}
+
+\pagestyle{first}
+
+\begin{center}
+Atsc500: Mixed layer equations II -- jump\\
+\end{center}
+
+\section{Recap}
+\label{sec:recap}
+
+So far we've derived two of the three equations.  To review:
+
+\begin{enumerate}
+\item The time evolution of the mean energy is given by the
+two equivalent equations:
+\begin{gather*}
+  \text{mean temperature: } \frac{d \hat{\theta} }{dt} =(1 + k) F_0/(h c_p\rho_*)\\
+\text{mean static energy: } \frac{d \hat{s}}{dt} = \frac{ (s_h - \hat{s} )w_e + F_0 - ( R_h  - R_0 )}{h}
+\end{gather*}
+These are the same because because we've shown that $k F_0 = F_{z_i} \propto w_e \Delta s$ and we're assuming
+we can neglect the radiative and precipitation fluxes $R_x$ at $h$ and
+the surface.  We have also used the fact that  in the Boussinesq approximation $\hat{\theta}$ =
+$\hat{T} = \hat{s}/(\rho_* c_p)$
+
+
+\item The time evolution of inversion height also can be written in two ways:
+
+\begin{gather*}
+\text{inversion height: } \frac{dh }{dt} = ( k F_0)/(\rho_* c_p \Delta \theta) + w_h \label{eq:hriseb}\\
+\text{or equivalently: } (s_h - s_{z_i}) \left (\frac{\partial h }{\partial t}  - \overline{w}_{z_i} \right ) 
+=  F_i =  \overline{\rho\, w^\prime \phi^\prime}_{z_i}
+\end{gather*}
+provided we neglect the difference between $w(h)$ and $w(z_i)$.
+
+
+
+\end{enumerate}
+
+
+
+\section{Time evolution of the inversion jump}
+\label{sec:time-evol-invers}
+
+
+
+This leaves us with the jump equation:
+
+\begin{gather*}
+\text{inversion jump: } \frac{d \Delta \theta }{dt} = \left ( \frac{dh }{dt}  - w_h \right ) \Gamma - \frac{d \hat{\theta} }{dt}
+\end{gather*}
+
+
+The crucial point to note about this equation is that the derivitive for $\Delta \theta$ is Lagrangian, not Eulerian, 
+i.e.~we are in a reference frame that is ascending with the the inversion.   In particular, we need to 
+transfrom the equations for conservation of mass and energy into a the new frame.
+
+Going back to Stull p.~77 and 80 for a horizontally homgeneous boundary layer:
+
+
+
+\begin{gather}
+  \text{continuity: } \frac{ \partial \rho}{\partial t} + \frac{ \partial \rho u_j}{\partial x_j} =
+\frac{ \partial \rho}{\partial t} + \frac{ \partial \rho w}{\partial z}=0\label{eq:contI}\\
+\text{energy: } \frac{\partial \rho  \theta}{\partial t} + \frac{\partial  (\rho w \theta)}{\partial z}  = 
+    - \frac{ \rho \overline{ w^\prime \theta^\prime}}{\partial z}  + q\label{eq:fluxI}
+\end{gather}
+The chain rule says that \eqref{eq:contI} can be rewritten as
+
+\begin{gather}
+\label{eq:contII}
+  \frac{ \partial \rho}{\partial t} +
+w \frac{ \partial \rho }{\partial z}= - \rho \frac{ \partial w }{\partial z}
+\end{gather}
+and using the chain rule plus \eqref{eq:contII} on \eqref{eq:fluxI} gives
+
+\begin{gather}
+\label{eq:energyII}
+\rho  \left (   \frac{\partial  \theta}{\partial t} + w \frac{ \partial \theta}{\partial z}  \right ) = 
+    - \frac{ \rho \overline{ w^\prime \theta^\prime}}{\partial z}  + q
+\end{gather}
+
+Now we need to transform (\ref{eq:fluxI}) and (\ref{eq:contII}) to the moving
+reference frame.  Randall shows how to do that in his \href{https://www.dropbox.com/scl/fi/ojz6edmlj1tegbe6rxnvr/Bulk_PBL_Models.pdf?rlkey=3b9s1o3k8oi57flaykzc0obw9&dl=0}%
+{bulk boundary layer notes}.  If
+we call $z^\prime$ the coordinate following the inversion then simple arithmetic
+says that:
+
+\begin{gather}
+  \frac{ \rho_2 - \rho_ 1}{ \delta t} =\frac{\rho_3 - \rho_1 }{\delta t}  - \left (  \frac{\rho_3 - \rho_2 }{\delta z}  \right )
+   \frac{\delta z }{\delta t} 
+\end{gather}
+and taking limits:
+
+\begin{gather}
+\label{eq:transform}
+  \left (  \frac{ \partial \rho}{\partial t}  \right )_z = \left (  \frac{ \partial \rho}{\partial t}  \right )_{z^\prime}
+  - \frac{ \partial \rho}{\partial z} \frac{\partial h }{\partial t } 
+\end{gather}
+Insert \eqref{eq:transform} into (\ref{eq:contII}), write $w=w_h$ since we are traveling along at $z^\prime=h$, and
+rearrange to get:
+
+\begin{gather}
+  \label{eq:transII}
+\left (  \frac{ \partial \rho}{\partial t}  \right )_{z^\prime} + \frac{ \partial ( \rho \widetilde{w}) }{\partial z} =0
+\end{gather}
+where $\widetilde{w} = - \left (   \frac{ \partial h}{\partial t} - w_h  \right )$
+is the relative velocity of fluid through the inversion (because we're moving with the inversion) due to
+boundary layer rise and subsidence (i.e. $\widetilde{w}$ becomes more downward (negative) as subsidence becomes more negative or
+boundary layer height rises faster).    Repeat this by substituting:
+
+\begin{gather}
+\label{eq:transformIII}
+  \left (  \frac{ \partial \theta}{\partial t}  \right )_z = \left (  \frac{ \partial \theta}{\partial t}  \right )_{z^\prime}
+  - \frac{ \partial \theta }{\partial z} \frac{\partial h }{\partial t } 
+\end{gather}
+into \eqref{eq:energyII} to get:
+
+\begin{gather}
+  \label{eq:finaltheta}
+\left (  \frac{ \partial \theta}{\partial t}  \right )_{z^\prime} + \widetilde{w} \frac{ \partial  \theta}{\partial z}  
+= - \frac{ \partial \overline{ w^\prime \theta^\prime}}{\partial z} 
+\end{gather}
+where we've neglected the heating term $q$ in this clear boundary layer.
+
+Finally define two heights relative to the inversion to evaluate 
+(\ref{eq:finaltheta}):  
+
+\begin{enumerate}
+\item  At the base of the inversion  $z=z_B$, where we are
+in the turbulent, well-mixed layer with constant heating rate:
+
+\begin{gather}
+\label{eq:mixed}
+  \frac{ \partial  \theta}{ \partial t}  = - \frac{ \partial \overline{ w^\prime \theta^\prime}}{\partial z} 
+\end{gather}
+and $\frac{\partial \theta }{ \partial z} =0$.  Since the heating rate is constant throughout the
+mixed layer we can also write the vertical average of \eqref{eq:mixed} as:
+
+\begin{gather}
+  \frac{ d  \widehat{\theta}}{ d t}  =  - \frac{\partial  \overline{ w^\prime \theta^\prime}}{\partial z} 
+\end{gather}
+
+Putting these conditions into \eqref{eq:finaltheta}:
+
+\begin{gather}
+\label{eq:zminus}
+  \text{below the inversion: } \left (  \frac{ \partial \theta}{\partial t}  \right )_{z^\prime} =   \frac{ d  \widehat{\theta}}{ d t} 
+\end{gather}
+
+
+\item Inside the inversion, $z=h$ where there is no turbulence so $\overline{ w^\prime \theta^\prime}= 0$
+but there is a strong lapse rate $\frac{ \partial \theta}{\partial z} $
+
+
+\begin{gather}
+\label{eq:zplus}
+  \text{above the inversion: } \left (  \frac{ \partial \theta}{\partial t}  \right )_{z^\prime} + \widetilde{w} \frac{ \partial  \theta}{\partial z}  = 0
+\end{gather}
+
+\end{enumerate}
+
+So if we define the inversion jump as $\Delta \theta = \theta (h) - \theta( z_B)$ the we can subtract (\ref{eq:zminus}) from
+(\ref{eq:zplus}) to get:
+
+\begin{gather}
+  \label{eq:theend}
+\frac{d \Delta \theta }{dt} = - \widetilde{w} \Gamma - \frac{ d  \widehat{\theta}}{ d t} =
+\left (  \frac{dh }{dt}  - w_h  \right ) \Gamma - \frac{ d  \widehat{\theta}}{ d t}
+\end{gather}
+
+where $\Gamma = \frac{ \partial \theta}{\partial z}$.  This is just the required third equation for the jump.
+
+
+
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:
