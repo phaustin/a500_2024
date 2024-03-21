@@ -2,6 +2,7 @@
 jupytext:
   cell_metadata_filter: all
   cell_metadata_json: true
+  formats: md:myst,ipynb
   notebook_metadata_filter: all,-language_info
   text_representation:
     extension: .md
@@ -12,43 +13,23 @@ kernelspec:
   display_name: Python 3 (ipykernel)
   language: python
   name: python3
-latex_envs:
-  LaTeX_envs_menu_present: true
-  autoclose: false
-  autocomplete: true
-  bibliofile: biblio.bib
-  cite_by: apalike
-  current_citInitial: 1
-  eqLabelWithNumbers: true
-  eqNumInitial: 1
-  hotkeys:
-    equation: meta-9
-  labels_anchors: false
-  latex_user_defs: false
-  report_style_numbering: false
-  user_envs_cfg: false
-toc:
-  base_numbering: 1
-  nav_menu: {}
-  number_sections: true
-  sideBar: false
-  skip_h1_title: false
-  title_cell: Table of Contents
-  title_sidebar: Contents
-  toc_cell: true
-  toc_position: {}
-  toc_section_display: block
-  toc_window_display: false
 ---
 
-+++ {"toc": true}
+(mixed_layer_jump)=
+# mixed layer jump comparison
 
-<h1>Table of Contents<span class="tocSkip"></span></h1>
-<div class="toc"><ul class="toc-item"><li><span><a href="#Compare-the-old-(prognose-$\Delta-\theta$)-and-new-(diagnose-$\Delta-\theta$)-with-constant-surface-flux" data-toc-modified-id="Compare-the-old-(prognose-$\Delta-\theta$)-and-new-(diagnose-$\Delta-\theta$)-with-constant-surface-flux-1"><span class="toc-item-num">1&nbsp;&nbsp;</span>Compare the old (prognose $\Delta \theta$) and new (diagnose $\Delta \theta$) with constant surface flux</a></span></li><li><span><a href="#Turn-off-subsidence-and-save-prognostic-$\Delta-\theta$-in-old_result-dataframe" data-toc-modified-id="Turn-off-subsidence-and-save-prognostic-$\Delta-\theta$-in-old_result-dataframe-2"><span class="toc-item-num">2&nbsp;&nbsp;</span>Turn off subsidence and save prognostic $\Delta \theta$ in old_result dataframe</a></span></li><li><span><a href="#Now-go-to-diagnostic-jump-and-compare-with-old_result" data-toc-modified-id="Now-go-to-diagnostic-jump-and-compare-with-old_result-3"><span class="toc-item-num">3&nbsp;&nbsp;</span>Now go to diagnostic jump and compare with old_result</a></span></li></ul></div>
+This notebook compares the results for a prognostic inversion jump (3 equations for (h, $\theta$, $\Delta \theta$)) with a diagnostic
+inversion jump (diagnosing the entrainment rate $w_e$ from the
+entrainment flux and the temperature jump calculated from the
+sounding.
 
-+++
-
-### Compare the old (prognose $\Delta \theta$) and new (diagnose $\Delta \theta$) with constant surface flux
+$$
+\begin{align}
+  \text{mean temperature: } \frac{d \hat{\theta} }{dt} &=(1 + k) F_0/(h c_p\rho_*)\label{eq:meantheta}\\
+\text{inversion height: } \frac{dh }{dt} &= ( k F_0)/(\rho_* c_p \Delta \theta) + w_h \label{eq:hrise}\\
+\text{inversion jump: } \frac{d \Delta \theta }{dt} &= \left ( \frac{dh }{dt}  - w_h \right ) \Gamma - \frac{d \hat{\theta} }{dt}\label{eq:jump}
+\end{align}
+$$
 
 ```{code-cell} ipython3
 :trusted: true
@@ -57,10 +38,8 @@ import numpy as np
 import scipy.integrate as integrate
 from matplotlib import pyplot as plt
 import pandas as pd
-import context
-
 #
-# old code: predict inversion jump as third variable
+# old code: predict inversion jump as third variable [2]
 #
 def dmixed_vars_old(the_vars,tstep,F0,wh,gamma):
     """
@@ -70,8 +49,11 @@ def dmixed_vars_old(the_vars,tstep,F0,wh,gamma):
     rho=1.
     cp=1004.
     derivs=np.empty_like(the_vars)
+    # theta
     derivs[0]=(1 + k)*F0/(the_vars[1]*cp*rho)
+    # h
     derivs[1] = k*F0/(rho*cp*the_vars[2]) + wh
+    # deltheta
     derivs[2] = (derivs[1] - wh)*gamma - derivs[0]
     return derivs
 ```
@@ -105,7 +87,6 @@ old_result=pd.DataFrame.from_records(output,columns=['theta','h','deltheta'])
 old_result['time']=tspan/3600./24.  #days
 old_result['diag_jump'] = (intercept + gamma*old_result['h']) - old_result['theta']
 
-plt.close('all')
 plt.style.use('ggplot')
 fig,ax = plt.subplots(1,3,figsize=(14,10))
 out=ax[0].plot(old_result['time'],old_result['h'],label='model')
@@ -116,7 +97,7 @@ ax[0].set(ylabel='height (m)',xlabel='time (days)',title='height')
 #
 
 full_time=old_result['time'].values
-midpoint=np.int(len(full_time)/2.)
+midpoint=int(len(full_time)/2.)
 #
 # start time at zero
 #
@@ -147,13 +128,14 @@ out=ax[2].legend(loc='best')
 ```{code-cell} ipython3
 :trusted: true
 
-%matplotlib inline
 import numpy as np
 import scipy.integrate as integrate
 from matplotlib import pyplot as plt
 import pandas as pd
 
-
+#
+# only two variables 
+#
 
 def dmixed_vars(the_vars,tstep):
     """
@@ -196,7 +178,6 @@ result['time']=tspan/3600./24.  #hours
 ```{code-cell} ipython3
 :trusted: true
 
-%matplotlib inline
 plt.close('all')
 plt.style.use('ggplot')
 fig,ax = plt.subplots(1,2,figsize=(12,10))
@@ -209,6 +190,11 @@ ax[1].plot(old_result['time'],old_result['theta'],'b+',label='old')
 ax[1].set(title=r'$\theta$')
 out=ax[1].legend(loc='best')
 ```
+
+## Summary
+
+Predicting $\Delta \theta$ is overkill for a dry mixed layer, but
+we'll see that when we add clouds things get more complicated
 
 ```{code-cell} ipython3
 :trusted: true

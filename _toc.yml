@@ -55,8 +55,10 @@ parts:
       title: bannon anelastic article
     - url: https://www.dropbox.com/scl/fi/8l9qb7mqtfhs58b4s7jf6/mixed_layer.pdf?rlkey=a2av8cmvjvvti44723hn69acw&dl=0
       title: mixed layer notes
-    - url: https://www.dropbox.com/scl/fi/s75gp821y8riznrjioem4/liebniz.pdf?rlkey=u13g1jtrnqx55t4f90uf3gzuo&dl=0
+    - url: https://www.dropbox.com/scl/fi/b53feva305h7yqnkq35db/mixed_layer_jump.pdf?rlkey=8tavsjdviy1js1zol69772fcc&dl=0 https://www.dropbox.com/scl/fi/s75gp821y8riznrjioem4/liebniz.pdf?rlkey=u13g1jtrnqx55t4f90uf3gzuo&dl=0
       title: Liebniz review notes
+    - url: https://www.dropbox.com/scl/fi/b53feva305h7yqnkq35db/mixed_layer_jump.pdf?rlkey=8tavsjdviy1js1zol69772fcc&dl=0
+      title: mixed layer jump notes
   - caption: Assignments
     chapters:
     - file: assignments/md_dry_les.ipynb
@@ -114,6 +116,11 @@ parts:
     - url: https://www.dropbox.com/scl/fi/xptgi4noyxdfip705tzcz/businger_dyer.ipynb?rlkey=59q960f829rm8aejevl1qy2f5&dl=0
       title: businger-dyer.ipynb download
     - file: notebooks/dry_mixed_layer.md
+    - url: https://www.dropbox.com/scl/fi/e2mcdo9zfxclizf334efl/dry_mixed_layer.ipynb?rlkey=r9q8veh2ul9ck6rm73013pjwm&dl=0
+      title: dry_mixed_layer.ipynb download
+    - file: notebooks/cloud_capped_boundary/diagnose_jump.md
+    - url: https://www.dropbox.com/scl/fi/7nrogh39omd8iwpv85dol/diagnose_jump.ipynb?rlkey=y5xm1qe0yxxebtsah9bnkf32b&dl=0
+      title: diagnose_jump.ipynb download
   - caption: Journal articles
     chapters:
     - url: https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9704743/

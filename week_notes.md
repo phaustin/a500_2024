@@ -229,7 +229,8 @@ Read Chapter 1 of BLM.  For notation, especially virtual temperature, see the fi
 
   - Recall the difference between {ref}`dry_lesII` and  {ref}`simple_integrator`
   - My [mixed layer jump notes](https://www.dropbox.com/scl/fi/b53feva305h7yqnkq35db/mixed_layer_jump.pdf?rlkey=8tavsjdviy1js1zol69772fcc&dl=0)
-  - Put this into a notebook: {ref}`dry_mixed_layer`  [dry_mixed_layer.ipynb](https://www.dropbox.com/scl/fi/e2mcdo9zfxclizf334efl/dry_mixed_layer.ipynb?rlkey=r9q8veh2ul9ck6rm73013pjwm&dl=0)`
+  - Put this into a notebook: {ref}`dry_mixed_layer`
+    - [download dry_mixed_layer.ipynb](https://www.dropbox.com/scl/fi/e2mcdo9zfxclizf334efl/dry_mixed_layer.ipynb?rlkey=r9q8veh2ul9ck6rm73013pjwm&dl=0)
   
 
 ### For Tuesday
@@ -249,4 +250,23 @@ T. U. Delft cloud course](https://www.dropbox.com/scl/fi/n6scqt3wql8otdfvsif1r/d
 - [de Roode lecture slides Part II](https://www.dropbox.com/scl/fi/hq7bnhb5dnvzmsehnhxgd/Roode_2_BB.pdf?rlkey=go05jddf8dm0qjb1ztytazl40&dl=0)
 - [Gesso et al. 2014 equilibrium boundary layer](https://www.dropbox.com/scl/fi/pdodmk9405d5dc4f4obv6/deroode_Dal_Gesso_etal_2014.pdf?rlkey=ycmxd3g56q9mh5sus0qxqi8kj&dl=0)
 - [Stevens entrainment review 2002](https://www.dropbox.com/scl/fi/41n9v7pj3x0n2tu27ca4o/Stevens-2002-Quarterly_Journal_of_the_Royal_Meteorological_Society.pdf?rlkey=u5705q214gzpe3r94doozyrqy&dl=0)
+
+### Thursday 
+
+- Continue with [de Roode lecture slides Part II](https://www.dropbox.com/scl/fi/hq7bnhb5dnvzmsehnhxgd/Roode_2_BB.pdf?rlkey=go05jddf8dm0qjb1ztytazl40&dl=0)
+
+- Does it matter whether you predict or diagnose the inversion jump? {ref}`mixed_layer_jump`
+
+### For Tuesday
+
+- Read [Gesso et al. 2014 equilibrium boundary layer](https://www.dropbox.com/scl/fi/pdodmk9405d5dc4f4obv6/deroode_Dal_Gesso_etal_2014.pdf?rlkey=ycmxd3g56q9mh5sus0qxqi8kj&dl=0)  -- along with the [
+T. U. Delft cloud course](https://www.dropbox.com/scl/fi/n6scqt3wql8otdfvsif1r/de_roode_clouds.pdf?rlkey=v82zcoh7doaib9xvy1mjh8zj1&dl=0) chapter 5
+
+- Coming up: More on Chapter 7/heat waves, starting with [Vargas Zepetello et al., 2019](https://agupubs.onlinelibrary.wiley.com/doi/10.1029/2019GL082220)
+
+
+
+
+
+
 
