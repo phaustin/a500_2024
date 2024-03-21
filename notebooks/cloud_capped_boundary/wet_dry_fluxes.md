@@ -9,7 +9,7 @@ jupytext:
     format_version: 0.13
     jupytext_version: 1.16.1
 kernelspec:
-  display_name: Python 3
+  display_name: Python 3 (ipykernel)
   language: python
   name: python3
 latex_envs:
@@ -46,8 +46,9 @@ toc:
 <h1>Table of Contents<span class="tocSkip"></span></h1>
 <div class="toc"><ul class="toc-item"><li><span><a href="#buoyancy-flux-in-a-cloudy-boundary-layer" data-toc-modified-id="buoyancy-flux-in-a-cloudy-boundary-layer-1"><span class="toc-item-num">1&nbsp;&nbsp;</span>buoyancy flux in a cloudy boundary layer</a></span></li></ul></div>
 
-```{code-cell}
+```{code-cell} ipython3
 :scrolled: true
+:trusted: true
 
 print("start")
 import context
@@ -84,13 +85,14 @@ $$\begin{aligned}
 
 +++
 
-
 - Use de Roode equations 5.18,  5.29 and 5.30 to evaluate $A_d$, $B_d$, $A_w$ and $B_w$ at a pressure of 900 hPa, temperature of 280 K, $q_s$ = 7 g/kg, $L_v$ = $2.485 \times 10^{6}$ J/kg, $R_v$ = 461.5 J/kg/K, $q_v$ = $q_s$.
 
 - Assuming a surface pressure of 100. kPa, Tsurf=290. K and qvap=7.e-3 kg/kg, find cloud base and
   plot the vertical profile of cloud liquid water, assume total water and $\theta_l$ remain constant with height.
 
-```{code-cell}
+```{code-cell} ipython3
+:trusted: true
+
 def calc_w(theta, qv, press):
     """
     Parameters
@@ -157,7 +159,9 @@ print(f"dry A and B are {calc_d(theta,qv)}")
 print(f"saturated A and B are {calc_w(theta,qv,press)}")
 ```
 
-```{code-cell}
+```{code-cell} ipython3
+:trusted: true
+
 import numpy as np
 
 from a500.thermo import thermfuncs as tf
@@ -202,7 +206,9 @@ df_sounding=pd.DataFrame.from_records(sounding,columns=["temp","ql","issat","qv"
 df_sounding.tail()
 ```
 
-```{code-cell}
+```{code-cell} ipython3
+:trusted: true
+
 from matplotlib import pyplot as plt
 fig,(ax0,ax1) = plt.subplots(1,2,figsize=(12,8))
 ax0.plot(df_sounding['qv']*1.e3,press_levs)
@@ -214,6 +220,8 @@ ax1.set(title='liquid mixing ratio',xlabel='ql (g/kg)',ylabel='pressure (kPa)')
 plt.show()
 ```
 
-```{code-cell}
+```{code-cell} ipython3
+:trusted: true
+
 
 ```

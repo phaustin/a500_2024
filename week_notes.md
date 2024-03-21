@@ -246,5 +246,7 @@ T. U. Delft cloud course](https://www.dropbox.com/scl/fi/n6scqt3wql8otdfvsif1r/d
 ### Tuesday
 
 - [de Roode lecture slides Part I](https://www.dropbox.com/scl/fi/85ebprdn52ar4c6c1e8le/Roode_1_BB.pdf?rlkey=3lyhxjt7hwyszsedq3mmb4owt&dl=0)
-- [de Roode lecture slices Part II](https://www.dropbox.com/scl/fi/hq7bnhb5dnvzmsehnhxgd/Roode_2_BB.pdf?rlkey=go05jddf8dm0qjb1ztytazl40&dl=0)
-- [Gesso et al. 2014 equilibrium boundary layer]
+- [de Roode lecture slides Part II](https://www.dropbox.com/scl/fi/hq7bnhb5dnvzmsehnhxgd/Roode_2_BB.pdf?rlkey=go05jddf8dm0qjb1ztytazl40&dl=0)
+- [Gesso et al. 2014 equilibrium boundary layer](https://www.dropbox.com/scl/fi/pdodmk9405d5dc4f4obv6/deroode_Dal_Gesso_etal_2014.pdf?rlkey=ycmxd3g56q9mh5sus0qxqi8kj&dl=0)
+- [Stevens entrainment review 2002](https://www.dropbox.com/scl/fi/41n9v7pj3x0n2tu27ca4o/Stevens-2002-Quarterly_Journal_of_the_Royal_Meteorological_Society.pdf?rlkey=u5705q214gzpe3r94doozyrqy&dl=0)
+

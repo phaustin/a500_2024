@@ -41,11 +41,7 @@ toc:
   toc_window_display: false
 ---
 
-
-
-+++
-
-### Add an equation for the vapor mixing ratio
+## Add an equation for the vapor mixing ratio
 
 ```{code-cell} ipython3
 :trusted: true

@@ -2,14 +2,15 @@
 # jupyter:
 #   jupytext:
 #     cell_metadata_filter: all
+#     cell_metadata_json: true
 #     notebook_metadata_filter: all,-language_info
 #     text_representation:
 #       extension: .py
 #       format_name: percent
-#       format_version: '1.2'
-#       jupytext_version: 1.2.4
+#       format_version: '1.3'
+#       jupytext_version: 1.16.1
 #   kernelspec:
-#     display_name: Python 3
+#     display_name: Python 3 (ipykernel)
 #     language: python
 #     name: python3
 #   latex_envs:
@@ -48,7 +49,7 @@
 # %% [markdown]
 # ### Use the simple radiation entrainment closure from Stephan's slides
 
-# %%
+# %% {"trusted": true}
 import context
 def theta_ft(h,ft_intercept,gamma):
     """
@@ -70,7 +71,7 @@ def make_tuple(tupname,in_dict):
 
 
 
-# %%
+# %% {"trusted": true}
 import numpy as np
 import scipy.integrate as integrate
 from matplotlib import pyplot as plt
@@ -105,7 +106,7 @@ def dmixed_vars(the_vars,tstep,coeffs):
     return derivs
 
 
-# %%
+# %% {"trusted": true}
 dtout=10.  #minutes
 end_time=15*24.   #hours
 del_time=dtout*60. #seconds
@@ -130,7 +131,7 @@ result=pd.DataFrame.from_records(output,columns=['theta','h','qv'])
 result['time']=tspan/3600./24.  #days
 result['deltheta'] = theta_ft(result['h'].values,ft_intercept,ft_gamma) - result['theta']
 
-# %%
+# %% {"trusted": true}
 fig,ax = plt.subplots(1,5,figsize=(16,10))
 ax[0].plot(result['time'],result['h'],label='new')
 ax[0].set(ylabel='height (m)',xlabel='time (days)',title='height')
@@ -152,7 +153,7 @@ out=ax[4].set(title=r'$\Delta q_v$ (g/kg)')
 # the next cell applies the calc_lcl function to every row in the dataframe and
 # adds it as a new column
 
-# %%
+# %% {"trusted": true}
 def calc_lcl(row,psfc):
     """
       find the lcl (in m) for a row in the dataframe
@@ -199,21 +200,21 @@ cooling = np.empty_like(result['time'].values)
 cooling[:] = the_tup.radcool
 result['radcool']  = cooling
 
-# %% {"scrolled": false}
+# %% {"trusted": true}
 fig,ax=plt.subplots(4,1,figsize=(10,10))
 result.plot('time','T_flux_0',ax=ax[0])
 result.plot('time','q_flux_0',ax=ax[1])
 result.plot('time','entflux_theta',ax=ax[2])
 out=result.plot('time','entflux_qv',ax=ax[3])
 
-# %% {"scrolled": false}
+# %% {"trusted": true}
 result
 
-# %% [markdown] {"collapsed": true}
+# %% [markdown] {"collapsed": true, "jupyter": {"outputs_hidden": true}}
 # ### Dump the result in a csv
 
-# %%
+# %% {"trusted": true}
 with open('dumpradiative.csv','w') as f:
     result.to_csv(f,index=False)
 
-# %%
+# %% {"trusted": true}

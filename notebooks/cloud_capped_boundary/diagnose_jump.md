@@ -116,7 +116,7 @@ ax[0].set(ylabel='height (m)',xlabel='time (days)',title='height')
 #
 
 full_time=old_result['time'].values
-midpoint= int(len(full_time)/2.)
+midpoint=np.int(len(full_time)/2.)
 #
 # start time at zero
 #

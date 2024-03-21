@@ -41,19 +41,11 @@ toc:
   toc_window_display: false
 ---
 
-+++ {"toc": true}
-
-<h1>Table of Contents<span class="tocSkip"></span></h1>
-<div class="toc"><ul class="toc-item"><li><span><a href="#Use-the-simple-radiation-entrainment-closure-from-Stephan's-slides" data-toc-modified-id="Use-the-simple-radiation-entrainment-closure-from-Stephan's-slides-1"><span class="toc-item-num">1&nbsp;&nbsp;</span>Use the simple radiation entrainment closure from Stephan's slides</a></span></li><li><span><a href="#get-the-flux-profiles-and-the-cloud-thickness" data-toc-modified-id="get-the-flux-profiles-and-the-cloud-thickness-2"><span class="toc-item-num">2&nbsp;&nbsp;</span>get the flux profiles and the cloud thickness</a></span></li><li><span><a href="#Dump-the-result-in-a-csv" data-toc-modified-id="Dump-the-result-in-a-csv-3"><span class="toc-item-num">3&nbsp;&nbsp;</span>Dump the result in a csv</a></span></li></ul></div>
-
-+++
-
 ### Use the simple radiation entrainment closure from Stephan's slides
 
 ```{code-cell} ipython3
 :trusted: true
 
-import context
 def theta_ft(h,ft_intercept,gamma):
     """
        input h (meters) and the coefficients for the linear

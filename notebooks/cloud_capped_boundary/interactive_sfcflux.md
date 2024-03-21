@@ -41,13 +41,6 @@ toc:
   toc_window_display: false
 ---
 
-+++ {"toc": true}
-
-<h1>Table of Contents<span class="tocSkip"></span></h1>
-<div class="toc"><ul class="toc-item"><li><span><a href="#Make-the-surface-flux-interactive-and-add-subsidence" data-toc-modified-id="Make-the-surface-flux-interactive-and-add-subsidence-1"><span class="toc-item-num">1&nbsp;&nbsp;</span>Make the surface flux interactive and add subsidence</a></span></li></ul></div>
-
-+++
-
 # Make the surface flux interactive and add subsidence
 
 ```{code-cell} ipython3
