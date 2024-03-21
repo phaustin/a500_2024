@@ -201,7 +201,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fi/hdbpj7stnutwva85njr2k/mellor_yamada_notes.pdf?rlkey=kxlb7tpfo3bc2ogyzt1iht936&amp;dl=0">Mellor-Yamada TKE notes</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fi/ugg14cvujp9m5b99c2vbf/bannon95a.pdf?rlkey=d8v4qvqpncduunwqpb1wdgtz1&amp;dl=0">bannon anelastic article</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fi/8l9qb7mqtfhs58b4s7jf6/mixed_layer.pdf?rlkey=a2av8cmvjvvti44723hn69acw&amp;dl=0">mixed layer notes</a></li>
-<li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fi/s75gp821y8riznrjioem4/liebniz.pdf?rlkey=u13g1jtrnqx55t4f90uf3gzuo&amp;dl=0">Liebniz review notes</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fi/b53feva305h7yqnkq35db/mixed_layer_jump.pdf?rlkey=8tavsjdviy1js1zol69772fcc&amp;dl=0 https://www.dropbox.com/scl/fi/s75gp821y8riznrjioem4/liebniz.pdf?rlkey=u13g1jtrnqx55t4f90uf3gzuo&amp;dl=0">Liebniz review notes</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fi/b53feva305h7yqnkq35db/mixed_layer_jump.pdf?rlkey=8tavsjdviy1js1zol69772fcc&amp;dl=0">mixed layer jump notes</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Assignments</span></p>
 <ul class="nav bd-sidenav">
@@ -248,6 +249,10 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fi/eior2i10fz8u7ftsy4fiy/betts_diurnal_lcl_plots.ipynb?rlkey=5e86qc0d2qqhmtf4uuq3uc6su&amp;dl=0">betts_diurnal notebook download</a></li>
 <li class="toctree-l1"><a class="reference internal" href="notebooks/businger_dyer.html">Businger-Dyer drag coefficients</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fi/xptgi4noyxdfip705tzcz/businger_dyer.ipynb?rlkey=59q960f829rm8aejevl1qy2f5&amp;dl=0">businger-dyer.ipynb download</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notebooks/dry_mixed_layer.html">dry mixed layer model</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fi/e2mcdo9zfxclizf334efl/dry_mixed_layer.ipynb?rlkey=r9q8veh2ul9ck6rm73013pjwm&amp;dl=0">dry_mixed_layer.ipynb download</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notebooks/cloud_capped_boundary/diagnose_jump.html">mixed layer jump comparison</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fi/7nrogh39omd8iwpv85dol/diagnose_jump.ipynb?rlkey=y5xm1qe0yxxebtsah9bnkf32b&amp;dl=0">diagnose_jump.ipynb download</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Journal articles</span></p>
 <ul class="nav bd-sidenav">
@@ -467,6 +472,8 @@ document.write(`
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#week-10">Week 10</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">Tuesday</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">Thursday</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">For Tuesday</a></li>
 </ul>
 </li>
 </ul>
@@ -745,7 +752,11 @@ and the Betts surface energy budget analysis <a class="reference external" href=
 <ul>
 <li><p>Recall the difference between <a class="reference internal" href="notebooks/dry_les_2024_partII.html#dry-lesii"><span class="std std-ref">II: dry boundary layer – inversion height</span></a> and  <a class="reference internal" href="notebooks/simple_integrator.html#simple-integrator"><span class="std std-ref">Integrate a mean profile wrt to time using scipy.integrate</span></a></p></li>
 <li><p>My <a class="reference external" href="https://www.dropbox.com/scl/fi/b53feva305h7yqnkq35db/mixed_layer_jump.pdf?rlkey=8tavsjdviy1js1zol69772fcc&amp;dl=0">mixed layer jump notes</a></p></li>
-<li><p>Put this into a notebook: <span class="xref std std-ref">dry_mixed_layer</span>  <a class="reference external" href="https://www.dropbox.com/scl/fi/e2mcdo9zfxclizf334efl/dry_mixed_layer.ipynb?rlkey=r9q8veh2ul9ck6rm73013pjwm&amp;dl=0">dry_mixed_layer.ipynb</a>`</p></li>
+<li><p>Put this into a notebook: <a class="reference internal" href="notebooks/dry_mixed_layer.html#dry-mixed-layer"><span class="std std-ref">dry mixed layer model</span></a></p>
+<ul>
+<li><p><a class="reference external" href="https://www.dropbox.com/scl/fi/e2mcdo9zfxclizf334efl/dry_mixed_layer.ipynb?rlkey=r9q8veh2ul9ck6rm73013pjwm&amp;dl=0">download dry_mixed_layer.ipynb</a></p></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -771,6 +782,20 @@ T. U. Delft cloud course</a></p></li>
 <li><p><a class="reference external" href="https://www.dropbox.com/scl/fi/hq7bnhb5dnvzmsehnhxgd/Roode_2_BB.pdf?rlkey=go05jddf8dm0qjb1ztytazl40&amp;dl=0">de Roode lecture slides Part II</a></p></li>
 <li><p><a class="reference external" href="https://www.dropbox.com/scl/fi/pdodmk9405d5dc4f4obv6/deroode_Dal_Gesso_etal_2014.pdf?rlkey=ycmxd3g56q9mh5sus0qxqi8kj&amp;dl=0">Gesso et al. 2014 equilibrium boundary layer</a></p></li>
 <li><p><a class="reference external" href="https://www.dropbox.com/scl/fi/41n9v7pj3x0n2tu27ca4o/Stevens-2002-Quarterly_Journal_of_the_Royal_Meteorological_Society.pdf?rlkey=u5705q214gzpe3r94doozyrqy&amp;dl=0">Stevens entrainment review 2002</a></p></li>
+</ul>
+</section>
+<section id="id12">
+<h3>Thursday<a class="headerlink" href="#id12" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Continue with <a class="reference external" href="https://www.dropbox.com/scl/fi/hq7bnhb5dnvzmsehnhxgd/Roode_2_BB.pdf?rlkey=go05jddf8dm0qjb1ztytazl40&amp;dl=0">de Roode lecture slides Part II</a></p></li>
+<li><p>Does it matter whether you predict or diagnose the inversion jump? <a class="reference internal" href="notebooks/cloud_capped_boundary/diagnose_jump.html#mixed-layer-jump"><span class="std std-ref">mixed layer jump comparison</span></a></p></li>
+</ul>
+</section>
+<section id="id13">
+<h3>For Tuesday<a class="headerlink" href="#id13" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Read <a class="reference external" href="https://www.dropbox.com/scl/fi/pdodmk9405d5dc4f4obv6/deroode_Dal_Gesso_etal_2014.pdf?rlkey=ycmxd3g56q9mh5sus0qxqi8kj&amp;dl=0">Gesso et al. 2014 equilibrium boundary layer</a>  – along with <a class="reference external" href="https://www.dropbox.com/scl/fi/n6scqt3wql8otdfvsif1r/de_roode_clouds.pdf?rlkey=v82zcoh7doaib9xvy1mjh8zj1&amp;dl=0">
+T. U. Delft cloud course</a></p></li>
 </ul>
 </section>
 </section>
@@ -899,6 +924,8 @@ T. U. Delft cloud course</a></p></li>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#week-10">Week 10</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">Tuesday</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">Thursday</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">For Tuesday</a></li>
 </ul>
 </li>
 </ul>
