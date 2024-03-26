@@ -264,9 +264,22 @@ T. U. Delft cloud course](https://www.dropbox.com/scl/fi/n6scqt3wql8otdfvsif1r/d
 
 - Coming up: More on Chapter 7/heat waves, starting with [Vargas Zepetello et al., 2019](https://agupubs.onlinelibrary.wiley.com/doi/10.1029/2019GL082220)
 
+## Week 11
 
+### Tuesday
 
+- Useful background material for reading [Vargas Zepetello et al., 2019](https://agupubs.onlinelibrary.wiley.com/doi/10.1029/2019GL082220)
 
+  - [E340 feedback notes](https://www.dropbox.com/scl/fi/y3m3abh6ktiac8w5q3fvs/e340_feedback_notes.pdf?rlkey=e1hnv7moee9xg7ob6bf3r0npi&dl=0)
 
+  - [A more advanced feedback introduction](https://www.dropbox.com/scl/fi/ht8pkmiq3bx0zu7g86w3g/gerard_roe_feedbacks_2009.pdf?rlkey=pxk5jql3th5pcxazoicbigli0&dl=0)
+
+  - [How to compute $\Delta R$/$\Delta x$](https://climatemodels.uchicago.edu/modtran/)
+
+  - [Vargas Zeppetello et al., 2022 -- the physics of heat waves](https://journals.ametsoc.org/view/journals/clim/35/7/JCLI-D-21-0236.1.xml)
+
+  - [Vargas Zeppetello et al, 2020a, Variance of summertime temperatures over land]( https://journals.ametsoc.org/view/journals/clim/33/13/jcli-d-19-0887.1.xml)
+
+  - [Vargas Zeppetello et al., 2020b, Sources of variance of summertime temperatures](https://journals.ametsoc.org/view/journals/clim/33/9/jcli-d-19-0276.1.xml)
 
 
