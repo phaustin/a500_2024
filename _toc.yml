@@ -121,6 +121,8 @@ parts:
     - file: notebooks/cloud_capped_boundary/diagnose_jump.md
     - url: https://www.dropbox.com/scl/fi/7nrogh39omd8iwpv85dol/diagnose_jump.ipynb?rlkey=y5xm1qe0yxxebtsah9bnkf32b&dl=0
       title: diagnose_jump.ipynb download
+    - file: notebooks/cloud_capped_boundary/interactive_sfcflux.md
+    - file: notebooks/cloud_capped_boundary/cloud_capped_index.md
   - caption: Journal articles
     chapters:
     - url: https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9704743/
@@ -141,7 +143,12 @@ parts:
       title: Businger history of surface layer stability scaling
     - url: https://www.dropbox.com/scl/fi/o43cv43ymuxj35nti2c2b/fleagle_bussinger_1980.pdf?rlkey=eb98rznjih3efu185wxeljsd5&dl=0
       title: Fleagle and Businger Chapter 6 excerpt on surface layer similarity
+    - url: https://www.dropbox.com/scl/fi/41n9v7pj3x0n2tu27ca4o/Stevens-2002-Quarterly_Journal_of_the_Royal_Meteorological_Society.pdf?rlkey=u5705q214gzpe3r94doozyrqy&dl=0
+      title: Stevens 2002 entrainment review
   - caption: Textbooks
+    chapters:
     - url: https://www.dropbox.com/scl/fi/yaxd27icivz7a7qu7tifn/stull_blm_springer.pdf?rlkey=v0hqkqvd9v8rpcqfxmq62tt10&dl=0
       title: Stull Boundary Layer Meteorology
-
+    - url: https://www.dropbox.com/scl/fi/n6scqt3wql8otdfvsif1r/de_roode_clouds.pdf?rlkey=v82zcoh7doaib9xvy1mjh8zj1&dl=0
+      title: Stephen de Roode cloud notes
+      

@@ -41,26 +41,32 @@ toc:
   toc_window_display: false
 ---
 
+(add_subsidence)=
 # Make the surface flux interactive and add subsidence
 
 +++
 
 In this notebook we keep the boundary layer dry, and add subsidence at the inversion to the height equation.
+
 We also fix the surface temperature and diagnose the surface flux from the temperature difference between the surface and
-the mixed layer.
+the mixed layer.  
 
 $$
 \begin{align}
   \text{mean temperature: } \frac{d \hat{\theta} }{dt} &=(1 + k) F_0/(h c_p\rho_*)\label{eq:meantheta}\\
 \text{inversion height: } \frac{dh }{dt} &= ( k F_0)/(\rho_* c_p \Delta \theta) + w_h \label{eq:hrise}\\
-\text{inversion jump: } \frac{d \Delta \theta }{dt} &= \left ( \frac{dh }{dt}  - w_h \right ) \Gamma - \frac{d \hat{\theta} }{dt}\label{eq:jump}
 \end{align}
 $$
+
+Note that the layer takes about 15 days to equilibrate
 
 ```{code-cell} ipython3
 :trusted: true
 
 def theta_ft(h,intercept,gamma):
+    """
+    construct the theta profile in the free troposphere
+    """
     theta_top = intercept + h*gamma
     return theta_top
 
@@ -80,7 +86,6 @@ from matplotlib import pyplot as plt
 import pandas as pd
 
 
-
 def dmixed_vars(the_vars,tstep,coeffs):
     """
       the_vars[0]= thetabar
@@ -90,8 +95,11 @@ def dmixed_vars(the_vars,tstep,coeffs):
     """
     #print('the_vars: ',the_vars,D,U)
     k=0.2
+    #
+    # diagnose the jump
+    #
     deltheta = theta_ft(the_vars[1],coeffs.intercept,coeffs.gamma) - the_vars[0]
-    Cd = 1.e-3
+    Cd = 1.e-3  #drag coefficient
     F0 = coeffs.U*Cd*(coeffs.sst - the_vars[0])
     Fint = -k*F0
     went = -Fint/deltheta
@@ -111,11 +119,11 @@ dtout=15.  #minutes
 tf=15*24.   #hours
 dtout=dtout*60. #seconds
 tf=tf*3600. #seconds
-sst=310.
-D=5.e-6  #s-1
-U=7  #m/s
+sst=310.  #Kelvins
+D=5.e-6  #subsidence s-1
+U=7  #surface wind speedm/s
 intercept = 292 #K
-gamma = 6.e-3  #K/m
+gamma = 6.e-3  #lapse rate K/m
 tspan = np.arange(0.,tf,dtout)
 vars_init=[288.,400.]  #theta (K), height (m) to start
 the_tup=dict(D=D,U=U,sst=sst,intercept=intercept,gamma=gamma)
@@ -129,8 +137,6 @@ result['deltheta'] = theta_ft(result['h'].values,intercept,gamma) - result['thet
 ```{code-cell} ipython3
 :trusted: true
 
-%matplotlib inline
-plt.close('all')
 plt.style.use('ggplot')
 fig,ax = plt.subplots(1,3,figsize=(12,10))
 ax[0].plot(result['time'],result['h'],label='new')
