@@ -1,0 +1,1073 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Move to the full Nicholls-Turton entrainment parameterization, following Gesso et al. 2014 &#8212; ATSC 500 2024</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/cloud_capped_boundary/nicholls_turton';</script>
+    <link rel="canonical" href="https://phaustin.github.io/a500_2024/notebooks/cloud_capped_boundary/nicholls_turton.html" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Compare entrainment closures" href="closure.html" />
+    <link rel="prev" title="Use the simple radiation entrainment closure from Stephan’s slides" href="radiative_entrain.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">ATSC 500 2024</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../index.html">
+                    ATSC 500  syllabus
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Logistics test</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../schedule.html">Course schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../learning_goals.html">Learning goals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../python_install.html">Python links</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Weekly topics</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../week_notes.html">Week notes</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Supplmentary readings</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fi/0wm3y9zbcwrxjy9cm7oen/fluids_01.pdf?rlkey=1d3pll22h2ui689jequbhznkd&amp;dl=0">Week 2 - Jardine Fluids 1</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fi/gb1ryz0x0tszgtfz31iom/fluids_02.pdf?rlkey=neyvhm8k8xhj2yupm8vmuf371&amp;dl=0">Week 2 - Jardine Fluids 2</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fi/whin2z8vct1fp9p03ovsf/lagrangian_eulerian.pdf?rlkey=76g3xlkx36udhjvqhc70e9r88&amp;dl=0">Week 2 - Lagrangian and Eulerian reference frames</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://foundations.projectpythia.org/core/xarray/xarray-intro.html">Week 3 - xarray tutorial</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fi/tkipa4u60xdbt3cd546cs/ensemle_averaging.pdf?rlkey=08k3hvbaz00zi5a5ua7pnhcw9&amp;dl=0">Week 3 - Ensemble averaging</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://gw2jh3xr2c.search.serialssolutions.com/?sid=sersol&amp;SS_jc=TC0001980404&amp;title=An%20introduction%20to%20clouds%20%3A%20from%20the%20microscale%20to%20climate">Lohmann et al. thermodynamics text</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fi/uanlie1sdyiz4ezbclopt/temperature_notes.pdf?rlkey=leatk6yrhmw137i9dl6j8ojlq&amp;dl=0">Thermo - Kinetic Temperature notes</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fi/j7bq6cc7r40vkx3og14qh/first_law_notes.pdf?rlkey=66r1y4umxtc1hgwfbylxlzoxt&amp;dl=0">Thermo - First law of thermodynamics</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fi/iknh9dm4iu1tfssa4724j/entropy.pdf?rlkey=buxyohh3w52ou6vk774s3xexq&amp;dl=0">Thermo - Entropy and potential temperature</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fi/zuk9evzf47qdsxi9tvgx7/thermo.pdf?rlkey=hbz3bpt6gxv5ly8rg1njfj9e4&amp;dl=0">Thermo - moist static energy</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fi/sosiyoxa9bzhecea5qas9/hydro.pdf?rlkey=7wll6s0yc4t0dlojzx56082iw&amp;dl=0">Weighted averages and scale heights</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fi/ygb2bi2riqo23ostxo8lw/buoyancy.pdf?rlkey=b80rbwtzartk4qp5dt9gjvsf6&amp;dl=0">Week 3 - Bouyancy</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fi/5m7x5opmp5p6ooe86imlj/virtual_temperature.pdf?rlkey=yjmfkbt417gpjv0cwwfyoi0c4&amp;dl=0">Week 4 - virtual temperature</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fi/ezjs46bsqegvnzasujnic/velocity_scales.pdf?rlkey=tkgf0zu4kxjnpmssa3zwglp2i&amp;dl=0">Week4 - velocity scales</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fi/zwjwuzed05cvya6xydj9e/taylor_series.pdf?rlkey=jt7zu8gedkwxaosty87e7h0o8&amp;dl=0">Taylor series and Reynolds averaging</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fi/7tkg65ar1u9emumxervu5/pressure_perturb.pdf?rlkey=gu3miynu1k28cs1985mrxxu4h&amp;dl=0">pressure perturbation notes</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fi/yqegu0q64a2t6sipms7t4/bussinger_critical_ri.pdf?rlkey=34m6gyzz5lv9oaxum8xx7ynge&amp;dl=0">Bussinger on the critical Richardson number</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fi/0bip672b25he2ikr2honz/surface_layer.pdf?rlkey=iurhmsxfrbxkodzkzqxoa66yd&amp;dl=0">surface layer scaling notes</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fi/e6cq3sodf0fq2rwuynsfm/boussinesq.pdf?rlkey=8josihsmcn1fskhl6mvnlu4eh&amp;dl=0">Boussinesq and anelastic scaling notes</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fi/hdbpj7stnutwva85njr2k/mellor_yamada_notes.pdf?rlkey=kxlb7tpfo3bc2ogyzt1iht936&amp;dl=0">Mellor-Yamada TKE notes</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fi/ugg14cvujp9m5b99c2vbf/bannon95a.pdf?rlkey=d8v4qvqpncduunwqpb1wdgtz1&amp;dl=0">bannon anelastic article</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fi/8l9qb7mqtfhs58b4s7jf6/mixed_layer.pdf?rlkey=a2av8cmvjvvti44723hn69acw&amp;dl=0">mixed layer notes</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fi/b53feva305h7yqnkq35db/mixed_layer_jump.pdf?rlkey=8tavsjdviy1js1zol69772fcc&amp;dl=0 https://www.dropbox.com/scl/fi/s75gp821y8riznrjioem4/liebniz.pdf?rlkey=u13g1jtrnqx55t4f90uf3gzuo&amp;dl=0">Liebniz review notes</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fi/b53feva305h7yqnkq35db/mixed_layer_jump.pdf?rlkey=8tavsjdviy1js1zol69772fcc&amp;dl=0">mixed layer jump notes</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Assignments</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../assignments/md_dry_les.html">MD: les dry layer assignment solution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../assignments/dry_les_2024_solution.html">PHA Dry LES Assign solution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../assignments/hydrostatic_2024.html">Assign 2: Scale heights for typical atmospheric soundings</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fi/etj9r3hvt5rm3azz650l0/hydrostatic_2024.ipynb?rlkey=5fkvw08t872305rn9zboktw57&amp;dl=0">Assignment 2 hydrostatic balance notebook download</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Notebooks</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fi/f1y4uj9potzahxmv06kgg/dry_les_2024.ipynb?rlkey=vfpxzcck7t3rhcel7wcg4vxpv&amp;dl=0">dry les notebook ipynb download</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dry_les_2024.html">Working with LES data: dry boundary layer</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fi/9s7o6uccqzhrnvdee35z0/case_60_10.nc?rlkey=a40nnj4i6ddlfomqqg6t179dl&amp;dl=0">case_50_10.nc download (470 Mbytes)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../skew_coords_solution.html">Week2: Theromodynamic diagrams worksheet – solution</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fi/k1gswj3eocbsehbu4xvrq/skew_coords_solution.ipynb?rlkey=f6kp1pzzf4u14nwgk5gfvtffs&amp;dl=0">thermodynamic worksheet download</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fi/dfj80s9q920ljni5aakfc/tropical_subset.nc?rlkey=2fc2wr2yb70e4i6l9c7gwcyj3&amp;dl=0">tropical_subset.nc download</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tropical_clouds_solution.html">Week 3 worksheet: Tropical clouds – solution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tropical_fluxes.html">Energy and vapor fluxes in the tropical boundary layer</a></li>
+
+
+<li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fi/v7vqzumfbegh3yvpoex9f/tropical_fluxes.ipynb?rlkey=n3gktdca6nk12sjyn4iot1v55&amp;dl=0">tropical_fluxes.ipynb download</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../clausius_claphyron_rootfind.html">Using a rootfinder to solve implicit equations</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fi/545s100t4a5ikdwr3hk4o/clausius_claphyron_rootfind.ipynb?rlkey=v8fkd78xtx23y7qhi42v20npv&amp;dl=0">Clausius-Clapyron notebook download</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../moist_adiabats.html">Moist adiabats and the LCL</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fi/smr3r2wdjecql7vzt257o/moist_adiabats.ipynb?rlkey=wnrfuygfj15zdfscbce6dufqg&amp;dl=0">moist adiabat notebook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dry_les_2024_partII.html">II: dry boundary layer – inversion height</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fi/vooei7m2dalaeeev9m63x/dry_les_2024_partII.ipynb?rlkey=tbfyyirvgajytsy46kwqlm5ef&amp;dl=0">dry_les_2024_partII.ipynb download</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../read_cabauw.html">Read cabauw data</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fi/44quhfmej8gzqia28h5fz/read_cabauw.ipynb?rlkey=gk4hsyvwihmrzvja9k0qhr158&amp;dl=0">read_cabauw.ipynb download</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../simple_integrator.html">Integrate a mean profile wrt to time using scipy.integrate</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fi/6gt4ssm43ia391bmnk3hf/simple_integrator.ipynb?rlkey=d3fqy8tt1j04by0pcblp63hv3&amp;dl=0">simple_integrator.ipynb download</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cabauw_notebooks/cesar_tower_list.html">Cabauw tower data</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fi/8v7m4oj9qrmhkeecq1q7s/cesar_tower_list.ipynb?rlkey=ceyxaaq114b6ckweawznjchk5&amp;dl=0">cesar_tower_list notebook download</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cabauw_notebooks/cesar_surface_list.html">Cabauw surface data</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fi/bc8d5vvg3o5o1cmz2l5ri/cesar_surface_list.ipynb?rlkey=bzd68jy9h82p1io87lwltev4m&amp;dl=0">cesar_surface_list notebook download</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cmip6_notebooks/cmip6_precip_demo.html">Loading the CMIP historical precip data</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fi/gc9gsmd0kzhxf4mjh9oms/cmip6_precip_demo.ipynb?rlkey=3v60qwx3aj554tajm4zs0hbic&amp;dl=0">cmip6 precip demo notebook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cmip6_notebooks/betts_3hourly_get_domain.html">Betts 2009 diurnal lcl – CMIP6 comparison</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fi/kqtufo2k396ajtvr1npli/betts_3hourly_get_domain.ipynb?rlkey=z7erd7f2xcwk30cfvgljqekyi&amp;dl=0">Betts cmip6 data download notebook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cmip6_notebooks/betts_diurnal_lcl_plots.html">Betts diurnal lcl plots</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fi/eior2i10fz8u7ftsy4fiy/betts_diurnal_lcl_plots.ipynb?rlkey=5e86qc0d2qqhmtf4uuq3uc6su&amp;dl=0">betts_diurnal notebook download</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../businger_dyer.html">Businger-Dyer drag coefficients</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fi/xptgi4noyxdfip705tzcz/businger_dyer.ipynb?rlkey=59q960f829rm8aejevl1qy2f5&amp;dl=0">businger-dyer.ipynb download</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dry_mixed_layer.html">dry mixed layer model</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fi/e2mcdo9zfxclizf334efl/dry_mixed_layer.ipynb?rlkey=r9q8veh2ul9ck6rm73013pjwm&amp;dl=0">dry_mixed_layer.ipynb download</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diagnose_jump.html">mixed layer jump comparison</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fi/7nrogh39omd8iwpv85dol/diagnose_jump.ipynb?rlkey=y5xm1qe0yxxebtsah9bnkf32b&amp;dl=0">diagnose_jump.ipynb download</a></li>
+<li class="toctree-l1"><a class="reference internal" href="interactive_sfcflux.html">Make the surface flux interactive and add subsidence</a></li>
+<li class="toctree-l1"><a class="reference internal" href="interactive_vaporflux.html">Add an equation for the vapor mixing ratio</a></li>
+<li class="toctree-l1"><a class="reference internal" href="radiative_entrain.html">Use the simple radiation entrainment closure from Stephan’s slides</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Move to the full Nicholls-Turton entrainment parameterization, following Gesso et al. 2014</a></li>
+<li class="toctree-l1"><a class="reference internal" href="closure.html">Compare entrainment closures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cloud_capped_index.html">Cloud capped boundary layer</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Journal articles</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference external" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9704743/">Are global climate models obsolete?</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://journals.ametsoc.org/view/journals/bams/85/11/bams-85-11-1673.xml">Betts 2004 Horton medal lecture -- GCM hydrology</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://agupubs.onlinelibrary.wiley.com/doi/10.3894/James.2009.1.4">Betts - Land-Surface-Atmosphere coupling review</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://agupubs.onlinelibrary.wiley.com/doi/10.1029/2018MS001532">Canadian Climate model boundary layer parameterization</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fi/oewkjlpdod168tvg3lok3/cabauw_les.pdf?rlkey=kigrdkur74r6irafyhcn7pr40&amp;dl=0">Cabauw LES simulation</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fi/yu9362gnf3mq0s4rrl1ja/mellor_1982.pdf?rlkey=duea0woyu0fwvqo1kndjqr41u&amp;dl=0">Mellor and Yamada, 1982 - TKE parameterization</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://link-springer-com.ezproxy.library.ubc.ca/article/10.1007/s10546-006-9121-1">Verkaik and Holtslag -- Wind profiles, momentum fluxes and roughness lengths at Cabauw revisited</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fi/961z9gwv9h9gh1a7ka0ty/businger_history_87.pdf?rlkey=5zbjdff8vn3349e9y3xrqx0uh&amp;dl=0">Businger history of surface layer stability scaling</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fi/o43cv43ymuxj35nti2c2b/fleagle_bussinger_1980.pdf?rlkey=eb98rznjih3efu185wxeljsd5&amp;dl=0">Fleagle and Businger Chapter 6 excerpt on surface layer similarity</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fi/41n9v7pj3x0n2tu27ca4o/Stevens-2002-Quarterly_Journal_of_the_Royal_Meteorological_Society.pdf?rlkey=u5705q214gzpe3r94doozyrqy&amp;dl=0">Stevens 2002 entrainment review</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fi/pdodmk9405d5dc4f4obv6/deroode_Dal_Gesso_etal_2014.pdf?rlkey=ycmxd3g56q9mh5sus0qxqi8kj&amp;dl=0">del Gesso stratocumulus equilbria</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fi/l1ydz29ef5v84o3tnwjkd/turton_nicholls_1987.pdf?rlkey=jzzepzzb6fvev8591bbrm1clj&amp;dl=0">Nicholls and Turton entrainment parameterization</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fi/tnclk9w9yt26nbn8md15c/moeng_2000.pdf?rlkey=l12g44cfphy477wu2kehhfzw3&amp;dl=0">Moeng 2000 entrainment parameterization</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Textbooks</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fi/yaxd27icivz7a7qu7tifn/stull_blm_springer.pdf?rlkey=v0hqkqvd9v8rpcqfxmq62tt10&amp;dl=0">Stull Boundary Layer Meteorology</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fi/n6scqt3wql8otdfvsif1r/de_roode_clouds.pdf?rlkey=v82zcoh7doaib9xvy1mjh8zj1&amp;dl=0">Stephen de Roode cloud notes</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/notebooks/cloud_capped_boundary/nicholls_turton.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Move to the full Nicholls-Turton entrainment parameterization, following Gesso et al. 2014</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#turn-the-last-timestep-values-into-a-named-tuple">turn the last timestep values into a named tuple</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-the-theta-l-and-q-t-flux-profiles-at-30-levels">plot the <span class="math notranslate nohighlight">\(\theta_l\)</span> and <span class="math notranslate nohighlight">\(q_t\)</span>  flux profiles at 30 levels</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#now-turn-this-into-a-buoyancy-flux-profile">Now turn this into a buoyancy flux profile</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#borrow-calc-lcl-from-interactive-vapor-notebook">borrow calc_lcl from interactive_vapor notebook</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-the-saturated-and-unsaturated-thetav-jumps-at-the-inversion">calculate the saturated and unsaturated thetav jumps at the inversion</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-the-thetav-inversion-jump-accounting-for-evaporative-cooling">calculate the thetav inversion jump accounting for evaporative cooling</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-the-buoyancy-integral-terms">calculate the buoyancy integral terms</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-the-densest-mixture-for-this-inversion-jump">Calculate the densest mixture for this inversion jump</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-the-nicholls-and-turton-average-evaporative-cooling-effect-delta-m-delta-theta-v">Calculate the Nicholls and Turton average evaporative cooling effect <span class="math notranslate nohighlight">\(\Delta m / \Delta \theta_v\)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-the-weakened-nicholls-and-turton-inversion-buoyancy-jump">Calculate the weakened Nicholls and Turton inversion buoyancy jump</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-the-final-entrainment-rate-according-to-de-roode-lecture-2-slide-15">Calculate the final entrainment rate according to de Roode lecture 2 slide 15</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="move-to-the-full-nicholls-turton-entrainment-parameterization-following-gesso-et-al-2014">
+<span id="nicholls-turton"></span><h1>Move to the full Nicholls-Turton entrainment parameterization, following Gesso et al. 2014<a class="headerlink" href="#move-to-the-full-nicholls-turton-entrainment-parameterization-following-gesso-et-al-2014" title="Permalink to this heading">#</a></h1>
+<p>Read in the model result for the simple radiative entrainment closure of de Roode lecture 2 and use those
+values to calculate the NT entrainment rate</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">from</span> <span class="nn">a500.utils.helper_funs</span> <span class="kn">import</span> <span class="n">make_tuple</span>
+<span class="kn">from</span> <span class="nn">a500.thermo</span> <span class="kn">import</span> <span class="n">thermfuncs</span> <span class="k">as</span> <span class="n">tf</span>
+<span class="kn">from</span> <span class="nn">a500.thermo</span> <span class="kn">import</span> <span class="n">cloudfuncs</span> <span class="k">as</span> <span class="n">cf</span>
+<span class="kn">from</span> <span class="nn">a500.thermo</span> <span class="kn">import</span> <span class="n">thermconst</span> <span class="k">as</span> <span class="n">tc</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;vapor_profile.csv&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">df_result</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+  
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;dumpradiative.csv&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">df_result</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+<span class="n">out</span><span class="o">=</span><span class="n">df_result</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="s1">&#39;time&#39;</span><span class="p">,</span><span class="s1">&#39;h&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/f5b00d41c93dee750d4eec3a1df48a5d8df2458f1f961e711fc70c3f3b8daacd.png" src="../../_images/f5b00d41c93dee750d4eec3a1df48a5d8df2458f1f961e711fc70c3f3b8daacd.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_result</span><span class="o">.</span><span class="n">tail</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>theta</th>
+      <th>h</th>
+      <th>qv</th>
+      <th>time</th>
+      <th>deltheta</th>
+      <th>delqv</th>
+      <th>LCL</th>
+      <th>q_flux_0</th>
+      <th>T_flux_0</th>
+      <th>thick</th>
+      <th>entflux_theta</th>
+      <th>went</th>
+      <th>entflux_qv</th>
+      <th>radcool</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2155</th>
+      <td>279.302789</td>
+      <td>481.432282</td>
+      <td>0.005376</td>
+      <td>14.965278</td>
+      <td>11.585805</td>
+      <td>-0.003376</td>
+      <td>206.767554</td>
+      <td>0.000008</td>
+      <td>0.006972</td>
+      <td>274.664728</td>
+      <td>-0.001394</td>
+      <td>0.00012</td>
+      <td>4.062698e-07</td>
+      <td>35.0</td>
+    </tr>
+    <tr>
+      <th>2156</th>
+      <td>279.302789</td>
+      <td>481.432258</td>
+      <td>0.005376</td>
+      <td>14.972222</td>
+      <td>11.585805</td>
+      <td>-0.003376</td>
+      <td>206.767558</td>
+      <td>0.000008</td>
+      <td>0.006972</td>
+      <td>274.664700</td>
+      <td>-0.001394</td>
+      <td>0.00012</td>
+      <td>4.062698e-07</td>
+      <td>35.0</td>
+    </tr>
+    <tr>
+      <th>2157</th>
+      <td>279.302789</td>
+      <td>481.432234</td>
+      <td>0.005376</td>
+      <td>14.979167</td>
+      <td>11.585805</td>
+      <td>-0.003376</td>
+      <td>206.767562</td>
+      <td>0.000008</td>
+      <td>0.006972</td>
+      <td>274.664672</td>
+      <td>-0.001394</td>
+      <td>0.00012</td>
+      <td>4.062699e-07</td>
+      <td>35.0</td>
+    </tr>
+    <tr>
+      <th>2158</th>
+      <td>279.302789</td>
+      <td>481.432211</td>
+      <td>0.005376</td>
+      <td>14.986111</td>
+      <td>11.585804</td>
+      <td>-0.003376</td>
+      <td>206.767566</td>
+      <td>0.000008</td>
+      <td>0.006972</td>
+      <td>274.664645</td>
+      <td>-0.001394</td>
+      <td>0.00012</td>
+      <td>4.062699e-07</td>
+      <td>35.0</td>
+    </tr>
+    <tr>
+      <th>2159</th>
+      <td>279.302789</td>
+      <td>481.432188</td>
+      <td>0.005376</td>
+      <td>14.993056</td>
+      <td>11.585804</td>
+      <td>-0.003376</td>
+      <td>206.767570</td>
+      <td>0.000008</td>
+      <td>0.006972</td>
+      <td>274.664618</td>
+      <td>-0.001394</td>
+      <td>0.00012</td>
+      <td>4.062699e-07</td>
+      <td>35.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<section id="turn-the-last-timestep-values-into-a-named-tuple">
+<h2>turn the last timestep values into a named tuple<a class="headerlink" href="#turn-the-last-timestep-values-into-a-named-tuple" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">out</span><span class="o">=</span><span class="n">df_result</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>  <span class="c1">#final timestep in dataframe</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">out</span><span class="p">)</span>
+<span class="n">steady_state</span><span class="o">=</span><span class="n">make_tuple</span><span class="p">(</span><span class="n">out</span><span class="o">.</span><span class="n">to_dict</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>theta            2.793028e+02
+h                4.814322e+02
+qv               5.375565e-03
+time             1.499306e+01
+deltheta         1.158580e+01
+delqv           -3.375565e-03
+LCL              2.067676e+02
+q_flux_0         8.125389e-06
+T_flux_0         6.972112e-03
+thick            2.746646e+02
+entflux_theta   -1.394422e-03
+went             1.203561e-04
+entflux_qv       4.062699e-07
+radcool          3.500000e+01
+Name: 2159, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="plot-the-theta-l-and-q-t-flux-profiles-at-30-levels">
+<h2>plot the <span class="math notranslate nohighlight">\(\theta_l\)</span> and <span class="math notranslate nohighlight">\(q_t\)</span>  flux profiles at 30 levels<a class="headerlink" href="#plot-the-theta-l-and-q-t-flux-profiles-at-30-levels" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">flux_prof</span><span class="p">(</span><span class="n">z</span><span class="p">,</span><span class="n">coeffs</span><span class="p">):</span>
+    <span class="n">Fout</span><span class="o">=</span><span class="n">coeffs</span><span class="o">.</span><span class="n">Fsfc</span> <span class="o">+</span> <span class="p">(</span><span class="n">coeffs</span><span class="o">.</span><span class="n">Finv</span> <span class="o">-</span> <span class="n">coeffs</span><span class="o">.</span><span class="n">Fsfc</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">z</span><span class="o">/</span><span class="n">coeffs</span><span class="o">.</span><span class="n">zinv</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">Fout</span>
+
+<span class="n">zvals</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">steady_state</span><span class="o">.</span><span class="n">h</span><span class="p">,</span><span class="mi">30</span><span class="p">)</span>
+<span class="n">coeffs_thetal</span><span class="o">=</span><span class="n">make_tuple</span><span class="p">(</span><span class="nb">dict</span><span class="p">(</span><span class="n">Fsfc</span><span class="o">=</span><span class="n">steady_state</span><span class="o">.</span><span class="n">T_flux_0</span><span class="p">,</span><span class="n">Finv</span><span class="o">=</span><span class="n">steady_state</span><span class="o">.</span><span class="n">entflux_theta</span><span class="p">,</span>
+                       <span class="n">zinv</span><span class="o">=</span><span class="n">steady_state</span><span class="o">.</span><span class="n">h</span><span class="p">))</span>
+<span class="n">coeffs_qt</span><span class="o">=</span><span class="n">make_tuple</span><span class="p">(</span><span class="nb">dict</span><span class="p">(</span><span class="n">Fsfc</span><span class="o">=</span><span class="n">steady_state</span><span class="o">.</span><span class="n">q_flux_0</span><span class="p">,</span><span class="n">Finv</span><span class="o">=</span><span class="n">steady_state</span><span class="o">.</span><span class="n">entflux_qv</span><span class="p">,</span>
+                       <span class="n">zinv</span><span class="o">=</span><span class="n">steady_state</span><span class="o">.</span><span class="n">h</span><span class="p">))</span>
+<span class="n">flux_thetal</span><span class="o">=</span><span class="n">flux_prof</span><span class="p">(</span><span class="n">zvals</span><span class="p">,</span><span class="n">coeffs_thetal</span><span class="p">)</span>
+<span class="n">flux_qt</span><span class="o">=</span><span class="n">flux_prof</span><span class="p">(</span><span class="n">zvals</span><span class="p">,</span><span class="n">coeffs_qt</span><span class="p">)</span>
+<span class="n">df_flux</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="o">.</span><span class="n">from_records</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">zvals</span><span class="p">,</span><span class="n">flux_thetal</span><span class="p">,</span><span class="n">flux_qt</span><span class="p">),</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;z&#39;</span><span class="p">,</span><span class="s1">&#39;flux_thetal&#39;</span><span class="p">,</span><span class="s1">&#39;flux_qt&#39;</span><span class="p">])</span>
+
+
+<span class="n">fig</span><span class="p">,(</span><span class="n">ax0</span><span class="p">,</span><span class="n">ax1</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
+<span class="n">df_flux</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="s1">&#39;flux_thetal&#39;</span><span class="p">,</span><span class="s1">&#39;z&#39;</span><span class="p">,</span><span class="n">ax</span><span class="o">=</span><span class="n">ax0</span><span class="p">)</span>
+<span class="n">out</span><span class="o">=</span><span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">flux_qt</span><span class="o">*</span><span class="mf">2.5e6</span><span class="p">,</span><span class="n">zvals</span><span class="p">)</span>
+
+<span class="n">out</span><span class="o">=</span><span class="n">ax0</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$\theta_l$ flux (K m/s)&#39;</span><span class="p">,</span><span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;height (m)&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$q_t\ flux\ (W m^{-2})$&#39;</span><span class="p">,</span><span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;height (m)&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/12f626402a02a11a3d54dc5eb55067bcad6b97d8955ff93d6868a3e1174497c4.png" src="../../_images/12f626402a02a11a3d54dc5eb55067bcad6b97d8955ff93d6868a3e1174497c4.png" />
+</div>
+</div>
+</section>
+<section id="now-turn-this-into-a-buoyancy-flux-profile">
+<h2>Now turn this into a buoyancy flux profile<a class="headerlink" href="#now-turn-this-into-a-buoyancy-flux-profile" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">a500.thermo.thermfuncs</span> <span class="kn">import</span> <span class="n">find_press</span><span class="p">,</span> <span class="n">calc_ABcoeffs</span>
+<span class="n">press_vec</span> <span class="o">=</span> <span class="n">find_press</span><span class="p">(</span><span class="n">zvals</span><span class="p">)</span>
+<span class="c1">#</span>
+<span class="c1"># find A and B coefficients at each level</span>
+<span class="c1"># note that qv = qt and theta=thetal in interactive_vapor.ipynb</span>
+<span class="c1">#</span>
+
+<span class="n">A_list</span><span class="o">=</span><span class="p">[]</span>
+<span class="n">B_list</span><span class="o">=</span><span class="p">[]</span>
+<span class="k">for</span> <span class="n">press0</span> <span class="ow">in</span> <span class="n">press_vec</span><span class="p">:</span>
+    <span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">issat</span><span class="o">=</span><span class="n">calc_ABcoeffs</span><span class="p">(</span><span class="n">steady_state</span><span class="o">.</span><span class="n">theta</span><span class="p">,</span><span class="n">steady_state</span><span class="o">.</span><span class="n">qv</span><span class="p">,</span><span class="n">press0</span><span class="p">)</span>
+    <span class="n">A_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+    <span class="n">B_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">B</span><span class="p">)</span>    
+    
+<span class="n">A</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">A_list</span><span class="p">)</span>
+<span class="n">B</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">B_list</span><span class="p">)</span>
+
+    
+<span class="n">buoyancy_flux</span> <span class="o">=</span> <span class="n">A</span><span class="o">*</span><span class="n">flux_thetal</span> <span class="o">+</span> <span class="n">B</span><span class="o">*</span><span class="n">flux_qt</span>
+<span class="n">df_flux</span><span class="p">[</span><span class="s1">&#39;buoyancy&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">buoyancy_flux</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax0</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">12</span><span class="p">))</span>
+<span class="n">df_flux</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="s1">&#39;buoyancy&#39;</span><span class="p">,</span><span class="s1">&#39;z&#39;</span><span class="p">,</span><span class="n">ax</span><span class="o">=</span><span class="n">ax0</span><span class="p">)</span>
+<span class="n">out</span><span class="o">=</span><span class="n">ax0</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;buyouancy flux (K m/s)&#39;</span><span class="p">,</span><span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;height (m)&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/a31f46d241e443cbbbce5ade4d34bf1083cc410de399d517aa6a1abeebf97c6e.png" src="../../_images/a31f46d241e443cbbbce5ade4d34bf1083cc410de399d517aa6a1abeebf97c6e.png" />
+</div>
+</div>
+<section id="borrow-calc-lcl-from-interactive-vapor-notebook">
+<h3>borrow calc_lcl from interactive_vapor notebook<a class="headerlink" href="#borrow-calc-lcl-from-interactive-vapor-notebook" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">calc_lcl</span><span class="p">(</span><span class="n">row</span><span class="p">,</span><span class="n">psfc</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">      find the lcl (in m) for a row in the dataframe</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">Tdew</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">tmr</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;qv&#39;</span><span class="p">],</span><span class="n">psfc</span><span class="p">)</span>
+    <span class="n">LCL</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">LCL</span><span class="p">(</span><span class="n">Tdew</span><span class="p">,</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;theta&#39;</span><span class="p">],</span><span class="n">psfc</span><span class="p">)</span>  <span class="c1">#kPa</span>
+    <span class="c1">#</span>
+    <span class="c1"># rough approximation:  10 kPa = 1 km</span>
+    <span class="c1">#</span>
+    <span class="n">delp</span><span class="o">=</span><span class="n">psfc</span> <span class="o">-</span> <span class="n">LCL</span>
+    <span class="n">lcl_z</span><span class="o">=</span> <span class="n">delp</span><span class="o">*</span><span class="mf">100.</span>
+    <span class="c1">#pdb.set_trace()</span>
+    <span class="k">return</span> <span class="n">lcl_z</span><span class="p">,</span> <span class="n">LCL</span>
+
+<span class="n">lcl_z</span><span class="p">,</span> <span class="n">lcl_p</span> <span class="o">=</span> <span class="n">calc_lcl</span><span class="p">(</span><span class="n">df_result</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span><span class="mf">100.</span><span class="p">)</span>
+<span class="n">lcl_z</span><span class="p">,</span> <span class="n">lcl_p</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(206.76757023236547, 97.93232429767635)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="calculate-the-saturated-and-unsaturated-thetav-jumps-at-the-inversion">
+<h3>calculate the saturated and unsaturated thetav jumps at the inversion<a class="headerlink" href="#calculate-the-saturated-and-unsaturated-thetav-jumps-at-the-inversion" title="Permalink to this heading">#</a></h3>
+<p>(unnumbered del Gesso equations below equation 14)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dth</span><span class="o">=</span><span class="n">steady_state</span><span class="o">.</span><span class="n">deltheta</span>
+<span class="n">dqt</span><span class="o">=</span><span class="n">steady_state</span><span class="o">.</span><span class="n">delqv</span>
+<span class="n">thetal_m</span><span class="o">=</span><span class="n">steady_state</span><span class="o">.</span><span class="n">theta</span>
+<span class="n">qt_m</span><span class="o">=</span><span class="n">steady_state</span><span class="o">.</span><span class="n">qv</span>
+<span class="n">h</span><span class="o">=</span><span class="n">steady_state</span><span class="o">.</span><span class="n">h</span>
+<span class="n">press</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">find_press</span><span class="p">(</span><span class="n">steady_state</span><span class="o">.</span><span class="n">h</span><span class="p">)</span>   <span class="c1">#kPa</span>
+<span class="n">thetal_ft</span> <span class="o">=</span> <span class="n">steady_state</span><span class="o">.</span><span class="n">theta</span> <span class="o">+</span> <span class="n">dth</span>
+<span class="n">qt_ft</span> <span class="o">=</span> <span class="n">steady_state</span><span class="o">.</span><span class="n">qv</span> <span class="o">+</span> <span class="n">dqt</span>
+
+<span class="n">Ad</span><span class="p">,</span><span class="n">Bd</span><span class="p">,</span><span class="n">issat</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">calc_ABcoeffs</span><span class="p">(</span><span class="n">thetal_ft</span><span class="p">,</span><span class="n">qt_ft</span><span class="p">,</span><span class="n">press</span><span class="p">)</span>
+<span class="n">Aw</span><span class="p">,</span><span class="n">Bw</span><span class="p">,</span><span class="n">issat</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">calc_ABcoeffs</span><span class="p">(</span><span class="n">thetal_m</span><span class="p">,</span><span class="n">qt_m</span><span class="p">,</span><span class="n">press</span><span class="p">)</span>
+<span class="n">invert</span><span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">t_uos_thetal</span><span class="p">(</span><span class="n">thetal_m</span><span class="p">,</span><span class="n">qt_m</span><span class="p">,</span><span class="n">press</span><span class="p">)</span>
+<span class="n">T_0</span> <span class="o">=</span> <span class="n">invert</span><span class="o">.</span><span class="n">temp</span>
+<span class="n">lv</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">L_t</span><span class="p">(</span><span class="n">invert</span><span class="o">.</span><span class="n">temp</span><span class="p">)</span>
+<span class="n">Cl</span> <span class="o">=</span>  <span class="p">(</span><span class="n">Ad</span><span class="o">*</span><span class="n">lv</span><span class="o">/</span><span class="n">tc</span><span class="o">.</span><span class="n">CPD</span> <span class="o">-</span> <span class="n">T_0</span><span class="o">/</span><span class="n">tc</span><span class="o">.</span><span class="n">EPS</span><span class="p">)</span>
+<span class="n">del_thv_dry</span> <span class="o">=</span> <span class="n">Ad</span> <span class="o">*</span> <span class="n">dth</span> <span class="o">+</span> <span class="n">Bd</span> <span class="o">*</span> <span class="n">dqt</span>
+<span class="n">del_thv_sat</span> <span class="o">=</span> <span class="n">Aw</span> <span class="o">*</span> <span class="n">dth</span> <span class="o">+</span> <span class="n">Bw</span> <span class="o">*</span> <span class="n">dqt</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;del_thv_dry&#39;</span><span class="p">,</span><span class="n">del_thv_dry</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;del_thv_sat&#39;</span><span class="p">,</span><span class="n">del_thv_sat</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>del_thv_dry 11.003090778374014
+del_thv_sat 2.7415089308731075
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Aw</span><span class="p">,</span> <span class="n">Bw</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0.5588383758459716, 1105.9135748473498)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="calculate-the-thetav-inversion-jump-accounting-for-evaporative-cooling">
+<h3>calculate the thetav inversion jump accounting for evaporative cooling<a class="headerlink" href="#calculate-the-thetav-inversion-jump-accounting-for-evaporative-cooling" title="Permalink to this heading">#</a></h3>
+<p>(see Stevens 2002 equations 16-18)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ql_max</span> <span class="o">=</span> <span class="n">invert</span><span class="o">.</span><span class="n">ql</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;ql_max at cloud top (kg/kg)&#39;</span><span class="p">,</span><span class="n">ql_max</span><span class="p">)</span>
+<span class="n">Cl</span> <span class="o">=</span>  <span class="p">(</span><span class="n">Ad</span><span class="o">*</span><span class="n">lv</span><span class="o">/</span><span class="n">tc</span><span class="o">.</span><span class="n">CPD</span> <span class="o">-</span> <span class="n">T_0</span><span class="o">/</span><span class="n">tc</span><span class="o">.</span><span class="n">EPS</span><span class="p">)</span>
+<span class="n">Del_thv</span> <span class="o">=</span> <span class="n">del_thv_dry</span> <span class="o">-</span> <span class="n">Cl</span> <span class="o">*</span> <span class="n">ql_max</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Del_thv&#39;</span><span class="p">,</span><span class="n">Del_thv</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ql_max at cloud top (kg/kg) 0.00022777567096363745
+Del_thv 10.538240440252055
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="calculate-the-buoyancy-integral-terms">
+<h3>calculate the buoyancy integral terms<a class="headerlink" href="#calculate-the-buoyancy-integral-terms" title="Permalink to this heading">#</a></h3>
+<p>Gesso equations 13-14</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">zi</span> <span class="o">=</span> <span class="n">steady_state</span><span class="o">.</span><span class="n">h</span>
+<span class="n">lcl_press</span><span class="o">=</span><span class="n">cf</span><span class="o">.</span><span class="n">LCL_thetal</span><span class="p">(</span><span class="n">thetal_m</span><span class="p">,</span><span class="n">qt_m</span><span class="p">)</span>
+<span class="n">zb</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">find_height</span><span class="p">(</span><span class="n">lcl_press</span><span class="p">)</span>
+
+<span class="n">T1</span> <span class="o">=</span> <span class="n">zb</span><span class="o">/</span><span class="n">zi</span>
+<span class="n">T2</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">zb</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span> <span class="n">zi</span><span class="o">**</span><span class="mi">2</span>
+<span class="n">T3</span> <span class="o">=</span> <span class="p">(</span><span class="n">zi</span><span class="o">-</span><span class="n">zb</span><span class="p">)</span><span class="o">/</span><span class="n">zi</span>
+<span class="n">T4</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="n">zi</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="n">zb</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="n">zi</span><span class="o">**</span><span class="mi">2</span>
+
+<span class="n">wtl_0</span><span class="o">=</span><span class="n">steady_state</span><span class="o">.</span><span class="n">T_flux_0</span>
+<span class="n">wqt_0</span><span class="o">=</span><span class="n">steady_state</span><span class="o">.</span><span class="n">q_flux_0</span>
+<span class="n">Del_F</span> <span class="o">=</span> <span class="n">steady_state</span><span class="o">.</span><span class="n">radcool</span><span class="o">/</span><span class="n">tc</span><span class="o">.</span><span class="n">CPD</span>
+
+<span class="n">term1</span> <span class="o">=</span> <span class="n">wtl_0</span> <span class="o">*</span> <span class="p">(</span><span class="n">Ad</span> <span class="o">*</span> <span class="p">(</span><span class="n">T1</span><span class="o">-</span><span class="n">T2</span><span class="p">)</span> <span class="o">+</span> <span class="n">Aw</span> <span class="o">*</span> <span class="p">(</span><span class="n">T3</span><span class="o">-</span><span class="n">T4</span><span class="p">))</span>
+<span class="n">term2</span> <span class="o">=</span> <span class="n">wqt_0</span> <span class="o">*</span> <span class="p">(</span><span class="n">Bd</span> <span class="o">*</span> <span class="p">(</span><span class="n">T1</span><span class="o">-</span><span class="n">T2</span><span class="p">)</span> <span class="o">+</span> <span class="n">Bw</span> <span class="o">*</span> <span class="p">(</span><span class="n">T3</span><span class="o">-</span><span class="n">T4</span><span class="p">))</span>
+<span class="n">term3</span> <span class="o">=</span> <span class="n">Del_F</span> <span class="o">*</span> <span class="p">(</span><span class="n">Ad</span> <span class="o">*</span> <span class="n">T2</span>      <span class="o">+</span> <span class="n">Aw</span> <span class="o">*</span> <span class="n">T4</span><span class="p">)</span>
+
+<span class="n">Theta_NE</span> <span class="o">=</span> <span class="n">term1</span> <span class="o">+</span> <span class="n">term2</span> <span class="o">+</span> <span class="n">term3</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Gesso Θne&#39;</span><span class="p">,</span><span class="n">Theta_NE</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">zb</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Gesso Θne 0.015824860046764082
+167.14811408607326
+</pre></div>
+</div>
+</div>
+</div>
+<p>Find wstar using Gesso equations 8 and 12</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">wstar</span><span class="o">=</span><span class="p">(</span><span class="mf">2.5</span><span class="o">*</span><span class="mf">9.8</span><span class="o">/</span><span class="n">T_0</span><span class="o">*</span><span class="n">zi</span><span class="o">*</span><span class="n">Theta_NE</span><span class="p">)</span><span class="o">**</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mf">3.</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;wstar without entrainment: </span><span class="si">{:5.3f}</span><span class="s1"> (m/s)&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">wstar</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>wstar without entrainment: 0.877 (m/s)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="calculate-the-densest-mixture-for-this-inversion-jump">
+<h3>Calculate the densest mixture for this inversion jump<a class="headerlink" href="#calculate-the-densest-mixture-for-this-inversion-jump" title="Permalink to this heading">#</a></h3>
+<p>Stevens equation 20</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">chi_star</span> <span class="o">=</span> <span class="n">Cl</span> <span class="o">*</span> <span class="n">ql_max</span> <span class="o">/</span> <span class="p">(</span><span class="n">del_thv_dry</span> <span class="o">-</span> <span class="n">del_thv_sat</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;just saturated at with </span><span class="si">{:5.2f}% e</span><span class="s1">nvironmental air&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">chi_star</span><span class="o">*</span><span class="mf">100.</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>just saturated at with  5.63% environmental air
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="calculate-the-nicholls-and-turton-average-evaporative-cooling-effect-delta-m-delta-theta-v">
+<h3>Calculate the Nicholls and Turton average evaporative cooling effect <span class="math notranslate nohighlight">\(\Delta m / \Delta \theta_v\)</span><a class="headerlink" href="#calculate-the-nicholls-and-turton-average-evaporative-cooling-effect-delta-m-delta-theta-v" title="Permalink to this heading">#</a></h3>
+<p>Stevens eq. 30 and de Roode lecture 2  slide 12 – note that <span class="math notranslate nohighlight">\(\Delta m/\Delta \theta_v = 1\)</span> for no evaporation</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Del_m</span> <span class="o">=</span> <span class="n">del_thv_dry</span> <span class="o">+</span> <span class="n">chi_star</span> <span class="o">*</span> <span class="p">(</span><span class="mf">2.</span> <span class="o">-</span> <span class="n">chi_star</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">del_thv_sat</span> <span class="o">-</span> <span class="n">del_thv_dry</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Δm/Δθv = </span><span class="si">{:5.2f}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">Del_m</span><span class="o">/</span><span class="n">Del_thv</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Δm/Δθv =  0.96
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="calculate-the-weakened-nicholls-and-turton-inversion-buoyancy-jump">
+<h3>Calculate the weakened Nicholls and Turton inversion buoyancy jump<a class="headerlink" href="#calculate-the-weakened-nicholls-and-turton-inversion-buoyancy-jump" title="Permalink to this heading">#</a></h3>
+<p>de Roode lecture 2 slide 15 and Stevens eqn 29 with a2=15 following Bretherton</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a2</span><span class="o">=</span><span class="mf">15.</span>
+<span class="n">Del_thv_NT</span> <span class="o">=</span> <span class="n">Del_thv</span> <span class="o">/</span> <span class="p">(</span><span class="mf">1.</span> <span class="o">+</span> <span class="n">a2</span> <span class="o">*</span> <span class="p">(</span><span class="mf">1.</span> <span class="o">-</span> <span class="n">Del_m</span><span class="o">/</span><span class="n">Del_thv</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;original Del_thv=</span><span class="si">{:5.2f}</span><span class="s1"> (K), Del_thv_NT = </span><span class="si">{:5.2f}</span><span class="s1"> (K)&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">Del_thv</span><span class="p">,</span><span class="n">Del_thv_NT</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>original Del_thv=10.54 (K), Del_thv_NT =  6.49 (K)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="calculate-the-final-entrainment-rate-according-to-de-roode-lecture-2-slide-15">
+<h3>Calculate the final entrainment rate according to de Roode lecture 2 slide 15<a class="headerlink" href="#calculate-the-final-entrainment-rate-according-to-de-roode-lecture-2-slide-15" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">A_NT</span> <span class="o">=</span> <span class="mf">0.2</span>
+<span class="n">fac_NT</span> <span class="o">=</span> <span class="mf">2.5</span>
+
+<span class="n">term4</span> <span class="o">=</span> <span class="n">Del_thv_NT</span>
+<span class="n">term5</span> <span class="o">=</span> <span class="n">A_NT</span> <span class="o">*</span> <span class="n">fac_NT</span> <span class="o">*</span> <span class="p">(</span><span class="n">T2</span> <span class="o">*</span> <span class="n">del_thv_dry</span> <span class="o">+</span> <span class="n">T4</span> <span class="o">*</span> <span class="n">del_thv_sat</span><span class="p">)</span>
+<span class="n">denominator</span> <span class="o">=</span> <span class="n">term4</span> <span class="o">+</span> <span class="n">term5</span>
+
+<span class="n">we</span> <span class="o">=</span> <span class="n">A_NT</span> <span class="o">*</span> <span class="n">fac_NT</span> <span class="o">*</span> <span class="n">Theta_NE</span> <span class="o">/</span> <span class="n">denominator</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;radiative we is </span><span class="si">{:5.3f}</span><span class="s1"> cm/s and NT we is </span><span class="si">{:5.3f}</span><span class="s1"> cm/s&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">steady_state</span><span class="o">.</span><span class="n">went</span><span class="o">*</span><span class="mf">100.</span><span class="p">,</span><span class="n">we</span><span class="o">*</span><span class="mf">100.</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>radiative we is 0.012 cm/s and NT we is 0.107 cm/s
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./notebooks/cloud_capped_boundary"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="radiative_entrain.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Use the simple radiation entrainment closure from Stephan’s slides</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="closure.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Compare entrainment closures</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#turn-the-last-timestep-values-into-a-named-tuple">turn the last timestep values into a named tuple</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-the-theta-l-and-q-t-flux-profiles-at-30-levels">plot the <span class="math notranslate nohighlight">\(\theta_l\)</span> and <span class="math notranslate nohighlight">\(q_t\)</span>  flux profiles at 30 levels</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#now-turn-this-into-a-buoyancy-flux-profile">Now turn this into a buoyancy flux profile</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#borrow-calc-lcl-from-interactive-vapor-notebook">borrow calc_lcl from interactive_vapor notebook</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-the-saturated-and-unsaturated-thetav-jumps-at-the-inversion">calculate the saturated and unsaturated thetav jumps at the inversion</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-the-thetav-inversion-jump-accounting-for-evaporative-cooling">calculate the thetav inversion jump accounting for evaporative cooling</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-the-buoyancy-integral-terms">calculate the buoyancy integral terms</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-the-densest-mixture-for-this-inversion-jump">Calculate the densest mixture for this inversion jump</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-the-nicholls-and-turton-average-evaporative-cooling-effect-delta-m-delta-theta-v">Calculate the Nicholls and Turton average evaporative cooling effect <span class="math notranslate nohighlight">\(\Delta m / \Delta \theta_v\)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-the-weakened-nicholls-and-turton-inversion-buoyancy-jump">Calculate the weakened Nicholls and Turton inversion buoyancy jump</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-the-final-entrainment-rate-according-to-de-roode-lecture-2-slide-15">Calculate the final entrainment rate according to de Roode lecture 2 slide 15</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Philip Austin
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
