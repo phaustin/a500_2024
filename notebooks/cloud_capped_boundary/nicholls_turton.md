@@ -41,7 +41,7 @@ toc:
   toc_window_display: false
 ---
 
-### Move to the full Nicholls-Turton entrainment parameterization, following Gesso et al. 2014
+# Move to the full Nicholls-Turton entrainment parameterization, following Gesso et al. 2014
 
 Read in the model result for the simple radiative entrainment closure of de Roode lecture 2 and use those
 values to calculate the NT entrainment rate
@@ -49,23 +49,24 @@ values to calculate the NT entrainment rate
 ```{code-cell} ipython3
 :trusted: true
 
-import context
 from matplotlib import pyplot as plt
 from a500.utils.helper_funs import make_tuple
 from a500.thermo import thermfuncs as tf
+from a500.thermo import cloudfuncs as cf
 from a500.thermo import thermconst as tc
 import pandas as pd
 import numpy as np
-import pdb
+```
+
+```{code-cell} ipython3
+:trusted: true
 
 with open('vapor_profile.csv') as f:
     df_result=pd.read_csv(f)
-    
+  
 with open('dumpradiative.csv') as f:
     df_result=pd.read_csv(f)
 out=df_result.plot('time','h')
-
-print(tf.__file__)
 ```
 
 ```{code-cell} ipython3
@@ -221,7 +222,7 @@ Gesso equations 13-14
 :trusted: true
 
 zi = steady_state.h
-lcl_press=tf.LCL_thetal(thetal_m,qt_m)
+lcl_press=cf.LCL_thetal(thetal_m,qt_m)
 zb=tf.find_height(lcl_press)
 
 T1 = zb/zi

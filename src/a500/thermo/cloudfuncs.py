@@ -1,6 +1,6 @@
 """
  For functions with input parameters less than 3, the
-function name is self-explainatory; the string before the underline is
+gfunction name is self-explainatory; the string before the underline is
 the output variable while the string after the underline indicates the
 input variables. The convention is t: temperature, tv: virtual
 temperature, tro: density temperature, th: potential temperature, thv:
@@ -17,6 +17,7 @@ the approximation name.
 """
 import numpy as np
 from . import thermconst as tc
+from ..utils.helper_funs import make_tuple
 from .thermconst import LV0,CPD
 import textwrap
 import sys
@@ -70,7 +71,8 @@ def calc_ABcoeffs(thetal0,qt,press):
 def alt_thetal(press,Temp,qt):
     qt = np.asarray(qt)
     qsat=qs_tp(Temp,press)
-    ql=qt - qsat
+    ql=np.asarray(qt - qsat)
+    print(f"{(qsat,qt,ql)=}")
     ql[ql < 0]=0.
     theta = Temp*(100./press)**0.288
     L=2.5e6
@@ -758,6 +760,22 @@ def testitB():
     press=96.
     A,B,issat = calc_ABcoeffs(thetal0,qt,press)
     np.testing.assert_almost_equal([A,B,issat],[1.003,170.1811,False],decimal=3)
+
+def LCL_thetal(thetal0,qt,psfc=100.):
+    """
+       find LCL from conserved variables
+       input: thetal0 (K), qt (kg/kg)
+       output:  LCL pressure in kPa 
+    """
+    press=100.
+    invert=t_uos_thetal(thetal0,qt,press)
+    if invert.issat:
+        LCLval = press
+    else:
+        Tdew = tmr(qt,press)
+        LCLval = LCL(Tdew,invert.temp,press)
+    return LCLval
+
     
 if __name__== '__main__':
     from pathlib import Path

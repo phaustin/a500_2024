@@ -43,10 +43,22 @@ toc:
 
 # Make the surface flux interactive and add subsidence
 
++++
+
+In this notebook we keep the boundary layer dry, and add subsidence at the inversion to the height equation.
+We also fix the surface temperature and diagnose the surface flux from the temperature difference between the surface and
+the mixed layer.
+
+$$
+\begin{align}
+  \text{mean temperature: } \frac{d \hat{\theta} }{dt} &=(1 + k) F_0/(h c_p\rho_*)\label{eq:meantheta}\\
+\text{inversion height: } \frac{dh }{dt} &= ( k F_0)/(\rho_* c_p \Delta \theta) + w_h \label{eq:hrise}\\
+\text{inversion jump: } \frac{d \Delta \theta }{dt} &= \left ( \frac{dh }{dt}  - w_h \right ) \Gamma - \frac{d \hat{\theta} }{dt}\label{eq:jump}
+\end{align}
+$$
+
 ```{code-cell} ipython3
 :trusted: true
-
-import context
 
 def theta_ft(h,intercept,gamma):
     theta_top = intercept + h*gamma

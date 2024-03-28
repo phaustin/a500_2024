@@ -22,7 +22,7 @@ from . import thermconst as tc
 from .thermconst import LV0,CPD
 import textwrap
 import sys
-from ..utils.helper_funs import test_scalar
+from ..utils.helper_funs import test_scalar, make_tuple
 
 def find_height(press,scale_height=8000.,psfc=100.):
     """
@@ -163,7 +163,7 @@ def dqs_dt(temp,p):
    """
    lv=L_t(temp)
    qs=qs_tp(temp,p)
-   dqsdt = qs*lv/(tc.Rv*temp**2)
+   dqsdt = qs*lv/(tc.RV*temp**2)
    return dqsdt
    
     

@@ -14,19 +14,13 @@ kernelspec:
   name: python3
 ---
 
-+++ {"toc": true}
-
-<h1>Table of Contents<span class="tocSkip"></span></h1>
-<div class="toc"><ul class="toc-item"></ul></div>
-
 ```{code-cell} ipython3
 :trusted: true
 
 import numpy as np
 import scipy.integrate as integrate
 from matplotlib import pyplot as plt
-import context
-import pdb
+from a500.thermo import cloudfuncs as cf
 ```
 
 Given the equation set that describes mixed layer with stratocumulus cloud on the top:
@@ -162,7 +156,7 @@ def Gesso(T_ml, Q_ml, ML_height, T0, P0, Qft, gamma, dT, dQ, Term1_T, Term1_Q):
     dTd = Ad * dT + Bd * dQ
     dTw = Aw * dT + Bw * dQ
     dTv = dTd - Cl * Qmax
-    Plcl = tf.LCL_thetal(T_ml, Q_ml) * 10  # kPa to hPa
+    Plcl = cf.LCL_thetal(T_ml, Q_ml) * 10  # kPa to hPa
     LCL_height = hydrostat_H(Plcl, P0)
     #
     T1 = LCL_height / ML_height
