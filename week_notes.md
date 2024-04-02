@@ -282,4 +282,12 @@ T. U. Delft cloud course](https://www.dropbox.com/scl/fi/n6scqt3wql8otdfvsif1r/d
 
   - [Vargas Zeppetello et al., 2020b, Sources of variance of summertime temperatures](https://journals.ametsoc.org/view/journals/clim/33/9/jcli-d-19-0276.1.xml)
 
+### Thursday
+
+- Cloud capped boundary layer notebooks: {ref}`cloud_capped_index`
+- [notebook download](https://www.dropbox.com/scl/fo/ucrh6loi8m1u480luvf9d/h?rlkey=elostvzl4m7upumly15r9qbxy&dl=0)
+
+## Week 12
+
+### Tuesday
 
