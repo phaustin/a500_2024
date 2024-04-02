@@ -122,6 +122,10 @@ parts:
     - url: https://www.dropbox.com/scl/fi/7nrogh39omd8iwpv85dol/diagnose_jump.ipynb?rlkey=y5xm1qe0yxxebtsah9bnkf32b&dl=0
       title: diagnose_jump.ipynb download
     - file: notebooks/cloud_capped_boundary/interactive_sfcflux.md
+    - file: notebooks/cloud_capped_boundary/interactive_vaporflux.md
+    - file: notebooks/cloud_capped_boundary/radiative_entrain.md
+    - file: notebooks/cloud_capped_boundary/nicholls_turton.md
+    - file: notebooks/cloud_capped_boundary/closure.md
     - file: notebooks/cloud_capped_boundary/cloud_capped_index.md
   - caption: Journal articles
     chapters:
@@ -145,6 +149,12 @@ parts:
       title: Fleagle and Businger Chapter 6 excerpt on surface layer similarity
     - url: https://www.dropbox.com/scl/fi/41n9v7pj3x0n2tu27ca4o/Stevens-2002-Quarterly_Journal_of_the_Royal_Meteorological_Society.pdf?rlkey=u5705q214gzpe3r94doozyrqy&dl=0
       title: Stevens 2002 entrainment review
+    - url: https://www.dropbox.com/scl/fi/pdodmk9405d5dc4f4obv6/deroode_Dal_Gesso_etal_2014.pdf?rlkey=ycmxd3g56q9mh5sus0qxqi8kj&dl=0
+      title: del Gesso stratocumulus equilbria
+    - url: https://www.dropbox.com/scl/fi/l1ydz29ef5v84o3tnwjkd/turton_nicholls_1987.pdf?rlkey=jzzepzzb6fvev8591bbrm1clj&dl=0
+      title: Nicholls and Turton entrainment parameterization
+    - url: https://www.dropbox.com/scl/fi/tnclk9w9yt26nbn8md15c/moeng_2000.pdf?rlkey=l12g44cfphy477wu2kehhfzw3&dl=0
+      title: Moeng 2000 entrainment parameterization
   - caption: Textbooks
     chapters:
     - url: https://www.dropbox.com/scl/fi/yaxd27icivz7a7qu7tifn/stull_blm_springer.pdf?rlkey=v0hqkqvd9v8rpcqfxmq62tt10&dl=0

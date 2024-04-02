@@ -2,6 +2,7 @@
 jupytext:
   cell_metadata_filter: all
   cell_metadata_json: true
+  formats: md:myst,ipynb
   notebook_metadata_filter: all,-language_info
   text_representation:
     extension: .md
@@ -41,7 +42,8 @@ toc:
   toc_window_display: false
 ---
 
-### Use the simple radiation entrainment closure from Stephan's slides
+(radcool)=
+# Use the simple radiation entrainment closure from Stephan's slides
 
 ```{code-cell} ipython3
 :trusted: true

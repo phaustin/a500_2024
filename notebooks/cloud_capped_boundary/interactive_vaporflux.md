@@ -41,7 +41,12 @@ toc:
   toc_window_display: false
 ---
 
-## Add an equation for the vapor mixing ratio
+(vapor_flux)=
+# Add an equation for the vapor mixing ratio
+
+This notebook introduces the total eater mixing ration as a new conserved variable,
+which is entrained in the same way as potential temperature.  It also introduces
+a fixed radiative cooling at the top of the mixed layer
 
 ```{code-cell} ipython3
 :trusted: true

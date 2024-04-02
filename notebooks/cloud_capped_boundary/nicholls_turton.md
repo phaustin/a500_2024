@@ -2,6 +2,7 @@
 jupytext:
   cell_metadata_filter: all
   encoding: '# -*- coding: utf-8 -*-'
+  formats: md:myst,ipynb
   notebook_metadata_filter: all,-language_info
   text_representation:
     extension: .md
@@ -41,6 +42,7 @@ toc:
   toc_window_display: false
 ---
 
+(nicholls_turton)=
 # Move to the full Nicholls-Turton entrainment parameterization, following Gesso et al. 2014
 
 Read in the model result for the simple radiative entrainment closure of de Roode lecture 2 and use those

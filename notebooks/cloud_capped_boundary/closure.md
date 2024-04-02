@@ -2,6 +2,7 @@
 jupytext:
   cell_metadata_filter: all
   cell_metadata_json: true
+  formats: md:myst,ipynb
   notebook_metadata_filter: all,-language_info,-toc,-latex_envs
   text_representation:
     extension: .md
@@ -13,6 +14,18 @@ kernelspec:
   language: python
   name: python3
 ---
+
+(closure)=
+# Compare entrainment closures
+
+This notebook compares the equilbrium boundary layer with three different closures
+
+- [Nicholls and Turton, 1987](https://www.dropbox.com/scl/fi/l1ydz29ef5v84o3tnwjkd/turton_nicholls_1987.pdf?rlkey=jzzepzzb6fvev8591bbrm1clj&dl=0)
+- [Moeng 2000](https://www.dropbox.com/scl/fi/tnclk9w9yt26nbn8md15c/moeng_2000.pdf?rlkey=l12g44cfphy477wu2kehhfzw3&dl=0)
+- [del Gesso et al., 2014](https://www.dropbox.com/scl/fi/pdodmk9405d5dc4f4obv6/deroode_Dal_Gesso_etal_2014.pdf?rlkey=ycmxd3g56q9mh5sus0qxqi8kj&dl=0)
+
+Using the thermodynamic functions from [thermfuncs.py](https://github.com/phaustin/a500_2024/blob/main/src/a500/thermo/thermfuncs.py)
+and [cloudfuncs.py](https://github.com/phaustin/a500_2024/blob/main/src/a500/thermo/cloudfuncs.py)
 
 ```{code-cell} ipython3
 :trusted: true
@@ -45,7 +58,7 @@ Apply different entrainment paramterizations, analyze the result.
 ```{code-cell} ipython3
 :trusted: true
 
-# ATSC500 thermo functions [https://github.com/phaustin/atsc500/tree/master/a500]
+
 from a500.thermo import thermfuncs as tf
 
 
