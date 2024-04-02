@@ -287,3 +287,15 @@ T. U. Delft cloud course](https://www.dropbox.com/scl/fi/n6scqt3wql8otdfvsif1r/d
 - Cloud capped boundary layer notebooks: {ref}`cloud_capped_index`
 - [notebook download](https://www.dropbox.com/scl/fo/ucrh6loi8m1u480luvf9d/h?rlkey=elostvzl4m7upumly15r9qbxy&dl=0)
 
+## Week 12
+
+### Tuesday
+
+- time series analysis -  background
+  - recommend this video series
+    - [ritvikmath video lectures](https://www.youtube.com/watch?v=ZoJ2OctrFLA&list=PLvcbYUQ5t0UHOLnBzl46_Q6QKtFgfMGc3)
+     - [ritvikmath code](https://github.com/ritvikmath/Time-Series-Analysis)
+  - notebooks
+    - {ref}`ma_model`>
+    - {ref}`arma_model`
+
