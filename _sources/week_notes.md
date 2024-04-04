@@ -291,11 +291,28 @@ T. U. Delft cloud course](https://www.dropbox.com/scl/fi/n6scqt3wql8otdfvsif1r/d
 
 ### Tuesday
 
+- [The Canadian Land Surface Model](https://gitlab.com/cccma/classic)
+  - [publication](https://gmd.copernicus.org/articles/14/2371/2021/)
+
 - time series analysis -  background
   - recommend this video series
     - [ritvikmath video lectures](https://www.youtube.com/watch?v=ZoJ2OctrFLA&list=PLvcbYUQ5t0UHOLnBzl46_Q6QKtFgfMGc3)
-     - [ritvikmath code](https://github.com/ritvikmath/Time-Series-Analysis)
+    - [ritvikmath code](https://github.com/ritvikmath/Time-Series-Analysis)
   - notebooks
-    - {ref}`ma_model`>
+    - {ref}`ma_model`
     - {ref}`arma_model`
 
+### Thursday
+
+- Seasonal ARIMA
+
+  - [SARIMA theory video](https://www.youtube.com/watch?v=WjeGUs6mzXg&list=PLvcbYUQ5t0UHOLnBzl46_Q6QKtFgfMGc3&index=22)
+  - {ref}`sarima_catfish` and [ipynb notebook download](https://www.dropbox.com/scl/fi/jvq9xedwsr3u64x91u8b1/sarima_catfish_model.ipynb?rlkey=hm9070bzdwtep22gkv4srylva&dl=0) with [catfish.csv](https://www.dropbox.com/scl/fi/uzjrdh9njhj1kxmtuullj/catfish.csv?rlkey=savexmlrn8jxhks3b5q8f6ggc&dl=0)
+  - {ref}`sarima_co2`  and [ipynb download](https://www.dropbox.com/scl/fi/0qiu3dp7qmektsmaemqpv/sarima_co2.ipynb?rlkey=mjhg40vteobtykkw2lng30hwv&dl=0)
+  
+#### For next week -- inertial subrange
+
+- Reread the discussion around Stull Figure 5.16 on p. 167
+- For an FFT refresher: Read 8.1-8.7
+- The Figure 5.16 equations are derived in Section 8.11
+- Finally look at the inertial subrange discussion in Section 9.9.1 and [Tritton Chapter 20](https://www.dropbox.com/scl/fi/5kol1w48uc0rg1byeoihr/Tritton_on_Kolmogorov_Scaling.pdf?rlkey=80612x0a5jyfn6ve3i3g3hp76&dl=0)

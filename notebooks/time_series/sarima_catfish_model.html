@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>ARMA model &#8212; ATSC 500 2024</title>
+    <title>SARIMA: Catfish Sales Data &#8212; ATSC 500 2024</title>
   
   
   
@@ -62,14 +62,12 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/time_series/arma_model';</script>
-    <link rel="canonical" href="https://phaustin.github.io/a500_2024/notebooks/time_series/arma_model.html" />
+    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/time_series/sarima_catfish_model';</script>
+    <link rel="canonical" href="https://phaustin.github.io/a500_2024/notebooks/time_series/sarima_catfish_model.html" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="SARIMA: Catfish Sales Data" href="sarima_catfish_model.html" />
-    <link rel="prev" title="moving average model" href="ma_model.html" />
+    <link rel="next" title="SARIMA-TimeSeries Analysis of Atmospheric CO2" href="sarima_co2.html" />
+    <link rel="prev" title="ARMA model" href="arma_model.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -265,8 +263,8 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">ARMA model</a></li>
-<li class="toctree-l1"><a class="reference internal" href="sarima_catfish_model.html">SARIMA: Catfish Sales Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="arma_model.html">ARMA model</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">SARIMA: Catfish Sales Data</a></li>
 
 
 
@@ -348,7 +346,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="../../_sources/notebooks/time_series/arma_model.md" target="_blank"
+      <li><a href="../../_sources/notebooks/time_series/sarima_catfish_model.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -432,7 +430,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>ARMA model</h1>
+    <h1>SARIMA: Catfish Sales Data</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -442,21 +440,23 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#input-catfish-sales-data">Input catfish Sales Data</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#acf-autocurrelation">ACF – autocurrelation</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#based-on-acf-we-should-start-with-a-ma-1-process">Based on ACF, we should start with a MA(1) process</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">SARIMA: Catfish Sales Data</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#remove-the-trend">Remove the trend</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pacf-partial-autocorrelation">PACF – partial autocorrelation</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#based-on-pacf-we-should-start-with-a-ar-4-process">Based on PACF, we should start with a AR(4) process</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#acf">ACF</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#based-on-acf-we-should-start-with-a-seasonal-ma-process">Based on ACF, we should start with a seasonal MA process</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#get-training-and-testing-sets">Get training and testing sets</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fit-the-arma-model">Fit the ARMA Model</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#so-the-arma-4-1-model-is">So the ARMA(4,1) model is:</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#pacf">PACF</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#based-on-pacf-we-should-start-with-a-seasonal-ar-process">Based on PACF, we should start with a seasonal AR process</a></li>
 </ul>
 </li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#get-training-and-testing-sets">Get training and testing sets</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#fit-the-sarima-model">Fit the SARIMA Model</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#using-the-rolling-forecast-origin">Using the Rolling Forecast Origin</a></li>
 </ul>
+
             </nav>
         </div>
     </div>
@@ -467,8 +467,8 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="arma-model">
-<span id="id1"></span><h1>ARMA model<a class="headerlink" href="#arma-model" title="Permalink to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="sarima-catfish-sales-data">
+<span id="sarima-catfish"></span><h1>SARIMA: Catfish Sales Data<a class="headerlink" href="#sarima-catfish-sales-data" title="Permalink to this heading">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -478,15 +478,13 @@ document.write(`
 <span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">timedelta</span>
 <span class="kn">from</span> <span class="nn">pandas.plotting</span> <span class="kn">import</span> <span class="n">register_matplotlib_converters</span>
 <span class="kn">from</span> <span class="nn">statsmodels.tsa.stattools</span> <span class="kn">import</span> <span class="n">acf</span><span class="p">,</span> <span class="n">pacf</span>
-<span class="kn">from</span> <span class="nn">statsmodels.tsa.arima.model</span> <span class="kn">import</span> <span class="n">ARIMA</span>
+<span class="kn">from</span> <span class="nn">statsmodels.tsa.statespace.sarimax</span> <span class="kn">import</span> <span class="n">SARIMAX</span>
 <span class="n">register_matplotlib_converters</span><span class="p">()</span>
 <span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">time</span>
 </pre></div>
 </div>
 </div>
 </div>
-<section id="input-catfish-sales-data">
-<h2>Input catfish Sales Data<a class="headerlink" href="#input-catfish-sales-data" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">parser</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
@@ -513,8 +511,8 @@ document.write(`
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">start_date</span> <span class="o">=</span> <span class="n">datetime</span><span class="p">(</span><span class="mi">2000</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">end_date</span> <span class="o">=</span> <span class="n">datetime</span><span class="p">(</span><span class="mi">2004</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">start_date</span> <span class="o">=</span> <span class="n">datetime</span><span class="p">(</span><span class="mi">1996</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">end_date</span> <span class="o">=</span> <span class="n">datetime</span><span class="p">(</span><span class="mi">2000</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">lim_catfish_sales</span> <span class="o">=</span> <span class="n">catfish_sales</span><span class="p">[</span><span class="n">start_date</span><span class="p">:</span><span class="n">end_date</span><span class="p">]</span>
 </pre></div>
 </div>
@@ -528,21 +526,15 @@ document.write(`
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Sales&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">year</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">start_date</span><span class="o">.</span><span class="n">year</span><span class="p">,</span><span class="n">end_date</span><span class="o">.</span><span class="n">year</span><span class="p">):</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">year</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39;-01-01&#39;</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">lim_catfish_sales</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/91948498b72ab48d2080eeb537def702db289924fb049c5a7e305b45dadff37e.png" src="../../_images/91948498b72ab48d2080eeb537def702db289924fb049c5a7e305b45dadff37e.png" />
+<img alt="../../_images/e61dbf53a6bccf4fdecad8dd91544fc5fd59e63673daeddd4a1aad8040e13429.png" src="../../_images/e61dbf53a6bccf4fdecad8dd91544fc5fd59e63673daeddd4a1aad8040e13429.png" />
 </div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Remove trend by differencing</span>
-</pre></div>
-</div>
-</div>
-</div>
+<section id="remove-the-trend">
+<h2>Remove the trend<a class="headerlink" href="#remove-the-trend" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">first_diff</span> <span class="o">=</span> <span class="n">lim_catfish_sales</span><span class="o">.</span><span class="n">diff</span><span class="p">()[</span><span class="mi">1</span><span class="p">:]</span>
@@ -554,79 +546,84 @@ document.write(`
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">first_diff</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;First Difference of Catfish Sales&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Catfish Sales in 1000s of Pounds&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Sales&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">year</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">start_date</span><span class="o">.</span><span class="n">year</span><span class="p">,</span><span class="n">end_date</span><span class="o">.</span><span class="n">year</span><span class="p">):</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">year</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39;-01-01&#39;</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">first_diff</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/eb9655a87d5ed1f8564c48a9208792033e7125df00bfa6ed73492a53b1ad04ad.png" src="../../_images/eb9655a87d5ed1f8564c48a9208792033e7125df00bfa6ed73492a53b1ad04ad.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.lines.Line2D at 0x126937050&gt;
+</pre></div>
+</div>
+<img alt="../../_images/6bf20622ef5ba506c4889e9313bc4a2007a9f69a38a2f6126c4fc4e2cb086ac3.png" src="../../_images/6bf20622ef5ba506c4889e9313bc4a2007a9f69a38a2f6126c4fc4e2cb086ac3.png" />
 </div>
 </div>
 </section>
-<section id="acf-autocurrelation">
-<h2>ACF – autocurrelation<a class="headerlink" href="#acf-autocurrelation" title="Permalink to this heading">#</a></h2>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="acf">
+<h1>ACF<a class="headerlink" href="#acf" title="Permalink to this heading">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">num_lags</span><span class="o">=</span><span class="mi">17</span>
-<span class="n">acf_vals</span> <span class="o">=</span> <span class="n">acf</span><span class="p">(</span><span class="n">first_diff</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">num_lags</span><span class="p">),</span> <span class="n">acf_vals</span><span class="p">[:</span><span class="n">num_lags</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">acf_vals</span> <span class="o">=</span> <span class="n">acf</span><span class="p">(</span><span class="n">first_diff</span><span class="p">)</span>
+<span class="n">num_lags</span> <span class="o">=</span> <span class="mi">17</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">num_lags</span><span class="p">),</span> <span class="n">acf_vals</span><span class="p">[:</span><span class="n">num_lags</span><span class="p">]);</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;BarContainer object of 17 artists&gt;
-</pre></div>
-</div>
-<img alt="../../_images/0fc74648f37ae93f2e9091eb9f7a64f01a739927a681f78110b664937b3ce361.png" src="../../_images/0fc74648f37ae93f2e9091eb9f7a64f01a739927a681f78110b664937b3ce361.png" />
+<img alt="../../_images/827946857ac6668e82a7ba6c0067d51cea39b62b117b85c6c872e1ac207d7e20.png" src="../../_images/827946857ac6668e82a7ba6c0067d51cea39b62b117b85c6c872e1ac207d7e20.png" />
 </div>
 </div>
-<section id="based-on-acf-we-should-start-with-a-ma-1-process">
-<h3>Based on ACF, we should start with a MA(1) process<a class="headerlink" href="#based-on-acf-we-should-start-with-a-ma-1-process" title="Permalink to this heading">#</a></h3>
+<section id="based-on-acf-we-should-start-with-a-seasonal-ma-process">
+<h2>Based on ACF, we should start with a seasonal MA process<a class="headerlink" href="#based-on-acf-we-should-start-with-a-seasonal-ma-process" title="Permalink to this heading">#</a></h2>
 </section>
 </section>
-<section id="pacf-partial-autocorrelation">
-<h2>PACF – partial autocorrelation<a class="headerlink" href="#pacf-partial-autocorrelation" title="Permalink to this heading">#</a></h2>
+<section class="tex2jax_ignore mathjax_ignore" id="pacf">
+<h1>PACF<a class="headerlink" href="#pacf" title="Permalink to this heading">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pacf_vals</span> <span class="o">=</span> <span class="n">pacf</span><span class="p">(</span><span class="n">first_diff</span><span class="p">)</span>
+<span class="n">num_lags</span> <span class="o">=</span> <span class="mi">15</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">num_lags</span><span class="p">),</span> <span class="n">pacf_vals</span><span class="p">[:</span><span class="n">num_lags</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;BarContainer object of 17 artists&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;BarContainer object of 15 artists&gt;
 </pre></div>
 </div>
-<img alt="../../_images/6b0c148acf1f93e0b77641df914c1bea33ea15b75f566ae8857493e7e8ff7301.png" src="../../_images/6b0c148acf1f93e0b77641df914c1bea33ea15b75f566ae8857493e7e8ff7301.png" />
+<img alt="../../_images/f5ed88ba0a0310401dd5d76f73d3a6744195763753c51c5c5b3f942a14f3053b.png" src="../../_images/f5ed88ba0a0310401dd5d76f73d3a6744195763753c51c5c5b3f942a14f3053b.png" />
 </div>
 </div>
-<section id="based-on-pacf-we-should-start-with-a-ar-4-process">
-<h3>Based on PACF, we should start with a AR(4) process<a class="headerlink" href="#based-on-pacf-we-should-start-with-a-ar-4-process" title="Permalink to this heading">#</a></h3>
+<section id="based-on-pacf-we-should-start-with-a-seasonal-ar-process">
+<h2>Based on PACF, we should start with a seasonal AR process<a class="headerlink" href="#based-on-pacf-we-should-start-with-a-seasonal-ar-process" title="Permalink to this heading">#</a></h2>
 </section>
 </section>
-<section id="get-training-and-testing-sets">
-<h2>Get training and testing sets<a class="headerlink" href="#get-training-and-testing-sets" title="Permalink to this heading">#</a></h2>
+<section class="tex2jax_ignore mathjax_ignore" id="get-training-and-testing-sets">
+<h1>Get training and testing sets<a class="headerlink" href="#get-training-and-testing-sets" title="Permalink to this heading">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">train_end</span> <span class="o">=</span> <span class="n">datetime</span><span class="p">(</span><span class="mi">2003</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">test_end</span> <span class="o">=</span> <span class="n">datetime</span><span class="p">(</span><span class="mi">2004</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">train_end</span> <span class="o">=</span> <span class="n">datetime</span><span class="p">(</span><span class="mi">1999</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">test_end</span> <span class="o">=</span> <span class="n">datetime</span><span class="p">(</span><span class="mi">2000</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
 
-<span class="n">train_data</span> <span class="o">=</span> <span class="n">first_diff</span><span class="p">[:</span><span class="n">train_end</span><span class="p">]</span>
-<span class="n">test_data</span> <span class="o">=</span> <span class="n">first_diff</span><span class="p">[</span><span class="n">train_end</span> <span class="o">+</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span><span class="n">test_end</span><span class="p">]</span>
+<span class="n">train_data</span> <span class="o">=</span> <span class="n">lim_catfish_sales</span><span class="p">[:</span><span class="n">train_end</span><span class="p">]</span>
+<span class="n">test_data</span> <span class="o">=</span> <span class="n">lim_catfish_sales</span><span class="p">[</span><span class="n">train_end</span> <span class="o">+</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span><span class="n">test_end</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
 </div>
-<section id="fit-the-arma-model">
-<h3>Fit the ARMA Model<a class="headerlink" href="#fit-the-arma-model" title="Permalink to this heading">#</a></h3>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="fit-the-sarima-model">
+<h1>Fit the SARIMA Model<a class="headerlink" href="#fit-the-sarima-model" title="Permalink to this heading">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># define model</span>
-<span class="n">model</span> <span class="o">=</span> <span class="n">ARIMA</span><span class="p">(</span><span class="n">train_data</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">my_order</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">my_seasonal_order</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">12</span><span class="p">)</span>
+<span class="c1"># define model</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">SARIMAX</span><span class="p">(</span><span class="n">train_data</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="n">my_order</span><span class="p">,</span> <span class="n">seasonal_order</span><span class="o">=</span><span class="n">my_seasonal_order</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -642,7 +639,56 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model Fitting Time: 0.08504438400268555
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>RUNNING THE L-BFGS-B CODE
+
+           * * *
+
+Machine precision = 2.220D-16
+ N =            3     M =           10
+
+At X0         0 variables are exactly at the bounds
+
+At iterate    0    f=  8.91418D+00    |proj g|=  1.42265D+00
+
+At iterate    5    f=  8.54683D+00    |proj g|=  2.47769D-01
+
+At iterate   10    f=  8.53059D+00    |proj g|=  1.21746D-03
+
+At iterate   15    f=  8.53059D+00    |proj g|=  1.23643D-03
+
+At iterate   20    f=  8.53051D+00    |proj g|=  1.57533D-02
+
+At iterate   25    f=  8.52658D+00    |proj g|=  7.30506D-02
+
+At iterate   30    f=  8.51412D+00    |proj g|=  2.67419D-02
+
+At iterate   35    f=  8.50324D+00    |proj g|=  8.46847D-03
+
+           * * *
+
+Tit   = total number of iterations
+Tnf   = total number of function evaluations
+Tnint = total number of segments explored during Cauchy searches
+Skip  = number of BFGS updates skipped
+Nact  = number of active bounds at final generalized Cauchy point
+Projg = norm of the final projected gradient
+F     = final function value
+
+           * * *
+
+   N    Tit     Tnf  Tnint  Skip  Nact     Projg        F
+    3     38     51      1     0     0   6.590D-06   8.503D+00
+  F =   8.5031324788887073     
+
+CONVERGENCE: NORM_OF_PROJECTED_GRADIENT_&lt;=_PGTOL            
+Model Fitting Time: 0.1017920970916748
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/phil/mini310/envs/a405/lib/python3.11/site-packages/statsmodels/tsa/statespace/sarimax.py:997: UserWarning: Non-stationary starting seasonal autoregressive Using zeros as starting parameters.
+  warn(&#39;Non-stationary starting seasonal autoregressive&#39;
+/Users/phil/mini310/envs/a405/lib/python3.11/site-packages/statsmodels/tsa/statespace/sarimax.py:1009: UserWarning: Non-invertible starting seasonal moving average Using zeros as starting parameters.
+  warn(&#39;Non-invertible starting seasonal moving average&#39;
+ This problem is unconstrained.
 </pre></div>
 </div>
 </div>
@@ -655,30 +701,26 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                               SARIMAX Results                                
-==============================================================================
-Dep. Variable:                  Total   No. Observations:                   42
-Model:                 ARIMA(4, 0, 1)   Log Likelihood                -376.598
-Date:                Tue, 02 Apr 2024   AIC                            767.195
-Time:                        14:38:37   BIC                            779.359
-Sample:                    02-01-2000   HQIC                           771.654
-                         - 07-01-2003                                         
-Covariance Type:                  opg                                         
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                                      SARIMAX Results                                       
+============================================================================================
+Dep. Variable:                                Total   No. Observations:                   43
+Model:             SARIMAX(0, 1, 0)x(1, 0, [1], 12)   Log Likelihood                -365.635
+Date:                              Thu, 04 Apr 2024   AIC                            737.269
+Time:                                      08:40:00   BIC                            742.482
+Sample:                                  01-01-1996   HQIC                           739.180
+                                       - 07-01-1999                                         
+Covariance Type:                                opg                                         
 ==============================================================================
                  coef    std err          z      P&gt;|z|      [0.025      0.975]
 ------------------------------------------------------------------------------
-const         24.1795    179.935      0.134      0.893    -328.487     376.846
-ar.L1         -0.8659      0.222     -3.896      0.000      -1.302      -0.430
-ar.L2         -0.4234      0.246     -1.724      0.085      -0.905       0.058
-ar.L3         -0.5574      0.302     -1.844      0.065      -1.150       0.035
-ar.L4         -0.6121      0.177     -3.449      0.001      -0.960      -0.264
-ma.L1          0.5190      0.267      1.945      0.052      -0.004       1.042
-sigma2      3.529e+06   9.89e+05      3.568      0.000    1.59e+06    5.47e+06
+ar.S.L12       0.8250      0.120      6.847      0.000       0.589       1.061
+ma.S.L12      -0.5187      0.197     -2.632      0.008      -0.905      -0.132
+sigma2       1.78e+06    4.7e+05      3.791      0.000     8.6e+05     2.7e+06
 ===================================================================================
-Ljung-Box (L1) (Q):                   0.21   Jarque-Bera (JB):                 1.43
-Prob(Q):                              0.65   Prob(JB):                         0.49
-Heteroskedasticity (H):               0.99   Skew:                             0.39
-Prob(H) (two-sided):                  0.98   Kurtosis:                         2.53
+Ljung-Box (L1) (Q):                   2.82   Jarque-Bera (JB):                 1.13
+Prob(Q):                              0.09   Prob(JB):                         0.57
+Heteroskedasticity (H):               0.81   Skew:                            -0.30
+Prob(H) (two-sided):                  0.70   Kurtosis:                         2.46
 ===================================================================================
 
 Warnings:
@@ -687,23 +729,11 @@ Warnings:
 </div>
 </div>
 </div>
-</section>
-<section id="so-the-arma-4-1-model-is">
-<h3>So the ARMA(4,1) model is:<a class="headerlink" href="#so-the-arma-4-1-model-is" title="Permalink to this heading">#</a></h3>
-<p><span class="math notranslate nohighlight">\(\hat{y_t} = -0.87y_{t-1} - 0.42y_{t-2} - 0.56y_{t-3} - 0.61y_{t-4} + 0.52\varepsilon_{t-1}\)</span></p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#get prediction start and end dates</span>
-<span class="n">pred_start_date</span> <span class="o">=</span> <span class="n">test_data</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-<span class="n">pred_end_date</span> <span class="o">=</span> <span class="n">test_data</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
-</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#get the predictions and residuals</span>
-<span class="n">predictions</span> <span class="o">=</span> <span class="n">model_fit</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="n">pred_start_date</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="n">pred_end_date</span><span class="p">)</span>
+<span class="n">predictions</span> <span class="o">=</span> <span class="n">model_fit</span><span class="o">.</span><span class="n">forecast</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">test_data</span><span class="p">))</span>
+<span class="n">predictions</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">predictions</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">test_data</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
 <span class="n">residuals</span> <span class="o">=</span> <span class="n">test_data</span> <span class="o">-</span> <span class="n">predictions</span>
 </pre></div>
 </div>
@@ -713,38 +743,49 @@ Warnings:
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">residuals</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Residuals from AR Model&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Residuals from SARIMA Model&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Error&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.lines.Line2D at 0x126941c50&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;Error&#39;)
 </pre></div>
 </div>
-<img alt="../../_images/041a7333273d9168d07612acbd9d62a7adebcd1c1614ecaa80e5869fe17feaaf.png" src="../../_images/041a7333273d9168d07612acbd9d62a7adebcd1c1614ecaa80e5869fe17feaaf.png" />
+<img alt="../../_images/c5e7ea9cc10a84d8e74e25d42ca3c954c901e8951b8913bb4693635f1f4ff69a.png" src="../../_images/c5e7ea9cc10a84d8e74e25d42ca3c954c901e8951b8913bb4693635f1f4ff69a.png" />
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
 
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">test_data</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">lim_catfish_sales</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">predictions</span><span class="p">)</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">((</span><span class="s1">&#39;Data&#39;</span><span class="p">,</span> <span class="s1">&#39;Predictions&#39;</span><span class="p">),</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
 
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;First Difference of Catfish Sales&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Sales&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Catfish Sales in 1000s of Pounds&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Production&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">year</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">start_date</span><span class="o">.</span><span class="n">year</span><span class="p">,</span><span class="n">end_date</span><span class="o">.</span><span class="n">year</span><span class="p">):</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">year</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39;-01-01&#39;</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;Sales&#39;)
+<img alt="../../_images/6329a85026e4a8a3e4181964adafc3071f4cfe37db740c01b58acc9c8c16a153.png" src="../../_images/6329a85026e4a8a3e4181964adafc3071f4cfe37db740c01b58acc9c8c16a153.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Mean Absolute Percent Error:&#39;</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">residuals</span><span class="o">/</span><span class="n">test_data</span><span class="p">)),</span><span class="mi">4</span><span class="p">))</span>
 </pre></div>
 </div>
-<img alt="../../_images/df2c915726e5758159b796e2b91aa8ceefe6575a80f4bfe34cd0c8517ad7b80d.png" src="../../_images/df2c915726e5758159b796e2b91aa8ceefe6575a80f4bfe34cd0c8517ad7b80d.png" />
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mean Absolute Percent Error: 0.0433
+</pre></div>
+</div>
 </div>
 </div>
 <div class="cell docutils container">
@@ -754,13 +795,405 @@ Warnings:
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Root Mean Squared Error: 2214.6996924903383
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Root Mean Squared Error: 1122.3018259717915
 </pre></div>
 </div>
 </div>
 </div>
 </section>
-</section>
+<section class="tex2jax_ignore mathjax_ignore" id="using-the-rolling-forecast-origin">
+<h1>Using the Rolling Forecast Origin<a class="headerlink" href="#using-the-rolling-forecast-origin" title="Permalink to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rolling_predictions</span> <span class="o">=</span> <span class="n">test_data</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">train_end</span> <span class="ow">in</span> <span class="n">test_data</span><span class="o">.</span><span class="n">index</span><span class="p">:</span>
+    <span class="n">train_data</span> <span class="o">=</span> <span class="n">lim_catfish_sales</span><span class="p">[:</span><span class="n">train_end</span><span class="o">-</span><span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="mi">1</span><span class="p">)]</span>
+    <span class="n">model</span> <span class="o">=</span> <span class="n">SARIMAX</span><span class="p">(</span><span class="n">train_data</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="n">my_order</span><span class="p">,</span> <span class="n">seasonal_order</span><span class="o">=</span><span class="n">my_seasonal_order</span><span class="p">)</span>
+    <span class="n">model_fit</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+
+    <span class="n">pred</span> <span class="o">=</span> <span class="n">model_fit</span><span class="o">.</span><span class="n">forecast</span><span class="p">()</span>
+    <span class="n">rolling_predictions</span><span class="p">[</span><span class="n">train_end</span><span class="p">]</span> <span class="o">=</span> <span class="n">pred</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>RUNNING THE L-BFGS-B CODE
+
+           * * *
+
+Machine precision = 2.220D-16
+ N =            3     M =           10
+
+At X0         0 variables are exactly at the bounds
+
+At iterate    0    f=  8.91418D+00    |proj g|=  1.42265D+00
+
+At iterate    5    f=  8.54683D+00    |proj g|=  2.47769D-01
+
+At iterate   10    f=  8.53059D+00    |proj g|=  1.21746D-03
+
+At iterate   15    f=  8.53059D+00    |proj g|=  1.23643D-03
+
+At iterate   20    f=  8.53051D+00    |proj g|=  1.57533D-02
+
+At iterate   25    f=  8.52658D+00    |proj g|=  7.30506D-02
+
+At iterate   30    f=  8.51412D+00    |proj g|=  2.67419D-02
+
+At iterate   35    f=  8.50324D+00    |proj g|=  8.46847D-03
+
+           * * *
+
+Tit   = total number of iterations
+Tnf   = total number of function evaluations
+Tnint = total number of segments explored during Cauchy searches
+Skip  = number of BFGS updates skipped
+Nact  = number of active bounds at final generalized Cauchy point
+Projg = norm of the final projected gradient
+F     = final function value
+
+           * * *
+
+   N    Tit     Tnf  Tnint  Skip  Nact     Projg        F
+    3     38     51      1     0     0   6.590D-06   8.503D+00
+  F =   8.5031324788887073     
+
+CONVERGENCE: NORM_OF_PROJECTED_GRADIENT_&lt;=_PGTOL            
+RUNNING THE L-BFGS-B CODE
+
+           * * *
+
+Machine precision = 2.220D-16
+ N =            3     M =           10
+
+At X0         0 variables are exactly at the bounds
+
+At iterate    0    f=  8.86400D+00    |proj g|=  1.19501D+00
+
+At iterate    5    f=  8.58224D+00    |proj g|=  2.96088D-01
+
+At iterate   10    f=  8.55609D+00    |proj g|=  1.27139D-03
+
+At iterate   15    f=  8.55609D+00    |proj g|=  1.08449D-03
+
+At iterate   20    f=  8.55589D+00    |proj g|=  2.49921D-02
+
+At iterate   25    f=  8.53864D+00    |proj g|=  1.10938D-01
+
+At iterate   30    f=  8.51375D+00    |proj g|=  3.30943D-02
+
+At iterate   35    f=  8.50504D+00    |proj g|=  1.22398D-01
+
+At iterate   40    f=  8.50171D+00    |proj g|=  3.32685D-04
+
+           * * *
+
+Tit   = total number of iterations
+Tnf   = total number of function evaluations
+Tnint = total number of segments explored during Cauchy searches
+Skip  = number of BFGS updates skipped
+Nact  = number of active bounds at final generalized Cauchy point
+Projg = norm of the final projected gradient
+F     = final function value
+
+           * * *
+
+   N    Tit     Tnf  Tnint  Skip  Nact     Projg        F
+    3     41     49      1     0     0   9.110D-06   8.502D+00
+  F =   8.5017078631245955     
+
+CONVERGENCE: NORM_OF_PROJECTED_GRADIENT_&lt;=_PGTOL            
+RUNNING THE L-BFGS-B CODE
+
+           * * *
+
+Machine precision = 2.220D-16
+ N =            3     M =           10
+
+At X0         0 variables are exactly at the bounds
+
+At iterate    0    f=  8.89744D+00    |proj g|=  1.39659D+00
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/phil/mini310/envs/a405/lib/python3.11/site-packages/statsmodels/tsa/statespace/sarimax.py:997: UserWarning: Non-stationary starting seasonal autoregressive Using zeros as starting parameters.
+  warn(&#39;Non-stationary starting seasonal autoregressive&#39;
+/Users/phil/mini310/envs/a405/lib/python3.11/site-packages/statsmodels/tsa/statespace/sarimax.py:1009: UserWarning: Non-invertible starting seasonal moving average Using zeros as starting parameters.
+  warn(&#39;Non-invertible starting seasonal moving average&#39;
+ This problem is unconstrained.
+/var/folders/h3/5svt7fds58v0x7kkc54kl3640000gn/T/ipykernel_15264/3978322752.py:8: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise an error in a future version of pandas. Value &#39;[25695.47055246]&#39; has dtype incompatible with int64, please explicitly cast to a compatible dtype first.
+  rolling_predictions[train_end] = pred
+/Users/phil/mini310/envs/a405/lib/python3.11/site-packages/statsmodels/tsa/statespace/sarimax.py:997: UserWarning: Non-stationary starting seasonal autoregressive Using zeros as starting parameters.
+  warn(&#39;Non-stationary starting seasonal autoregressive&#39;
+/Users/phil/mini310/envs/a405/lib/python3.11/site-packages/statsmodels/tsa/statespace/sarimax.py:1009: UserWarning: Non-invertible starting seasonal moving average Using zeros as starting parameters.
+  warn(&#39;Non-invertible starting seasonal moving average&#39;
+ This problem is unconstrained.
+/var/folders/h3/5svt7fds58v0x7kkc54kl3640000gn/T/ipykernel_15264/3978322752.py:8: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
+  rolling_predictions[train_end] = pred
+/Users/phil/mini310/envs/a405/lib/python3.11/site-packages/statsmodels/tsa/statespace/sarimax.py:997: UserWarning: Non-stationary starting seasonal autoregressive Using zeros as starting parameters.
+  warn(&#39;Non-stationary starting seasonal autoregressive&#39;
+/Users/phil/mini310/envs/a405/lib/python3.11/site-packages/statsmodels/tsa/statespace/sarimax.py:1009: UserWarning: Non-invertible starting seasonal moving average Using zeros as starting parameters.
+  warn(&#39;Non-invertible starting seasonal moving average&#39;
+ This problem is unconstrained.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>At iterate    5    f=  8.53679D+00    |proj g|=  2.33465D-01
+
+At iterate   10    f=  8.52165D+00    |proj g|=  1.07445D-03
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>At iterate   15    f=  8.52164D+00    |proj g|=  1.33127D-03
+
+At iterate   20    f=  8.52155D+00    |proj g|=  1.65997D-02
+
+At iterate   25    f=  8.51029D+00    |proj g|=  2.23727D-02
+
+At iterate   30    f=  8.49962D+00    |proj g|=  2.51751D-02
+
+At iterate   35    f=  8.49435D+00    |proj g|=  1.04401D-02
+
+           * * *
+
+Tit   = total number of iterations
+Tnf   = total number of function evaluations
+Tnint = total number of segments explored during Cauchy searches
+Skip  = number of BFGS updates skipped
+Nact  = number of active bounds at final generalized Cauchy point
+Projg = norm of the final projected gradient
+F     = final function value
+
+           * * *
+
+   N    Tit     Tnf  Tnint  Skip  Nact     Projg        F
+    3     39     52      1     0     0   5.315D-06   8.494D+00
+  F =   8.4942658987767015     
+
+CONVERGENCE: NORM_OF_PROJECTED_GRADIENT_&lt;=_PGTOL            
+RUNNING THE L-BFGS-B CODE
+
+           * * *
+
+Machine precision = 2.220D-16
+ N =            3     M =           10
+
+At X0         0 variables are exactly at the bounds
+
+At iterate    0    f=  9.25408D+00    |proj g|=  2.39078D+00
+
+At iterate    5    f=  8.61656D+00    |proj g|=  7.31109D-01
+
+At iterate   10    f=  8.49518D+00    |proj g|=  1.28783D-02
+
+At iterate   15    f=  8.49470D+00    |proj g|=  4.19596D-04
+
+At iterate   20    f=  8.49466D+00    |proj g|=  1.41637D-02
+
+At iterate   25    f=  8.49084D+00    |proj g|=  2.69214D-02
+
+At iterate   30    f=  8.48588D+00    |proj g|=  5.99234D-04
+
+           * * *
+
+Tit   = total number of iterations
+Tnf   = total number of function evaluations
+Tnint = total number of segments explored during Cauchy searches
+Skip  = number of BFGS updates skipped
+Nact  = number of active bounds at final generalized Cauchy point
+Projg = norm of the final projected gradient
+F     = final function value
+
+           * * *
+
+   N    Tit     Tnf  Tnint  Skip  Nact     Projg        F
+    3     32     37      1     0     0   9.965D-06   8.486D+00
+  F =   8.4858777135100016     
+
+CONVERGENCE: NORM_OF_PROJECTED_GRADIENT_&lt;=_PGTOL            
+RUNNING THE L-BFGS-B CODE
+
+           * * *
+
+Machine precision = 2.220D-16
+ N =            3     M =           10
+
+At X0         0 variables are exactly at the bounds
+
+At iterate    0    f=  8.92904D+00    |proj g|=  1.45858D+00
+
+At iterate    5    f=  8.52840D+00    |proj g|=  1.89278D-01
+
+At iterate   10    f=  8.51407D+00    |proj g|=  1.40560D-03
+
+At iterate   15    f=  8.51407D+00    |proj g|=  7.98632D-04
+
+At iterate   20    f=  8.51401D+00    |proj g|=  1.54164D-02
+
+At iterate   25    f=  8.50610D+00    |proj g|=  7.44241D-02
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>At iterate   30    f=  8.49666D+00    |proj g|=  2.70361D-02
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/h3/5svt7fds58v0x7kkc54kl3640000gn/T/ipykernel_15264/3978322752.py:8: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
+  rolling_predictions[train_end] = pred
+/Users/phil/mini310/envs/a405/lib/python3.11/site-packages/statsmodels/tsa/statespace/sarimax.py:997: UserWarning: Non-stationary starting seasonal autoregressive Using zeros as starting parameters.
+  warn(&#39;Non-stationary starting seasonal autoregressive&#39;
+/Users/phil/mini310/envs/a405/lib/python3.11/site-packages/statsmodels/tsa/statespace/sarimax.py:1009: UserWarning: Non-invertible starting seasonal moving average Using zeros as starting parameters.
+  warn(&#39;Non-invertible starting seasonal moving average&#39;
+ This problem is unconstrained.
+/var/folders/h3/5svt7fds58v0x7kkc54kl3640000gn/T/ipykernel_15264/3978322752.py:8: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
+  rolling_predictions[train_end] = pred
+/Users/phil/mini310/envs/a405/lib/python3.11/site-packages/statsmodels/tsa/statespace/sarimax.py:997: UserWarning: Non-stationary starting seasonal autoregressive Using zeros as starting parameters.
+  warn(&#39;Non-stationary starting seasonal autoregressive&#39;
+/Users/phil/mini310/envs/a405/lib/python3.11/site-packages/statsmodels/tsa/statespace/sarimax.py:1009: UserWarning: Non-invertible starting seasonal moving average Using zeros as starting parameters.
+  warn(&#39;Non-invertible starting seasonal moving average&#39;
+ This problem is unconstrained.
+/var/folders/h3/5svt7fds58v0x7kkc54kl3640000gn/T/ipykernel_15264/3978322752.py:8: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
+  rolling_predictions[train_end] = pred
+/Users/phil/mini310/envs/a405/lib/python3.11/site-packages/statsmodels/tsa/statespace/sarimax.py:997: UserWarning: Non-stationary starting seasonal autoregressive Using zeros as starting parameters.
+  warn(&#39;Non-stationary starting seasonal autoregressive&#39;
+/Users/phil/mini310/envs/a405/lib/python3.11/site-packages/statsmodels/tsa/statespace/sarimax.py:1009: UserWarning: Non-invertible starting seasonal moving average Using zeros as starting parameters.
+  warn(&#39;Non-invertible starting seasonal moving average&#39;
+ This problem is unconstrained.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>At iterate   35    f=  8.49013D+00    |proj g|=  7.29900D-03
+
+           * * *
+
+Tit   = total number of iterations
+Tnf   = total number of function evaluations
+Tnint = total number of segments explored during Cauchy searches
+Skip  = number of BFGS updates skipped
+Nact  = number of active bounds at final generalized Cauchy point
+Projg = norm of the final projected gradient
+F     = final function value
+
+           * * *
+
+   N    Tit     Tnf  Tnint  Skip  Nact     Projg        F
+    3     39     48      1     0     0   7.069D-06   8.490D+00
+  F =   8.4898467456765800     
+
+CONVERGENCE: NORM_OF_PROJECTED_GRADIENT_&lt;=_PGTOL            
+RUNNING THE L-BFGS-B CODE
+
+           * * *
+
+Machine precision = 2.220D-16
+ N =            3     M =           10
+
+At X0         0 variables are exactly at the bounds
+
+At iterate    0    f=  8.95048D+00    |proj g|=  1.55516D+00
+
+At iterate    5    f=  8.51424D+00    |proj g|=  1.50711D-01
+
+At iterate   10    f=  8.49902D+00    |proj g|=  8.77501D-04
+
+At iterate   15    f=  8.49901D+00    |proj g|=  5.44988D-04
+
+At iterate   20    f=  8.49886D+00    |proj g|=  2.42409D-03
+
+At iterate   25    f=  8.49138D+00    |proj g|=  3.52751D-02
+
+At iterate   30    f=  8.48336D+00    |proj g|=  9.67822D-03
+
+           * * *
+
+Tit   = total number of iterations
+Tnf   = total number of function evaluations
+Tnint = total number of segments explored during Cauchy searches
+Skip  = number of BFGS updates skipped
+Nact  = number of active bounds at final generalized Cauchy point
+Projg = norm of the final projected gradient
+F     = final function value
+
+           * * *
+
+   N    Tit     Tnf  Tnint  Skip  Nact     Projg        F
+    3     34     54      1     0     0   3.058D-05   8.483D+00
+  F =   8.4833339337371800     
+
+CONVERGENCE: REL_REDUCTION_OF_F_&lt;=_FACTR*EPSMCH             
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> Warning:  more than 10 function and gradient
+   evaluations in the last line search.  Termination
+   may possibly be caused by a bad search direction.
+/var/folders/h3/5svt7fds58v0x7kkc54kl3640000gn/T/ipykernel_15264/3978322752.py:8: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
+  rolling_predictions[train_end] = pred
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rolling_residuals</span> <span class="o">=</span> <span class="n">test_data</span> <span class="o">-</span> <span class="n">rolling_predictions</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">rolling_residuals</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Rolling Forecast Residuals from SARIMA Model&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Error&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;Error&#39;)
+</pre></div>
+</div>
+<img alt="../../_images/d531104a6214b796c321b66ce0a44de3862cdf2608de7db3f9ff06a4c5ee9a65.png" src="../../_images/d531104a6214b796c321b66ce0a44de3862cdf2608de7db3f9ff06a4c5ee9a65.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">lim_catfish_sales</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">rolling_predictions</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">((</span><span class="s1">&#39;Data&#39;</span><span class="p">,</span> <span class="s1">&#39;Predictions&#39;</span><span class="p">),</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Catfish Sales in 1000s of Pounds&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Production&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">year</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">start_date</span><span class="o">.</span><span class="n">year</span><span class="p">,</span><span class="n">end_date</span><span class="o">.</span><span class="n">year</span><span class="p">):</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">year</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39;-01-01&#39;</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/e1c5a8d4e1df983fce6e28643146fceb90dcf354cdbf64efffafcb9a3c938f5b.png" src="../../_images/e1c5a8d4e1df983fce6e28643146fceb90dcf354cdbf64efffafcb9a3c938f5b.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Mean Absolute Percent Error:&#39;</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">rolling_residuals</span><span class="o">/</span><span class="n">test_data</span><span class="p">)),</span><span class="mi">4</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mean Absolute Percent Error: 0.0288
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Root Mean Squared Error:&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">rolling_residuals</span><span class="o">**</span><span class="mi">2</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Root Mean Squared Error: 804.124026465311
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 
     <script type="text/x-thebe-config">
@@ -794,20 +1227,20 @@ Warnings:
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="ma_model.html"
+       href="arma_model.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">moving average model</p>
+        <p class="prev-next-title">ARMA model</p>
       </div>
     </a>
     <a class="right-next"
-       href="sarima_catfish_model.html"
+       href="sarima_co2.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">SARIMA: Catfish Sales Data</p>
+        <p class="prev-next-title">SARIMA-TimeSeries Analysis of Atmospheric CO2</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -827,21 +1260,23 @@ Warnings:
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#input-catfish-sales-data">Input catfish Sales Data</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#acf-autocurrelation">ACF – autocurrelation</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#based-on-acf-we-should-start-with-a-ma-1-process">Based on ACF, we should start with a MA(1) process</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">SARIMA: Catfish Sales Data</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#remove-the-trend">Remove the trend</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pacf-partial-autocorrelation">PACF – partial autocorrelation</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#based-on-pacf-we-should-start-with-a-ar-4-process">Based on PACF, we should start with a AR(4) process</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#acf">ACF</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#based-on-acf-we-should-start-with-a-seasonal-ma-process">Based on ACF, we should start with a seasonal MA process</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#get-training-and-testing-sets">Get training and testing sets</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fit-the-arma-model">Fit the ARMA Model</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#so-the-arma-4-1-model-is">So the ARMA(4,1) model is:</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#pacf">PACF</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#based-on-pacf-we-should-start-with-a-seasonal-ar-process">Based on PACF, we should start with a seasonal AR process</a></li>
 </ul>
 </li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#get-training-and-testing-sets">Get training and testing sets</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#fit-the-sarima-model">Fit the SARIMA Model</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#using-the-rolling-forecast-origin">Using the Rolling Forecast Origin</a></li>
 </ul>
+
   </nav></div>
 
 </div></div>
