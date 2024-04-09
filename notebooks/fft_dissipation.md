@@ -12,47 +12,22 @@ kernelspec:
   display_name: Python 3 (ipykernel)
   language: python
   name: python3
-latex_envs:
-  LaTeX_envs_menu_present: true
-  autoclose: false
-  autocomplete: true
-  bibliofile: biblio.bib
-  cite_by: apalike
-  current_citInitial: 1
-  eqLabelWithNumbers: true
-  eqNumInitial: 1
-  hotkeys:
-    equation: meta-9
-  labels_anchors: false
-  latex_user_defs: false
-  report_style_numbering: false
-  user_envs_cfg: false
-toc:
-  base_numbering: 1
-  nav_menu: {}
-  number_sections: true
-  sideBar: false
-  skip_h1_title: false
-  title_cell: Table of Contents
-  title_sidebar: Contents
-  toc_cell: true
-  toc_position: {}
-  toc_section_display: block
-  toc_window_display: false
 ---
+
++++ {"trusted": false}
+
+(fft_dissipation)=
+# Power spectrum of turbulent vertical velocity
+
+Find the dissipation rate using an fft of tower vertical velocity data
 
 ```{code-cell} ipython3
 :trusted: true
 
-#title here
 import numpy as np
 import matplotlib.pyplot as plt
 from pathlib import Path
 ```
-
-+++ {"trusted": false}
-
-# Power spectrum of turbulent vertical velocity
 
 ```{code-cell} ipython3
 :trusted: true
@@ -127,7 +102,6 @@ thePoint=theAx.plot(1.,power_half[1]*1.e-3,'g+')
 thePoint[0].set_markersize(15)
 thePoint[0].set_marker('h')
 thePoint[0].set_markerfacecolor('g')
-
 ```
 
 +++ {"trusted": false}
