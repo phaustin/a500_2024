@@ -542,124 +542,23 @@ parameters and a path to a folder, makes the requests to the Wyoming site and wr
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dict_keys=[&#39;filelist&#39;, &#39;attributes&#39;, &#39;input_args&#39;, &#39;file_dict&#39;, &#39;sounding_dict&#39;]
-brazil_dict[&#39;attributes&#39;]={&#39;units&#39;: &#39;hPa;m;C;C;%;g/kg;deg;knot;K;K;K&#39;, &#39;site_id&#39;: &#39;82965&#39;, &#39;latitude&#39;: -9.86, &#39;longitude&#39;: -56.1, &#39;elevation&#39;: 2.0, &#39;header&#39;: &#39;82965 SBAT Alta Floresta (Aero) Observations at 00Z 01 Feb 2013&#39;, &#39;history&#39;: &#39;written by test_requests.py&#39;}
-soundings=[(2013, 2, 1, 0), (2013, 2, 1, 12), (2013, 2, 2, 0), (2013, 2, 2, 12), (2013, 2, 3, 0), (2013, 2, 4, 0), (2013, 2, 4, 12), (2013, 2, 5, 0), (2013, 2, 5, 12), (2013, 2, 6, 0), (2013, 2, 6, 12), (2013, 2, 7, 0), (2013, 2, 7, 12), (2013, 2, 8, 0), (2013, 2, 8, 12), (2013, 2, 9, 0), (2013, 2, 9, 12), (2013, 2, 10, 0), (2013, 2, 10, 12), (2013, 2, 11, 0), (2013, 2, 11, 12), (2013, 2, 12, 0), (2013, 2, 12, 12), (2013, 2, 13, 0), (2013, 2, 13, 12), (2013, 2, 14, 0), (2013, 2, 14, 12), (2013, 2, 15, 0), (2013, 2, 15, 12), (2013, 2, 16, 0), (2013, 2, 16, 12), (2013, 2, 17, 0), (2013, 2, 17, 12), (2013, 2, 18, 0), (2013, 2, 18, 12), (2013, 2, 19, 0), (2013, 2, 19, 12), (2013, 2, 20, 0), (2013, 2, 20, 12), (2013, 2, 21, 0), (2013, 2, 21, 12), (2013, 2, 22, 0), (2013, 2, 22, 12), (2013, 2, 23, 0), (2013, 2, 23, 12), (2013, 2, 24, 0), (2013, 2, 24, 12), (2013, 2, 25, 0), (2013, 2, 25, 12), (2013, 2, 26, 0), (2013, 2, 26, 12), (2013, 2, 27, 0), (2013, 2, 27, 12), (2013, 2, 28, 0)]
-the_sound=    Unnamed: 0   pres     hght  temp  dwpt   relh       mixr   drct  sknt  \
-0            0  979.0    288.0  23.6  23.3   98.0  18.717439    0.0   0.0   
-1            1  977.0    306.0  22.0  22.0  100.0  17.293165   40.0   5.0   
-2            2  975.0    324.0  21.9  21.7   99.0  17.006220   80.0  10.0   
-3            3  972.0    351.0  21.7  21.4   98.0  16.741189   80.0  13.0   
-4            4  965.0    414.0  21.3  20.5   95.0  15.934128   75.0  13.0   
-5            5  963.0    432.0  21.2  20.2   94.0  15.667339   69.0  13.0   
-6            6  961.0    450.0  21.0   5.0   35.0   5.696602   63.0  13.0   
-7            7  960.0    459.0  21.0 -28.0    2.0   0.398931   60.0  13.0   
-8            8  955.0    504.0  20.9 -28.1    2.0   0.397318   45.0  12.0   
-9            9  952.0    531.0  20.8 -28.2    2.0   0.394888   46.0  14.0   
-10          10  951.0    540.0  20.8 -28.2    2.0   0.395303   47.0  14.0   
-11          11  950.0    549.0  20.8  13.8   64.0  10.497949   47.0  15.0   
-12          12  944.0    604.0  20.4  19.6   95.0  15.392253   50.0  18.0   
-13          13  927.0    761.0  19.7  19.1   97.0  15.189133   55.0   7.0   
-14          14  925.0    780.0  19.6  19.1   97.0  15.222779   60.0   8.0   
-15          15  921.0    817.0  19.5  18.9   97.0  15.096145   70.0  10.0   
-16          16  914.0    883.0  19.2  18.7   97.0  15.020912   50.0  12.0   
-17          17  900.0   1016.0  18.8  18.2   96.0  14.778089   80.0  10.0   
-18          18  892.0   1093.0  18.5  17.9   96.0  14.628480   85.0   8.0   
-19          19  879.0   1219.0  18.0  17.4   96.0  14.378208   40.0  10.0   
-20          20  873.0   1278.0  17.8  17.1   96.0  14.200815   55.0  12.0   
-21          21  867.0   1338.0  17.6  16.9   95.0  14.117051   45.0  12.0   
-22          22  860.0   1407.0  17.4  16.6   95.0  13.959843   80.0  13.0   
-23          23  850.0   1508.0  17.0  16.2   95.0  13.764526   50.0  14.0   
-24          24  848.0   1528.0  16.9  16.1   95.0  13.707998   45.0  13.0   
-25          25  831.0   1699.0  16.2  15.4   95.0  13.368263   70.0  12.0   
-26          26  820.0   1812.0  15.7  14.9   95.0  13.113611   50.0  15.0   
-27          27  809.0   1926.0  15.2  14.4   95.0  12.864633   75.0  13.0   
-28          28  800.0   2020.0  14.8  14.1   96.0  12.756870   70.0  16.0   
-29          29  769.0   2354.0  13.3  12.6   96.0  12.020335   80.0  19.0   
-30          30  763.0   2421.0  13.0  12.4   96.0  11.955603   70.0  15.0   
-31          31  753.0   2532.0  12.5  11.9   96.0  11.717705   90.0  12.0   
-32          32  708.0   3053.0  10.2   9.7   97.0  10.749025  110.0   8.0   
-33          33  700.0   3149.0   9.8   9.3   97.0  10.580629  110.0   5.0   
-34          34  682.0   3364.0   8.8   8.4   97.0  10.213240  350.0   2.0   
-35          35  640.0   3889.0   6.5   6.1   97.0   9.284831  305.0   9.0   
-36          36  621.0   4138.0   5.4   5.0   97.0   8.859940  307.0  11.0   
-37          37  600.0   4414.0   3.9   3.4   97.0   8.188018  310.0  13.0   
-38          38  570.0   4827.0   1.6   0.9   96.0   7.200403  325.0   9.0   
-39          39  526.0   5473.0  -2.0  -2.9   94.0   5.896436  295.0   6.0   
-40          40  500.0   5880.0  -4.3  -5.3   93.0   5.174327  220.0  11.0   
-41          41  449.0   6720.0  -8.9 -13.5   69.0   3.015772  240.0  15.0   
-42          42  432.0   7021.0 -10.5 -16.5   61.0   2.445646  228.0  18.0   
-43          43  427.0   7110.0 -11.1 -16.6   64.0   2.453733  225.0  19.0   
-44          44  413.0   7365.0 -12.8 -16.7   73.0   2.516038  240.0  16.0   
-45          45  400.0   7610.0 -14.5 -16.9   82.0   2.554832  235.0  15.0   
-46          46  386.0   7879.0 -15.8 -18.9   77.0   2.234504  205.0  13.0   
-47          47  375.0   8098.0 -16.9 -20.6   73.0   1.986608  211.0  13.0   
-48          48  343.0   8763.0 -21.5 -24.5   77.0   1.539033  231.0  12.0   
-49          49  327.0   9115.0 -23.5 -30.5   53.0   0.927291  242.0  12.0   
-50          50  322.0   9227.0 -24.4 -31.5   51.0   0.856006  245.0  12.0   
-51          51  302.0   9692.0 -27.9 -35.9   47.0   0.593374  215.0  11.0   
-52          52  300.0   9740.0 -28.3 -36.3   46.0   0.573884  215.0  11.0   
-53          53  284.0  10131.0 -31.1 -39.1   45.0   0.456042  229.0  11.0   
-54          54  282.0  10181.0 -32.3 -40.3   45.0   0.405556  230.0  11.0   
-55          55  250.0  11020.0 -38.7 -52.7   21.0   0.115483  260.0  11.0   
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">line</span> <span class="mi">3</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">from</span> <span class="nn">a500.soundings.wyominglib</span> <span class="kn">import</span> <span class="n">read_soundings</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">sounding_dir</span> <span class="o">=</span> <span class="s1">&#39;brazil_soundings&#39;</span>
+<span class="ne">----&gt; </span><span class="mi">3</span> <span class="n">brazil_dict</span> <span class="o">=</span> <span class="n">read_soundings</span><span class="p">(</span><span class="n">sounding_dir</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">dict_keys</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">brazil_dict</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">dict_keys</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
 
-     thta   thte   thtv  
-0   298.6  353.5  301.9  
-1   297.1  347.5  300.2  
-2   297.2  346.9  300.2  
-3   297.3  346.0  300.2  
-4   297.5  343.9  300.3  
-5   297.5  343.3  300.3  
-6   297.5  314.6  298.5  
-7   297.6  299.0  297.7  
-8   297.9  299.3  298.0  
-9   298.1  299.5  298.2  
-10  298.2  299.6  298.3  
-11  298.3  329.2  300.2  
-12  298.4  343.5  301.2  
-13  299.2  344.1  302.0  
-14  299.3  344.1  302.1  
-15  299.6  344.2  302.3  
-16  300.0  344.3  302.7  
-17  300.8  344.5  303.5  
-18  301.3  344.6  304.0  
-19  302.1  344.8  304.7  
-20  302.5  344.9  305.1  
-21  302.9  345.0  305.4  
-22  303.3  345.1  305.9  
-23  303.9  345.3  306.5  
-24  304.1  345.3  306.6  
-25  305.0  345.3  307.5  
-26  305.7  345.4  308.1  
-27  306.3  345.4  308.7  
-28  306.9  345.5  309.2  
-29  308.8  345.7  311.0  
-30  309.1  345.8  311.4  
-31  309.8  345.9  312.0  
-32  312.8  346.3  314.8  
-33  313.3  346.4  315.3  
-34  314.6  346.7  316.5  
-35  317.7  347.3  319.5  
-36  319.2  347.7  320.9  
-37  320.5  347.0  322.1  
-38  322.6  346.3  324.0  
-39  325.8  345.5  326.9  
-40  327.7  345.3  328.8  
-41  332.2  342.9  332.8  
-42  333.8  342.6  334.3  
-43  334.2  343.1  334.7  
-44  335.1  344.2  335.6  
-45  336.1  345.3  336.6  
-46  337.8  345.9  338.2  
-47  339.1  346.5  339.5  
-48  341.6  347.5  342.0  
-49  343.6  347.2  343.8  
-50  343.9  347.3  344.1  
-51  345.2  347.7  345.4  
-52  345.4  347.7  345.5  
-53  346.8  348.7  346.9  
-54  345.8  347.5  345.9  
-55  348.4  348.9  348.4  
+<span class="nn">File ~/mini310/envs/a301/lib/python3.11/site-packages/a500/soundings/wyominglib.py:312,</span> in <span class="ni">read_soundings</span><span class="nt">(soundingdir)</span>
+<span class="g g-Whitespace">    </span><span class="mi">310</span> <span class="n">input_dir</span><span class="o">=</span><span class="n">Path</span><span class="p">(</span><span class="n">soundingdir</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">311</span> <span class="n">json_file</span> <span class="o">=</span> <span class="n">input_dir</span> <span class="o">/</span> <span class="n">Path</span><span class="p">(</span><span class="s1">&#39;metadata.json&#39;</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">312</span> <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">json_file</span><span class="p">,</span><span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">infile</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">313</span>     <span class="n">meta_dict</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">infile</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">314</span> <span class="n">file_dict</span><span class="o">=</span><span class="p">{}</span>
+
+<span class="ne">FileNotFoundError</span>: [Errno 2] No such file or directory: &#39;brazil_soundings/metadata.json&#39;
 </pre></div>
 </div>
 </div>
@@ -672,19 +571,13 @@ the_sound=    Unnamed: 0   pres     hght  temp  dwpt   relh       mixr   drct  s
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(array([979., 977., 975., 972., 965., 963., 961., 960., 955., 952., 951.,
-        950., 944., 927., 925., 921., 914., 900., 892., 879., 873., 867.,
-        860., 850., 848., 831., 820., 809., 800., 769., 763., 753., 708.,
-        700., 682., 640., 621., 600., 570., 526., 500., 449., 432., 427.,
-        413., 400., 386., 375., 343., 327., 322., 302., 300., 284., 282.,
-        250.]),
- array([ 23.6,  22. ,  21.9,  21.7,  21.3,  21.2,  21. ,  21. ,  20.9,
-         20.8,  20.8,  20.8,  20.4,  19.7,  19.6,  19.5,  19.2,  18.8,
-         18.5,  18. ,  17.8,  17.6,  17.4,  17. ,  16.9,  16.2,  15.7,
-         15.2,  14.8,  13.3,  13. ,  12.5,  10.2,   9.8,   8.8,   6.5,
-          5.4,   3.9,   1.6,  -2. ,  -4.3,  -8.9, -10.5, -11.1, -12.8,
-        -14.5, -15.8, -16.9, -21.5, -23.5, -24.4, -27.9, -28.3, -31.1,
-        -32.3, -38.7]))
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">press</span><span class="p">,</span><span class="n">temp</span> <span class="o">=</span> <span class="n">the_sound</span><span class="p">[</span><span class="s1">&#39;pres&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">(),</span> <span class="n">the_sound</span><span class="p">[</span><span class="s1">&#39;temp&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">press</span><span class="p">,</span> <span class="n">temp</span>
+
+<span class="ne">NameError</span>: name &#39;the_sound&#39; is not defined
 </pre></div>
 </div>
 </div>
@@ -725,7 +618,7 @@ downwards, and I make y a log scale and draw a horizontal grid.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/9fc4858a52fca6b20bf350442bf33dcc7343ec8a26462e7dd5d64a1cd68748f4.png" src="../_images/9fc4858a52fca6b20bf350442bf33dcc7343ec8a26462e7dd5d64a1cd68748f4.png" />
+<img alt="../_images/2b2a9992f736cee4a76e997df741b8e630ea52868fca0bd9ced18cab2248d91c.png" src="../_images/2b2a9992f736cee4a76e997df741b8e630ea52868fca0bd9ced18cab2248d91c.png" />
 </div>
 </div>
 </section>
@@ -840,7 +733,7 @@ skew = 30 Kelvin  is about right.  Below I show what 4 different values of the s
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/2e18a9917261887b049c1529e3dae89a235103b6374689b9ff36b1351a324126.png" src="../_images/2e18a9917261887b049c1529e3dae89a235103b6374689b9ff36b1351a324126.png" />
+<img alt="../_images/dcaaab201e67286e6d3acb69327f52af60825bd70c08a4aed6c0c5ce70c9eec1.png" src="../_images/dcaaab201e67286e6d3acb69327f52af60825bd70c08a4aed6c0c5ce70c9eec1.png" />
 </div>
 </div>
 </section>
@@ -891,7 +784,7 @@ makeSkewDry(ax, skew=30)
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/79192ea7217ea11c3f02754690dcc6c0c44bf014204dc7ab7641f8de591e636e.png" src="../_images/79192ea7217ea11c3f02754690dcc6c0c44bf014204dc7ab7641f8de591e636e.png" />
+<img alt="../_images/d2c53ac6df1d6adc0ff746b3459e7fb8dc0571356883212b11849d788f0090e0.png" src="../_images/d2c53ac6df1d6adc0ff746b3459e7fb8dc0571356883212b11849d788f0090e0.png" />
 </div>
 </div>
 </section>
@@ -906,7 +799,7 @@ makeSkewDry(ax, skew=30)
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/ad062fddd1291e3b0abc0605e5c2173eee3592695efa5306b277ab46396cbd90.png" src="../_images/ad062fddd1291e3b0abc0605e5c2173eee3592695efa5306b277ab46396cbd90.png" />
+<img alt="../_images/653efabe78fcda928a7cf9614618ef2a20c417336bd9891c90e211d79bd1dde1.png" src="../_images/653efabe78fcda928a7cf9614618ef2a20c417336bd9891c90e211d79bd1dde1.png" />
 </div>
 </div>
 </section>
@@ -923,7 +816,7 @@ makeSkewDry(ax, skew=30)
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/d36cc0eece7c61a6c64b0e2e6bba197c1d7cb310b04b59156284e0ff1298fdf1.png" src="../_images/d36cc0eece7c61a6c64b0e2e6bba197c1d7cb310b04b59156284e0ff1298fdf1.png" />
+<img alt="../_images/8a4d49922fd0704f4a8b8132e415a52308e83bb88c80a7e6507e8f37e8fe409b.png" src="../_images/8a4d49922fd0704f4a8b8132e415a52308e83bb88c80a7e6507e8f37e8fe409b.png" />
 </div>
 </div>
 </section>
@@ -940,7 +833,7 @@ and the upper boundary stops at 600 hPa</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/7f44da491bbf292ab45734c2a8d1c399538fd695171c958c6eb922f15e6e6a8b.png" src="../_images/7f44da491bbf292ab45734c2a8d1c399538fd695171c958c6eb922f15e6e6a8b.png" />
+<img alt="../_images/c99f13e0b9a8c61435aaec2baae92361b999dd92c510c35eead4bef80a304780.png" src="../_images/c99f13e0b9a8c61435aaec2baae92361b999dd92c510c35eead4bef80a304780.png" />
 </div>
 </div>
 </section>
@@ -955,11 +848,33 @@ and the upper boundary stops at 600 hPa</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">13</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">press</span><span class="p">,</span><span class="n">temp</span> <span class="o">=</span> <span class="n">the_sound</span><span class="p">[</span><span class="s1">&#39;pres&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">(),</span> <span class="n">the_sound</span><span class="p">[</span><span class="s1">&#39;temp&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">dewpoint</span><span class="o">=</span> <span class="n">the_sound</span><span class="p">[</span><span class="s1">&#39;dwpt&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
+
+<span class="ne">NameError</span>: name &#39;the_sound&#39; is not defined
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hit</span> <span class="o">=</span> <span class="n">dewpoint</span> <span class="o">&lt;</span> <span class="o">-</span><span class="mi">10</span>
 <span class="n">dewpoint</span><span class="p">[</span><span class="n">hit</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">14</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">hit</span> <span class="o">=</span> <span class="n">dewpoint</span> <span class="o">&lt;</span> <span class="o">-</span><span class="mi">10</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">dewpoint</span><span class="p">[</span><span class="n">hit</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+
+<span class="ne">NameError</span>: name &#39;dewpoint&#39; is not defined
 </pre></div>
 </div>
 </div>
@@ -979,7 +894,18 @@ and the upper boundary stops at 600 hPa</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/bbdaf9876fcd2a31b121b67afddd857967d236e4e6558194b6491fd39c0b53e4.png" src="../_images/bbdaf9876fcd2a31b121b67afddd857967d236e4e6558194b6491fd39c0b53e4.png" />
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">15</span><span class="p">],</span> <span class="n">line</span> <span class="mi">3</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">skew</span><span class="o">=</span><span class="mi">30</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">skewtemp</span><span class="o">=</span><span class="n">convertTempToSkew</span><span class="p">(</span><span class="n">temp</span><span class="p">,</span><span class="n">press</span><span class="p">,</span><span class="n">skew</span><span class="p">)</span>
+<span class="ne">----&gt; </span><span class="mi">3</span> <span class="n">skewdewpoint</span> <span class="o">=</span> <span class="n">convertTempToSkew</span><span class="p">(</span><span class="n">dewpoint</span><span class="p">,</span><span class="n">press</span><span class="p">,</span><span class="n">skew</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">fig</span><span class="p">,</span><span class="n">ax</span> <span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">ax</span><span class="p">,</span><span class="n">skew</span> <span class="o">=</span> <span class="n">makeSkewDry</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span><span class="n">skew</span><span class="o">=</span><span class="n">skew</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;dewpoint&#39; is not defined
+</pre></div>
+</div>
 </div>
 </div>
 <section id="if-you-have-extra-time">
@@ -1008,7 +934,17 @@ and the upper boundary stops at 600 hPa</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/f065acf33cadeabcfcfecb4e6564a3a21495f3a9a60dc945373861db35e79be0.png" src="../_images/f065acf33cadeabcfcfecb4e6564a3a21495f3a9a60dc945373861db35e79be0.png" />
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">16</span><span class="p">],</span> <span class="n">line</span> <span class="mi">17</span>
+<span class="g g-Whitespace">     </span><span class="mi">15</span> <span class="n">skew_plot</span><span class="o">.</span><span class="n">plot_mixing_lines</span><span class="p">()</span>
+<span class="g g-Whitespace">     </span><span class="mi">16</span> <span class="n">skew_plot</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">press</span><span class="p">,</span><span class="n">temp</span><span class="p">,</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
+<span class="ne">---&gt; </span><span class="mi">17</span> <span class="n">skew_plot</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">press</span><span class="p">,</span><span class="n">dewpoint</span><span class="p">,</span><span class="s1">&#39;g&#39;</span><span class="p">);</span>
+
+<span class="ne">NameError</span>: name &#39;dewpoint&#39; is not defined
+</pre></div>
+</div>
+<img alt="../_images/115949eb1151b8689a29708ab08c2025a197d055a39a14197c2fdfd597486334.png" src="../_images/115949eb1151b8689a29708ab08c2025a197d055a39a14197c2fdfd597486334.png" />
 </div>
 </div>
 </section>

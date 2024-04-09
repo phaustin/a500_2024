@@ -316,3 +316,14 @@ T. U. Delft cloud course](https://www.dropbox.com/scl/fi/n6scqt3wql8otdfvsif1r/d
 - For an FFT refresher: Read 8.1-8.7
 - The Figure 5.16 equations are derived in Section 8.11
 - Finally look at the inertial subrange discussion in Section 9.9.1 and [Tritton Chapter 20](https://www.dropbox.com/scl/fi/5kol1w48uc0rg1byeoihr/Tritton_on_Kolmogorov_Scaling.pdf?rlkey=80612x0a5jyfn6ve3i3g3hp76&dl=0)
+
+## Week 13
+
+### Tuesday
+
+- A good fft chapter [Numerical recipes](https://www.dropbox.com/scl/fi/c67mvy8eh812be5az6rxh/numeric_recipes_fft.pdf?rlkey=x319buxjcu39gpgrh57if62z2&dl=0)
+
+- Turbulence data from a tower in Miami:  [miami_tower.npz](https://www.dropbox.com/scl/fi/bqe4i58fe1ntnmkg4s7jt/miami_tower.npz?rlkey=elogcs6dctu6lmkqhj3zd3tn0&dl=0)
+
+- {ref}`fft_dissipation` and [notebook download](https://www.dropbox.com/scl/fi/u0autqkacefgn5issbxci/fft_dissipation.ipynb?rlkey=q17ex4mxcsx3zxtc20xtlorv6&dl=0)
+

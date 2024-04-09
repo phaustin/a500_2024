@@ -1,0 +1,1337 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Power spectrum of turbulent vertical velocity &#8212; ATSC 500 2024</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/fft_dissipation';</script>
+    <link rel="canonical" href="https://phaustin.github.io/a500_2024/notebooks/fft_dissipation.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="SARIMA-TimeSeries Analysis of Atmospheric CO2" href="time_series/sarima_co2.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">ATSC 500 2024</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../index.html">
+                    ATSC 500  syllabus
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Logistics test</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../schedule.html">Course schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../learning_goals.html">Learning goals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python_install.html">Python links</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Weekly topics</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../week_notes.html">Week notes</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Supplmentary readings</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fi/0wm3y9zbcwrxjy9cm7oen/fluids_01.pdf?rlkey=1d3pll22h2ui689jequbhznkd&amp;dl=0">Week 2 - Jardine Fluids 1</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fi/gb1ryz0x0tszgtfz31iom/fluids_02.pdf?rlkey=neyvhm8k8xhj2yupm8vmuf371&amp;dl=0">Week 2 - Jardine Fluids 2</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fi/whin2z8vct1fp9p03ovsf/lagrangian_eulerian.pdf?rlkey=76g3xlkx36udhjvqhc70e9r88&amp;dl=0">Week 2 - Lagrangian and Eulerian reference frames</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://foundations.projectpythia.org/core/xarray/xarray-intro.html">Week 3 - xarray tutorial</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fi/tkipa4u60xdbt3cd546cs/ensemle_averaging.pdf?rlkey=08k3hvbaz00zi5a5ua7pnhcw9&amp;dl=0">Week 3 - Ensemble averaging</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://gw2jh3xr2c.search.serialssolutions.com/?sid=sersol&amp;SS_jc=TC0001980404&amp;title=An%20introduction%20to%20clouds%20%3A%20from%20the%20microscale%20to%20climate">Lohmann et al. thermodynamics text</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fi/uanlie1sdyiz4ezbclopt/temperature_notes.pdf?rlkey=leatk6yrhmw137i9dl6j8ojlq&amp;dl=0">Thermo - Kinetic Temperature notes</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fi/j7bq6cc7r40vkx3og14qh/first_law_notes.pdf?rlkey=66r1y4umxtc1hgwfbylxlzoxt&amp;dl=0">Thermo - First law of thermodynamics</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fi/iknh9dm4iu1tfssa4724j/entropy.pdf?rlkey=buxyohh3w52ou6vk774s3xexq&amp;dl=0">Thermo - Entropy and potential temperature</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fi/zuk9evzf47qdsxi9tvgx7/thermo.pdf?rlkey=hbz3bpt6gxv5ly8rg1njfj9e4&amp;dl=0">Thermo - moist static energy</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fi/sosiyoxa9bzhecea5qas9/hydro.pdf?rlkey=7wll6s0yc4t0dlojzx56082iw&amp;dl=0">Weighted averages and scale heights</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fi/ygb2bi2riqo23ostxo8lw/buoyancy.pdf?rlkey=b80rbwtzartk4qp5dt9gjvsf6&amp;dl=0">Week 3 - Bouyancy</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fi/5m7x5opmp5p6ooe86imlj/virtual_temperature.pdf?rlkey=yjmfkbt417gpjv0cwwfyoi0c4&amp;dl=0">Week 4 - virtual temperature</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fi/ezjs46bsqegvnzasujnic/velocity_scales.pdf?rlkey=tkgf0zu4kxjnpmssa3zwglp2i&amp;dl=0">Week4 - velocity scales</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fi/zwjwuzed05cvya6xydj9e/taylor_series.pdf?rlkey=jt7zu8gedkwxaosty87e7h0o8&amp;dl=0">Taylor series and Reynolds averaging</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fi/7tkg65ar1u9emumxervu5/pressure_perturb.pdf?rlkey=gu3miynu1k28cs1985mrxxu4h&amp;dl=0">pressure perturbation notes</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fi/yqegu0q64a2t6sipms7t4/bussinger_critical_ri.pdf?rlkey=34m6gyzz5lv9oaxum8xx7ynge&amp;dl=0">Bussinger on the critical Richardson number</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fi/0bip672b25he2ikr2honz/surface_layer.pdf?rlkey=iurhmsxfrbxkodzkzqxoa66yd&amp;dl=0">surface layer scaling notes</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fi/e6cq3sodf0fq2rwuynsfm/boussinesq.pdf?rlkey=8josihsmcn1fskhl6mvnlu4eh&amp;dl=0">Boussinesq and anelastic scaling notes</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fi/hdbpj7stnutwva85njr2k/mellor_yamada_notes.pdf?rlkey=kxlb7tpfo3bc2ogyzt1iht936&amp;dl=0">Mellor-Yamada TKE notes</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fi/ugg14cvujp9m5b99c2vbf/bannon95a.pdf?rlkey=d8v4qvqpncduunwqpb1wdgtz1&amp;dl=0">bannon anelastic article</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fi/8l9qb7mqtfhs58b4s7jf6/mixed_layer.pdf?rlkey=a2av8cmvjvvti44723hn69acw&amp;dl=0">mixed layer notes</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fi/b53feva305h7yqnkq35db/mixed_layer_jump.pdf?rlkey=8tavsjdviy1js1zol69772fcc&amp;dl=0 https://www.dropbox.com/scl/fi/s75gp821y8riznrjioem4/liebniz.pdf?rlkey=u13g1jtrnqx55t4f90uf3gzuo&amp;dl=0">Liebniz review notes</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fi/b53feva305h7yqnkq35db/mixed_layer_jump.pdf?rlkey=8tavsjdviy1js1zol69772fcc&amp;dl=0">mixed layer jump notes</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Assignments</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../assignments/md_dry_les.html">MD: les dry layer assignment solution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assignments/dry_les_2024_solution.html">PHA Dry LES Assign solution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assignments/hydrostatic_2024.html">Assign 2: Scale heights for typical atmospheric soundings</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fi/etj9r3hvt5rm3azz650l0/hydrostatic_2024.ipynb?rlkey=5fkvw08t872305rn9zboktw57&amp;dl=0">Assignment 2 hydrostatic balance notebook download</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Notebooks</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fi/f1y4uj9potzahxmv06kgg/dry_les_2024.ipynb?rlkey=vfpxzcck7t3rhcel7wcg4vxpv&amp;dl=0">dry les notebook ipynb download</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dry_les_2024.html">Working with LES data: dry boundary layer</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fi/9s7o6uccqzhrnvdee35z0/case_60_10.nc?rlkey=a40nnj4i6ddlfomqqg6t179dl&amp;dl=0">case_50_10.nc download (470 Mbytes)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="skew_coords_solution.html">Week2: Theromodynamic diagrams worksheet – solution</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fi/k1gswj3eocbsehbu4xvrq/skew_coords_solution.ipynb?rlkey=f6kp1pzzf4u14nwgk5gfvtffs&amp;dl=0">thermodynamic worksheet download</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fi/dfj80s9q920ljni5aakfc/tropical_subset.nc?rlkey=2fc2wr2yb70e4i6l9c7gwcyj3&amp;dl=0">tropical_subset.nc download</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tropical_clouds_solution.html">Week 3 worksheet: Tropical clouds – solution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tropical_fluxes.html">Energy and vapor fluxes in the tropical boundary layer</a></li>
+
+
+<li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fi/v7vqzumfbegh3yvpoex9f/tropical_fluxes.ipynb?rlkey=n3gktdca6nk12sjyn4iot1v55&amp;dl=0">tropical_fluxes.ipynb download</a></li>
+<li class="toctree-l1"><a class="reference internal" href="clausius_claphyron_rootfind.html">Using a rootfinder to solve implicit equations</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fi/545s100t4a5ikdwr3hk4o/clausius_claphyron_rootfind.ipynb?rlkey=v8fkd78xtx23y7qhi42v20npv&amp;dl=0">Clausius-Clapyron notebook download</a></li>
+<li class="toctree-l1"><a class="reference internal" href="moist_adiabats.html">Moist adiabats and the LCL</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fi/smr3r2wdjecql7vzt257o/moist_adiabats.ipynb?rlkey=wnrfuygfj15zdfscbce6dufqg&amp;dl=0">moist adiabat notebook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dry_les_2024_partII.html">II: dry boundary layer – inversion height</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fi/vooei7m2dalaeeev9m63x/dry_les_2024_partII.ipynb?rlkey=tbfyyirvgajytsy46kwqlm5ef&amp;dl=0">dry_les_2024_partII.ipynb download</a></li>
+<li class="toctree-l1"><a class="reference internal" href="read_cabauw.html">Read cabauw data</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fi/44quhfmej8gzqia28h5fz/read_cabauw.ipynb?rlkey=gk4hsyvwihmrzvja9k0qhr158&amp;dl=0">read_cabauw.ipynb download</a></li>
+<li class="toctree-l1"><a class="reference internal" href="simple_integrator.html">Integrate a mean profile wrt to time using scipy.integrate</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fi/6gt4ssm43ia391bmnk3hf/simple_integrator.ipynb?rlkey=d3fqy8tt1j04by0pcblp63hv3&amp;dl=0">simple_integrator.ipynb download</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cabauw_notebooks/cesar_tower_list.html">Cabauw tower data</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fi/8v7m4oj9qrmhkeecq1q7s/cesar_tower_list.ipynb?rlkey=ceyxaaq114b6ckweawznjchk5&amp;dl=0">cesar_tower_list notebook download</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cabauw_notebooks/cesar_surface_list.html">Cabauw surface data</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fi/bc8d5vvg3o5o1cmz2l5ri/cesar_surface_list.ipynb?rlkey=bzd68jy9h82p1io87lwltev4m&amp;dl=0">cesar_surface_list notebook download</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cmip6_notebooks/cmip6_precip_demo.html">Loading the CMIP historical precip data</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fi/gc9gsmd0kzhxf4mjh9oms/cmip6_precip_demo.ipynb?rlkey=3v60qwx3aj554tajm4zs0hbic&amp;dl=0">cmip6 precip demo notebook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cmip6_notebooks/betts_3hourly_get_domain.html">Betts 2009 diurnal lcl – CMIP6 comparison</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fi/kqtufo2k396ajtvr1npli/betts_3hourly_get_domain.ipynb?rlkey=z7erd7f2xcwk30cfvgljqekyi&amp;dl=0">Betts cmip6 data download notebook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cmip6_notebooks/betts_diurnal_lcl_plots.html">Betts diurnal lcl plots</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fi/eior2i10fz8u7ftsy4fiy/betts_diurnal_lcl_plots.ipynb?rlkey=5e86qc0d2qqhmtf4uuq3uc6su&amp;dl=0">betts_diurnal notebook download</a></li>
+<li class="toctree-l1"><a class="reference internal" href="businger_dyer.html">Businger-Dyer drag coefficients</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fi/xptgi4noyxdfip705tzcz/businger_dyer.ipynb?rlkey=59q960f829rm8aejevl1qy2f5&amp;dl=0">businger-dyer.ipynb download</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dry_mixed_layer.html">dry mixed layer model</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fi/e2mcdo9zfxclizf334efl/dry_mixed_layer.ipynb?rlkey=r9q8veh2ul9ck6rm73013pjwm&amp;dl=0">dry_mixed_layer.ipynb download</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cloud_capped_boundary/diagnose_jump.html">mixed layer jump comparison</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fi/7nrogh39omd8iwpv85dol/diagnose_jump.ipynb?rlkey=y5xm1qe0yxxebtsah9bnkf32b&amp;dl=0">diagnose_jump.ipynb download</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cloud_capped_boundary/interactive_sfcflux.html">Make the surface flux interactive and add subsidence</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cloud_capped_boundary/interactive_vaporflux.html">Add an equation for the vapor mixing ratio</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cloud_capped_boundary/radiative_entrain.html">Use the simple radiation entrainment closure from Stephan’s slides</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cloud_capped_boundary/nicholls_turton.html">Move to the full Nicholls-Turton entrainment parameterization, following Gesso et al. 2014</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cloud_capped_boundary/closure.html">Compare entrainment closures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cloud_capped_boundary/cloud_capped_index.html">Cloud capped boundary layer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="time_series/ma_model.html">moving average model</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="time_series/arma_model.html">ARMA model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="time_series/sarima_catfish_model.html">SARIMA: Catfish Sales Data</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="time_series/sarima_co2.html">SARIMA-TimeSeries Analysis of Atmospheric CO2</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Power spectrum of turbulent vertical velocity</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Journal articles</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference external" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9704743/">Are global climate models obsolete?</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://journals.ametsoc.org/view/journals/bams/85/11/bams-85-11-1673.xml">Betts 2004 Horton medal lecture -- GCM hydrology</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://agupubs.onlinelibrary.wiley.com/doi/10.3894/James.2009.1.4">Betts - Land-Surface-Atmosphere coupling review</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://agupubs.onlinelibrary.wiley.com/doi/10.1029/2018MS001532">Canadian Climate model boundary layer parameterization</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fi/oewkjlpdod168tvg3lok3/cabauw_les.pdf?rlkey=kigrdkur74r6irafyhcn7pr40&amp;dl=0">Cabauw LES simulation</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fi/yu9362gnf3mq0s4rrl1ja/mellor_1982.pdf?rlkey=duea0woyu0fwvqo1kndjqr41u&amp;dl=0">Mellor and Yamada, 1982 - TKE parameterization</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://link-springer-com.ezproxy.library.ubc.ca/article/10.1007/s10546-006-9121-1">Verkaik and Holtslag -- Wind profiles, momentum fluxes and roughness lengths at Cabauw revisited</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fi/961z9gwv9h9gh1a7ka0ty/businger_history_87.pdf?rlkey=5zbjdff8vn3349e9y3xrqx0uh&amp;dl=0">Businger history of surface layer stability scaling</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fi/o43cv43ymuxj35nti2c2b/fleagle_bussinger_1980.pdf?rlkey=eb98rznjih3efu185wxeljsd5&amp;dl=0">Fleagle and Businger Chapter 6 excerpt on surface layer similarity</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fi/41n9v7pj3x0n2tu27ca4o/Stevens-2002-Quarterly_Journal_of_the_Royal_Meteorological_Society.pdf?rlkey=u5705q214gzpe3r94doozyrqy&amp;dl=0">Stevens 2002 entrainment review</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fi/pdodmk9405d5dc4f4obv6/deroode_Dal_Gesso_etal_2014.pdf?rlkey=ycmxd3g56q9mh5sus0qxqi8kj&amp;dl=0">del Gesso stratocumulus equilbria</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fi/l1ydz29ef5v84o3tnwjkd/turton_nicholls_1987.pdf?rlkey=jzzepzzb6fvev8591bbrm1clj&amp;dl=0">Nicholls and Turton entrainment parameterization</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fi/tnclk9w9yt26nbn8md15c/moeng_2000.pdf?rlkey=l12g44cfphy477wu2kehhfzw3&amp;dl=0">Moeng 2000 entrainment parameterization</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Textbooks</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fi/yaxd27icivz7a7qu7tifn/stull_blm_springer.pdf?rlkey=v0hqkqvd9v8rpcqfxmq62tt10&amp;dl=0">Stull Boundary Layer Meteorology</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.dropbox.com/scl/fi/n6scqt3wql8otdfvsif1r/de_roode_clouds.pdf?rlkey=v82zcoh7doaib9xvy1mjh8zj1&amp;dl=0">Stephen de Roode cloud notes</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/notebooks/fft_dissipation.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Power spectrum of turbulent vertical velocity</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-plot-the-raw-spectrum-and-confirm-the-w-k-theorem">Step 1: plot the raw spectrum and confirm the W-K theorem</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-check-power-spectrum-layout">Step 2: check power spectrum layout</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#confirm-that-the-fft-at-negative-f-is-the-complex-conjugate-of-the-fft-at-positive-f">Confirm that the fft at negative f is the complex conjugate of the fft at positive f</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-windowing-and-averaging-subsamples">Step 3: Windowing and averaging subsamples</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#caveat-subsamples-no-longer-have-zero-mean-so-power-gets-placed-in-bin-0">Caveat – subsamples no longer have zero mean, so power gets placed in bin 0</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-change-the-amplitude-of-the-averaged-spectrum-so-it-matches-the-total-variance-of-the-time-series">Solution – change the amplitude of the averaged spectrum so it matches the total variance of the time series</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#try-running-do-fft-with-and-without-debug-printing">Try running do_fft with and without debug printing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#we-want-the-integral-over-the-positive-frequencies-to-give-the-total-variance-so-increase-spectral-values-by-2x">We want the integral over the positive frequencies to give the total variance, so increase spectral values by 2x</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-fit-the-averaged-spectrum-to-e-f-a-0-f-5-3-on-a-loglog-plot">Step 4: fit the averaged spectrum to <span class="math notranslate nohighlight">\(E(f) = A_0 f^{-5/3}\)</span> on a loglog plot</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-5-use-kolmogorov-1941-to-find-epsilon">Step 5: Use Kolmogorov 1941 to find <span class="math notranslate nohighlight">\(\epsilon\)</span></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#is-this-a-reasonable-value-for-the-vertical-turbulent-dissipation-rate">Is this ε a reasonable value for the vertical turbulent dissipation rate?</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#does-the-data-support-f-5-3">Does the data support f^{-5/3}?</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#smothing-the-power-spectrum-by-simple-binning">Smothing the power spectrum by simple binning</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="power-spectrum-of-turbulent-vertical-velocity">
+<span id="fft-dissipation"></span><h1>Power spectrum of turbulent vertical velocity<a class="headerlink" href="#power-spectrum-of-turbulent-vertical-velocity" title="Permalink to this heading">#</a></h1>
+<p>Find the dissipation rate using an fft of tower vertical velocity data</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#load data sampled at 20.8333 Hz</span>
+<span class="n">tower_data</span> <span class="o">=</span> <span class="n">Path</span><span class="o">.</span><span class="n">home</span><span class="p">()</span> <span class="o">/</span> <span class="s2">&quot;Dropbox/phil_files/a500/notebooks&quot;</span>
+<span class="n">tower_data</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">tower_data</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s2">&quot;**/miam*npz&quot;</span><span class="p">))[</span><span class="mi">0</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">tower_data</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/phil/Dropbox/phil_files/a500/notebooks/miami_tower.npz
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">td</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">tower_data</span><span class="p">))</span> <span class="c1">#load temp, uvel, vvel, wvel, minutes</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;keys: &#39;</span><span class="p">,</span><span class="n">td</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">td</span><span class="p">[</span><span class="s1">&#39;description&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>keys:  KeysView(NpzFile &#39;/Users/phil/Dropbox/phil_files/a500/notebooks/miami_tower.npz&#39; with keys: wvel, vvel, minutes, temp, __header__...)
+
+These are measurements of atmospheric
+turbulent velocity (wvel, uvel, vvel (m/s) and temperature (temp), taken
+over a 30 minute period at a sampling rate of 20.8333 (125/6)
+Hz. They were measured by a sonic anemometer at a height of 40 m over
+suburban Miami during unstable conditions (12:01-12:31 LAT)
+
+Total length of each timeseries is 37,500 values, so total sample time is
+37000*(6/125) = 1800 seconds = 30 minutes
+</pre></div>
+</div>
+</div>
+</div>
+<section id="step-1-plot-the-raw-spectrum-and-confirm-the-w-k-theorem">
+<h2>Step 1: plot the raw spectrum and confirm the W-K theorem<a class="headerlink" href="#step-1-plot-the-raw-spectrum-and-confirm-the-w-k-theorem" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sampleRate</span><span class="o">=</span><span class="mf">20.833</span>
+<span class="n">nyquistfreq</span><span class="o">=</span><span class="n">sampleRate</span><span class="o">/</span><span class="mf">2.</span>
+
+
+<span class="n">totsize</span><span class="o">=</span><span class="mi">36000</span>
+<span class="n">wvel</span><span class="o">=</span><span class="n">td</span><span class="p">[</span><span class="s1">&#39;wvel&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">:</span><span class="n">totsize</span><span class="p">]</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+<span class="n">temp</span><span class="o">=</span><span class="n">td</span><span class="p">[</span><span class="s1">&#39;temp&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">:</span><span class="n">totsize</span><span class="p">]</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+<span class="n">wvel</span> <span class="o">=</span> <span class="n">wvel</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">wvel</span><span class="p">)</span>
+<span class="n">temp</span><span class="o">=</span> <span class="n">temp</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">temp</span><span class="p">)</span>
+<span class="n">flux</span><span class="o">=</span><span class="n">wvel</span><span class="o">*</span><span class="n">temp</span>
+
+
+<span class="n">halfpoint</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="n">totsize</span><span class="o">/</span><span class="mf">2.</span><span class="p">))</span>
+<span class="n">frequencies</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">halfpoint</span><span class="p">)</span>
+<span class="n">frequencies</span><span class="o">=</span><span class="n">frequencies</span><span class="o">/</span><span class="n">halfpoint</span>
+<span class="n">frequencies</span><span class="o">=</span><span class="n">frequencies</span><span class="o">*</span><span class="n">nyquistfreq</span>
+
+<span class="c1"># raw spectrum -- no windowing or averaging</span>
+<span class="c1">#First confirm Parseval&#39;s theorem</span>
+<span class="c1"># (Numerical Recipes 12.1.10, p. 498)</span>
+
+<span class="n">thefft</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">fft</span><span class="p">(</span><span class="n">wvel</span><span class="p">)</span>
+<span class="n">power</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">real</span><span class="p">(</span><span class="n">thefft</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">conj</span><span class="p">(</span><span class="n">thefft</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;check Wiener-Khichine theorem for wvel&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">raw fft sum, full time series: </span><span class="si">%10.4f</span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">power</span><span class="p">)</span><span class="o">/</span><span class="n">totsize</span><span class="o">**</span><span class="mf">2.</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;velocity variance: </span><span class="si">%10.4f</span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">wvel</span><span class="o">*</span><span class="n">wvel</span><span class="p">)</span><span class="o">/</span><span class="n">totsize</span><span class="p">))</span>
+
+
+<span class="n">fig</span><span class="p">,</span><span class="n">theAx</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
+<span class="n">frequencies</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">NaN</span>
+<span class="n">power</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">NaN</span>
+<span class="n">power_half</span><span class="o">=</span><span class="mf">2.</span><span class="o">*</span><span class="n">power</span><span class="p">[:</span><span class="n">halfpoint</span><span class="p">]</span><span class="o">/</span><span class="p">(</span><span class="n">totsize</span><span class="o">**</span><span class="mf">2.</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;check: &#39;</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">nansum</span><span class="p">(</span><span class="n">power_half</span><span class="p">))</span>
+<span class="n">theAx</span><span class="o">.</span><span class="n">loglog</span><span class="p">(</span><span class="n">frequencies</span><span class="p">,</span><span class="n">power_half</span><span class="p">)</span>
+<span class="n">theAx</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;raw wvel spectrum with $f^{-5/3}$&#39;</span><span class="p">)</span>
+<span class="n">theAx</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">xlabel</span><span class="o">=</span><span class="s1">&#39;frequency (HZ)&#39;</span><span class="p">,</span><span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;power (m^2/s^2)&#39;</span><span class="p">)</span>
+<span class="c1">#</span>
+<span class="c1"># pick one point the line should pass through (by eye)</span>
+<span class="c1"># note that y intercept will be at log10(freq)=0</span>
+<span class="c1"># or freq=1 Hz</span>
+<span class="c1">#</span>
+<span class="n">leftspec</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">power_half</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="mf">1.e-3</span><span class="p">)</span>
+<span class="n">logy</span><span class="o">=</span><span class="n">leftspec</span> <span class="o">-</span> <span class="mf">5.</span><span class="o">/</span><span class="mf">3.</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">frequencies</span><span class="p">)</span>
+<span class="n">yvals</span><span class="o">=</span><span class="mf">10.</span><span class="o">**</span><span class="n">logy</span>
+<span class="n">theAx</span><span class="o">.</span><span class="n">loglog</span><span class="p">(</span><span class="n">frequencies</span><span class="p">,</span><span class="n">yvals</span><span class="p">,</span><span class="s1">&#39;r-&#39;</span><span class="p">)</span>
+<span class="n">thePoint</span><span class="o">=</span><span class="n">theAx</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="mf">1.</span><span class="p">,</span><span class="n">power_half</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="mf">1.e-3</span><span class="p">,</span><span class="s1">&#39;g+&#39;</span><span class="p">)</span>
+<span class="n">thePoint</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_markersize</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span>
+<span class="n">thePoint</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_marker</span><span class="p">(</span><span class="s1">&#39;h&#39;</span><span class="p">)</span>
+<span class="n">thePoint</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_markerfacecolor</span><span class="p">(</span><span class="s1">&#39;g&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>check Wiener-Khichine theorem for wvel
+
+raw fft sum, full time series:     1.0337
+
+velocity variance:     1.0337
+
+check:  1.033728613922596
+</pre></div>
+</div>
+<img alt="../_images/1ccc11eef2d08f21c0b0f124c60bfa924ef8478103bf604a9266bdc925d92cc1.png" src="../_images/1ccc11eef2d08f21c0b0f124c60bfa924ef8478103bf604a9266bdc925d92cc1.png" />
+</div>
+</div>
+</section>
+<section id="step-2-check-power-spectrum-layout">
+<h2>Step 2: check power spectrum layout<a class="headerlink" href="#step-2-check-power-spectrum-layout" title="Permalink to this heading">#</a></h2>
+<p>Here is what the entire power spectrum looks like, showing positive and negative frequencies</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span><span class="n">theAx</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
+<span class="n">out</span><span class="o">=</span><span class="n">theAx</span><span class="o">.</span><span class="n">semilogy</span><span class="p">(</span><span class="n">power</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/8c325dbc28262cf7daaa02788e52e123c392c4e3c665edfdef41fd65ffbaa0b5.png" src="../_images/8c325dbc28262cf7daaa02788e52e123c392c4e3c665edfdef41fd65ffbaa0b5.png" />
+</div>
+</div>
+<p>and here is what fftshift does:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">shift_power</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">fftshift</span><span class="p">(</span><span class="n">power</span><span class="p">)</span>
+<span class="n">fig</span><span class="p">,</span><span class="n">theAx</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
+<span class="n">out</span><span class="o">=</span><span class="n">theAx</span><span class="o">.</span><span class="n">semilogy</span><span class="p">(</span><span class="n">shift_power</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/448ce1a1bf8f7b1f1239e4a07fba1c8fc5b5e56b104f047145f299abf95be8aa.png" src="../_images/448ce1a1bf8f7b1f1239e4a07fba1c8fc5b5e56b104f047145f299abf95be8aa.png" />
+</div>
+</div>
+<section id="confirm-that-the-fft-at-negative-f-is-the-complex-conjugate-of-the-fft-at-positive-f">
+<h3>Confirm that the fft at negative f is the complex conjugate of the fft at positive f<a class="headerlink" href="#confirm-that-the-fft-at-negative-f-is-the-complex-conjugate-of-the-fft-at-positive-f" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">test_fft</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">fft</span><span class="p">(</span><span class="n">wvel</span><span class="p">)</span>
+<span class="n">fig</span><span class="p">,</span><span class="n">theAx</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
+<span class="n">theAx</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">semilogy</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">real</span><span class="p">(</span><span class="n">test_fft</span><span class="p">))</span>
+<span class="n">theAx</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">semilogy</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">imag</span><span class="p">(</span><span class="n">test_fft</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">test_fft</span><span class="p">[</span><span class="mi">100</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">test_fft</span><span class="p">[</span><span class="o">-</span><span class="mi">100</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(200.4277107839311-150.32508399544918j)
+(200.42771078393093+150.32508399544923j)
+</pre></div>
+</div>
+<img alt="../_images/0602229d22450f7e3b811043fe82dfea97bb8a33d1313a12f54745808644d8ca.png" src="../_images/0602229d22450f7e3b811043fe82dfea97bb8a33d1313a12f54745808644d8ca.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="step-3-windowing-and-averaging-subsamples">
+<h2>Step 3: Windowing and averaging subsamples<a class="headerlink" href="#step-3-windowing-and-averaging-subsamples" title="Permalink to this heading">#</a></h2>
+<p>The FFT above is noisy, and there are several ways to smooth it.  Numerical Recipes, p. 550 has a good discussion of “windowing” which helps remove the spurious power caused by the fact that the timeseries has a sudden stop and start.
+Below we split the timeseries into 25 segements of 1440 points each, fft each segment then average the 25.  We convolve each segment with a Bartlett window.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n\n\n</span><span class="s1">Try a windowed spectrum (Bartlett window)</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="c1">## windowing -- see p. Numerical recipes 550 for notation</span>
+
+<span class="k">def</span> <span class="nf">calc_window</span><span class="p">(</span><span class="n">numvals</span><span class="o">=</span><span class="mi">1440</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">      Calculate a Bartlett window following</span>
+<span class="sd">      Numerical Recipes 13.4.13</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    
+    <span class="n">halfpoint</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="n">numvals</span><span class="o">/</span><span class="mf">2.</span><span class="p">))</span>
+    <span class="n">facm</span><span class="o">=</span><span class="n">halfpoint</span>
+    <span class="n">facp</span><span class="o">=</span><span class="mi">1</span><span class="o">/</span><span class="n">facm</span>
+
+    <span class="n">window</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">([</span><span class="n">numvals</span><span class="p">],</span><span class="nb">float</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">numvals</span><span class="p">):</span>
+        <span class="n">window</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">=</span><span class="p">(</span><span class="mf">1.</span><span class="o">-</span><span class="p">((</span><span class="n">j</span> <span class="o">-</span> <span class="n">facm</span><span class="p">)</span><span class="o">*</span><span class="n">facp</span><span class="p">)</span><span class="o">**</span><span class="mf">2.</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">window</span>
+
+<span class="c1">#</span>
+<span class="c1">#  we need to normalize by the squared weights</span>
+<span class="c1">#  (see the fortran code on Numerical recipes p. 550)</span>
+<span class="c1">#</span>
+<span class="n">numvals</span><span class="o">=</span><span class="mi">1440</span>
+<span class="n">window</span><span class="o">=</span><span class="n">calc_window</span><span class="p">(</span><span class="n">numvals</span><span class="o">=</span><span class="n">numvals</span><span class="p">)</span>
+<span class="c1">#window[:]=1.</span>
+<span class="n">sumw</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">window</span><span class="o">**</span><span class="mf">2.</span><span class="p">)</span><span class="o">/</span><span class="n">numvals</span>
+<span class="n">fig</span><span class="p">,</span><span class="n">theAx</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
+<span class="n">theAx</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">window</span><span class="p">)</span>
+<span class="n">theAx</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Bartlett window&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;sumw: </span><span class="si">%10.3f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">sumw</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Try a windowed spectrum (Bartlett window)
+
+sumw:      0.533
+</pre></div>
+</div>
+<img alt="../_images/d83af5a7754063031dfc2ebc6b8cff93a76a7e28f7908737050c26708d8c1a48.png" src="../_images/d83af5a7754063031dfc2ebc6b8cff93a76a7e28f7908737050c26708d8c1a48.png" />
+</div>
+</div>
+</section>
+<section id="caveat-subsamples-no-longer-have-zero-mean-so-power-gets-placed-in-bin-0">
+<h2>Caveat – subsamples no longer have zero mean, so power gets placed in bin 0<a class="headerlink" href="#caveat-subsamples-no-longer-have-zero-mean-so-power-gets-placed-in-bin-0" title="Permalink to this heading">#</a></h2>
+<section id="solution-change-the-amplitude-of-the-averaged-spectrum-so-it-matches-the-total-variance-of-the-time-series">
+<h3>Solution – change the amplitude of the averaged spectrum so it matches the total variance of the time series<a class="headerlink" href="#solution-change-the-amplitude-of-the-averaged-spectrum-so-it-matches-the-total-variance-of-the-time-series" title="Permalink to this heading">#</a></h3>
+<p>Look for <code class="docutils literal notranslate"><span class="pre">normalized_power</span></code> in the cell below</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">do_fft</span><span class="p">(</span><span class="n">the_series</span><span class="p">,</span><span class="n">window</span><span class="p">,</span><span class="n">ensemble</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;title&#39;</span><span class="p">,</span><span class="n">debug</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="n">variance</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">the_series</span><span class="o">*</span><span class="n">the_series</span><span class="p">)</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">the_series</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;total variance: &#39;</span><span class="p">,</span><span class="n">variance</span><span class="p">)</span>
+    <span class="n">numvals</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">window</span><span class="p">)</span>
+    <span class="n">sumw</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">window</span><span class="o">**</span><span class="mf">2.</span><span class="p">)</span><span class="o">/</span><span class="n">numvals</span>
+    <span class="n">subset</span><span class="o">=</span><span class="n">the_series</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="n">subset</span><span class="o">=</span><span class="n">subset</span><span class="p">[:</span><span class="nb">len</span><span class="p">(</span><span class="n">window</span><span class="p">)</span><span class="o">*</span><span class="n">ensemble</span><span class="p">]</span>
+    <span class="n">subset</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">subset</span><span class="p">,(</span><span class="n">ensemble</span><span class="p">,</span><span class="n">numvals</span><span class="p">))</span>
+    <span class="n">winspec</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">([</span><span class="n">numvals</span><span class="p">],</span><span class="nb">float</span><span class="p">)</span>
+<span class="c1">#</span>
+<span class="c1">#  note that for these indvidual ensemble members</span>
+<span class="c1">#  subset[therow,:] does not have mean = 0</span>
+<span class="c1">#  this means that the 0 frequency bin, power[0] will</span>
+<span class="c1">#  not be zero.</span>
+<span class="c1">#</span>
+    <span class="k">for</span> <span class="n">therow</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">ensemble</span><span class="p">):</span>
+        <span class="n">thedat</span><span class="o">=</span><span class="n">subset</span><span class="p">[</span><span class="n">therow</span><span class="p">,:]</span> 
+        <span class="c1">#thedat = thedat - thedat.mean()</span>
+        <span class="n">thefft</span> <span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">fft</span><span class="p">(</span><span class="n">thedat</span><span class="o">*</span><span class="n">window</span><span class="p">)</span>
+        <span class="n">power</span><span class="o">=</span><span class="n">thefft</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">conj</span><span class="p">(</span><span class="n">thefft</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">debug</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">ensemble member: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">therow</span><span class="p">))</span>
+            <span class="n">thesum</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">real</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">power</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">sumw</span><span class="o">*</span><span class="n">numvals</span><span class="o">**</span><span class="mf">2.</span><span class="p">))</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;thesum: </span><span class="si">{:10.4f}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">thesum</span><span class="p">)))</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">windowed fft sum (m^2/s^2): </span><span class="si">{0:10.4f}</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">thesum</span><span class="p">)))</span>
+            <span class="n">thevar</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">thedat</span><span class="o">*</span><span class="n">thedat</span><span class="p">)</span><span class="o">/</span><span class="n">numvals</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;velocity variance (m^2/s^2): </span><span class="si">{0:10.4f}</span><span class="se">\n\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">thevar</span><span class="p">))</span>
+        <span class="n">winspec</span><span class="o">=</span><span class="n">winspec</span> <span class="o">+</span> <span class="n">power</span>
+
+    <span class="n">winspec</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">real</span><span class="p">(</span><span class="n">winspec</span><span class="o">/</span><span class="p">(</span><span class="n">numvals</span><span class="o">**</span><span class="mf">2.</span><span class="o">*</span><span class="n">ensemble</span><span class="o">*</span><span class="n">sumw</span><span class="p">))</span>
+    <span class="n">smoothed_variance</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">winspec</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;total zero frequency component is: &#39;</span><span class="p">,</span><span class="n">winspec</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;total smoothed power specturm is: &#39;</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">winspec</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;total measured variance is: &#39;</span><span class="p">,</span><span class="n">variance</span><span class="p">)</span>
+    <span class="n">halfpoint</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">winspec</span><span class="p">)</span><span class="o">/</span><span class="mf">2.</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;halfpoint is: &#39;</span><span class="p">,</span><span class="n">halfpoint</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;left half: &#39;</span><span class="p">,</span><span class="mf">2.</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">winspec</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="n">halfpoint</span><span class="p">]))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;right half:&#39;</span><span class="p">,</span><span class="mf">2.</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">winspec</span><span class="p">[</span><span class="n">halfpoint</span><span class="p">:]))</span>
+    <span class="c1">#</span>
+    <span class="c1"># force the returned spectrum to have 0 power in bin 0</span>
+    <span class="c1"># and total variance = observed variance</span>
+    <span class="c1">#</span>
+    <span class="n">normalized_power</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">empty_like</span><span class="p">(</span><span class="n">winspec</span><span class="p">)</span>
+    <span class="n">normalized_power</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span><span class="o">=</span><span class="n">winspec</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">winspec</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span><span class="o">*</span><span class="n">variance</span>
+    <span class="n">normalized_power</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">=</span><span class="mf">0.</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;normalized power spectrum has variance &#39;</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">normalized_power</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">normalized_power</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="try-running-do-fft-with-and-without-debug-printing">
+<h2>Try running do_fft with and without debug printing<a class="headerlink" href="#try-running-do-fft-with-and-without-debug-printing" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">winspec</span><span class="o">=</span><span class="n">do_fft</span><span class="p">(</span><span class="n">wvel</span><span class="p">,</span><span class="n">window</span><span class="p">,</span><span class="n">debug</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>total variance:  1.0337289478524807
+
+ensemble member: 0
+thesum:     0.5232
+
+windowed fft sum (m^2/s^2):     0.5232
+
+velocity variance (m^2/s^2):     0.4487
+
+
+
+ensemble member: 1
+thesum:     0.2931
+
+windowed fft sum (m^2/s^2):     0.2931
+
+velocity variance (m^2/s^2):     0.2864
+
+
+
+ensemble member: 2
+thesum:     1.3525
+
+windowed fft sum (m^2/s^2):     1.3525
+
+velocity variance (m^2/s^2):     1.2092
+
+
+
+ensemble member: 3
+thesum:     0.6944
+
+windowed fft sum (m^2/s^2):     0.6944
+
+velocity variance (m^2/s^2):     0.8238
+
+
+
+ensemble member: 4
+thesum:     0.9625
+
+windowed fft sum (m^2/s^2):     0.9625
+
+velocity variance (m^2/s^2):     1.0749
+
+
+
+ensemble member: 5
+thesum:     0.5613
+
+windowed fft sum (m^2/s^2):     0.5613
+
+velocity variance (m^2/s^2):     0.6567
+
+
+
+ensemble member: 6
+thesum:     1.2611
+
+windowed fft sum (m^2/s^2):     1.2611
+
+velocity variance (m^2/s^2):     1.0692
+
+
+
+ensemble member: 7
+thesum:     1.2332
+
+windowed fft sum (m^2/s^2):     1.2332
+
+velocity variance (m^2/s^2):     1.3435
+
+
+
+ensemble member: 8
+thesum:     1.0700
+
+windowed fft sum (m^2/s^2):     1.0700
+
+velocity variance (m^2/s^2):     1.2785
+
+
+
+ensemble member: 9
+thesum:     1.0486
+
+windowed fft sum (m^2/s^2):     1.0486
+
+velocity variance (m^2/s^2):     0.8716
+
+
+
+ensemble member: 10
+thesum:     0.6394
+
+windowed fft sum (m^2/s^2):     0.6394
+
+velocity variance (m^2/s^2):     0.5916
+
+
+
+ensemble member: 11
+thesum:     0.6097
+
+windowed fft sum (m^2/s^2):     0.6097
+
+velocity variance (m^2/s^2):     0.7533
+
+
+
+ensemble member: 12
+thesum:     0.4637
+
+windowed fft sum (m^2/s^2):     0.4637
+
+velocity variance (m^2/s^2):     0.5015
+
+
+
+ensemble member: 13
+thesum:     0.7381
+
+windowed fft sum (m^2/s^2):     0.7381
+
+velocity variance (m^2/s^2):     0.9579
+
+
+
+ensemble member: 14
+thesum:     1.1519
+
+windowed fft sum (m^2/s^2):     1.1519
+
+velocity variance (m^2/s^2):     1.1363
+
+
+
+ensemble member: 15
+thesum:     1.2849
+
+windowed fft sum (m^2/s^2):     1.2849
+
+velocity variance (m^2/s^2):     1.0292
+
+
+
+ensemble member: 16
+thesum:     1.5822
+
+windowed fft sum (m^2/s^2):     1.5822
+
+velocity variance (m^2/s^2):     1.5341
+
+
+
+ensemble member: 17
+thesum:     0.4222
+
+windowed fft sum (m^2/s^2):     0.4222
+
+velocity variance (m^2/s^2):     0.4093
+
+
+
+ensemble member: 18
+thesum:     6.3473
+
+windowed fft sum (m^2/s^2):     6.3473
+
+velocity variance (m^2/s^2):     4.9861
+
+
+
+ensemble member: 19
+thesum:     0.3308
+
+windowed fft sum (m^2/s^2):     0.3308
+
+velocity variance (m^2/s^2):     0.3608
+
+
+
+ensemble member: 20
+thesum:     1.5884
+
+windowed fft sum (m^2/s^2):     1.5884
+
+velocity variance (m^2/s^2):     1.2235
+
+
+
+ensemble member: 21
+thesum:     1.1805
+
+windowed fft sum (m^2/s^2):     1.1805
+
+velocity variance (m^2/s^2):     1.0514
+
+
+
+ensemble member: 22
+thesum:     0.4250
+
+windowed fft sum (m^2/s^2):     0.4250
+
+velocity variance (m^2/s^2):     0.4722
+
+
+
+ensemble member: 23
+thesum:     0.8832
+
+windowed fft sum (m^2/s^2):     0.8832
+
+velocity variance (m^2/s^2):     0.8841
+
+
+
+ensemble member: 24
+thesum:     0.9324
+
+windowed fft sum (m^2/s^2):     0.9324
+
+velocity variance (m^2/s^2):     0.8896
+
+
+total zero frequency component is:  0.35189575774279525
+total smoothed power specturm is:  1.1031879873008292
+total measured variance is:  1.0337289478524807
+halfpoint is:  720
+left half:  0.7512881586691851
+right half: 0.7512963004468831
+normalized power spectrum has variance  1.0337289478524807
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="n">fig</span><span class="p">,</span><span class="n">ax</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">semilogy</span><span class="p">(</span><span class="n">winspec</span><span class="p">)</span>
+<span class="n">out</span><span class="o">=</span><span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;smoothed power spectrum&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/0a43b93d598dc8d7b878eb61164150452c20bc8b78e150131b227b48fa5bcddf.png" src="../_images/0a43b93d598dc8d7b878eb61164150452c20bc8b78e150131b227b48fa5bcddf.png" />
+</div>
+</div>
+</section>
+<section id="we-want-the-integral-over-the-positive-frequencies-to-give-the-total-variance-so-increase-spectral-values-by-2x">
+<h2>We want the integral over the positive frequencies to give the total variance, so increase spectral values by 2x<a class="headerlink" href="#we-want-the-integral-over-the-positive-frequencies-to-give-the-total-variance-so-increase-spectral-values-by-2x" title="Permalink to this heading">#</a></h2>
+<p>In addition, we want <span class="math notranslate nohighlight">\(E(k)\)</span> to have spectral densities units of <span class="math notranslate nohighlight">\(W\,m^{-2}\,Hz^{-1}\)</span>, so that this integral works:</p>
+<div class="math notranslate nohighlight">
+\[\int_0^\infty E(k) dk = \sigma^2_w\]</div>
+<p>That means we need to divide by the frequency bin width <span class="math notranslate nohighlight">\(\Delta f\)</span></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sampleRate</span><span class="o">=</span><span class="mf">20.833</span>
+<span class="n">nyquistfreq</span><span class="o">=</span><span class="n">sampleRate</span><span class="o">/</span><span class="mf">2.</span>
+<span class="n">halfpoint</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">winspec</span><span class="p">)</span><span class="o">/</span><span class="mf">2.</span><span class="p">)</span>
+<span class="n">averaged_freq</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mf">1.</span><span class="p">,</span><span class="n">halfpoint</span><span class="p">)</span><span class="o">*</span><span class="n">nyquistfreq</span>   
+<span class="n">winspec_half</span><span class="o">=</span><span class="mf">2.</span><span class="o">*</span><span class="n">winspec</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="n">halfpoint</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;summed power spectrum: &#39;</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">winspec_half</span><span class="p">))</span>
+<span class="n">delta_f</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">averaged_freq</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">power_dens</span><span class="o">=</span><span class="n">winspec_half</span><span class="o">/</span><span class="n">delta_f</span>
+<span class="n">averaged_freq</span><span class="o">=</span><span class="n">averaged_freq</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>summed power spectrum:  1.0337233465757985
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="step-4-fit-the-averaged-spectrum-to-e-f-a-0-f-5-3-on-a-loglog-plot">
+<h2>Step 4: fit the averaged spectrum to <span class="math notranslate nohighlight">\(E(f) = A_0 f^{-5/3}\)</span> on a loglog plot<a class="headerlink" href="#step-4-fit-the-averaged-spectrum-to-e-f-a-0-f-5-3-on-a-loglog-plot" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.optimize</span> <span class="kn">import</span> <span class="n">curve_fit</span>
+
+<span class="k">def</span> <span class="nf">fit_func</span><span class="p">(</span><span class="n">log10_f</span><span class="p">,</span> <span class="n">log10_A</span><span class="p">):</span>
+    <span class="s1">&#39;fit A*f^{-5/3} for log/log plot&#39;</span>
+    <span class="n">fit</span> <span class="o">=</span> <span class="n">log10_A</span> <span class="o">-</span> <span class="mf">5.</span><span class="o">/</span><span class="mf">3.</span><span class="o">*</span><span class="n">log10_f</span>
+    <span class="k">return</span> <span class="n">fit</span>
+
+<span class="n">initial_A</span><span class="o">=</span><span class="mf">0.</span>
+<span class="n">log10_A</span><span class="p">,</span> <span class="n">pcov</span> <span class="o">=</span> <span class="n">curve_fit</span><span class="p">(</span><span class="n">fit_func</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">averaged_freq</span><span class="p">),</span><span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">power_dens</span><span class="p">),</span> 
+                       <span class="n">p0</span><span class="o">=</span><span class="n">initial_A</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">do_plot</span><span class="p">(</span><span class="n">the_freq</span><span class="p">,</span><span class="n">the_spec</span><span class="p">,</span><span class="n">log10_A</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">slope</span><span class="o">=</span> <span class="o">-</span><span class="mf">5.</span><span class="o">/</span><span class="mf">3.</span><span class="p">,</span><span class="n">title</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span><span class="n">ylabel</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="n">fig</span><span class="p">,</span><span class="n">theAx</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+    <span class="n">theAx</span><span class="o">.</span><span class="n">loglog</span><span class="p">(</span><span class="n">the_freq</span><span class="p">,</span><span class="n">the_spec</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;fft power&#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">title</span><span class="p">:</span>
+        <span class="n">theAx</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">title</span><span class="p">)</span>
+    <span class="n">logy</span> <span class="o">=</span> <span class="n">log10_A</span> <span class="o">+</span> <span class="n">slope</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">the_freq</span><span class="p">)</span>
+    <span class="n">yvals</span><span class="o">=</span><span class="mf">10.</span><span class="o">**</span><span class="n">logy</span>
+    <span class="n">theAx</span><span class="o">.</span><span class="n">loglog</span><span class="p">(</span><span class="n">the_freq</span><span class="p">,</span><span class="n">yvals</span><span class="p">,</span><span class="s1">&#39;g-&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;$f^{-5/3}$&#39;</span><span class="p">)</span>
+    <span class="n">theAx</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;frequency (Hz)&#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">ylabel</span><span class="p">:</span>
+        <span class="n">out</span><span class="o">=</span><span class="n">theAx</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="n">ylabel</span><span class="p">)</span>
+    <span class="n">out</span><span class="o">=</span><span class="n">theAx</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;best&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">theAx</span>
+
+<span class="n">params</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">log10_A</span><span class="o">=</span><span class="n">log10_A</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;wvel power spectrum&#39;</span><span class="p">,</span>
+            <span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;$(m^2\,s^{-2}\,Hz^{-1})$&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">=</span><span class="n">do_plot</span><span class="p">(</span><span class="n">averaged_freq</span><span class="p">,</span><span class="n">power_dens</span><span class="p">,</span><span class="o">**</span><span class="n">params</span><span class="p">)</span>
+<span class="n">fit</span><span class="o">=</span><span class="mi">10</span><span class="o">**</span><span class="n">log10_A</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">averaged_freq</span><span class="p">[</span><span class="mi">100</span><span class="p">]</span><span class="o">**</span><span class="p">(</span><span class="o">-</span><span class="mf">5.</span><span class="o">/</span><span class="mf">3.</span><span class="p">)</span>
+<span class="n">check</span><span class="o">=</span><span class="n">power_dens</span><span class="p">[</span><span class="mi">100</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Value of constant Ai = </span><span class="si">{:8.5f}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="mi">10</span><span class="o">**</span><span class="n">log10_A</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;how good is the fit at point 100? spectrum: </span><span class="si">{:8.5f}</span><span class="s1">  -5/3: </span><span class="si">{:8.5f}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">fit</span><span class="p">,</span><span class="n">check</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Value of constant Ai =  0.04997
+how good is the fit at point 100? spectrum:  0.02649  -5/3:  0.02880
+</pre></div>
+</div>
+<img alt="../_images/680e56ad709090e66279473f6ff244e08c75d9c5e40aa56056ae23c35f7cfdc9.png" src="../_images/680e56ad709090e66279473f6ff244e08c75d9c5e40aa56056ae23c35f7cfdc9.png" />
+</div>
+</div>
+</section>
+<section id="step-5-use-kolmogorov-1941-to-find-epsilon">
+<h2>Step 5: Use Kolmogorov 1941 to find <span class="math notranslate nohighlight">\(\epsilon\)</span><a class="headerlink" href="#step-5-use-kolmogorov-1941-to-find-epsilon" title="Permalink to this heading">#</a></h2>
+<p>According to <a class="reference external" href="http://ezproxy.library.ubc.ca/login?url=http://journals.ametsoc.org/doi/abs/10.1175/1520-0469%281975%29032%3C0753%3ATVTOKE%3E2.0.CO%3B2">McBean and Elliot (1975)</a> or Stull page 431, we want to solve this equation:</p>
+<div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}E(k) = A_0 k^{-5/3} = 0.5 \epsilon^{2/3} k^{-5/3}$$  for $\epsilon$ at some value of k.\\$$\epsilon = 0.5 E(k)^{3/2} k^{5/2}\end{aligned}\end{align} \]</div>
+<p>for all <span class="math notranslate nohighlight">\(k\)</span> in the inertial subrange.</p>
+<p>If the turbulence is frozen, then we can convert from <span class="math notranslate nohighlight">\(f\)</span> to <span class="math notranslate nohighlight">\(k\)</span> with the mean windspeed <span class="math notranslate nohighlight">\(\overline{U}\)</span> (Stull eq. 1.4c)</p>
+<div class="math notranslate nohighlight">
+\[f = \overline{U} k\]</div>
+<div class="math notranslate nohighlight">
+\[df = \overline{U} dk\]</div>
+<p>So for the change of variables we need to make sure that:</p>
+<div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}E(f)df  = E(k)dk$$  (i.e. the power in a bin stays the same).\\$$E(f) df = A_0 f^{-5/3} df = A_0 (\overline{U} k)^{-5/3} \overline{U} dk = A_0 \overline{U}^{-2/3} k^{-5/3} dk\end{aligned}\end{align} \]</div>
+<p>From our fit:</p>
+<div class="math notranslate nohighlight">
+\[E(f) = 0.055 f^{-5/3} = 0.055 (\overline{U} k)^{-5/3}\]</div>
+<p>and taking <span class="math notranslate nohighlight">\(\overline{U} = 10\ m/s\)</span> as a typical value for Miami:</p>
+<div class="math notranslate nohighlight">
+\[E(k) = (0.055) 10^{-2/3} k^{-5/3}  = (0.055)(0.2) k^{-5./3.} = 0.01 k^{-5/3}\]</div>
+<p>Evaluate this at f= 1 Hz which corresponds to k = 1 Hz/(10 m/s) = 0.1 <span class="math notranslate nohighlight">\(m^{-1}\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[E(0.1) = 0.01 \times 0.1^{-5/3}  = 0.46\ m^2\,s^{-2}/m^{-1} = 0.46\ m^3\,s^{-2}\]</div>
+<p>So using the formula:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-3419e04b-d334-4f8c-83c3-edcd95d841a4">
+<span class="eqno">(3)<a class="headerlink" href="#equation-3419e04b-d334-4f8c-83c3-edcd95d841a4" title="Permalink to this equation">#</a></span>\[\begin{align}
+\epsilon &amp;= 0.5 E(k)^{3/2} k^{5/2} = 0.5(0.46)^{3/2}(0.1)^{5/2} = 5 \times 10^{-4}\ m^2 s^{-3}
+\end{align}\]</div>
+<section id="is-this-a-reasonable-value-for-the-vertical-turbulent-dissipation-rate">
+<h3>Is this ε a reasonable value for the vertical turbulent dissipation rate?<a class="headerlink" href="#is-this-a-reasonable-value-for-the-vertical-turbulent-dissipation-rate" title="Permalink to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p>Suppose the turbulence is isotropic, so the u and v components have the same <span class="math notranslate nohighlight">\(\epsilon\)</span>.  Then the total     dissipation rate is <span class="math notranslate nohighlight">\(1.5 \times 10^{-3}\ m^2 s^{-3}\)</span>.  If the total variance in the windfiled was <span class="math notranslate nohighlight">\(3\ m^2\,s^{-2}\)</span>, then that would imply that the atmosphere would “spin down” in 3/1.5e-3 = 2000 seconds = 33 minutes.</p></li>
+<li><p>Also check out Figure 10 of <a class="reference external" href="http://dx.doi.org/10.1023/A%3A1014985111855">Campistron et al., 2002</a></p></li>
+</ol>
+</section>
+</section>
+<section id="does-the-data-support-f-5-3">
+<h2>Does the data support f^{-5/3}?<a class="headerlink" href="#does-the-data-support-f-5-3" title="Permalink to this heading">#</a></h2>
+<p>Try fitting again, but this time let the slope be a free parameter.  Do we get -5/3?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">fit_func</span><span class="p">(</span><span class="n">log10_f</span><span class="p">,</span> <span class="n">log10_A</span><span class="p">,</span> <span class="n">slope</span><span class="p">):</span>
+    <span class="s1">&#39;fit A*f^{-5/3} for log/log plot&#39;</span>
+    <span class="n">fit</span> <span class="o">=</span> <span class="n">log10_A</span> <span class="o">+</span> <span class="n">slope</span><span class="o">*</span><span class="n">log10_f</span>
+    <span class="k">return</span> <span class="n">fit</span>
+
+<span class="n">initial_A</span><span class="o">=</span><span class="mf">0.</span>
+<span class="n">coeffs</span><span class="p">,</span> <span class="n">pcov</span> <span class="o">=</span> <span class="n">curve_fit</span><span class="p">(</span><span class="n">fit_func</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">averaged_freq</span><span class="p">),</span><span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">power_dens</span><span class="p">),</span> 
+                       <span class="n">p0</span><span class="o">=</span><span class="p">[</span><span class="n">initial_A</span><span class="p">,</span><span class="o">-</span><span class="mf">2.</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;log10_A and slope: </span><span class="si">{:8.5f}</span><span class="s1"> </span><span class="si">{:8.5f}</span><span class="s1"> instead of -1.6666&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="o">*</span><span class="n">coeffs</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>log10_A and slope: -1.25646 -1.74325 instead of -1.6666
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;title&#39;</span><span class="p">]</span><span class="o">=</span><span class="s1">&#39;fit with variable slope&#39;</span>
+<span class="n">params</span><span class="p">[</span><span class="s1">&#39;log10_A&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">coeffs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">params</span><span class="p">[</span><span class="s1">&#39;slope&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">coeffs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">ax</span><span class="o">=</span><span class="n">do_plot</span><span class="p">(</span><span class="n">averaged_freq</span><span class="p">,</span><span class="n">power_dens</span><span class="p">,</span><span class="o">**</span><span class="n">params</span><span class="p">)</span>
+<span class="n">fit</span><span class="o">=</span><span class="mi">10</span><span class="o">**</span><span class="n">coeffs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">averaged_freq</span><span class="p">[</span><span class="mi">100</span><span class="p">]</span><span class="o">**</span><span class="n">coeffs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">check</span><span class="o">=</span><span class="n">power_dens</span><span class="p">[</span><span class="mi">100</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Value of constant A0 = </span><span class="si">{:8.5f}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="mi">10</span><span class="o">**</span><span class="n">log10_A</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;how good is the fit at point 100? spectrum: </span><span class="si">{:8.5f}</span><span class="s1">  -5/3: </span><span class="si">{:8.5f}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">fit</span><span class="p">,</span><span class="n">check</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Value of constant A0 =  0.04997
+how good is the fit at point 100? spectrum:  0.02853  -5/3:  0.02880
+</pre></div>
+</div>
+<img alt="../_images/1aeb6f206b70a248836da539d298dcc34e8cb073a49299994497e144304447b9.png" src="../_images/1aeb6f206b70a248836da539d298dcc34e8cb073a49299994497e144304447b9.png" />
+</div>
+</div>
+<section id="smothing-the-power-spectrum-by-simple-binning">
+<h3>Smothing the power spectrum by simple binning<a class="headerlink" href="#smothing-the-power-spectrum-by-simple-binning" title="Permalink to this heading">#</a></h3>
+<p>Instead of the elaborate subsetting and windowing we did above, what if we just dropped the power spectrum values into a coarser set of frequency bins?  Would that change the results?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">new_spec</span><span class="o">=</span><span class="n">power_half</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">720</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+<span class="n">new_dens</span><span class="o">=</span><span class="n">new_spec</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="n">delta_f</span>
+
+
+<span class="n">coeffs</span><span class="p">,</span> <span class="n">pcov</span> <span class="o">=</span> <span class="n">curve_fit</span><span class="p">(</span><span class="n">fit_func</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">averaged_freq</span><span class="p">),</span><span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">new_dens</span><span class="p">),</span> 
+                       <span class="n">p0</span><span class="o">=</span><span class="p">[</span><span class="n">initial_A</span><span class="p">,</span><span class="o">-</span><span class="mf">2.</span><span class="p">])</span>
+<span class="n">params</span><span class="p">[</span><span class="s1">&#39;log10_A&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">coeffs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">params</span><span class="p">[</span><span class="s1">&#39;slope&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">coeffs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;log10_A and slope: </span><span class="si">{:8.5f}</span><span class="s1"> </span><span class="si">{:8.5f}</span><span class="s1"> instead of -1.6666&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="o">*</span><span class="n">coeffs</span><span class="p">))</span>
+
+<span class="n">ax</span><span class="o">=</span><span class="n">do_plot</span><span class="p">(</span><span class="n">averaged_freq</span><span class="p">,</span><span class="n">new_dens</span><span class="p">,</span><span class="o">**</span><span class="n">params</span><span class="p">)</span>
+<span class="n">out</span><span class="o">=</span><span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;result with simple binning&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>log10_A and slope: -1.43033 -1.71714 instead of -1.6666
+</pre></div>
+</div>
+<img alt="../_images/fc8c97341c2660047d8ea48b95f440d52acd1e19f18c0f1f68d265cd08f8fb3f.png" src="../_images/fc8c97341c2660047d8ea48b95f440d52acd1e19f18c0f1f68d265cd08f8fb3f.png" />
+</div>
+</div>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./notebooks"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="time_series/sarima_co2.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">SARIMA-TimeSeries Analysis of Atmospheric CO2</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-plot-the-raw-spectrum-and-confirm-the-w-k-theorem">Step 1: plot the raw spectrum and confirm the W-K theorem</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-check-power-spectrum-layout">Step 2: check power spectrum layout</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#confirm-that-the-fft-at-negative-f-is-the-complex-conjugate-of-the-fft-at-positive-f">Confirm that the fft at negative f is the complex conjugate of the fft at positive f</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-windowing-and-averaging-subsamples">Step 3: Windowing and averaging subsamples</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#caveat-subsamples-no-longer-have-zero-mean-so-power-gets-placed-in-bin-0">Caveat – subsamples no longer have zero mean, so power gets placed in bin 0</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-change-the-amplitude-of-the-averaged-spectrum-so-it-matches-the-total-variance-of-the-time-series">Solution – change the amplitude of the averaged spectrum so it matches the total variance of the time series</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#try-running-do-fft-with-and-without-debug-printing">Try running do_fft with and without debug printing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#we-want-the-integral-over-the-positive-frequencies-to-give-the-total-variance-so-increase-spectral-values-by-2x">We want the integral over the positive frequencies to give the total variance, so increase spectral values by 2x</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-fit-the-averaged-spectrum-to-e-f-a-0-f-5-3-on-a-loglog-plot">Step 4: fit the averaged spectrum to <span class="math notranslate nohighlight">\(E(f) = A_0 f^{-5/3}\)</span> on a loglog plot</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-5-use-kolmogorov-1941-to-find-epsilon">Step 5: Use Kolmogorov 1941 to find <span class="math notranslate nohighlight">\(\epsilon\)</span></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#is-this-a-reasonable-value-for-the-vertical-turbulent-dissipation-rate">Is this ε a reasonable value for the vertical turbulent dissipation rate?</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#does-the-data-support-f-5-3">Does the data support f^{-5/3}?</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#smothing-the-power-spectrum-by-simple-binning">Smothing the power spectrum by simple binning</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Philip Austin
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
