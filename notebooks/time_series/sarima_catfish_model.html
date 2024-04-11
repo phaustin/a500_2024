@@ -271,7 +271,6 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 <li class="toctree-l1"><a class="reference internal" href="sarima_co2.html">SARIMA-TimeSeries Analysis of Atmospheric CO2</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../fft_dissipation.html">Power spectrum of turbulent vertical velocity</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Journal articles</span></p>
 <ul class="nav bd-sidenav">
@@ -556,7 +555,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.lines.Line2D at 0x126937050&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.lines.Line2D at 0x14fdaf310&gt;
 </pre></div>
 </div>
 <img alt="../../_images/6bf20622ef5ba506c4889e9313bc4a2007a9f69a38a2f6126c4fc4e2cb086ac3.png" src="../../_images/6bf20622ef5ba506c4889e9313bc4a2007a9f69a38a2f6126c4fc4e2cb086ac3.png" />
@@ -649,21 +648,23 @@ Machine precision = 2.220D-16
 
 At X0         0 variables are exactly at the bounds
 
-At iterate    0    f=  8.91418D+00    |proj g|=  1.42265D+00
+At iterate    0    f=  8.88111D+00    |proj g|=  1.26626D+00
 
-At iterate    5    f=  8.54683D+00    |proj g|=  2.47769D-01
+At iterate    5    f=  8.57512D+00    |proj g|=  3.01676D-01
 
-At iterate   10    f=  8.53059D+00    |proj g|=  1.21746D-03
+At iterate   10    f=  8.55001D+00    |proj g|=  1.38247D-03
 
-At iterate   15    f=  8.53059D+00    |proj g|=  1.23643D-03
+At iterate   15    f=  8.55001D+00    |proj g|=  1.09204D-03
 
-At iterate   20    f=  8.53051D+00    |proj g|=  1.57533D-02
+At iterate   20    f=  8.54985D+00    |proj g|=  1.51809D-02
 
-At iterate   25    f=  8.52658D+00    |proj g|=  7.30506D-02
+At iterate   25    f=  8.54232D+00    |proj g|=  1.11473D-01
 
-At iterate   30    f=  8.51412D+00    |proj g|=  2.67419D-02
+At iterate   30    f=  8.51785D+00    |proj g|=  1.03001D-02
 
-At iterate   35    f=  8.50324D+00    |proj g|=  8.46847D-03
+At iterate   35    f=  8.51071D+00    |proj g|=  1.52217D-01
+
+At iterate   40    f=  8.50313D+00    |proj g|=  9.28004D-06
 
            * * *
 
@@ -678,11 +679,11 @@ F     = final function value
            * * *
 
    N    Tit     Tnf  Tnint  Skip  Nact     Projg        F
-    3     38     51      1     0     0   6.590D-06   8.503D+00
-  F =   8.5031324788887073     
+    3     40     49      1     0     0   9.280D-06   8.503D+00
+  F =   8.5031324792886345     
 
 CONVERGENCE: NORM_OF_PROJECTED_GRADIENT_&lt;=_PGTOL            
-Model Fitting Time: 0.1017920970916748
+Model Fitting Time: 0.20403003692626953
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/phil/mini310/envs/a405/lib/python3.11/site-packages/statsmodels/tsa/statespace/sarimax.py:997: UserWarning: Non-stationary starting seasonal autoregressive Using zeros as starting parameters.
@@ -707,14 +708,14 @@ Model Fitting Time: 0.1017920970916748
 Dep. Variable:                                Total   No. Observations:                   43
 Model:             SARIMAX(0, 1, 0)x(1, 0, [1], 12)   Log Likelihood                -365.635
 Date:                              Thu, 04 Apr 2024   AIC                            737.269
-Time:                                      08:40:00   BIC                            742.482
+Time:                                      14:52:47   BIC                            742.482
 Sample:                                  01-01-1996   HQIC                           739.180
                                        - 07-01-1999                                         
 Covariance Type:                                opg                                         
 ==============================================================================
                  coef    std err          z      P&gt;|z|      [0.025      0.975]
 ------------------------------------------------------------------------------
-ar.S.L12       0.8250      0.120      6.847      0.000       0.589       1.061
+ar.S.L12       0.8250      0.120      6.848      0.000       0.589       1.061
 ma.S.L12      -0.5187      0.197     -2.632      0.008      -0.905      -0.132
 sigma2       1.78e+06    4.7e+05      3.791      0.000     8.6e+05     2.7e+06
 ===================================================================================
@@ -754,7 +755,7 @@ Warnings:
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;Error&#39;)
 </pre></div>
 </div>
-<img alt="../../_images/c5e7ea9cc10a84d8e74e25d42ca3c954c901e8951b8913bb4693635f1f4ff69a.png" src="../../_images/c5e7ea9cc10a84d8e74e25d42ca3c954c901e8951b8913bb4693635f1f4ff69a.png" />
+<img alt="../../_images/03fa28bd0a4358783538ac13a316c5500642c18d00fc539324f30911d9b3bc94.png" src="../../_images/03fa28bd0a4358783538ac13a316c5500642c18d00fc539324f30911d9b3bc94.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -774,7 +775,7 @@ Warnings:
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/6329a85026e4a8a3e4181964adafc3071f4cfe37db740c01b58acc9c8c16a153.png" src="../../_images/6329a85026e4a8a3e4181964adafc3071f4cfe37db740c01b58acc9c8c16a153.png" />
+<img alt="../../_images/ce381469a93f5fa851bb9b31d8b95bbcbbe0f5b4c5d47fb53e4efdc0910be10f.png" src="../../_images/ce381469a93f5fa851bb9b31d8b95bbcbbe0f5b4c5d47fb53e4efdc0910be10f.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -796,7 +797,7 @@ Warnings:
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Root Mean Squared Error: 1122.3018259717915
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Root Mean Squared Error: 1122.3047197056494
 </pre></div>
 </div>
 </div>
@@ -827,93 +828,22 @@ Machine precision = 2.220D-16
 
 At X0         0 variables are exactly at the bounds
 
-At iterate    0    f=  8.91418D+00    |proj g|=  1.42265D+00
+At iterate    0    f=  8.88111D+00    |proj g|=  1.26626D+00
 
-At iterate    5    f=  8.54683D+00    |proj g|=  2.47769D-01
+At iterate    5    f=  8.57512D+00    |proj g|=  3.01676D-01
 
-At iterate   10    f=  8.53059D+00    |proj g|=  1.21746D-03
+At iterate   10    f=  8.55001D+00    |proj g|=  1.38247D-03
 
-At iterate   15    f=  8.53059D+00    |proj g|=  1.23643D-03
+At iterate   15    f=  8.55001D+00    |proj g|=  1.09204D-03
 
-At iterate   20    f=  8.53051D+00    |proj g|=  1.57533D-02
+At iterate   20    f=  8.54985D+00    |proj g|=  1.51809D-02
 
-At iterate   25    f=  8.52658D+00    |proj g|=  7.30506D-02
+At iterate   25    f=  8.54232D+00    |proj g|=  1.11473D-01
 
-At iterate   30    f=  8.51412D+00    |proj g|=  2.67419D-02
-
-At iterate   35    f=  8.50324D+00    |proj g|=  8.46847D-03
-
-           * * *
-
-Tit   = total number of iterations
-Tnf   = total number of function evaluations
-Tnint = total number of segments explored during Cauchy searches
-Skip  = number of BFGS updates skipped
-Nact  = number of active bounds at final generalized Cauchy point
-Projg = norm of the final projected gradient
-F     = final function value
-
-           * * *
-
-   N    Tit     Tnf  Tnint  Skip  Nact     Projg        F
-    3     38     51      1     0     0   6.590D-06   8.503D+00
-  F =   8.5031324788887073     
-
-CONVERGENCE: NORM_OF_PROJECTED_GRADIENT_&lt;=_PGTOL            
-RUNNING THE L-BFGS-B CODE
-
-           * * *
-
-Machine precision = 2.220D-16
- N =            3     M =           10
-
-At X0         0 variables are exactly at the bounds
-
-At iterate    0    f=  8.86400D+00    |proj g|=  1.19501D+00
-
-At iterate    5    f=  8.58224D+00    |proj g|=  2.96088D-01
-
-At iterate   10    f=  8.55609D+00    |proj g|=  1.27139D-03
-
-At iterate   15    f=  8.55609D+00    |proj g|=  1.08449D-03
-
-At iterate   20    f=  8.55589D+00    |proj g|=  2.49921D-02
-
-At iterate   25    f=  8.53864D+00    |proj g|=  1.10938D-01
-
-At iterate   30    f=  8.51375D+00    |proj g|=  3.30943D-02
-
-At iterate   35    f=  8.50504D+00    |proj g|=  1.22398D-01
-
-At iterate   40    f=  8.50171D+00    |proj g|=  3.32685D-04
-
-           * * *
-
-Tit   = total number of iterations
-Tnf   = total number of function evaluations
-Tnint = total number of segments explored during Cauchy searches
-Skip  = number of BFGS updates skipped
-Nact  = number of active bounds at final generalized Cauchy point
-Projg = norm of the final projected gradient
-F     = final function value
-
-           * * *
-
-   N    Tit     Tnf  Tnint  Skip  Nact     Projg        F
-    3     41     49      1     0     0   9.110D-06   8.502D+00
-  F =   8.5017078631245955     
-
-CONVERGENCE: NORM_OF_PROJECTED_GRADIENT_&lt;=_PGTOL            
-RUNNING THE L-BFGS-B CODE
-
-           * * *
-
-Machine precision = 2.220D-16
- N =            3     M =           10
-
-At X0         0 variables are exactly at the bounds
-
-At iterate    0    f=  8.89744D+00    |proj g|=  1.39659D+00
+At iterate   30    f=  8.51785D+00    |proj g|=  1.03001D-02
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>At iterate   35    f=  8.51071D+00    |proj g|=  1.52217D-01
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/phil/mini310/envs/a405/lib/python3.11/site-packages/statsmodels/tsa/statespace/sarimax.py:997: UserWarning: Non-stationary starting seasonal autoregressive Using zeros as starting parameters.
@@ -921,36 +851,9 @@ At iterate    0    f=  8.89744D+00    |proj g|=  1.39659D+00
 /Users/phil/mini310/envs/a405/lib/python3.11/site-packages/statsmodels/tsa/statespace/sarimax.py:1009: UserWarning: Non-invertible starting seasonal moving average Using zeros as starting parameters.
   warn(&#39;Non-invertible starting seasonal moving average&#39;
  This problem is unconstrained.
-/var/folders/h3/5svt7fds58v0x7kkc54kl3640000gn/T/ipykernel_15264/3978322752.py:8: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise an error in a future version of pandas. Value &#39;[25695.47055246]&#39; has dtype incompatible with int64, please explicitly cast to a compatible dtype first.
-  rolling_predictions[train_end] = pred
-/Users/phil/mini310/envs/a405/lib/python3.11/site-packages/statsmodels/tsa/statespace/sarimax.py:997: UserWarning: Non-stationary starting seasonal autoregressive Using zeros as starting parameters.
-  warn(&#39;Non-stationary starting seasonal autoregressive&#39;
-/Users/phil/mini310/envs/a405/lib/python3.11/site-packages/statsmodels/tsa/statespace/sarimax.py:1009: UserWarning: Non-invertible starting seasonal moving average Using zeros as starting parameters.
-  warn(&#39;Non-invertible starting seasonal moving average&#39;
- This problem is unconstrained.
-/var/folders/h3/5svt7fds58v0x7kkc54kl3640000gn/T/ipykernel_15264/3978322752.py:8: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
-  rolling_predictions[train_end] = pred
-/Users/phil/mini310/envs/a405/lib/python3.11/site-packages/statsmodels/tsa/statespace/sarimax.py:997: UserWarning: Non-stationary starting seasonal autoregressive Using zeros as starting parameters.
-  warn(&#39;Non-stationary starting seasonal autoregressive&#39;
-/Users/phil/mini310/envs/a405/lib/python3.11/site-packages/statsmodels/tsa/statespace/sarimax.py:1009: UserWarning: Non-invertible starting seasonal moving average Using zeros as starting parameters.
-  warn(&#39;Non-invertible starting seasonal moving average&#39;
- This problem is unconstrained.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>At iterate    5    f=  8.53679D+00    |proj g|=  2.33465D-01
-
-At iterate   10    f=  8.52165D+00    |proj g|=  1.07445D-03
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>At iterate   15    f=  8.52164D+00    |proj g|=  1.33127D-03
-
-At iterate   20    f=  8.52155D+00    |proj g|=  1.65997D-02
-
-At iterate   25    f=  8.51029D+00    |proj g|=  2.23727D-02
-
-At iterate   30    f=  8.49962D+00    |proj g|=  2.51751D-02
-
-At iterate   35    f=  8.49435D+00    |proj g|=  1.04401D-02
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>At iterate   40    f=  8.50313D+00    |proj g|=  9.28004D-06
 
            * * *
 
@@ -965,8 +868,8 @@ F     = final function value
            * * *
 
    N    Tit     Tnf  Tnint  Skip  Nact     Projg        F
-    3     39     52      1     0     0   5.315D-06   8.494D+00
-  F =   8.4942658987767015     
+    3     40     49      1     0     0   9.280D-06   8.503D+00
+  F =   8.5031324792886345     
 
 CONVERGENCE: NORM_OF_PROJECTED_GRADIENT_&lt;=_PGTOL            
 RUNNING THE L-BFGS-B CODE
@@ -978,19 +881,34 @@ Machine precision = 2.220D-16
 
 At X0         0 variables are exactly at the bounds
 
-At iterate    0    f=  9.25408D+00    |proj g|=  2.39078D+00
+At iterate    0    f=  8.86898D+00    |proj g|=  1.22534D+00
 
-At iterate    5    f=  8.61656D+00    |proj g|=  7.31109D-01
+At iterate    5    f=  8.57652D+00    |proj g|=  2.96239D-01
 
-At iterate   10    f=  8.49518D+00    |proj g|=  1.28783D-02
+At iterate   10    f=  8.55121D+00    |proj g|=  1.26845D-03
 
-At iterate   15    f=  8.49470D+00    |proj g|=  4.19596D-04
+At iterate   15    f=  8.55121D+00    |proj g|=  1.11440D-03
 
-At iterate   20    f=  8.49466D+00    |proj g|=  1.41637D-02
+At iterate   20    f=  8.55103D+00    |proj g|=  2.17354D-02
 
-At iterate   25    f=  8.49084D+00    |proj g|=  2.69214D-02
+At iterate   25    f=  8.53754D+00    |proj g|=  1.00837D-01
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>At iterate   30    f=  8.51618D+00    |proj g|=  1.68371D-02
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/_k/0f_hlw7x2hq4vtcq0h8bvsm40000gr/T/ipykernel_59482/3978322752.py:8: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise an error in a future version of pandas. Value &#39;[25695.47730286]&#39; has dtype incompatible with int64, please explicitly cast to a compatible dtype first.
+  rolling_predictions[train_end] = pred
+/Users/phil/mini310/envs/a405/lib/python3.11/site-packages/statsmodels/tsa/statespace/sarimax.py:997: UserWarning: Non-stationary starting seasonal autoregressive Using zeros as starting parameters.
+  warn(&#39;Non-stationary starting seasonal autoregressive&#39;
+/Users/phil/mini310/envs/a405/lib/python3.11/site-packages/statsmodels/tsa/statespace/sarimax.py:1009: UserWarning: Non-invertible starting seasonal moving average Using zeros as starting parameters.
+  warn(&#39;Non-invertible starting seasonal moving average&#39;
+ This problem is unconstrained.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>At iterate   35    f=  8.51176D+00    |proj g|=  1.44595D-01
 
-At iterate   30    f=  8.48588D+00    |proj g|=  5.99234D-04
+At iterate   40    f=  8.50171D+00    |proj g|=  1.96765D-04
 
            * * *
 
@@ -1005,8 +923,96 @@ F     = final function value
            * * *
 
    N    Tit     Tnf  Tnint  Skip  Nact     Projg        F
-    3     32     37      1     0     0   9.965D-06   8.486D+00
-  F =   8.4858777135100016     
+    3     41     48      1     0     0   1.406D-05   8.502D+00
+  F =   8.5017078612933297     
+
+CONVERGENCE: REL_REDUCTION_OF_F_&lt;=_FACTR*EPSMCH             
+RUNNING THE L-BFGS-B CODE
+
+           * * *
+
+Machine precision = 2.220D-16
+ N =            3     M =           10
+
+At X0         0 variables are exactly at the bounds
+
+At iterate    0    f=  9.22686D+00    |proj g|=  1.12863D+00
+
+At iterate    5    f=  8.49639D+00    |proj g|=  1.08333D-02
+
+At iterate   10    f=  8.49439D+00    |proj g|=  1.34288D-04
+
+           * * *
+
+Tit   = total number of iterations
+Tnf   = total number of function evaluations
+Tnint = total number of segments explored during Cauchy searches
+Skip  = number of BFGS updates skipped
+Nact  = number of active bounds at final generalized Cauchy point
+Projg = norm of the final projected gradient
+F     = final function value
+
+           * * *
+
+   N    Tit     Tnf  Tnint  Skip  Nact     Projg        F
+    3     11     13      1     0     0   1.520D-05   8.494D+00
+  F =   8.4943895879515665     
+
+CONVERGENCE: REL_REDUCTION_OF_F_&lt;=_FACTR*EPSMCH             
+RUNNING THE L-BFGS-B CODE
+
+           * * *
+
+Machine precision = 2.220D-16
+ N =            3     M =           10
+
+At X0         0 variables are exactly at the bounds
+
+At iterate    0    f=  8.99295D+00    |proj g|=  1.74058D+00
+
+At iterate    5    f=  8.50886D+00    |proj g|=  1.36456D-01
+
+At iterate   10    f=  8.49024D+00    |proj g|=  1.06762D-03
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>At iterate   15    f=  8.49023D+00    |proj g|=  1.76282D-03
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/_k/0f_hlw7x2hq4vtcq0h8bvsm40000gr/T/ipykernel_59482/3978322752.py:8: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
+  rolling_predictions[train_end] = pred
+/Users/phil/mini310/envs/a405/lib/python3.11/site-packages/statsmodels/tsa/statespace/sarimax.py:1009: UserWarning: Non-invertible starting seasonal moving average Using zeros as starting parameters.
+  warn(&#39;Non-invertible starting seasonal moving average&#39;
+ This problem is unconstrained.
+/var/folders/_k/0f_hlw7x2hq4vtcq0h8bvsm40000gr/T/ipykernel_59482/3978322752.py:8: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
+  rolling_predictions[train_end] = pred
+/Users/phil/mini310/envs/a405/lib/python3.11/site-packages/statsmodels/tsa/statespace/sarimax.py:997: UserWarning: Non-stationary starting seasonal autoregressive Using zeros as starting parameters.
+  warn(&#39;Non-stationary starting seasonal autoregressive&#39;
+/Users/phil/mini310/envs/a405/lib/python3.11/site-packages/statsmodels/tsa/statespace/sarimax.py:1009: UserWarning: Non-invertible starting seasonal moving average Using zeros as starting parameters.
+  warn(&#39;Non-invertible starting seasonal moving average&#39;
+ This problem is unconstrained.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>At iterate   20    f=  8.49008D+00    |proj g|=  2.64135D-02
+
+At iterate   25    f=  8.48672D+00    |proj g|=  5.77446D-02
+
+At iterate   30    f=  8.48588D+00    |proj g|=  9.05844D-05
+
+           * * *
+
+Tit   = total number of iterations
+Tnf   = total number of function evaluations
+Tnint = total number of segments explored during Cauchy searches
+Skip  = number of BFGS updates skipped
+Nact  = number of active bounds at final generalized Cauchy point
+Projg = norm of the final projected gradient
+F     = final function value
+
+           * * *
+
+   N    Tit     Tnf  Tnint  Skip  Nact     Projg        F
+    3     31     34      1     0     0   2.043D-06   8.486D+00
+  F =   8.4858777138213277     
 
 CONVERGENCE: NORM_OF_PROJECTED_GRADIENT_&lt;=_PGTOL            
 RUNNING THE L-BFGS-B CODE
@@ -1018,46 +1024,28 @@ Machine precision = 2.220D-16
 
 At X0         0 variables are exactly at the bounds
 
-At iterate    0    f=  8.92904D+00    |proj g|=  1.45858D+00
+At iterate    0    f=  9.52797D+00    |proj g|=  6.47992D-01
 
-At iterate    5    f=  8.52840D+00    |proj g|=  1.89278D-01
+At iterate    5    f=  8.53034D+00    |proj g|=  6.45090D-02
 
-At iterate   10    f=  8.51407D+00    |proj g|=  1.40560D-03
-
-At iterate   15    f=  8.51407D+00    |proj g|=  7.98632D-04
-
-At iterate   20    f=  8.51401D+00    |proj g|=  1.54164D-02
-
-At iterate   25    f=  8.50610D+00    |proj g|=  7.44241D-02
+At iterate   10    f=  8.50740D+00    |proj g|=  3.65010D-02
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>At iterate   30    f=  8.49666D+00    |proj g|=  2.70361D-02
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>At iterate   15    f=  8.50709D+00    |proj g|=  1.42257D-04
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/h3/5svt7fds58v0x7kkc54kl3640000gn/T/ipykernel_15264/3978322752.py:8: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/_k/0f_hlw7x2hq4vtcq0h8bvsm40000gr/T/ipykernel_59482/3978322752.py:8: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
   rolling_predictions[train_end] = pred
-/Users/phil/mini310/envs/a405/lib/python3.11/site-packages/statsmodels/tsa/statespace/sarimax.py:997: UserWarning: Non-stationary starting seasonal autoregressive Using zeros as starting parameters.
-  warn(&#39;Non-stationary starting seasonal autoregressive&#39;
-/Users/phil/mini310/envs/a405/lib/python3.11/site-packages/statsmodels/tsa/statespace/sarimax.py:1009: UserWarning: Non-invertible starting seasonal moving average Using zeros as starting parameters.
-  warn(&#39;Non-invertible starting seasonal moving average&#39;
- This problem is unconstrained.
-/var/folders/h3/5svt7fds58v0x7kkc54kl3640000gn/T/ipykernel_15264/3978322752.py:8: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
-  rolling_predictions[train_end] = pred
-/Users/phil/mini310/envs/a405/lib/python3.11/site-packages/statsmodels/tsa/statespace/sarimax.py:997: UserWarning: Non-stationary starting seasonal autoregressive Using zeros as starting parameters.
-  warn(&#39;Non-stationary starting seasonal autoregressive&#39;
-/Users/phil/mini310/envs/a405/lib/python3.11/site-packages/statsmodels/tsa/statespace/sarimax.py:1009: UserWarning: Non-invertible starting seasonal moving average Using zeros as starting parameters.
-  warn(&#39;Non-invertible starting seasonal moving average&#39;
- This problem is unconstrained.
-/var/folders/h3/5svt7fds58v0x7kkc54kl3640000gn/T/ipykernel_15264/3978322752.py:8: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
-  rolling_predictions[train_end] = pred
-/Users/phil/mini310/envs/a405/lib/python3.11/site-packages/statsmodels/tsa/statespace/sarimax.py:997: UserWarning: Non-stationary starting seasonal autoregressive Using zeros as starting parameters.
-  warn(&#39;Non-stationary starting seasonal autoregressive&#39;
 /Users/phil/mini310/envs/a405/lib/python3.11/site-packages/statsmodels/tsa/statespace/sarimax.py:1009: UserWarning: Non-invertible starting seasonal moving average Using zeros as starting parameters.
   warn(&#39;Non-invertible starting seasonal moving average&#39;
  This problem is unconstrained.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>At iterate   35    f=  8.49013D+00    |proj g|=  7.29900D-03
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>At iterate   20    f=  8.50704D+00    |proj g|=  3.77341D-03
+
+At iterate   25    f=  8.49651D+00    |proj g|=  5.62584D-02
+
+At iterate   30    f=  8.48985D+00    |proj g|=  6.99679D-04
 
            * * *
 
@@ -1072,10 +1060,10 @@ F     = final function value
            * * *
 
    N    Tit     Tnf  Tnint  Skip  Nact     Projg        F
-    3     39     48      1     0     0   7.069D-06   8.490D+00
-  F =   8.4898467456765800     
+    3     32     73      2     0     0   1.302D-05   8.490D+00
+  F =   8.4898467445222412     
 
-CONVERGENCE: NORM_OF_PROJECTED_GRADIENT_&lt;=_PGTOL            
+CONVERGENCE: REL_REDUCTION_OF_F_&lt;=_FACTR*EPSMCH             
 RUNNING THE L-BFGS-B CODE
 
            * * *
@@ -1085,19 +1073,11 @@ Machine precision = 2.220D-16
 
 At X0         0 variables are exactly at the bounds
 
-At iterate    0    f=  8.95048D+00    |proj g|=  1.55516D+00
+At iterate    0    f=  9.09432D+00    |proj g|=  1.19074D+00
 
-At iterate    5    f=  8.51424D+00    |proj g|=  1.50711D-01
+At iterate    5    f=  8.48374D+00    |proj g|=  5.93343D-04
 
-At iterate   10    f=  8.49902D+00    |proj g|=  8.77501D-04
-
-At iterate   15    f=  8.49901D+00    |proj g|=  5.44988D-04
-
-At iterate   20    f=  8.49886D+00    |proj g|=  2.42409D-03
-
-At iterate   25    f=  8.49138D+00    |proj g|=  3.52751D-02
-
-At iterate   30    f=  8.48336D+00    |proj g|=  9.67822D-03
+At iterate   10    f=  8.48373D+00    |proj g|=  2.75323D-04
 
            * * *
 
@@ -1112,16 +1092,20 @@ F     = final function value
            * * *
 
    N    Tit     Tnf  Tnint  Skip  Nact     Projg        F
-    3     34     54      1     0     0   3.058D-05   8.483D+00
-  F =   8.4833339337371800     
+    3     11     13      1     0     0   2.818D-05   8.484D+00
+  F =   8.4837290021201532     
 
 CONVERGENCE: REL_REDUCTION_OF_F_&lt;=_FACTR*EPSMCH             
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> Warning:  more than 10 function and gradient
-   evaluations in the last line search.  Termination
-   may possibly be caused by a bad search direction.
-/var/folders/h3/5svt7fds58v0x7kkc54kl3640000gn/T/ipykernel_15264/3978322752.py:8: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> Bad direction in the line search;
+   refresh the lbfgs memory and restart the iteration.
+/var/folders/_k/0f_hlw7x2hq4vtcq0h8bvsm40000gr/T/ipykernel_59482/3978322752.py:8: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
+  rolling_predictions[train_end] = pred
+/Users/phil/mini310/envs/a405/lib/python3.11/site-packages/statsmodels/tsa/statespace/sarimax.py:1009: UserWarning: Non-invertible starting seasonal moving average Using zeros as starting parameters.
+  warn(&#39;Non-invertible starting seasonal moving average&#39;
+ This problem is unconstrained.
+/var/folders/_k/0f_hlw7x2hq4vtcq0h8bvsm40000gr/T/ipykernel_59482/3978322752.py:8: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
   rolling_predictions[train_end] = pred
 </pre></div>
 </div>
@@ -1148,7 +1132,7 @@ CONVERGENCE: REL_REDUCTION_OF_F_&lt;=_FACTR*EPSMCH
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;Error&#39;)
 </pre></div>
 </div>
-<img alt="../../_images/d531104a6214b796c321b66ce0a44de3862cdf2608de7db3f9ff06a4c5ee9a65.png" src="../../_images/d531104a6214b796c321b66ce0a44de3862cdf2608de7db3f9ff06a4c5ee9a65.png" />
+<img alt="../../_images/771594a7e39c87a67fcf6537f89d7dd8b4ca6dba53da62cae091c197c16259f8.png" src="../../_images/771594a7e39c87a67fcf6537f89d7dd8b4ca6dba53da62cae091c197c16259f8.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1168,7 +1152,7 @@ CONVERGENCE: REL_REDUCTION_OF_F_&lt;=_FACTR*EPSMCH
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/e1c5a8d4e1df983fce6e28643146fceb90dcf354cdbf64efffafcb9a3c938f5b.png" src="../../_images/e1c5a8d4e1df983fce6e28643146fceb90dcf354cdbf64efffafcb9a3c938f5b.png" />
+<img alt="../../_images/abd812e575f01709aacf9711d06015838cb944ae61cc748bafa77145cd3c8b97.png" src="../../_images/abd812e575f01709aacf9711d06015838cb944ae61cc748bafa77145cd3c8b97.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1178,7 +1162,7 @@ CONVERGENCE: REL_REDUCTION_OF_F_&lt;=_FACTR*EPSMCH
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mean Absolute Percent Error: 0.0288
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mean Absolute Percent Error: 0.0286
 </pre></div>
 </div>
 </div>
@@ -1190,7 +1174,7 @@ CONVERGENCE: REL_REDUCTION_OF_F_&lt;=_FACTR*EPSMCH
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Root Mean Squared Error: 804.124026465311
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Root Mean Squared Error: 802.3547518758006
 </pre></div>
 </div>
 </div>

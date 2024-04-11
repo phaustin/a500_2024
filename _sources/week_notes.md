@@ -327,3 +327,18 @@ T. U. Delft cloud course](https://www.dropbox.com/scl/fi/n6scqt3wql8otdfvsif1r/d
 
 - {ref}`fft_dissipation` and [notebook download](https://www.dropbox.com/scl/fi/u0autqkacefgn5issbxci/fft_dissipation.ipynb?rlkey=q17ex4mxcsx3zxtc20xtlorv6&dl=0)
 
+### Thursday
+
+#### more on ffts
+
+- {ref}`fft_intro`
+  - [fft ipynb download](https://www.dropbox.com/scl/fi/qui2eulommq0agryzt7ol/fft_introduction.ipynb?rlkey=to3a4jxe1pbb2r1zjo3ntwfar&dl=0)
+- {ref}`fft_2d`
+  - [fft_2d ipynb download](https://www.dropbox.com/scl/fi/51216rnukbag56hn0hsa0/fft_2d_filter.ipynb?rlkey=hh2y0npraijh8lfmqwuupcx30&dl=0)
+  - [satellite data a17.nc](https://www.dropbox.com/scl/fi/ska8vvlgzzt98typpjxgt/a17.nc?rlkey=a3vz7gd9ribj58h97y5pl5lww&dl=0)
+
+#### project rubrics
+
+- [presentation rubric](https://www.dropbox.com/scl/fi/2fz0mbv9tay9toc09fwnr/presentations_rubric.pdf?rlkey=frsoxbi93grxzsebvceb4id41&dl=0)
+- [project rubric](https://www.dropbox.com/scl/fi/27x5ubmj5lxv6icrwfx1t/projects_rubric.pdf?rlkey=ns9knwdp9ldppcms3fe971if3&dl=0)
+
