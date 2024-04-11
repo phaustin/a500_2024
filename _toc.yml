@@ -132,6 +132,8 @@ parts:
     - file: notebooks/time_series/sarima_catfish_model.md
     - file: notebooks/time_series/sarima_co2.md
     - file: notebooks/fft_dissipation.md
+    - file: notebooks/fft_introduction.md
+    - file: notebooks/fft_2d_filter.md
   - caption: Journal articles
     chapters:
     - url: https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9704743/

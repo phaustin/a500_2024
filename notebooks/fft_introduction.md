@@ -16,6 +16,7 @@ kernelspec:
   name: python3
 ---
 
+(fft_intro)=
 # FFT introduction
 
 ```{code-cell} ipython3
@@ -36,7 +37,7 @@ are learning about fourier transforms for the first time,  we recommend reading
 [Newman Chapter 7](https://www.dropbox.com/scl/fi/jsz0x92269kzp5duze05a/newman_chapter7_.pdf?rlkey=bk6e778jwv51ex2yhk1a75gg0&dl=0).  For a description of the Fast Fourier transform,
 see [Stull Section 8.4](https://www.dropbox.com/scl/fi/so907j6zbs044td04zgpd/stull_section8_4.pdf?rlkey=fthy9t91lz4zdpaxsfdekyc2o&dl=0) and [Jake VanderPlas's blog entry](https://jakevdp.github.io/blog/2013/08/28/understanding-the-fft/).  Another good resources is
 [Numerical Recipes Chapter 12](https://www.dropbox.com/scl/fi/c67mvy8eh812be5az6rxh/numeric_recipes_fft.pdf?rlkey=x319buxjcu39gpgrh57if62z2&dl=0)
-(user: green, password: house)
+
 
 Here's a good post on [negative frequencies](https://dsp.stackexchange.com/questions/431/what-is-the-physical-significance-of-negative-frequencies)
 

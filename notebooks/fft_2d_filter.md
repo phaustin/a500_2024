@@ -97,7 +97,6 @@ $$
 
 and plot that average with the method ```graph_spectrum```
 
-
 ```{code-cell} ipython3
 :trusted: true
 
