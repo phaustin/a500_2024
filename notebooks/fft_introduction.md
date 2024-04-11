@@ -3,7 +3,7 @@ jupytext:
   cell_metadata_filter: all
   cell_metadata_json: true
   encoding: '# -*- coding: utf-8 -*-'
-  formats: ipynb,md:myst
+  formats: ipynb,py:percent,md:myst
   notebook_metadata_filter: all,-language_info,-toc,-latex_envs
   text_representation:
     extension: .md
@@ -37,6 +37,8 @@ are learning about fourier transforms for the first time,  we recommend reading
 see [Stull Section 8.4](https://www.dropbox.com/scl/fi/so907j6zbs044td04zgpd/stull_section8_4.pdf?rlkey=fthy9t91lz4zdpaxsfdekyc2o&dl=0) and [Jake VanderPlas's blog entry](https://jakevdp.github.io/blog/2013/08/28/understanding-the-fft/).  Another good resources is
 [Numerical Recipes Chapter 12](https://www.dropbox.com/scl/fi/c67mvy8eh812be5az6rxh/numeric_recipes_fft.pdf?rlkey=x319buxjcu39gpgrh57if62z2&dl=0)
 (user: green, password: house)
+
+Here's a good post on [negative frequencies](https://dsp.stackexchange.com/questions/431/what-is-the-physical-significance-of-negative-frequencies)
 
 
 
