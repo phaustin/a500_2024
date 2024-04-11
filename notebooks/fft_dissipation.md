@@ -113,7 +113,6 @@ thePoint[0].set_markerfacecolor('g')
 Here is what the entire power spectrum looks like, showing positive and negative frequencies
 
 ```{code-cell} ipython3
-:scrolled: true
 :trusted: true
 
 fig,theAx=plt.subplots(1,1,figsize=(8,8))
@@ -262,7 +261,6 @@ winspec=do_fft(wvel,window,debug=True)
 ```
 
 ```{code-cell} ipython3
-:scrolled: true
 :trusted: true
 
 %matplotlib inline
@@ -437,7 +435,6 @@ Instead of the elaborate subsetting and windowing we did above, what if we just 
 
 ```{code-cell} ipython3
 :lines_to_next_cell: 2
-:scrolled: true
 :trusted: true
 
 new_spec=power_half.reshape((720,-1))
